@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0m5nqe1f8v3d"]
+
+[ext_resource type="Texture2D" uid="uid://btbb0p2m42ick" path="res://StS2Hoshino/images/charui/hoshinoPortrait.png" id="1_8judw"]
+
+[node name="HoshinoBg" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_right = 2417.6
+offset_bottom = 1511.0
+texture = ExtResource("1_8judw")
