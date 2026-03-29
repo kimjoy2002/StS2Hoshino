@@ -103,6 +103,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="StS2HoshinoCode\shaders\" />
         <Folder Include="StS2Hoshino\images\powers\big\"/>
         <Folder Include="StS2Hoshino\images\relics\big\"/>
     </ItemGroup>
