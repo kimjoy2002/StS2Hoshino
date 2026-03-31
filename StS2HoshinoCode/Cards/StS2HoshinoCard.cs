@@ -33,6 +33,12 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
                 (type==CardType.Power?"temp_power.png":"temp_skill.png")).CardImagePath();
         }
     }
+
+    public void useAmmo()
+    {
+        
+        
+    }
     
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 }

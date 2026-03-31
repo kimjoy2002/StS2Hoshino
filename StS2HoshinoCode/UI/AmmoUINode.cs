@@ -1,5 +1,6 @@
 ﻿using Godot;
 using MegaCrit.Sts2.Core.Entities.Players;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.UI;
 
@@ -8,7 +9,7 @@ public partial class AmmoUINode : Control
     private Player? _player;
 
     private int _max = 4;
-    private int _current = 2;
+    private int _current = 4;
 
     private const float AmmoSpacing = 20f;   // 탄환 사이 간격
     private const float DrawScale = 1.0f;    // 필요하면 1.5f, 2.0f 등으로 조절
@@ -38,8 +39,13 @@ public partial class AmmoUINode : Control
     {
         UpdateLayoutSize();
         QueueRedraw();
+        AmmoClass.OnChanged += HandleAmmoChanged;
     }
 
+    public override void _ExitTree()
+    {
+        AmmoClass.OnChanged -= HandleAmmoChanged;
+    }
     public void SetAmmo(int current, int max)
     {
         _current = Mathf.Clamp(current, 0, max);
@@ -48,6 +54,17 @@ public partial class AmmoUINode : Control
         QueueRedraw();
     }
 
+    
+    private void HandleAmmoChanged(int current, int max)
+    {
+        StS2HoshinoMain.Logger.Info($"handle_ammo_changed {current}/{_max}");
+        if (_player != null && AmmoClass.CurrentAmmoGainer == _player)
+        {
+            StS2HoshinoMain.Logger.Info($"handle_ammo_changed clear {current}/{_max}");
+            SetAmmo(current, max);
+        }
+    }
+    
     private void UpdateLayoutSize()
     {
         Texture2D? tex = _ammoFullTexture ?? _ammoEmptyTexture;

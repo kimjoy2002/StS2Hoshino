@@ -1,4 +1,5 @@
-﻿using Godot;
+using System;
+using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -50,6 +51,7 @@ public partial class ReloadButtonHud : Control
     public void Activate(CombatState state)
     {
         _state = state;
+        StS2HoshinoMain.Controller.OnCombatActivated(state);
     }
 
 
@@ -61,8 +63,16 @@ public partial class ReloadButtonHud : Control
 
     public override void _Process(double delta)
     {
-        Player me = LocalContext.GetMe(_state);
+        Player? me = null;
+        try
+        {
+            me = LocalContext.GetMe(_state);
+        }
+        catch (InvalidOperationException ignored)
+        {
+        }
 
+        
         if (me == null ||  !IsInstanceValid(_combatUi) || _combatUi == null || !IsInstanceValid(_combatUi)
             || !(me.Character is Character.StS2Hoshino))
         {
@@ -88,10 +98,10 @@ public partial class ReloadButtonHud : Control
 
     private void OnReloadPressed()
     {
-        if (_combatUi != null)
-        {
-            StS2HoshinoMain.Logger.Info("OnReloadPressed!!");
-        }
+        if (_combatUi == null) return;
+
+        StS2HoshinoMain.Logger.Info("OnReloadPressed!!");
+        StS2HoshinoMain.Controller.Reload(_combatUi);
     }
 
     private static ClickableButton CreateButton(string name)

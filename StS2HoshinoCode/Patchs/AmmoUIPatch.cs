@@ -16,7 +16,6 @@ public static class AmmoUIPatch
     {
         if (__instance.Entity.IsPlayer && __instance.Entity.Player != null && LocalContext.IsMe(__instance.Entity) && __instance.Entity.Player.Character is Character.StS2Hoshino)
         {
-            StS2HoshinoMain.Logger.Error("hmm error!");
             AmmoUINode ammoUINode = AmmoUINode.Create(__instance.Entity.Player);
             ((Node)ammoUINode).Name = "ammoUI";
             ((Node)ammoUINode).UniqueNameInOwner = true;

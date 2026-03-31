@@ -1,63 +1,30 @@
-﻿using System.Reflection;
+using System;
 using Godot;
-using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Combat;
-using MegaCrit.Sts2.Core.Combat.History.Entries;
-using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Context;
-using MegaCrit.Sts2.Core.Entities.Cards;
-using MegaCrit.Sts2.Core.Entities.Creatures;
-using MegaCrit.Sts2.Core.Entities.Enchantments;
-using MegaCrit.Sts2.Core.Entities.Multiplayer;
-using MegaCrit.Sts2.Core.Entities.Models;
-using MegaCrit.Sts2.Core.Entities.Orbs;
 using MegaCrit.Sts2.Core.Entities.Players;
-using MegaCrit.Sts2.Core.Entities.Potions;
-using MegaCrit.Sts2.Core.Entities.Relics;
-using MegaCrit.Sts2.Core.Entities.UI;
 using MegaCrit.Sts2.Core.GameActions;
-using MegaCrit.Sts2.Core.GameActions.Multiplayer;
-using MegaCrit.Sts2.Core.Helpers;
-using MegaCrit.Sts2.Core.Localization;
-using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
-using MegaCrit.Sts2.Core.Models.Orbs;
-using MegaCrit.Sts2.Core.MonsterMoves.MonsterMoveStateMachine;
-using MegaCrit.Sts2.Core.Multiplayer.Game;
-using MegaCrit.Sts2.Core.Multiplayer.Replay;
-using MegaCrit.Sts2.Core.Multiplayer.Serialization;
 using MegaCrit.Sts2.Core.Nodes;
-using MegaCrit.Sts2.Core.Nodes.Audio;
-using MegaCrit.Sts2.Core.Nodes.Cards;
-using MegaCrit.Sts2.Core.Nodes.Cards.Holders;
 using MegaCrit.Sts2.Core.Nodes.Combat;
-using MegaCrit.Sts2.Core.Nodes.CommonUi;
-using MegaCrit.Sts2.Core.Nodes.Orbs;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
-using MegaCrit.Sts2.Core.Nodes.Screens.Capstones;
 using MegaCrit.Sts2.Core.Nodes.Screens.Overlays;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
-using MegaCrit.Sts2.Core.Nodes.Vfx;
-using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
-using MegaCrit.Sts2.Core.Nodes.Potions;
-using MegaCrit.Sts2.Core.Nodes.Relics;
-using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.Runs;
-using MegaCrit.Sts2.Core.Saves;
-using MegaCrit.Sts2.Core.Settings;
-using MegaCrit.Sts2.Core.Assets;
 using MegaCrit.Sts2.Core.Entities.Actions;
-using MegaCrit.Sts2.Core.Multiplayer;
-using MegaCrit.Sts2.Core.Saves.Runs;
-
 
 namespace StS2Hoshino.StS2HoshinoCode.Core;
 
 
 public sealed partial class ReloadController
 {
-    
+    private CombatState? _activeCombatState;
+
+    public void OnCombatActivated(CombatState state)
+    {
+        _activeCombatState = state;
+    }
+
     public bool ShouldShowHud(NCombatUi combatUi)
     {
         return GodotObject.IsInstanceValid(combatUi)
@@ -73,6 +40,7 @@ public sealed partial class ReloadController
                && CombatManager.Instance.IsInProgress
                && NGame.Instance?.CurrentRunNode != null;
     }
+
     public bool TryHandleHotkey(NCombatUi combatUi, InputEvent inputEvent)
     {
         if (!ShouldShowHud(combatUi))
@@ -86,16 +54,18 @@ public sealed partial class ReloadController
 
         if (MatchesHotkey(keyEvent, Key.R))
         {
-            StS2HoshinoMain.Logger.Info("Check HotKey");
+            Reload(combatUi);
             return true;
         }
 
         return false;
     }
+
     private static bool MatchesHotkey(InputEventKey keyEvent, Key key)
     {
         return keyEvent.Keycode == key || keyEvent.PhysicalKeycode == key || keyEvent.KeyLabel == key;
     }
+
     private static bool IsSupportedChoiceUiActive(NCombatUi combatUi)
     {
         if (NCombatRoom.Instance?.Ui != combatUi)
@@ -106,6 +76,7 @@ public sealed partial class ReloadController
 
         return NOverlayStack.Instance?.Peek() is NChooseACardSelectionScreen or NCardGridSelectionScreen;
     }
+
     private static bool IsHudHiddenByNonChoiceUi(NCombatUi combatUi)
     {
         if (IsSupportedChoiceUiActive(combatUi))
@@ -136,13 +107,41 @@ public sealed partial class ReloadController
 
         return true;
     }
-    
+
     public bool CanReload(NCombatUi combatUi)
     {
         return ShouldShowHud(combatUi)
                && CanRestoreState()
                && !IsUiBlocking(combatUi);
     }
+
+    public void Reload(NCombatUi combatUi)
+    {
+        if (!CanReload(combatUi))
+            return;
+
+        Player? me = null;
+        try
+        {
+            me = LocalContext.GetMe(_activeCombatState);
+        }
+        catch (InvalidOperationException ex)
+        {
+            StS2HoshinoMain.Logger.Error($"[ReloadController] Could not find local player: {ex.Message}");
+            return;
+        }
+
+        if (me == null)
+        {
+            StS2HoshinoMain.Logger.Error("[ReloadController] Local player is null, cannot reload");
+            return;
+        }
+
+        StS2HoshinoMain.Logger.Info($"[ReloadController] Enqueueing ReloadAction for player {me.NetId}");
+        ReloadAction action = new ReloadAction(me);
+        RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(action);
+    }
+
     private bool IsUiBlocking(NCombatUi combatUi)
     {
         if (!CombatManager.Instance.EndingPlayerTurnPhaseOne && !CombatManager.Instance.EndingPlayerTurnPhaseTwo)
@@ -154,15 +153,6 @@ public sealed partial class ReloadController
 
     private bool CanRestoreState()
     {
-    //     if (!CombatManager.Instance.EndingPlayerTurnPhaseOne && !CombatManager.Instance.EndingPlayerTurnPhaseTwo)
-    //         return true;
-    //
-    //     NCombatUi? combatUi = NCombatRoom.Instance?.Ui;
-    //     GameAction? action = RunManager.Instance.ActionExecutor.CurrentlyRunningAction;
-    //     if (action?.State == GameActionState.GatheringPlayerChoice)
-    //         return true;
-
         return true;
     }
-
 }
