@@ -136,6 +136,16 @@ public sealed partial class ReloadController
             StS2HoshinoMain.Logger.Error("[ReloadController] Local player is null, cannot reload");
             return;
         }
+        
+        int reloadCost = 1;
+        if (me.PlayerCombatState.Energy < reloadCost)
+        {
+            if (me.Creature != null)
+                //MegaCrit.Sts2.Core.Nodes.Vfx.NSpeechBubbleVfx.Create("에너지가 부족합니다!", me.Creature, 2.0);
+            return;
+        }
+        
+        me.PlayerCombatState.LoseEnergy(reloadCost);
 
         StS2HoshinoMain.Logger.Info($"[ReloadController] Enqueueing ReloadAction for player {me.NetId}");
         ReloadAction action = new ReloadAction(me);

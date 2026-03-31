@@ -12,14 +12,13 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
 
 public class StrikeHoshino() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
+    public override int AmmoCost { get; set; } = 1;
     protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
-    protected override bool IsPlayable => AmmoClass.hasAmmo(1, ((CardModel)this).Owner);
-    protected override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        int amount = AmmoClass.LoseAmmo(1, ((CardModel)this).Owner);
         await AmmoClass.ProcessPendingTriggers(choiceContext);
-        if (amount > 0)
+        if (AmmoCost > 0)
         {
             await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
         }
