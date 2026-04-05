@@ -100,7 +100,6 @@ public partial class ReloadButtonHud : Control
     {
         if (_combatUi == null) return;
 
-        StS2HoshinoMain.Logger.Info("OnReloadPressed!!");
         StS2HoshinoMain.Controller.Reload(_combatUi);
     }
 

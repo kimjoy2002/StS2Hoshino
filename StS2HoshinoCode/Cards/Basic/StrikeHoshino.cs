@@ -17,11 +17,11 @@ public class StrikeHoshino() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Ba
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await AmmoClass.ProcessPendingTriggers(choiceContext);
-        if (AmmoCost > 0)
-        {
-            await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
-        }
+        // await AmmoClass.ProcessPendingTriggers(choiceContext);
+        // if (AmmoCost > 0)
+        // {
+        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
+        // }
     }
 
     protected override void OnUpgrade()

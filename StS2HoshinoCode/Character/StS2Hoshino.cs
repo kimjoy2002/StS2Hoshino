@@ -7,6 +7,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Cards;
 using MegaCrit.Sts2.Core.Models.Relics;
 using StS2Hoshino.StS2HoshinoCode.Cards.Basic;
+using StS2Hoshino.StS2HoshinoCode.Relics;
 
 namespace StS2Hoshino.StS2HoshinoCode.Character;
 
@@ -35,12 +36,13 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		ModelDb.Card<DefendHoshino>(),
 		ModelDb.Card<DefendHoshino>(),
 		ModelDb.Card<DefendHoshino>(),
-		ModelDb.Card<FullBarrelFire>()
+		ModelDb.Card<FullBarrelFire>(),
+		ModelDb.Card<QuickReloadSkill>()
 	];
 
 	public override IReadOnlyList<RelicModel> StartingRelics =>
 	[
-		ModelDb.Relic<BurningBlood>()
+		ModelDb.Relic<HoshinoRelic>()
 	];
 
 	public override CardPoolModel CardPool => ModelDb.CardPool<StS2HoshinoCardPool>();

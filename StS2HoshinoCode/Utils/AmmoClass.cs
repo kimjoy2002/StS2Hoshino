@@ -44,7 +44,7 @@ public static class AmmoClass
 		{
 			return _defaultState;
 		}
-		if (!_states.TryGetValue(player, out PlayerAmmoState value))
+		if (!_states.TryGetValue(player, out PlayerAmmoState? value))
 		{
 			value = new PlayerAmmoState();
 			_states[player] = value;
@@ -57,6 +57,10 @@ public static class AmmoClass
 		return GetState(player).CurrentAmmo;
 	}
 
+	public static int SetMaxAmmo(Player? player, int max_ammo)
+	{
+		return GetState(player).MaxAmmo = max_ammo;
+	}
 	public static int GetMaxAmmo(Player? player)
 	{
 		return GetState(player).MaxAmmo;
@@ -97,6 +101,11 @@ public static class AmmoClass
 		}
 	}
 
+	public static bool isEmptyAmmo(Player player)
+	{
+		return !hasAmmo(1, player);
+	}
+
 	public static bool hasAmmo(int amount, Player player)
 	{
 		if (amount <= 0)
@@ -108,7 +117,6 @@ public static class AmmoClass
 		{
 			return true;
 		}
-
 		return false;
 	}
 
@@ -170,7 +178,7 @@ public static class AmmoClass
 	{
 		PlayerAmmoState state = GetState(player);
 		state.AmmoUsedThisTurn = 0;
-		AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);;
+		AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
 	}
 
 
@@ -181,9 +189,5 @@ public static class AmmoClass
 		state.MaxAmmo = _defaultMaxAmmo;
 		state.AmmoUsedThisTurn = 0;
 		_pendingTriggers.Clear();
-		AmmoClass.OnAmmoGained = null;
-		AmmoClass.OnAmmoUsed = null;
-		AmmoClass.OnReload = null;
-		AmmoClass.OnChanged = null;
 	}
 }

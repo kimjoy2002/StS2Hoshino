@@ -46,4 +46,9 @@ public static class StringExtensions
     {
         return Path.Join(Character.StS2Hoshino.ModId, "scenes", path);
     }
+    
+    public static string SfxPath(this string path)
+    {
+        return Path.Join(Character.StS2Hoshino.ModId, "audio", path);
+    }
 }

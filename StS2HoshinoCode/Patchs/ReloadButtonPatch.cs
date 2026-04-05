@@ -33,6 +33,7 @@ public static class ReloadButtonPatch
     [HarmonyPostfix]
     public static void CombatUiActivatePostfix(NCombatUi __instance, CombatState state)
     {
+        StS2HoshinoMain.Logger.Info("[CombatManager] CombatUiActivatePostfix");
         Node hudParent = (Node?)NRun.Instance?.GlobalUi ?? __instance;
         ReloadButtonHud? hud = hudParent.GetNodeOrNull<ReloadButtonHud>("ReloadButtonHUD") 
                                ?? __instance.GetNodeOrNull<ReloadButtonHud>("ReloadButtonHUD");
@@ -41,6 +42,7 @@ public static class ReloadButtonPatch
             hud = new ReloadButtonHud();
             hudParent.AddChildSafely(hud);
         }
+        StS2HoshinoMain.Logger.Info("[CombatManager] Activate");
 
         hud.Activate(state);
        // StS2HoshinoMain.Controller.OnCombatUiActivated(__instance, state);

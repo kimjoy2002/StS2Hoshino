@@ -138,7 +138,7 @@ public sealed partial class ReloadController
         }
         
         int reloadCost = 1;
-        if (me.PlayerCombatState.Energy < reloadCost)
+        if (me.PlayerCombatState != null && me.PlayerCombatState.Energy < reloadCost)
         {
             if (me.Creature != null)
                 //MegaCrit.Sts2.Core.Nodes.Vfx.NSpeechBubbleVfx.Create("에너지가 부족합니다!", me.Creature, 2.0);

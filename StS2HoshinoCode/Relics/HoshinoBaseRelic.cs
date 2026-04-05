@@ -8,7 +8,7 @@ using Godot;
 namespace StS2Hoshino.StS2HoshinoCode.Relics;
 
 [Pool(typeof(StS2HoshinoRelicPool))]
-public abstract class StS2HoshinoRelic : CustomRelicModel
+public abstract class HoshinoBaseRelic : CustomRelicModel
 {
     public override string PackedIconPath
     {

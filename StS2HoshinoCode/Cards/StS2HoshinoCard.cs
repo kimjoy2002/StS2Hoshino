@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using StS2Hoshino.StS2HoshinoCode.CardModels;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards;
 
@@ -59,14 +60,32 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
             return;
         }
 
+        bool onRunout = false;
         if (ammoNeeded > 0)
         {
             AmmoClass.LoseAmmo(ammoNeeded, Owner);
             await AmmoClass.ProcessPendingTriggers(choiceContext);
         }
 
+        if (AmmoClass.isEmptyAmmo(Owner))
+        {
+            onRunout = true;
+        }
+
         await OnHoshinoPlay(choiceContext, play);
+        if (onRunout && this is IRunout runout)
+        {
+            await runout.OnRunout(choiceContext, play);
+        }
     }
     
+    public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
+    {
+        if (card == this && this is IInvade invade)
+        {
+            return invade.OnInvade(choiceContext,card);
+        }
+        return Task.CompletedTask;
+    }
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 }

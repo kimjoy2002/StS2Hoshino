@@ -76,8 +76,8 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="*" PrivateAssets="All"/>
-        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="*"/>
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="0.2.5" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.7" />
         <AdditionalFiles Include="StS2Hoshino/localization/**/*.json"/>
     </ItemGroup>
 
@@ -103,6 +103,7 @@
     </ItemGroup>
 
     <ItemGroup>
+        <Folder Include="StS2HoshinoCode\Cards\Special\" />
         <Folder Include="StS2HoshinoCode\shaders\" />
         <Folder Include="StS2Hoshino\images\powers\big\"/>
         <Folder Include="StS2Hoshino\images\relics\big\"/>
