@@ -29,4 +29,9 @@ public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Com
             }
         }
     }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars["Block"].UpgradeValueBy(3m);
+    }
 }

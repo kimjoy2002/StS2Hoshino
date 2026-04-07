@@ -48,7 +48,7 @@ public class TriggerHappy() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Com
         IEnumerable<TriggerHappy> enumerable2 = PileType.Draw.GetPile(base.Owner).Cards.OfType<TriggerHappy>();
         foreach (TriggerHappy item in enumerable2)
         {
-            item.BuffFromTriggerPlay(baseValue);
+            await CardPileCmd.Add(item, PileType.Hand);
         }
     }
     

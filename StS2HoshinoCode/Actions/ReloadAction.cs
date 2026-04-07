@@ -13,13 +13,16 @@ public class ReloadAction : GameAction
 {
     public Player Player { get; }
 
+    private bool _isButton;
+
     public override ulong OwnerId => Player.NetId;
 
     public override GameActionType ActionType => GameActionType.CombatPlayPhaseOnly;
 
-    public ReloadAction(Player player)
+    public ReloadAction(Player player, bool isButton)
     {
         Player = player;
+        _isButton = isButton;
     }
 
     protected override async Task ExecuteAction()
@@ -28,18 +31,21 @@ public class ReloadAction : GameAction
 
         PlayerChoiceContext context = new GameActionPlayerChoiceContext(this);
 
-        await ReloadCmd.Execute(context, Player);
+        await ReloadCmd.Execute(context, Player, -1, _isButton);
 
         StS2HoshinoMain.Logger.Info($"[ReloadAction] Reload complete for player {Player.NetId}");
     }
 
     public override INetAction ToNetAction()
     {
-        return new NetReloadAction();
+        return new NetReloadAction
+        {
+            isButton = _isButton
+        };
     }
 
     public override string ToString()
     {
-        return $"ReloadAction owner={Player.NetId}";
+        return $"ReloadAction owner={Player.NetId} _isButton={_isButton}";
     }
 }

@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.Runs;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
 using StS2Hoshino.StS2HoshinoCode.Core;
 using StS2Hoshino.StS2HoshinoCode.Extensions;
+using StS2Hoshino.StS2HoshinoCode.Hook;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 public static class ReloadCmd
@@ -19,7 +20,7 @@ public static class ReloadCmd
     public static event Func<Player, int, Task>? Reloaded;
 
     private static string ReloadSfxPath => "reload.mp3".SfxPath();
-    public static async Task Execute(PlayerChoiceContext choiceContext, Player player, int amount = -1)
+    public static async Task Execute(PlayerChoiceContext choiceContext, Player player, int amount = -1, bool isButton = false)
     {
         AmmoClass.GainAmmo(amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);
 
@@ -29,6 +30,7 @@ public static class ReloadCmd
         await ReloadRelic(choiceContext, player, amount);
         await NotifyPowers(player, amount);
         await NotifyCards(player, amount);
+        await HoshinoHook.OnReload(choiceContext, player, isButton);
     }
 
 

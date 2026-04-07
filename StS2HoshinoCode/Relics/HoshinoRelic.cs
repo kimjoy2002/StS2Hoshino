@@ -12,19 +12,20 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Hook;
 
 namespace StS2Hoshino.StS2HoshinoCode.Relics;
 
-public class HoshinoRelic : HoshinoBaseRelic, IReloadRelic
+public class HoshinoRelic : HoshinoBaseRelic, IOnReloaded
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(3, ValueProp.Unpowered)];
     
     public override RelicRarity Rarity => RelicRarity.Starter;
     
-    public async Task OnReload(PlayerChoiceContext choiceContext, Player reloader, int amount)
+
+    public async Task OnReload(PlayerChoiceContext ctx, Player player, bool useButton)
     {
         Flash();
         await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, null);
     }
-    
 }

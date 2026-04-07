@@ -8,16 +8,28 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 public class TacticalShieldSkill() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new BlockVar(8, ValueProp.Move),
+        new PowerVar<ShieldPower>(3m)
+    
+    ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            await CommonActions.CardBlock(this, play);
+        await CommonActions.CardBlock(this, play);
+        await CommonActions.ApplySelf<ShieldPower>(this);
+    } 
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars["Block"].UpgradeValueBy(2m);
+        DynamicVars["ShieldPower"].UpgradeValueBy(1m);
     }
 }

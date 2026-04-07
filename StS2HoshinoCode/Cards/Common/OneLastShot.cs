@@ -5,29 +5,43 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
-public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IRunout
+public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     public override int AmmoCost { get; set; } = 1;
+    protected override bool ShouldGlowGoldInternal => AmmoClass.GetCurrentAmmo(base.Owner) == 1;
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(8, ValueProp.Move)
+        new DamageVar(8m, ValueProp.Move),
+        new CalculationBaseVar(8m),
+        new ExtraDamageVar(1m),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
+            AmmoClass.GetCurrentAmmo(card.Owner) == 1
+                ? card.DynamicVars.Damage.BaseValue
+                : 0m)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
+        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        //총알 사용
+        IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+        foreach (IBulletPowerInterface item in enumerable)
+        {
+            item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+        }
     }
     
-    public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)
-    {
-    }
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(3m);

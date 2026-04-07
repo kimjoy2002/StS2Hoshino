@@ -20,7 +20,21 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
     CustomCardModel(cost, type, rarity, target)
 {
     public virtual int AmmoCost { get; set; } = 0;
+    public virtual int AmmoCostMax { get; set; } = 0;
 
+
+    protected override bool ShouldGlowGoldInternal 
+    {
+        get
+        {
+            if (this is IRunout)
+            {
+                return AmmoClass.isEmptyAmmo(base.Owner);
+            }
+            return false;
+        }
+    }
+    
     protected override bool IsPlayable => base.IsPlayable && AmmoClass.hasAmmo(AmmoCost, Owner);
     public override string CustomPortraitPath
     {

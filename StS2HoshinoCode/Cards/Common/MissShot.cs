@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
@@ -26,5 +27,17 @@ public class MissShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common,
         await AmmoClass.ProcessPendingTriggers(choiceContext);
         
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        
+        //총알 사용
+        IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+        foreach (IBulletPowerInterface item in enumerable)
+        {
+            item.UseBullet(this, play.Target,base.Owner.Creature, 1+extraAmount);
+        }
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(5m);
     }
 }

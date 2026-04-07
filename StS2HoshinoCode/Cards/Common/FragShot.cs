@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
@@ -21,7 +22,7 @@ public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, 
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("Power", 1m)
+        new PowerVar<BulletVunePower>(1m)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
@@ -29,11 +30,12 @@ public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, 
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            await CommonActions.CardBlock(this, play);
+        await ReloadCmd.Execute(choiceContext, base.Owner);
+        await CommonActions.ApplySelf<BulletVunePower>(this);
     }
     
     protected override void OnUpgrade()
     {
-        base.DynamicVars["Power"].UpgradeValueBy(1m);
+        DynamicVars["BulletVunePower"].UpgradeValueBy(1m);
     }
 }

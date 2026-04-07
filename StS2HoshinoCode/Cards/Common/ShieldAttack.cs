@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
@@ -20,15 +21,20 @@ public class ShieldAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Com
     [
         new CalculationBaseVar(0m),
         new BlockVar(4, ValueProp.Move),
-        new DynamicVar("Shield", 4m),
+        new PowerVar<ShieldPower>(4m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
-            card.Owner.Creature.Block)
+            card.Owner.Creature.GetPowerAmount<ShieldPower>()),
+        new CalculatedVar("Viewing").WithMultiplier((CardModel card, Creature? _) =>
+            card.Owner.Creature.GetPowerAmount<ShieldPower>()+4),
+        new ExtraDamageVar(1m),
+        new CalculationExtraVar(1m)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         await CommonActions.CardBlock(this, play);
+        await CommonActions.ApplySelf<ShieldPower>(this);
         await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target).Execute(choiceContext);
     }
     
