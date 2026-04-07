@@ -5,17 +5,19 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 public class SurpriseAttack() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IInvade
 {	
-    //private const string _decreaseKey = "Decrease";
-
+    public override int AmmoCost { get; set; } = 1;
     private decimal _extraDamage;
 
     private decimal ExtraDamage
@@ -36,10 +38,22 @@ public class SurpriseAttack() : StS2HoshinoCard(0, CardType.Attack, CardRarity.C
         new DamageVar(12, ValueProp.Move),
         new DynamicVar("Decrease", 2m)];
 
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
+    ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        
+        //총알 사용
+        IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+        foreach (IBulletPowerInterface item in enumerable)
+        {
+            item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+        }
     }
     
     

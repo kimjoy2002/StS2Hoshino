@@ -7,12 +7,14 @@ using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Helpers;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Vfx.Cards;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
@@ -20,6 +22,13 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     public override int AmmoCost => 1;
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.FromPower<StrengthPower>()
+        
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(5m, ValueProp.Move),

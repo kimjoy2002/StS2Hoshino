@@ -1,3 +1,14 @@
-{
-  
+{ 
+    "STS2HOSHINO-BULLET.description": "일부 카드는 탄약을 소모해야 사용이 가능합니다. 장전을 통하여 회복할 수 있습니다.",
+    "STS2HOSHINO-BULLET.title": "탄약",
+    "STS2HOSHINO-RELOAD.description": "사용하면 탄약을 최대치까지 채웁니다.",
+    "STS2HOSHINO-RELOAD.title": "장전",
+    "STS2HOSHINO-SHIELD.description": "턴 시작 시, 방패 수치만큼의 방어도는 사라지지 않습니다.",
+    "STS2HOSHINO-SHIELD.title": "방패",
+    "STS2HOSHINO-ARRIVAL.description": "뽑거나 패에 들어올때마다 발동되는 효과입니다.",
+    "STS2HOSHINO-ARRIVAL.title": "진입",
+    "STS2HOSHINO-OUTOFAMMO.description": "탄약이 0개일때 사용하면 발동되는 효과입니다.",
+    "STS2HOSHINO-OUTOFAMMO.title": "소진",
+    "STS2HOSHINO-EXPERT.description": "장전시 방어도를 수치만큼 얻습니다",
+    "STS2HOSHINO-EXPERT.title": "숙련"
 }

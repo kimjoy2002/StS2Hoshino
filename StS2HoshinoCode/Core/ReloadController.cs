@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
@@ -6,12 +7,15 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions;
 using MegaCrit.Sts2.Core.Nodes;
 using MegaCrit.Sts2.Core.Nodes.Combat;
+using MegaCrit.Sts2.Core.Nodes.Debug;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
 using MegaCrit.Sts2.Core.Nodes.Screens.Overlays;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.Entities.Actions;
+using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Core;
 
@@ -43,6 +47,9 @@ public sealed partial class ReloadController
 
     public bool TryHandleHotkey(NCombatUi combatUi, InputEvent inputEvent)
     {
+        if (NDevConsole.Instance?.Visible == true)
+            return false;
+
         if (!ShouldShowHud(combatUi))
             return false;
 
@@ -108,11 +115,33 @@ public sealed partial class ReloadController
         return true;
     }
 
+    private static int GetReloadCost(Player me)
+    {
+        if (me.Creature?.Powers.OfType<FreeReloadPower>().Any() == true)
+            return 0;
+        return 1;
+    }
+
     public bool CanReload(NCombatUi combatUi)
     {
-        return ShouldShowHud(combatUi)
-               && CanRestoreState()
-               && !IsUiBlocking(combatUi);
+        if (!ShouldShowHud(combatUi) || !CanRestoreState() || IsUiBlocking(combatUi))
+            return false;
+
+        Player? me = null;
+        try { me = LocalContext.GetMe(_activeCombatState); }
+        catch (InvalidOperationException) { return false; }
+
+        if (me?.PlayerCombatState == null)
+            return false;
+
+        if (AmmoClass.GetCurrentAmmo(me) >= AmmoClass.GetMaxAmmo(me))
+            return false;
+
+        int cost = GetReloadCost(me);
+        if (me.PlayerCombatState.Energy < cost)
+            return false;
+
+        return true;
     }
 
     public void Reload(NCombatUi combatUi)
@@ -136,18 +165,14 @@ public sealed partial class ReloadController
             StS2HoshinoMain.Logger.Error("[ReloadController] Local player is null, cannot reload");
             return;
         }
-        
-        int reloadCost = 1;
-        if (me.PlayerCombatState != null && me.PlayerCombatState.Energy < reloadCost)
-        {
-            if (me.Creature != null)
-                //MegaCrit.Sts2.Core.Nodes.Vfx.NSpeechBubbleVfx.Create("에너지가 부족합니다!", me.Creature, 2.0);
-            return;
-        }
-        
-        me.PlayerCombatState.LoseEnergy(reloadCost);
 
-        StS2HoshinoMain.Logger.Info($"[ReloadController] Enqueueing ReloadAction for player {me.NetId}");
+        int reloadCost = GetReloadCost(me);
+        if (reloadCost > 0)
+        {
+            me.PlayerCombatState!.LoseEnergy(reloadCost);
+        }
+
+        StS2HoshinoMain.Logger.Info($"[ReloadController] Enqueueing ReloadAction for player {me.NetId} (cost={reloadCost})");
         ReloadAction action = new ReloadAction(me, true);
         RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(action);
     }

@@ -56,7 +56,7 @@
   "STS2HOSHINO-GOZ_BOMB.title": "선물",
   "STS2HOSHINO-GOZ_BOMB.description": "사용 불가.\n덱에 들어갈 때마다 카드에 숨습니다.\n턴 종료 시 피해를 ? 받습니다. (미구현)",
   "STS2HOSHINO-HIT_AND_RUN.title": "치고빠지기",
-  "STS2HOSHINO-HIT_AND_RUN.description": "[gold]탄약[/gold]을 소모합니다.\n피해를 {Damage:diff()} 줍니다.\n이번 턴 동안 다음 [gold]장전[/gold]의\n비용이 0이 됩니다. (미구현)",
+  "STS2HOSHINO-HIT_AND_RUN.description": "[gold]탄약[/gold]을 소모합니다.\n피해를 {Damage:diff()} 줍니다.\n이번 턴 동안 다음 [gold]장전[/gold]의\n비용이 0이 됩니다.",
   "STS2HOSHINO-HORUS_OF_EYE.title": "호루스의 눈",
   "STS2HOSHINO-HORUS_OF_EYE.description": "진입이 감소될 때마다,\n무작위 적에게 피해를 ? 줍니다. (미구현)",
   "STS2HOSHINO-INCENDIARY_SHOT.title": "소이탄 탄약 상자",

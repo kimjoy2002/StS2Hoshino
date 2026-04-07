@@ -5,15 +5,24 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 public class HitAndRun() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
+    public override int AmmoCost { get; set; } = 1;
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
 
@@ -21,12 +30,20 @@ public class HitAndRun() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
-        
+
         //총알 사용
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(this, play.Target, base.Owner.Creature, 1);
         }
+
+        // 다음 장전을 무료로 만드는 파워 부여
+        await PowerCmd.Apply<FreeReloadPower>(base.Owner.Creature, 1, base.Owner.Creature, this);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

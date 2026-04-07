@@ -5,15 +5,22 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 public class RushStandby() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
+    
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
+    ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(1, ValueProp.Move),
         new DynamicVar("Power", 2m)];

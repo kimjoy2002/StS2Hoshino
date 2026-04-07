@@ -6,10 +6,12 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
@@ -17,6 +19,10 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+    ];
     public override int AmmoCost { get; set; } = 1;
     protected override bool ShouldGlowGoldInternal => AmmoClass.GetCurrentAmmo(base.Owner) == 1;
     protected override HashSet<CardTag> CanonicalTags => [];
@@ -44,6 +50,7 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
     
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        DynamicVars.CalculationBase.UpgradeValueBy(2m);
     }
 }

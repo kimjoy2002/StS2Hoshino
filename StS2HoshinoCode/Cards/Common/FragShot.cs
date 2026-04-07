@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
@@ -20,13 +21,15 @@ public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, 
     [
         CardKeyword.Exhaust
     ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.FromPower<VulnerablePower>()
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<BulletVunePower>(1m)
-    ];
-
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-        HoverTipFactory.FromPower<VulnerablePower>()
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
