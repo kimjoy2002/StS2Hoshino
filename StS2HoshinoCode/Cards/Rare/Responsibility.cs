@@ -9,41 +9,37 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-using StS2Hoshino.StS2HoshinoCode.CardModels;
-using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
-namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
+namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
-public class LastResort() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IRunout
+public class Responsibility() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Outofammo),
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
+        base.EnergyHoverTip
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(10, ValueProp.Move),
-        new CardsVar(2),
-    
+        new PowerVar<HopyungPower>(1m),
+        new EnergyVar(2),
+        new CardsVar(3)
     ];
-
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
-    }
-    
-    
-    public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)
-    {
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
+        await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-        await ReloadCmd.Execute(choiceContext, base.Owner);
+        await PowerCmd.Apply<HopyungPower>(base.Owner.Creature, base.DynamicVars["HopyungPower"].IntValue, base.Owner.Creature, this);
     }
     
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(2m);
+        base.DynamicVars.Energy.UpgradeValueBy(1m);
         base.DynamicVars.Cards.UpgradeValueBy(1m);
     }
 }

@@ -21,6 +21,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
 {
     public virtual int AmmoCost { get; set; } = 0;
     public virtual int AmmoCostMax { get; set; } = 0;
+    public static bool IsLastShot { get; set; } = false;
 
 
     protected override bool ShouldGlowGoldInternal 
@@ -62,8 +63,14 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
 
     protected sealed override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        IsLastShot = false;
         int ammoNeeded = AmmoCost;
-        
+
+        int beforeAmmo = AmmoClass.GetCurrentAmmo(Owner);
+        if (beforeAmmo == 1)
+        {
+            IsLastShot = true;
+        }
         if (!AmmoClass.hasAmmo(ammoNeeded, Owner))
         {
             var speaker = Owner?.Creature;
@@ -91,6 +98,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         {
             await runout.OnRunout(choiceContext, play);
         }
+        IsLastShot = false;
     }
     
     public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

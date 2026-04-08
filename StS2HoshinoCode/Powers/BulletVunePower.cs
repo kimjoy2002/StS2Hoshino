@@ -24,13 +24,16 @@ public sealed class BulletVunePower : StS2HoshinoPower, IOnReloaded, IBulletPowe
         await PowerCmd.ModifyAmount(this, -Amount, null, null);
     }
 
-    public async void UseBullet(CardModel card, Creature target, Creature? applier, int amount)
+    public async void UseBullet(CardModel card, Creature? target, Creature? applier, int amount)
     {
-        Flash();
-        await PowerCmd.Apply<VulnerablePower>(target, base.Amount, applier, card);
+        if (target != null)
+        {
+            Flash();
+            await PowerCmd.Apply<VulnerablePower>(target, base.Amount, applier, card);
+        }
     }
     
-    public async void UseBullet(CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
+    public async void UseBulletForMulti(CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
     {
         Flash();
         await PowerCmd.Apply<VulnerablePower>(targets, base.Amount, applier, card);

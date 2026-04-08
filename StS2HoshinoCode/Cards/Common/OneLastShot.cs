@@ -31,7 +31,7 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
         new CalculationBaseVar(8m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
-            AmmoClass.GetCurrentAmmo(card.Owner) == 1
+            (AmmoClass.GetCurrentAmmo(card.Owner) == 1 || IsLastShot)
                 ? card.DynamicVars.Damage.BaseValue
                 : 0m)
     ];

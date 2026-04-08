@@ -7,5 +7,8 @@
   "STS2HOSHINO-BULLET_VUNE_POWER.title": "파쇄탄 탄약",
   "STS2HOSHINO-FREE_RELOAD_POWER.description": "다음 [gold]장전[/gold] 버튼 사용 1회의 에너지 비용이 0이 됩니다. 사용 후 사라집니다.",
   "STS2HOSHINO-FREE_RELOAD_POWER.smartDescription": "다음 [gold]장전[/gold] 버튼 사용 {Amount}회의 에너지 비용이 0이 됩니다. 사용 후 사라집니다.",
-  "STS2HOSHINO-FREE_RELOAD_POWER.title": "신속 장전"
+  "STS2HOSHINO-FREE_RELOAD_POWER.title": "신속 장전",
+  "STS2HOSHINO-HOPYUNG_POWER.description": "[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
+  "STS2HOSHINO-HOPYUNG_POWER.smartDescription": "[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
+  "STS2HOSHINO-HOPYUNG_POWER.title": "책임감"
 }

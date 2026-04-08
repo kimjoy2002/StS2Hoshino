@@ -22,17 +22,17 @@ public class RushStandby() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Commo
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(1, ValueProp.Move),
-        new DynamicVar("Power", 2m)];
+        new DynamicVar("Power", 1m),
+        new CardsVar(2)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
         int amount = base.DynamicVars["Power"].IntValue;
         for (int i = 0; i < amount; i++)
         {
             await ReloadCmd.Execute(choiceContext, base.Owner);
         }
+        await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
     }
     
     protected override void OnUpgrade()

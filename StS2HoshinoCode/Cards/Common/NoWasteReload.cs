@@ -41,7 +41,6 @@ public class NoWasteReload() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Com
     
     public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        StS2HoshinoMain.Logger.Info("[NoWasteReload] OnRunout");
         await PlayerCmd.GainEnergy(2, base.Owner);
     }
     
