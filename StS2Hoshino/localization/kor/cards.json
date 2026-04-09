@@ -159,5 +159,7 @@
   "STS2HOSHINO-B_D_NOTE.title": "BD노트",
   "STS2HOSHINO-B_D_NOTE.description": "기본 효과 (미구현)",
   "STS2HOSHINO-RESPONSIBILITY.title": "학생회장의 책임감",
-  "STS2HOSHINO-RESPONSIBILITY.description": "{Energy:energyIcons()}를 얻습니다.\n카드를 {Cards:diff()}장 뽑습니다.\n[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다."
+  "STS2HOSHINO-RESPONSIBILITY.description": "{Energy:energyIcons()}를 얻습니다.\n카드를 {Cards:diff()}장 뽑습니다.\n[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
+  "STS2HOSHINO-FULL_BARREL_FIRE_PLUS.title": "연발 사격",
+  "STS2HOSHINO-FULL_BARREL_FIRE_PLUS.description": "[gold]탄약[/gold]을 전부 소모합니다.\n소모한 [gold]탄약[/gold] 하나당 피해를 {Damage:diff()} 줍니다.\n사용중 적이 죽으면 [gold]장전[/gold]하고 무작위 적에게 다시 사용합니다."
 }
