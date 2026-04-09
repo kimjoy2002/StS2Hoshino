@@ -59,7 +59,17 @@ public static class AmmoClass
 
 	public static int SetMaxAmmo(Player? player, int max_ammo)
 	{
-		return GetState(player).MaxAmmo = max_ammo;
+		if (max_ammo > 10)
+		{
+			max_ammo = 10;
+		}
+		GetState(player).MaxAmmo = max_ammo;
+		if (GetState(player).CurrentAmmo > max_ammo)
+		{
+			GetState(player).CurrentAmmo = max_ammo;
+		}
+
+		return GetMaxAmmo(player);
 	}
 	public static int GetMaxAmmo(Player? player)
 	{

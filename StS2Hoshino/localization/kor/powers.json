@@ -10,5 +10,14 @@
   "STS2HOSHINO-FREE_RELOAD_POWER.title": "신속 장전",
   "STS2HOSHINO-HOPYUNG_POWER.description": "[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
   "STS2HOSHINO-HOPYUNG_POWER.smartDescription": "[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
-  "STS2HOSHINO-HOPYUNG_POWER.title": "책임감"
+  "STS2HOSHINO-HOPYUNG_POWER.title": "책임감",
+  "STS2HOSHINO-BULLET_INCENDIARY_POWER.description": "",
+  "STS2HOSHINO-BULLET_INCENDIARY_POWER.smartDescription": "",
+  "STS2HOSHINO-BULLET_INCENDIARY_POWER.title": "소이탄 탄약",
+  "STS2HOSHINO-EXPERT_POWER.description": "[gold]장전[/gold]시 [gold]방어도[/gold]를 [blue]1[/blue] 얻습니다.",
+  "STS2HOSHINO-EXPERT_POWER.smartDescription": "[gold]장전[/gold]시 [gold]방어도[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
+  "STS2HOSHINO-EXPERT_POWER.title": "숙련",
+  "STS2HOSHINO-MEMORIAL_POWER.description": "[gold]덱[/gold]을 섞을때마다 [gold]힘[/gold]과 [gold]민첩[/gold]을 [blue]1[/blue] 얻습니다.",
+  "STS2HOSHINO-MEMORIAL_POWER.smartDescription": "[gold]덱[/gold]을 섞을때마다 [gold]힘[/gold]과 [gold]민첩[/gold]을 [blue]{Amount}[/blue] 얻습니다.",
+  "STS2HOSHINO-MEMORIAL_POWER.title": "추억"
 }

@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
@@ -43,7 +44,7 @@ public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.B
             IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
             foreach (IBulletPowerInterface item in enumerable)
             {
-                item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+                item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
             }
         }
     }

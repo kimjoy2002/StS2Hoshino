@@ -35,7 +35,7 @@ public class HitAndRun() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(this, play.Target, base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target, base.Owner.Creature, 1);
         }
 
         // 다음 장전을 무료로 만드는 파워 부여

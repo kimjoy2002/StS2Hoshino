@@ -5,19 +5,32 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 public class Technique() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<ExpertPower>(),
+    ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new PowerVar<ExpertPower>(2m),
+    ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            // 파워 미구현 (strength + 1 보류)
+        await CommonActions.ApplySelf<ExpertPower>(this);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars["ExpertPower"].UpgradeValueBy(1m);
     }
 }

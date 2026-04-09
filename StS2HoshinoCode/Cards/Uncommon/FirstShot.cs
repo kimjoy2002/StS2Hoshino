@@ -24,7 +24,7 @@ public class FirstShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncomm
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -35,12 +35,12 @@ public class FirstShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncomm
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
         }
     }
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(3m);
+        base.DynamicVars.Damage.UpgradeValueBy(2m);
     }
 
     public async Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)

@@ -25,7 +25,10 @@ public class HoshinoRelic : HoshinoBaseRelic, IOnReloaded
 
     public async Task OnReload(PlayerChoiceContext ctx, Player player, bool useButton)
     {
-        Flash();
-        await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, null);
+        if (base.Owner == player)
+        {
+            Flash();
+            await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, null);
+        }
     }
 }

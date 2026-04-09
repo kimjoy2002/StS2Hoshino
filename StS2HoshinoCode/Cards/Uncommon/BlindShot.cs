@@ -37,7 +37,7 @@ public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncomm
                     IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                     foreach (IBulletPowerInterface item in enumerable)
                     {
-                        item.UseBullet(this, singleTarget,base.Owner.Creature, 0);
+                        item.UseBullet(choiceContext, this, singleTarget,base.Owner.Creature, 0);
                     }
                 }
             }
@@ -45,7 +45,7 @@ public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncomm
         IEnumerable<IBulletPowerInterface> enumerable2 = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable2)
         {
-            item.UseBullet(this, null, base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, null, base.Owner.Creature, 1);
         }
     }
 

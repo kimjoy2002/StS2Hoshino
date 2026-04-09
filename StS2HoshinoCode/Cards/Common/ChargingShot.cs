@@ -34,7 +34,7 @@ public class ChargingShot() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Com
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
         }
             
     }

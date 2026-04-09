@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -28,13 +29,25 @@ public class QuickShotAttack() : StS2HoshinoCard(0, CardType.Attack, CardRarity.
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
-        await CardPileCmd.Add(this, PileType.Draw, CardPilePosition.Top);
+
         
         //총알 사용
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+        }
+    }
+    public override async Task AfterShuffle(PlayerChoiceContext choiceContext, Player shuffler)
+    {
+        StS2HoshinoMain.Logger.Info($"[Revenge] Check shuffler:{shuffler} base.Owner:{base.Owner}");
+        if (shuffler == base.Owner)
+        {
+            CardPile? pile = base.Pile;
+            if (pile != null && pile.Type == PileType.Draw)
+            {
+                await CardPileCmd.Add(this, PileType.Hand);
+            }
         }
     }
     

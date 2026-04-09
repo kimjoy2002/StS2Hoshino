@@ -54,7 +54,7 @@ public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Commo
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBulletForMulti(this, enemies, base.Owner.Creature, 1);
+            item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
         }
         
     }

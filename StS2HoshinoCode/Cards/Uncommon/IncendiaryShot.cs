@@ -5,19 +5,38 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 public class IncendiaryShot() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5, ValueProp.Move)];
-
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new PowerVar<BulletIncendiaryPower>(3m)
+    ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            await CommonActions.CardBlock(this, play);
+        await ReloadCmd.Execute(choiceContext, base.Owner);
+        await CommonActions.ApplySelf<BulletVunePower>(this);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars["BulletIncendiaryPower"].UpgradeValueBy(1m);
     }
 }

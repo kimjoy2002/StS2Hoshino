@@ -27,12 +27,27 @@ public static class ReloadCmd
         await AmmoClass.ProcessPendingTriggers(choiceContext);
         
         SfxCmd.Play(ReloadSfxPath);
-        await ReloadRelic(choiceContext, player, amount);
         await NotifyPowers(player, amount);
         await NotifyCards(player, amount);
         await HoshinoHook.OnReload(choiceContext, player, isButton);
     }
 
+    
+    public static async Task RemoveMaxAmmo(PlayerChoiceContext choiceContext, Player player, int amount)
+    {
+        if (AmmoClass.GetMaxAmmo(player) > 0)
+        {
+            AmmoClass.SetMaxAmmo(player, AmmoClass.GetMaxAmmo(player) - amount);
+
+            await AmmoClass.ProcessPendingTriggers(choiceContext);
+        }
+    }
+    public static async Task AddMaxAmmo(PlayerChoiceContext choiceContext, Player player, int amount)
+    {
+        AmmoClass.SetMaxAmmo(player, AmmoClass.GetMaxAmmo(player) + amount);
+
+        await AmmoClass.ProcessPendingTriggers(choiceContext);
+    }
 
     private static async Task NotifyPowers(Player player, int amount)
     {
@@ -47,19 +62,5 @@ public static class ReloadCmd
                 var reloadCards = pile.Cards.OfType<IReloadable>().ToList();
                 foreach (var card in reloadCards) await card.OnReload(player, amount);
             }
-    }
-
-    public static async Task ReloadRelic(PlayerChoiceContext choiceContext, Player reloader, int amount)
-    {
-        foreach (RelicModel model in reloader.Relics)
-        {
-            if (model is IReloadRelic reloadRelic)
-            {
-                choiceContext.PushModel(model);
-                await reloadRelic.OnReload(choiceContext, reloader, amount);
-                model.InvokeExecutionFinished();
-                choiceContext.PopModel(model);
-            }
-        }
     }
 }

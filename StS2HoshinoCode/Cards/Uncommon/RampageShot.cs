@@ -52,7 +52,7 @@ public class RampageShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Unco
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
         }
     }
     

@@ -23,7 +23,8 @@ public class RushStandby() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Commo
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DynamicVar("Power", 1m),
-        new CardsVar(2)];
+        new CardsVar(2)
+    ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
