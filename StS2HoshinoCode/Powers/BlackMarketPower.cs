@@ -10,6 +10,7 @@ using StS2Hoshino.StS2HoshinoCode.Hook;
 namespace StS2Hoshino.StS2HoshinoCode.Powers;
 
 
+
 public sealed class BlackMarketPower : StS2HoshinoPower
 {
     public override PowerType Type => PowerType.Buff;

@@ -5,9 +5,12 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
@@ -24,16 +27,16 @@ public class SlugShot() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<BulletVigorPower>(12m)
+        new PowerVar<BulletVigorPower>(11m)
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner, 1);
-        await CommonActions.ApplySelf<BulletVunePower>(this);
+        await CommonActions.ApplySelf<BulletVigorPower>(this);
     }
     
     protected override void OnUpgrade()
     {
-        DynamicVars["BulletVigorPower"].UpgradeValueBy(5m);
+        DynamicVars["BulletVigorPower"].UpgradeValueBy(4m);
     }
 }

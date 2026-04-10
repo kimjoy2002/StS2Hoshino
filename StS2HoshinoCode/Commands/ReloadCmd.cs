@@ -22,7 +22,7 @@ public static class ReloadCmd
     private static string ReloadSfxPath => "reload.mp3".SfxPath();
     public static async Task Execute(PlayerChoiceContext choiceContext, Player player, int amount = -1, bool isButton = false)
     {
-        AmmoClass.GainAmmo(amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);
+        AmmoClass.SetAmmo(amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);
 
         await AmmoClass.ProcessPendingTriggers(choiceContext);
         

@@ -8,6 +8,7 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
@@ -15,7 +16,7 @@ public class SwimsuitForm() : StS2HoshinoCard(3, CardType.Power, CardRarity.Rare
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Ethreal
+        CardKeyword.Ethereal
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -30,6 +31,6 @@ public class SwimsuitForm() : StS2HoshinoCard(3, CardType.Power, CardRarity.Rare
     
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Ethreal);
+        RemoveKeyword(CardKeyword.Ethereal);
     }
 }

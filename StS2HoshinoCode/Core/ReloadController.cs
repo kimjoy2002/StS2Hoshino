@@ -171,8 +171,8 @@ public sealed partial class ReloadController
         {
             me.PlayerCombatState!.LoseEnergy(reloadCost);
         }
+        AmmoClass.DoingReload(me);
 
-        StS2HoshinoMain.Logger.Info($"[ReloadController] Enqueueing ReloadAction for player {me.NetId} (cost={reloadCost})");
         ReloadAction action = new ReloadAction(me, true);
         RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(action);
     }

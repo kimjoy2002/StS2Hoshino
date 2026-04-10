@@ -34,7 +34,7 @@ public class WeakPointShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Un
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
 
-        int amount = AmmoClass.GetMaxAmmo(Owner);
+        int amount = AmmoClass.GetCurrentAmmo(Owner);
         if (amount > 0)
         {
             await PowerCmd.Apply<VulnerablePower>(play.Target, amount, base.Owner.Creature, this);

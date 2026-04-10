@@ -3,6 +3,9 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -18,7 +21,6 @@ public class QuickReloadSkill() : StS2HoshinoCard(0, CardType.Skill, CardRarity.
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CardsVar(1)
     ];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -26,10 +28,15 @@ public class QuickReloadSkill() : StS2HoshinoCard(0, CardType.Skill, CardRarity.
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
 
+    
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner);
-        await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
+        CardPlayStartedEntry? cardPlayStartedEntry = CombatManager.Instance.History.CardPlaysStarted.LastOrDefault((CardPlayStartedEntry e) => e.CardPlay.Card.Owner == base.Owner && e.HappenedThisTurn(base.CombatState) && e.CardPlay.Card != this);
+        if (cardPlayStartedEntry != null)
+        {
+            await CardPileCmd.Add(cardPlayStartedEntry.CardPlay.Card, PileType.Draw, CardPilePosition.Top);
+        }
     }
     protected override void OnUpgrade()
     {

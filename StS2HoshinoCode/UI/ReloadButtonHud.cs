@@ -57,7 +57,7 @@ public partial class ReloadButtonHud : Control
 
     public override void _Ready()
     {
-        CustomMinimumSize = new Vector2(220f, 90f);
+        CustomMinimumSize = new Vector2(220f, 80f);
         Size = CustomMinimumSize;
     }
 

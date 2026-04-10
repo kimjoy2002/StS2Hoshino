@@ -5,9 +5,13 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
@@ -19,13 +23,24 @@ public class RoundManualChambering() : StS2HoshinoCard(1, CardType.Power, CardRa
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<RoundManualChamberingPower>(1m)
+        new PowerVar<RoundManualChamberingPower>(1m),
+        new PowerVar<FreeReloadPower>(1m)
     ];
 
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        int get_free_reload = 1 - AmmoClass.getReloadCount(base.Owner);
+        if (base.Owner.Creature.HasPower<RoundManualChamberingPower>())
+        {
+            get_free_reload += base.Owner.Creature.GetPower<RoundManualChamberingPower>()!.Amount;
+        }
         await CommonActions.ApplySelf<RoundManualChamberingPower>(this);
+        if (get_free_reload > 0)
+        {
+            await CommonActions.ApplySelf<FreeReloadPower>(this);
+        }
+        
     }
     
     protected override void OnUpgrade()

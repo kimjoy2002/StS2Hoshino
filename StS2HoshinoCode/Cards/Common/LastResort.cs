@@ -14,7 +14,7 @@ using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
-public class LastResort() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IRunout
+public class LastResort() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IRunout
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -23,7 +23,7 @@ public class LastResort() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncom
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(10, ValueProp.Move),
+        new DamageVar(9, ValueProp.Move),
         new CardsVar(2),
     
     ];

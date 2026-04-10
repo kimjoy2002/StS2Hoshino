@@ -15,6 +15,7 @@ public static class AmmoClass
 		public int MaxAmmo = 4;
 
 		public int AmmoUsedThisTurn;
+		public int MenualedReloadedThisTurn;
 
 
 		public CardModel? LastCardPlayed;
@@ -75,6 +76,17 @@ public static class AmmoClass
 	{
 		return GetState(player).MaxAmmo;
 	}
+	
+	public static void DoingReload(Player? player)
+	{
+		GetState(player).MenualedReloadedThisTurn++;
+	}
+
+
+	public static int getReloadCount(Player? player)
+	{
+		return GetState(player).MenualedReloadedThisTurn;
+	}
 
 	public static int GetAmmoUsedThisTurn(Player? player)
 	{
@@ -130,22 +142,19 @@ public static class AmmoClass
 		return false;
 	}
 
-	public static int GainAmmo(int amount, bool reload, Player player)
+	public static int SetAmmo(int amount, bool reload, Player player)
 	{
-		if (amount <= 0)
-		{
-			return 0;
-		}
 		PlayerAmmoState state = GetState(player);
 		CurrentAmmoGainer = player;
-		state.CurrentAmmo += amount;
+		int prev_ammo = state.CurrentAmmo;
+		state.CurrentAmmo = amount;
 		int num = 0;
 		if (state.CurrentAmmo > state.MaxAmmo)
 		{
 			state.CurrentAmmo = state.MaxAmmo;
 		}
 
-		if (amount > 0)
+		if (amount - prev_ammo > 0)
 		{
 			AmmoClass.OnAmmoGained?.Invoke(amount);
 			if (reload)
@@ -153,6 +162,11 @@ public static class AmmoClass
 				AmmoClass.OnReload?.Invoke();
 			}
 
+			AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
+		}
+
+		if (amount != prev_ammo)
+		{
 			AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
 		}
 
@@ -188,6 +202,7 @@ public static class AmmoClass
 	{
 		PlayerAmmoState state = GetState(player);
 		state.AmmoUsedThisTurn = 0;
+		state.MenualedReloadedThisTurn = 0;
 		AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
 	}
 
@@ -198,6 +213,7 @@ public static class AmmoClass
 		state.CurrentAmmo = _defaultMaxAmmo;
 		state.MaxAmmo = _defaultMaxAmmo;
 		state.AmmoUsedThisTurn = 0;
+		state.MenualedReloadedThisTurn = 0;
 		_pendingTriggers.Clear();
 	}
 }

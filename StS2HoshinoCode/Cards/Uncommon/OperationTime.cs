@@ -12,7 +12,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
-public class OperationTime() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class OperationTime() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [

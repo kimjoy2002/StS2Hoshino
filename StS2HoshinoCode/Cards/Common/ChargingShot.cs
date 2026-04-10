@@ -17,6 +17,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 public class ChargingShot() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IInvade
 {
+    public override int AmmoCost { get; set; } = 1;
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(17, ValueProp.Move)];
 

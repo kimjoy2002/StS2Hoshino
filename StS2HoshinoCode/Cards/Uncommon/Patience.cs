@@ -13,7 +13,7 @@ using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
-public class Patience() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class Patience() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

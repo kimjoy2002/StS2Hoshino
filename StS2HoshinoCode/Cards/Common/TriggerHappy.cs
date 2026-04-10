@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
@@ -39,20 +40,15 @@ public class TriggerHappy() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Com
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(4, ValueProp.Move),
-        new DynamicVar("Increase", 3m)
+        new PowerVar<TriggerHappyPower>(3m)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
-        
-        IEnumerable<TriggerHappy> enumerable = base.Owner.PlayerCombatState.AllCards.OfType<TriggerHappy>();
-        decimal baseValue = base.DynamicVars["Increase"].BaseValue;
-        foreach (TriggerHappy item in enumerable)
-        {
-            item.BuffFromTriggerPlay(baseValue);
-        }
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
+            .Execute(choiceContext);
+        await CommonActions.ApplySelf<BlackMarketPower>(this);
         IEnumerable<TriggerHappy> enumerable2 = PileType.Draw.GetPile(base.Owner).Cards.OfType<TriggerHappy>();
         foreach (TriggerHappy item in enumerable2)
         {
@@ -63,18 +59,7 @@ public class TriggerHappy() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Com
     protected override void OnUpgrade()
     {
         base.DynamicVars.Damage.UpgradeValueBy(2m);
-        base.DynamicVars["Increase"].UpgradeValueBy(1m);
+        base.DynamicVars["TriggerHappyPower"].UpgradeValueBy(1m);
     }
 
-    protected override void AfterDowngraded()
-    {
-        base.AfterDowngraded();
-        base.DynamicVars.Damage.BaseValue += ExtraDamageFromTriggerPlays;
-    }
-
-    private void BuffFromTriggerPlay(decimal extraDamage)
-    {
-        base.DynamicVars.Damage.BaseValue += extraDamage;
-        ExtraDamageFromTriggerPlays += extraDamage;
-    }
 }

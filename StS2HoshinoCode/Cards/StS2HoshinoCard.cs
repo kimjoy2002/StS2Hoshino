@@ -105,14 +105,14 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         IsLastShot = false;
     }
     
-    public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
-    {
-        if (card == this && this is IInvade invade)
-        {
-            return invade.OnInvade(choiceContext,card);
-        }
-        return Task.CompletedTask;
-    }
+    // public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
+    // {
+    //     if (card == this && this is IInvade invade)
+    //     {
+    //         return invade.OnInvade(choiceContext,card);
+    //     }
+    //     return Task.CompletedTask;
+    // }
 
     public override Task AfterCardChangedPiles(
         CardModel card,
