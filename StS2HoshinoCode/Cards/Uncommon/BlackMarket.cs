@@ -14,10 +14,22 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 public class BlackMarket() : StS2HoshinoCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+    ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new PowerVar<BlackMarketPower>(1m)
+    ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            // 파워 미구현 (strength + 1 보류)
+        await CommonActions.ApplySelf<BlackMarketPower>(this);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

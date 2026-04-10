@@ -14,10 +14,22 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 public class TacticalReload() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+    ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new PowerVar<TacticalReloadPower>(4m)
+    ];
+
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            // 파워 미구현 (strength + 1 보류)
+        await CommonActions.ApplySelf<TacticalReloadPower>(this);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars["TacticalReloadPower"].UpgradeValueBy(2m);
     }
 }

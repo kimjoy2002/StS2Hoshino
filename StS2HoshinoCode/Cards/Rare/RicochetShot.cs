@@ -13,12 +13,35 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 public class RicochetShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
+    public override int AmmoCost => 1;
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
+        int extraAmount = AmmoClass.LoseAmmo(2, ((CardModel)this).Owner);
+        int amount = extraAmount + AmmoCost;
+        await AmmoClass.ProcessPendingTriggers(choiceContext);
+
+        for (int i = 0 ; i < amount; i++)
+        {
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+            
+            //총알 사용
+            IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+            foreach (IBulletPowerInterface item in enumerable)
+            {
+                item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+            }
+        }
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(2m);
     }
 }

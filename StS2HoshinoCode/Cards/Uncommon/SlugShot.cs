@@ -13,11 +13,27 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 public class SlugShot() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(5, ValueProp.Move)];
-
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new PowerVar<BulletVigorPower>(12m)
+    ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            await CommonActions.CardBlock(this, play);
+        await ReloadCmd.Execute(choiceContext, base.Owner, 1);
+        await CommonActions.ApplySelf<BulletVunePower>(this);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        DynamicVars["BulletVigorPower"].UpgradeValueBy(5m);
     }
 }

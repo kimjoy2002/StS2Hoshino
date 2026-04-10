@@ -13,11 +13,23 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 public class SwimsuitForm() : StS2HoshinoCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Ethreal
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new PowerVar<SwimsuitFormPower>(1m)
+    ];
+
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            // 파워 미구현 (strength + 1 보류)
+        await CommonActions.ApplySelf<SwimsuitFormPower>(this);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        RemoveKeyword(CardKeyword.Ethreal);
     }
 }
