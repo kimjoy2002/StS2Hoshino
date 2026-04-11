@@ -12,11 +12,13 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Rare, TargetType.AllAllies)
 {
     public override int AmmoCost { get; set; } = 4;
@@ -29,7 +31,9 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
         StS2HoshinoCard.BulletCard
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(5, ValueProp.Move),
+        new CalculationBaseVar(5m),
+        new ExtraDamageVar(1m),
+        new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => StS2Hoshino.StS2HoshinoCode.Utils.AmmoClass.GetInvadeCount(card.Owner)),
         new RepeatVar(4)
     ];
 
@@ -39,7 +43,7 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
         for (int i = 0; i < amount; i++)
         {
             IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this)
+            await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this)
                 .TargetingAllOpponents(base.CombatState)
                 .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
                 .Execute(choiceContext);
@@ -55,6 +59,6 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(2m);
+        base.DynamicVars.CalculationBase.UpgradeValueBy(2m);
     }
 }

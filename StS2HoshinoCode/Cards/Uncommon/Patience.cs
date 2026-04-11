@@ -8,56 +8,39 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
-public class Patience() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+[Pool(typeof(StS2HoshinoCardPool))]
+public class Patience() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [];
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Ethereal
+    ];
+    protected override HashSet<CardTag> CanonicalTags => [
+    ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
     ];
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
-    private decimal _extraEnergyFromPlays;
-
-    private decimal ExtraDamageFromPlays
-    {
-        get
-        {
-            return _extraEnergyFromPlays;
-        }
-        set
-        {
-            AssertMutable();
-            _extraEnergyFromPlays = value;
-        }
-    }
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new EnergyVar(1),
-        new EnergyVar("ExtraCost", 1)
+        new PowerVar<DexterityPower>(1m)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
+        await CommonActions.ApplySelf<DexterityPower>(this);
     }
     
     public async Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
     {
-        base.DynamicVars.Energy.BaseValue += base.DynamicVars["ExtraCost"].BaseValue;
-        ExtraDamageFromPlays +=  base.DynamicVars["ExtraCost"].BaseValue;
-    }
-    
-    protected override void AfterDowngraded()
-    {
-        base.AfterDowngraded();
-        base.DynamicVars.Damage.BaseValue += ExtraDamageFromPlays;
+        await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
     }
     
     protected override void OnUpgrade()

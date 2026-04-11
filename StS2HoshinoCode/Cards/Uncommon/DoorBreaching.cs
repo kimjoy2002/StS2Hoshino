@@ -12,10 +12,12 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IInvade
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

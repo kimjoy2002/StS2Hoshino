@@ -12,8 +12,11 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
+using StS2Hoshino.StS2HoshinoCode.Character;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
+
+[Pool(typeof(StS2HoshinoCardPool))]
 
 public class DoubleShotAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
@@ -27,9 +30,10 @@ public class DoubleShotAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        int extraAmount = AmmoClass.LoseAmmo(1, ((CardModel)this).Owner);
+        int prev = AmmoClass.GetCurrentAmmo(Owner);
+        await AmmoClass.LoseAmmo(choiceContext,1, ((CardModel)this).Owner);
+        int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
         int amount = extraAmount + AmmoCost;
-        await AmmoClass.ProcessPendingTriggers(choiceContext);
 
         for (int i = 0 ; i < amount; i++)
         {

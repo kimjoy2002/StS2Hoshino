@@ -20,7 +20,6 @@ using StS2Hoshino.StS2HoshinoCode.CardModels;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards;
 
-[Pool(typeof(StS2HoshinoCardPool))]
 public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity, TargetType target) :
     CustomCardModel(cost, type, rarity, target)
 {
@@ -31,6 +30,8 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
 
     [CustomEnum]
     public static CardTag BulletCard;
+    [CustomEnum]
+    public static CardTag BulletBoxCard;
     
     protected override bool ShouldGlowGoldInternal 
     {
@@ -69,6 +70,12 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         return Task.CompletedTask;
     }
 
+    
+    public virtual Task OnChoose(PlayerChoiceContext choiceContext, CardPlay play)
+    {
+        return Task.CompletedTask;
+    }
+    
     protected sealed override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         IsLastShot = false;
@@ -92,8 +99,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         bool onRunout = false;
         if (ammoNeeded > 0)
         {
-            AmmoClass.LoseAmmo(ammoNeeded, Owner);
-            await AmmoClass.ProcessPendingTriggers(choiceContext);
+            await AmmoClass.LoseAmmo(choiceContext, ammoNeeded, Owner);
         }
 
         if (AmmoClass.isEmptyAmmo(Owner))
@@ -128,6 +134,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
             CardPile? pile = base.Pile;
             if (pile != null && pile.Type == PileType.Hand)
             {
+                AmmoClass.AddInvadeCount(base.Owner);
                 return invade.OnInvade(new ThrowingPlayerChoiceContext(), base.Owner, card);
             }
         }

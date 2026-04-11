@@ -9,9 +9,11 @@ using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class RaiseShield() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];

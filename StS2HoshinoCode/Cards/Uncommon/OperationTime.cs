@@ -9,9 +9,11 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class OperationTime() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];

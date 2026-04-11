@@ -9,11 +9,13 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class TacticalReload() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
@@ -22,7 +24,7 @@ public class TacticalReload() : StS2HoshinoCard(1, CardType.Power, CardRarity.Un
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<TacticalReloadPower>(4m)
+        new PowerVar<TacticalReloadPower>(6m)
     ];
 
 

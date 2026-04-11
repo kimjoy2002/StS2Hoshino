@@ -9,12 +9,14 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class SnapShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {
     public override int AmmoCost { get; set; } = 0;
@@ -44,7 +46,7 @@ public class SnapShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncommo
                 {
                     await ReloadCmd.Execute(choiceContext, base.Owner);
                 }
-                Utils.AmmoClass.LoseAmmo(1, base.Owner);
+                Utils.AmmoClass.LoseAmmo(choiceContext,1, base.Owner);
                 await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
 
                 //총알 사용

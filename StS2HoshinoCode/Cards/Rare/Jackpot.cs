@@ -10,9 +10,11 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Character;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class Jackpot() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies), IInvade
 {
     protected override HashSet<CardTag> CanonicalTags => [];

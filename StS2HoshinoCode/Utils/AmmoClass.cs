@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using StS2Hoshino.StS2HoshinoCode.Hook;
 
 namespace StS2Hoshino.StS2HoshinoCode.Utils;
 
@@ -16,7 +17,8 @@ public static class AmmoClass
 
 		public int AmmoUsedThisTurn;
 		public int MenualedReloadedThisTurn;
-
+		public int InvadesThisCombat;
+		public int ReloadedThisCombat;
 
 		public CardModel? LastCardPlayed;
 	}
@@ -80,12 +82,18 @@ public static class AmmoClass
 	public static void DoingReload(Player? player)
 	{
 		GetState(player).MenualedReloadedThisTurn++;
+		GetState(player).ReloadedThisCombat++;
 	}
 
 
 	public static int getReloadCount(Player? player)
 	{
 		return GetState(player).MenualedReloadedThisTurn;
+	}
+
+	public static int GetReloadCountThisCombat(Player? player)
+	{
+		return GetState(player).ReloadedThisCombat;
 	}
 
 	public static int GetAmmoUsedThisTurn(Player? player)
@@ -104,24 +112,21 @@ public static class AmmoClass
 		GetState(player).LastCardPlayed = card;
 	}
 
+	public static int GetInvadeCount(Player? player)
+	{
+		return GetState(player).InvadesThisCombat;
+	}
+
+	public static void AddInvadeCount(Player? player)
+	{
+		GetState(player).InvadesThisCombat++;
+	}
+
 	public static void QueueCountdownTrigger(Func<PlayerChoiceContext, Task> trigger)
 	{
 		_pendingTriggers.Add(trigger);
 	}
 
-	public static async Task ProcessPendingTriggers(PlayerChoiceContext context)
-	{
-		if (_pendingTriggers.Count == 0)
-		{
-			return;
-		}
-		List<Func<PlayerChoiceContext, Task>> list = new List<Func<PlayerChoiceContext, Task>>(_pendingTriggers);
-		_pendingTriggers.Clear();
-		foreach (Func<PlayerChoiceContext, Task> item in list)
-		{
-			await item(context);
-		}
-	}
 
 	public static bool isEmptyAmmo(Player player)
 	{
@@ -142,7 +147,7 @@ public static class AmmoClass
 		return false;
 	}
 
-	public static int SetAmmo(int amount, bool reload, Player player)
+	public static async Task SetAmmo(PlayerChoiceContext choiceContext, int amount, bool reload, Player player)
 	{
 		PlayerAmmoState state = GetState(player);
 		CurrentAmmoGainer = player;
@@ -167,20 +172,21 @@ public static class AmmoClass
 
 		if (amount != prev_ammo)
 		{
+			await HoshinoHook.OnBulletChanged(choiceContext, player, prev_ammo, amount);
 			AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
 		}
 
 		CurrentAmmoGainer = null;
-		return num;
 	}
 
-	public static int LoseAmmo(int amount, Player player)
+	public static async Task LoseAmmo(PlayerChoiceContext choiceContext, int amount, Player player)
 	{
 		if (amount > 0)
 		{
 			PlayerAmmoState state = GetState(player);
 			StS2HoshinoMain.Logger.Info($"Lost ammo {amount} - {state.CurrentAmmo}/{state.MaxAmmo}");
 			CurrentAmmoGainer = player;
+			int prev_ammo = state.CurrentAmmo;
 			state.CurrentAmmo -= amount;
 			if (state.CurrentAmmo < 0)
 			{
@@ -190,12 +196,11 @@ public static class AmmoClass
 			if (amount > 0)
 			{
 				AmmoClass.OnAmmoUsed?.Invoke(amount);
+				await HoshinoHook.OnBulletChanged(choiceContext, player, prev_ammo, state.CurrentAmmo);
 				AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);;
 			}
 			CurrentAmmoGainer = null;
 		}
-
-		return amount;
 	}
 
 	public static void ResetForTurnStart(Player player)
@@ -214,6 +219,8 @@ public static class AmmoClass
 		state.MaxAmmo = _defaultMaxAmmo;
 		state.AmmoUsedThisTurn = 0;
 		state.MenualedReloadedThisTurn = 0;
+		state.InvadesThisCombat = 0;
+		state.ReloadedThisCombat = 0;
 		_pendingTriggers.Clear();
 	}
 }

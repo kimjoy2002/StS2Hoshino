@@ -10,10 +10,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class LastResort() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IRunout
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

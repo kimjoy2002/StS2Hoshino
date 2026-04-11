@@ -9,11 +9,14 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class MilitarySupplies() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
@@ -35,6 +38,7 @@ public class MilitarySupplies() : StS2HoshinoCard(2, CardType.Skill, CardRarity.
         {
             await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue*(after_bulltet-before_bulltet), base.Owner);
         }
+        await PowerCmd.Apply<CantReloadPower>(base.Owner.Creature, 1, base.Owner.Creature, this);
     }
     
     protected override void OnUpgrade()

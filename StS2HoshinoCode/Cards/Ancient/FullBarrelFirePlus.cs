@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
@@ -17,6 +18,7 @@ using StS2Hoshino.StS2HoshinoCode.Utils;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
 
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Ancient, TargetType.AnyEnemy)
 {
     public override int AmmoCost { get; set; } = 1;
@@ -35,7 +37,10 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         
         Creature singleTarget = play.Target;
-        int extraAmount = AmmoClass.LoseAmmo(99, ((CardModel)this).Owner);
+        
+        int prev = AmmoClass.GetCurrentAmmo(Owner);
+        await AmmoClass.LoseAmmo(choiceContext,99, ((CardModel)this).Owner);
+        int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
         int amount = extraAmount + AmmoCost;
         for (; amount > 0; amount--)
         {
@@ -62,7 +67,10 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
             
             if(!singleTarget.IsAlive) {
                 await ReloadCmd.Execute(choiceContext, base.Owner);
-                amount = AmmoClass.LoseAmmo(99, ((CardModel)this).Owner);
+                
+                int temp = AmmoClass.GetCurrentAmmo(Owner);
+                await AmmoClass.LoseAmmo(choiceContext,99, ((CardModel)this).Owner);
+                amount = prev - AmmoClass.GetCurrentAmmo(Owner);
             }
         }
     }

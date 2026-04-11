@@ -9,11 +9,13 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class Mystery() : StS2HoshinoCard(3, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     
@@ -27,8 +29,8 @@ public class Mystery() : StS2HoshinoCard(3, CardType.Skill, CardRarity.Rare, Tar
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(20, ValueProp.Move),
-        new PowerVar<ShieldPower>(20m)
+        new BlockVar(25, ValueProp.Move),
+        new PowerVar<ShieldPower>(25m)
     
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -39,7 +41,7 @@ public class Mystery() : StS2HoshinoCard(3, CardType.Skill, CardRarity.Rare, Tar
     
     protected override void OnUpgrade()
     {
-        DynamicVars["Block"].UpgradeValueBy(5m);
-        DynamicVars["ShieldPower"].UpgradeValueBy(5m);
+        DynamicVars["Block"].UpgradeValueBy(10m);
+        DynamicVars["ShieldPower"].UpgradeValueBy(10m);
     }
 }

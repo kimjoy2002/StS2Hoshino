@@ -165,14 +165,6 @@ public sealed partial class ReloadController
             StS2HoshinoMain.Logger.Error("[ReloadController] Local player is null, cannot reload");
             return;
         }
-
-        int reloadCost = GetReloadCost(me);
-        if (reloadCost > 0)
-        {
-            me.PlayerCombatState!.LoseEnergy(reloadCost);
-        }
-        AmmoClass.DoingReload(me);
-
         ReloadAction action = new ReloadAction(me, true);
         RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(action);
     }

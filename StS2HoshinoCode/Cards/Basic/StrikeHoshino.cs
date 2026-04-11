@@ -10,12 +10,14 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class StrikeHoshino() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
     public override int AmmoCost { get; set; } = 1;

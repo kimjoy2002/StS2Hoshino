@@ -11,10 +11,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class ForwardDefense() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Common, TargetType.Self), IInvade
 {
     protected override HashSet<CardTag> CanonicalTags => [];

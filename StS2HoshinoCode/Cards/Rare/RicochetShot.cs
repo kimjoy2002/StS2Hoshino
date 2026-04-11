@@ -9,12 +9,14 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class RicochetShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     public override int AmmoCost => 1;
@@ -27,9 +29,11 @@ public class RicochetShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rar
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        int extraAmount = AmmoClass.LoseAmmo(2, ((CardModel)this).Owner);
+        
+        int prev = AmmoClass.GetCurrentAmmo(Owner);
+        await AmmoClass.LoseAmmo(choiceContext,2, ((CardModel)this).Owner);
+        int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
         int amount = extraAmount + AmmoCost;
-        await AmmoClass.ProcessPendingTriggers(choiceContext);
 
         for (int i = 0 ; i < amount; i++)
         {

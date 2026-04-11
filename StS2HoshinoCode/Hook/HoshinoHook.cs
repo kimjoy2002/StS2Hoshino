@@ -25,4 +25,8 @@ public class HoshinoHook
 
     public static Task OnReload(PlayerChoiceContext ctx, Player player, bool useButton)
         => Dispatch<IOnReloaded>(ctx, player, m => m.OnReload(ctx, player, useButton));
+    
+    
+    public static Task OnBulletChanged(PlayerChoiceContext ctx, Player player, int before_bullet, int after_bullet)
+        => Dispatch<IOnBulletChanged>(ctx, player, m => m.OnBulletChanged(ctx, player, before_bullet, after_bullet));
 }

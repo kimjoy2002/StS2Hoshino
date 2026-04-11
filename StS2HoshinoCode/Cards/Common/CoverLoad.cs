@@ -10,9 +10,13 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Core;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
+
+[Pool(typeof(StS2HoshinoCardPool))]
 
 public class CoverLoad() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {

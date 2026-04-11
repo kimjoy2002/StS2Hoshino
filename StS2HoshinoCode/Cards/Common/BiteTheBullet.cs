@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
@@ -10,10 +11,12 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
@@ -25,13 +28,18 @@ public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Com
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.CardBlock(this, play);
-        IEnumerable<IInvade> enumerable = PileType.Hand.GetPile(base.Owner).Cards.OfType<IInvade>();
-        foreach (IInvade item in enumerable)
+        CardModel? selection = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1), context: choiceContext, player: base.Owner, filter: delegate(CardModel c)
         {
-            if (item is CardModel cardModel)
+            return c is IInvade;
+        }, source: this)).FirstOrDefault();
+        if (selection != null)
+        {
+            if (selection is IInvade invade)
             {
-                await item.OnInvade(choiceContext, base.Owner, cardModel);
+                if (selection is CardModel cardModel)
+                {
+                    await invade.OnInvade(choiceContext, base.Owner, cardModel);
+                }
             }
         }
     }

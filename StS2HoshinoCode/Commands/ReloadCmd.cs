@@ -13,6 +13,7 @@ using StS2Hoshino.StS2HoshinoCode.CardModels;
 using StS2Hoshino.StS2HoshinoCode.Core;
 using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Hook;
+using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 public static class ReloadCmd
@@ -20,11 +21,27 @@ public static class ReloadCmd
     public static event Func<Player, int, Task>? Reloaded;
 
     private static string ReloadSfxPath => "reload.mp3".SfxPath();
+    
+    
+    private static int GetReloadCost(Player me)
+    {
+        if (me.Creature?.Powers.OfType<FreeReloadPower>().Any() == true)
+            return 0;
+        return 1;
+    }
     public static async Task Execute(PlayerChoiceContext choiceContext, Player player, int amount = -1, bool isButton = false)
     {
-        AmmoClass.SetAmmo(amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);
-
-        await AmmoClass.ProcessPendingTriggers(choiceContext);
+        if (player.Creature.HasPower<CantReloadPower>())
+        {
+            return;
+        }
+        int reloadCost = GetReloadCost(player);
+        if (reloadCost > 0)
+        {
+            player.PlayerCombatState!.LoseEnergy(reloadCost);
+        }
+        AmmoClass.DoingReload(player);
+        await AmmoClass.SetAmmo(choiceContext, amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);
         
         SfxCmd.Play(ReloadSfxPath);
         await NotifyPowers(player, amount);
@@ -38,15 +55,11 @@ public static class ReloadCmd
         if (AmmoClass.GetMaxAmmo(player) > 0)
         {
             AmmoClass.SetMaxAmmo(player, AmmoClass.GetMaxAmmo(player) - amount);
-
-            await AmmoClass.ProcessPendingTriggers(choiceContext);
         }
     }
     public static async Task AddMaxAmmo(PlayerChoiceContext choiceContext, Player player, int amount)
     {
         AmmoClass.SetMaxAmmo(player, AmmoClass.GetMaxAmmo(player) + amount);
-
-        await AmmoClass.ProcessPendingTriggers(choiceContext);
     }
 
     private static async Task NotifyPowers(Player player, int amount)

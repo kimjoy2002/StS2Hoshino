@@ -9,12 +9,14 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
+[Pool(typeof(StS2HoshinoCardPool))]
 public class MissShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
 {
     public override int AmmoCost => 1;
@@ -29,8 +31,9 @@ public class MissShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common,
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        int extraAmount = AmmoClass.LoseAmmo(99, ((CardModel)this).Owner);
-        await AmmoClass.ProcessPendingTriggers(choiceContext);
+        int prev = AmmoClass.GetCurrentAmmo(Owner);
+        await AmmoClass.LoseAmmo(choiceContext,99, ((CardModel)this).Owner);
+        int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
         
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
         
