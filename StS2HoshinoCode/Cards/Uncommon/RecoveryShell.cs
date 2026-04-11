@@ -17,7 +17,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 public class RecoveryShell() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     public override int AmmoCost { get; set; } = 3;
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)

@@ -25,7 +25,7 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
     ];
     public override int AmmoCost { get; set; } = 1;
     protected override bool ShouldGlowGoldInternal => AmmoClass.GetCurrentAmmo(base.Owner) == 1;
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(8m, ValueProp.Move),
         new CalculationBaseVar(8m),

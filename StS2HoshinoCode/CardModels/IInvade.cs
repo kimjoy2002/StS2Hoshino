@@ -7,7 +7,7 @@ using MegaCrit.Sts2.Core.Entities.Players;
 
 public interface IInvade
 {
-    Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         return Task.CompletedTask;
     }

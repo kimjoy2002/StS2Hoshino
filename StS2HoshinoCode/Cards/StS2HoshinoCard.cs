@@ -10,6 +10,7 @@ using MegaCrit.Sts2.Core.Logging;
 using MegaCrit.Sts2.Core.Models;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 using System.Threading.Tasks;
+using BaseLib.Patches.Content;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Extensions;
@@ -28,6 +29,9 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
     public static bool IsLastShot { get; set; } = false;
 
 
+    [CustomEnum]
+    public static CardTag BulletCard;
+    
     protected override bool ShouldGlowGoldInternal 
     {
         get
@@ -124,7 +128,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
             CardPile? pile = base.Pile;
             if (pile != null && pile.Type == PileType.Hand)
             {
-                return invade.OnInvade(new ThrowingPlayerChoiceContext(), card);
+                return invade.OnInvade(new ThrowingPlayerChoiceContext(), base.Owner, card);
             }
         }
         return Task.CompletedTask;

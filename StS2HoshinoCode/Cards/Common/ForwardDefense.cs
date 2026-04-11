@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -31,7 +32,7 @@ public class ForwardDefense() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Co
         await CommonActions.CardBlock(this, play);
     }
     
-    public async Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         await CreatureCmd.GainBlock(Owner.Creature, (BlockVar)DynamicVars["InvadeBlock"], null);
     }

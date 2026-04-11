@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -31,7 +32,7 @@ public class Jackpot() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, Ta
         }
     }
 
-    public Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         if (card != this)
         {

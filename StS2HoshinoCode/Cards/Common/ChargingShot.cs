@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -18,7 +19,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 public class ChargingShot() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IInvade
 {
     public override int AmmoCost { get; set; } = 1;
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(17, ValueProp.Move)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -46,7 +47,7 @@ public class ChargingShot() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Com
         base.DynamicVars.Damage.UpgradeValueBy(6m);
     }
 
-    public Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         if (card != this)
         {

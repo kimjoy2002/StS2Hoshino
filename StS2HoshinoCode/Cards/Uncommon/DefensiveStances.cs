@@ -8,37 +8,31 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
-using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
-namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
+namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
-public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class DefensiveStances() : StS2HoshinoCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-        CardKeyword.Exhaust
-    ];
+    protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
-        HoverTipFactory.FromPower<VulnerablePower>()
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Shield)
     ];
-    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<BulletVunePower>(1m)
+        new PowerVar<DefensiveStancesPower>(2m)
     ];
+
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await ReloadCmd.Execute(choiceContext, base.Owner);
-        await CommonActions.ApplySelf<BulletVunePower>(this);
+        await CommonActions.ApplySelf<BlackMarketPower>(this);
     }
     
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

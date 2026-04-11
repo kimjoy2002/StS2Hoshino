@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -23,7 +24,7 @@ public class RampageShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Unco
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
     ];
     public override int AmmoCost { get; set; } = 1;
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(3, ValueProp.Move),
         new DynamicVar("Increase", 6m)];
@@ -56,7 +57,7 @@ public class RampageShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Unco
         }
     }
     
-    public async Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         if (card == this)
         {

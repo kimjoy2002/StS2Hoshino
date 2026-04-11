@@ -18,6 +18,6 @@ public class RefillAmmo() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncomm
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            await CommonActions.CardBlock(this, play);
+        await CommonActions.CardBlock(this, play);
     }
 }

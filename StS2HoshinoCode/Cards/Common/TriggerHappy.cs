@@ -37,7 +37,7 @@ public class TriggerHappy() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Com
         }
     }
     public override int AmmoCost { get; set; } = 1;
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(4, ValueProp.Move),
         new PowerVar<TriggerHappyPower>(3m)

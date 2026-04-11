@@ -19,7 +19,7 @@ public class SnapShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncommo
 {
     public override int AmmoCost { get; set; } = 0;
     protected override bool HasEnergyCostX => true;
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

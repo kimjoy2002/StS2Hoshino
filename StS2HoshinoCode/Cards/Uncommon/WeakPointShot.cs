@@ -24,7 +24,7 @@ public class WeakPointShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Un
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
         HoverTipFactory.FromPower<VulnerablePower>()
     ];
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(6, ValueProp.Move),
     ];

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -23,7 +24,7 @@ public class FirstShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncomm
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
     ];
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -43,7 +44,7 @@ public class FirstShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncomm
         base.DynamicVars.Damage.UpgradeValueBy(2m);
     }
 
-    public async Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         if (card == this)
         {

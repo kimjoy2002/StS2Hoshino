@@ -1,0 +1,60 @@
+using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using BaseLib.Utils;
+using MegaCrit.Sts2.Core.Combat;
+using MegaCrit.Sts2.Core.Combat.History.Entries;
+using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.HoverTips;
+using MegaCrit.Sts2.Core.Localization.DynamicVars;
+using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Powers;
+
+namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
+
+public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Rare, TargetType.AllAllies)
+{
+    public override int AmmoCost { get; set; } = 4;
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
+    ];
+    protected override HashSet<CardTag> CanonicalTags => [
+        StS2HoshinoCard.BulletCard
+    ];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new DamageVar(5, ValueProp.Move),
+        new RepeatVar(4)
+    ];
+
+    protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
+    {
+        int amount = AmmoCost;
+        for (int i = 0; i < amount; i++)
+        {
+            IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this)
+                .TargetingAllOpponents(base.CombatState)
+                .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
+                .Execute(choiceContext);
+
+            //총알 사용
+            IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+            foreach (IBulletPowerInterface item in enumerable)
+            {
+                item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
+            }
+        }
+    }
+
+    protected override void OnUpgrade()
+    {
+        base.DynamicVars.Damage.UpgradeValueBy(2m);
+    }
+}

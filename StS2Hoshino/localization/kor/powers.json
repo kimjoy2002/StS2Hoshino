@@ -40,5 +40,14 @@
   "STS2HOSHINO-ROUND_MANUAL_CHAMBERING_POWER.title": "초탄 장전",
   "STS2HOSHINO-TRIGGER_HAPPY_POWER.description": "이번 턴 동안 [gold]트리거 해피[/gold]의 피해가 [blue]1[/blue] 증가합니다.",
   "STS2HOSHINO-TRIGGER_HAPPY_POWER.smartDescription": "이번 턴 동안 [gold]트리거 해피[/gold]의 피해가 [blue]{Amount}[/blue] 증가합니다.",
-  "STS2HOSHINO-TRIGGER_HAPPY_POWER.title": "트리거 해피"
+  "STS2HOSHINO-TRIGGER_HAPPY_POWER.title": "트리거 해피",
+  "STS2HOSHINO-HORUS_OF_EYE_POWER.description": "[gold]호루스의 눈[/gold]이 [gold]뽑을 카드 더미[/gold] 맨 위에 있습니다. [gold]손[/gold]에 있는 공격 카드를 비용 없이 사용할 수 있습니다.",
+  "STS2HOSHINO-HORUS_OF_EYE_POWER.smartDescription": "[gold]호루스의 눈[/gold]이 [gold]뽑을 카드 더미[/gold] 맨 위에 있습니다. [gold]손[/gold]에 있는 공격 카드를 비용 없이 사용할 수 있습니다.",
+  "STS2HOSHINO-HORUS_OF_EYE_POWER.title": "호루스의 눈",
+  "STS2HOSHINO-DEFENSIVE_STANCES_POWER.description": "[gold]진입[/gold] 효과가 발동할때마다 [gold]방어도[/gold]와 [gold]방패[/gold]를 [blue]1[/blue] 얻습니다.",
+  "STS2HOSHINO-DEFENSIVE_STANCES_POWER.smartDescription": "[gold]진입[/gold] 효과가 발동할때마다 [gold]방어도[/gold]와 [gold]방패[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
+  "STS2HOSHINO-DEFENSIVE_STANCES_POWER.title": "방어태세 강화",
+  "STS2HOSHINO-FIX_SHIELD_POWER.description": "내 턴 종료 시 [gold]방패[/gold]가 있다면, [gold]방어도[/gold]를 [blue]1[/blue] 얻습니다.",
+  "STS2HOSHINO-FIX_SHIELD_POWER.smartDescription": "내 턴 종료 시 [gold]방패[/gold]가 있다면, [gold]방어도[/gold]를 [blue]{Amount}[/blue] 얻습니다.",
+  "STS2HOSHINO-FIX_SHIELD_POWER.title": "방패 고정"
 }

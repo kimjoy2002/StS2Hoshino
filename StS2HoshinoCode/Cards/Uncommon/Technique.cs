@@ -21,7 +21,7 @@ public class Technique() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommo
         HoverTipFactory.FromPower<ExpertPower>(),
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<ExpertPower>(2m),
+        new PowerVar<ExpertPower>(3m),
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

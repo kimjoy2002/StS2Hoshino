@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -53,7 +54,7 @@ public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Un
         await PowerCmd.Apply<WeakPower>(play.Target, amount, base.Owner.Creature, this);
     }
     
-    public Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         if (card != this)
         {

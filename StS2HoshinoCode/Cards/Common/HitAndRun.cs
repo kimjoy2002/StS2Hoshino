@@ -23,7 +23,7 @@ public class HitAndRun() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

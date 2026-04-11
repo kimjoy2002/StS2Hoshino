@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
@@ -37,7 +38,7 @@ public class Determination() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Unc
         await CommonActions.ApplySelf<StrengthPower>(this);
     }
     
-    public async Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         if (card == this)
         {

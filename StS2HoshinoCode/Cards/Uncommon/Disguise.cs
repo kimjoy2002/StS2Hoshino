@@ -18,6 +18,6 @@ public class Disguise() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-            await CommonActions.CardBlock(this, play);
+        await CommonActions.CardBlock(this, play);
     }
 }

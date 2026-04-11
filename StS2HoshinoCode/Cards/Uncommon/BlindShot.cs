@@ -16,7 +16,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.RandomEnemy)
 {
     public override int AmmoCost => 1;
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7, ValueProp.Move), new RepeatVar(3)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -19,7 +19,10 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
 public class StrikeHoshino() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
 {
     public override int AmmoCost { get; set; } = 1;
-    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
+    protected override HashSet<CardTag> CanonicalTags => [
+        CardTag.Strike,
+        StS2HoshinoCard.BulletCard
+    ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

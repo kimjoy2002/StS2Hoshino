@@ -31,7 +31,7 @@ public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Com
         {
             if (item is CardModel cardModel)
             {
-                item.OnInvade(choiceContext, cardModel);
+                await item.OnInvade(choiceContext, base.Owner, cardModel);
             }
         }
     }

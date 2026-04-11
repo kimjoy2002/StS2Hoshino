@@ -24,7 +24,7 @@ public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.B
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
     ];
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

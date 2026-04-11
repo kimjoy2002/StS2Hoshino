@@ -35,7 +35,11 @@ public class QuickReloadSkill() : StS2HoshinoCard(0, CardType.Skill, CardRarity.
         CardPlayStartedEntry? cardPlayStartedEntry = CombatManager.Instance.History.CardPlaysStarted.LastOrDefault((CardPlayStartedEntry e) => e.CardPlay.Card.Owner == base.Owner && e.HappenedThisTurn(base.CombatState) && e.CardPlay.Card != this);
         if (cardPlayStartedEntry != null)
         {
-            await CardPileCmd.Add(cardPlayStartedEntry.CardPlay.Card, PileType.Draw, CardPilePosition.Top);
+            if (cardPlayStartedEntry.CardPlay.Card.Pile != null
+                && cardPlayStartedEntry.CardPlay.Card.Pile.Type == PileType.Discard)
+            {
+                await CardPileCmd.Add(cardPlayStartedEntry.CardPlay.Card, PileType.Draw, CardPilePosition.Top);
+            }
         }
     }
     protected override void OnUpgrade()

@@ -29,7 +29,7 @@ public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Commo
         HoverTipFactory.FromPower<StrengthPower>()
         
     ];
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new DamageVar(5m, ValueProp.Move),
         new DynamicVar("StrengthLoss", 2m)
