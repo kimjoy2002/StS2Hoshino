@@ -5,18 +5,20 @@ using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.CardModels;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class Patience() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class Patience() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self), IInvade
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -38,11 +40,13 @@ public class Patience() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon
         await CommonActions.ApplySelf<DexterityPower>(this);
     }
     
-    public async Task OnInvade(PlayerChoiceContext choiceContext, CardModel card)
+    public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
-        await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
+        if (card == this)
+        {
+            await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
+        }
     }
-    
     protected override void OnUpgrade()
     {
         base.DynamicVars.Energy.UpgradeValueBy(1m);

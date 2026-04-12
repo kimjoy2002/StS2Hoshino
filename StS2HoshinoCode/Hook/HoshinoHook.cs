@@ -29,4 +29,10 @@ public class HoshinoHook
     
     public static Task OnBulletChanged(PlayerChoiceContext ctx, Player player, int before_bullet, int after_bullet)
         => Dispatch<IOnBulletChanged>(ctx, player, m => m.OnBulletChanged(ctx, player, before_bullet, after_bullet));
+    
+    
+    public static Task OnInvaded(PlayerChoiceContext ctx, Player player, CardModel card)
+        => Dispatch<IOnInvaded>(ctx, player, m => m.OnInvaded(ctx,player,card));
+
+    
 }

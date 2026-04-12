@@ -28,6 +28,7 @@ public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Com
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
+        await CommonActions.CardBlock(this, play);
         CardModel? selection = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1), context: choiceContext, player: base.Owner, filter: delegate(CardModel c)
         {
             return c is IInvade;

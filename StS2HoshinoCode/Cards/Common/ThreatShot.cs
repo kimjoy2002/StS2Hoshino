@@ -21,7 +21,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy)
+public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AllEnemies)
 {
     public override int AmmoCost => 1;
     

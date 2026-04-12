@@ -30,7 +30,7 @@ public class DefensiveStances() : StS2HoshinoCard(2, CardType.Power, CardRarity.
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<BlackMarketPower>(this);
+        await CommonActions.ApplySelf<DefensiveStancesPower>(this);
     }
     
     protected override void OnUpgrade()

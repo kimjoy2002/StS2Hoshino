@@ -38,7 +38,7 @@ public class Contract() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon
     {
         await CommonActions.ApplySelf<StrengthPower>(this);
         await CommonActions.ApplySelf<ExpertPower>(this);
-        await ReloadCmd.RemoveMaxAmmo(choiceContext,base.Owner, -DynamicVars["BulletLoss"].IntValue);
+        await ReloadCmd.RemoveMaxAmmo(choiceContext,base.Owner, DynamicVars["BulletLoss"].IntValue);
     }
     protected override void OnUpgrade()
     {

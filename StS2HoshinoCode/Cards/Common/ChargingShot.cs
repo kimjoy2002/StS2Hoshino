@@ -22,7 +22,7 @@ public class ChargingShot() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Com
 {
     public override int AmmoCost { get; set; } = 1;
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(17, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(15, ValueProp.Move)];
 
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
@@ -46,7 +46,7 @@ public class ChargingShot() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Com
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(6m);
+        base.DynamicVars.Damage.UpgradeValueBy(5m);
     }
 
     public Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)

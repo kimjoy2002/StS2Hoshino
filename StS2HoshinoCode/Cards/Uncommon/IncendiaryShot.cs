@@ -34,7 +34,7 @@ public class IncendiaryShot() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Un
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner);
-        await CommonActions.ApplySelf<BulletVunePower>(this);
+        await CommonActions.ApplySelf<BulletIncendiaryPower>(this);
     }
     
     protected override void OnUpgrade()

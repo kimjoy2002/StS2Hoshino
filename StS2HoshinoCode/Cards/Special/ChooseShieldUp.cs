@@ -1,3 +1,4 @@
+using BaseLib.Extensions;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -13,7 +14,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Special;
 
 [Pool(typeof(TokenCardPool))]
-public class ChooseShieldUp() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class ChooseShieldUp() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Token, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     
@@ -32,6 +33,6 @@ public class ChooseShieldUp() : StS2HoshinoCard(1, CardType.Attack, CardRarity.R
     public override async Task OnChoose(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await PowerCmd.Apply<ShieldPower>(base.Owner.Creature, 
-            base.DynamicVars["CalculatedShield"].IntValue, base.Owner.Creature, this);
+            ((CalculatedVar)base.DynamicVars["CalculatedShield"]).Calculate(null), base.Owner.Creature, this);
     }
 }

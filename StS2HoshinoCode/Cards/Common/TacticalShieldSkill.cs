@@ -25,7 +25,7 @@ public class TacticalShieldSkill() : StS2HoshinoCard(1, CardType.Skill, CardRari
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new BlockVar(8, ValueProp.Move),
-        new PowerVar<ShieldPower>(3m)
+        new PowerVar<ShieldPower>(4m)
     
     ];
 

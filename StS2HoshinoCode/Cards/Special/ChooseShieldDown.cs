@@ -14,7 +14,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Special;
 
 [Pool(typeof(TokenCardPool))]
-public class ChooseShieldDown() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class ChooseShieldDown() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Token, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     

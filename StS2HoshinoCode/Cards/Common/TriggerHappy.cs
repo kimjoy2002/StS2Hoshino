@@ -50,9 +50,24 @@ public class TriggerHappy() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Com
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
             .Execute(choiceContext);
-        await CommonActions.ApplySelf<BlackMarketPower>(this);
-        IEnumerable<TriggerHappy> enumerable2 = PileType.Draw.GetPile(base.Owner).Cards.OfType<TriggerHappy>();
-        foreach (TriggerHappy item in enumerable2)
+        
+        //총알 사용
+        IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+        foreach (IBulletPowerInterface item in enumerable)
+        {
+            item.UseBullet(choiceContext, this, play.Target, base.Owner.Creature, 1);
+        }
+        
+        await CommonActions.ApplySelf<TriggerHappyPower>(this);
+        
+        
+        var triggerHappiesInDraw = PileType.Draw
+            .GetPile(base.Owner)
+            .Cards
+            .OfType<TriggerHappy>()
+            .ToList();
+
+        foreach (var item in triggerHappiesInDraw)
         {
             await CardPileCmd.Add(item, PileType.Hand);
         }

@@ -25,7 +25,9 @@ public class RefillAmmo() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncomm
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         int amount = 0;
-        IEnumerable<StS2HoshinoCard> enumerable2 = PileType.Exhaust.GetPile(base.Owner).Cards.OfType<StS2HoshinoCard>();
+
+        IEnumerable<StS2HoshinoCard> enumerable2 =
+            PileType.Exhaust.GetPile(base.Owner).Cards.OfType<StS2HoshinoCard>().ToList();
         foreach (StS2HoshinoCard item in enumerable2)
         {
             if (item.Tags.Contains(StS2HoshinoCard.BulletBoxCard))

@@ -26,7 +26,7 @@ public class Lubricating() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncom
         if (cardModel != null)
         {
             CardModel? cardModel2 = CardFactory.GetDistinctForCombat(base.Owner, from c in base.Owner.Character.CardPool.GetUnlockedCards(base.Owner.UnlockState, base.Owner.RunState.CardMultiplayerConstraint)
-                where c.Type == CardType.Attack
+                where c.Tags.Contains(StS2HoshinoCard.BulletBoxCard)
                 select c, 1, base.Owner.RunState.Rng.CombatCardGeneration).FirstOrDefault();
             if (cardModel2 != null)
             {

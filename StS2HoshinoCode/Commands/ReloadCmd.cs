@@ -35,10 +35,14 @@ public static class ReloadCmd
         {
             return;
         }
-        int reloadCost = GetReloadCost(player);
-        if (reloadCost > 0)
+
+        if (isButton)
         {
-            player.PlayerCombatState!.LoseEnergy(reloadCost);
+            int reloadCost = GetReloadCost(player);
+            if (reloadCost > 0)
+            {
+                player.PlayerCombatState!.LoseEnergy(reloadCost);
+            }
         }
         AmmoClass.DoingReload(player);
         await AmmoClass.SetAmmo(choiceContext, amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);

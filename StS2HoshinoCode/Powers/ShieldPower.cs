@@ -13,6 +13,18 @@ public sealed class ShieldPower : StS2HoshinoPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
+    public override async Task AfterPowerAmountChanged(PowerModel power, decimal _, Creature? __, CardModel? cardSource)
+    {
+        if (power == this)
+        {
+            if (base.Owner.Block < Amount)
+            {
+                await PowerCmd.ModifyAmount(this, -(Amount - base.Owner.Block), null, null);
+            }
+        }
+    }
+    
+    
     public override async Task AfterDamageReceived(
         PlayerChoiceContext choiceContext,
         Creature target,

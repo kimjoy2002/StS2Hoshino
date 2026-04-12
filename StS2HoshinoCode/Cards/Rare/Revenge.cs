@@ -18,19 +18,21 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 public class Revenge() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(12, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {		
+        await CommonActions.CardBlock(this, play);
         List<CardModel> cardsIn = (from c in PileType.Draw.GetPile(base.Owner).Cards
             orderby c.Rarity, c.Id
             select c).ToList();
-        List<CardModel> list = (await CardSelectCmd.FromSimpleGrid(choiceContext, cardsIn, base.Owner, new CardSelectorPrefs(CardSelectorPrefs.TransformSelectionPrompt, 1))).ToList();
+        List<CardModel> list = (await CardSelectCmd.FromSimpleGrid(choiceContext, cardsIn, base.Owner, new CardSelectorPrefs(base.SelectionScreenPrompt, 1))).ToList();
         bool success_ = false;
         foreach (CardModel item in list)
         {
             if (PileType.Draw.GetPile(base.Owner).Cards[0].GetType() == item.GetType())
             {
+                await CommonActions.CardBlock(this, play);
                 await CommonActions.CardBlock(this, play);
                 success_ = true;
                 break;
@@ -46,6 +48,6 @@ public class Revenge() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, Tar
     
     protected override void OnUpgrade()
     {
-        DynamicVars["Block"].UpgradeValueBy(4m);
+        DynamicVars["Block"].UpgradeValueBy(2m);
     }
 }

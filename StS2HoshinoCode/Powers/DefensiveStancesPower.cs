@@ -13,13 +13,13 @@ namespace StS2Hoshino.StS2HoshinoCode.Powers;
 
 
 
-public sealed class DefensiveStancesPower : StS2HoshinoPower, IInvade
+public sealed class DefensiveStancesPower : StS2HoshinoPower, IOnInvaded
 {
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
+    public async Task OnInvaded(PlayerChoiceContext choiceContext, Player player, CardModel card)
     {
         if (base.Owner == player.Creature)
         {

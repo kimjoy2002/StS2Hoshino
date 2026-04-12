@@ -17,6 +17,7 @@ using MegaCrit.Sts2.Core.Extensions;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Random;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
+using StS2Hoshino.StS2HoshinoCode.Hook;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards;
 
@@ -124,7 +125,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
     //     return Task.CompletedTask;
     // }
 
-    public override Task AfterCardChangedPiles(
+    public override async Task AfterCardChangedPiles(
         CardModel card,
         PileType oldPileType,
         AbstractModel? source)
@@ -135,10 +136,10 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
             if (pile != null && pile.Type == PileType.Hand)
             {
                 AmmoClass.AddInvadeCount(base.Owner);
-                return invade.OnInvade(new ThrowingPlayerChoiceContext(), base.Owner, card);
+                await invade.OnInvade(new ThrowingPlayerChoiceContext(), base.Owner, card);
+                await HoshinoHook.OnInvaded(new ThrowingPlayerChoiceContext(), Owner, card);
             }
         }
-        return Task.CompletedTask;
     }
     
     public static async Task OnlyDeckShuffle(PlayerChoiceContext choiceContext, Player player)

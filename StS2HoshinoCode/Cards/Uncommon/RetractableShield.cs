@@ -36,6 +36,7 @@ public class RetractableShield() : StS2HoshinoCard(1, CardType.Skill, CardRarity
         foreach (var c in cardsToChoose)
         {
             c.Owner = Owner;
+            c.UpgradePreviewType = MegaCrit.Sts2.Core.Entities.Cards.CardUpgradePreviewType.Combat;
             if (IsUpgraded)
                 CardCmd.Upgrade(c);
         }

@@ -24,7 +24,7 @@ public class AquaticSupport() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Ra
     [
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<StrengthPower>(2m),
+        new PowerVar<StrengthPower>(1m),
         new CardsVar(2)
     ];
 
@@ -40,9 +40,12 @@ public class AquaticSupport() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Ra
         await base.AfterCardChangedPiles(card, oldPileType, source);
         if (card == this)
         {
-            if (card.Pile.Type == PileType.Draw && oldPileType !=  PileType.Draw)
+            if (card.Pile != null && card.Pile.Type == PileType.Draw && oldPileType != PileType.Draw)
             {
-                base.EnergyCost.SetUntilPlayed(0);
+                if (!StS2Hoshino.StS2HoshinoCode.Patchs.ShufflePatch.IsShuffling)
+                {
+                    base.EnergyCost.SetUntilPlayed(0);
+                }
             }
         }
     }
