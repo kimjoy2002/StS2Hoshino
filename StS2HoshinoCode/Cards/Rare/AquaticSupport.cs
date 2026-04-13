@@ -24,7 +24,7 @@ public class AquaticSupport() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Ra
     [
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<StrengthPower>(1m),
+        new PowerVar<StrengthPower>(2m),
         new CardsVar(2)
     ];
 
