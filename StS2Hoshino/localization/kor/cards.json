@@ -153,5 +153,18 @@
   "STS2HOSHINO-TEST1.title": "테스트1",
   "STS2HOSHINO-TEST1.description": "[gold]손[/gold]에서 카드 1장을 선택해서 [gold]소멸[/gold]합니다.\n[gold]소멸[/gold]한 카드의 {IfUpgraded:show:[gold]강화[/gold]된 |}복사본을 2장 생성해 각각 [gold]뽑을 카드 더미[/gold]의 맨 위와 [gold]버린 카드 더미[/gold]에 넣습니다.",
   "STS2HOSHINO-TEST2.title": "테스트2",
-  "STS2HOSHINO-TEST2.description": "모든 플레이어가 [gold]방어도[/gold]를 {Block:diff()} 얻고 [gold]방패[/gold]를 {ShieldPower:diff()} 얻습니다."
+  "STS2HOSHINO-TEST2.description": "모든 플레이어가 [gold]방어도[/gold]를 {Block:diff()} 얻고 [gold]방패[/gold]를 {ShieldPower:diff()} 얻습니다.",
+  "STS2HOSHINO-TEST3.title": "테스트3",
+  "STS2HOSHINO-TEST3.description": "[gold]탄약[/gold]을 소모합니다.\n모든 적에게 피해를 {Damage:diff()} 줍니다.\n항상 무작위 [gold]인챈트[/gold]를 부여한 채로 등장합니다.",
+  "STS2HOSHINO-TEST4.title": "테스트4",
+  "STS2HOSHINO-TEST4.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.\n[gold]방패[/gold]를 {ShieldPower:diff()} 얻습니다.\n[gold]진입[/gold]: 이 카드의 {Energy:energyIcons()} 비용이 1 증가하고 [gold]재사용[/gold]을 {Repeat:diff()} 얻습니다.",
+  "STS2HOSHINO-TEST5.title": "테스트5",
+  "STS2HOSHINO-TEST5.description": "전투 시작시 이 카드를 뽑을 카드 더미 맨 아래에 놓습니다.\n[gold]진입[/gold]: 그 후 이 카드를 [gold]소멸[/gold]합니다.",
+  "STS2HOSHINO-TEST6.title": "테스트6",
+  "STS2HOSHINO-TEST6.description": "마지막 [gold]탄약[/gold]을 사용하는 공격의 피해량이 {percent} 증가합니다.",
+  "STS2HOSHINO-TEST7.title": "보물찾기",
+  "STS2HOSHINO-TEST7.description": "뽑을 카드 더미에 [gold]보물[/gold]을 {Cards:diff()}장 넣습니다. 그 후 덱을 섞습니다.",
+  "STS2HOSHINO-TEST7.title": "보물",
+  "STS2HOSHINO-TEST7.description": "[gold]진입[/gold]: [gold]방어도[/gold]를 {Block:diff()} 얻습니다. 카드를 {Cards:diff()}장 뽑습니다. 그 후 이 카드를 [gold]소멸[/gold]합니다."
+  
 }
