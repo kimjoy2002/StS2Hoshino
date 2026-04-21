@@ -1,4 +1,6 @@
+using System.Reflection;
 using Godot;
+using Godot.Bridge;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Modding;
 using StS2Hoshino.StS2HoshinoCode.Core;
@@ -18,6 +20,8 @@ public partial class StS2HoshinoMain : Node
     {
         Harmony harmony = new(ModId);
 
+        var assembly = Assembly.GetExecutingAssembly();
+        ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         harmony.PatchAll();
         
     }

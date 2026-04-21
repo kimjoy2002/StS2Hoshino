@@ -27,7 +27,7 @@ public class ButtstockAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity.
         HoverTipFactory.FromPower<WeakPower>()
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(6, ValueProp.Move),
+        new DamageVar(7, ValueProp.Move),
         new PowerVar<WeakPower>(2m)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

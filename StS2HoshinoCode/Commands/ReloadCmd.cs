@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Linq;
 using System.Threading.Tasks;
 using MegaCrit.Sts2.Core.CardSelection;
@@ -46,6 +46,12 @@ public static class ReloadCmd
         }
         AmmoClass.DoingReload(player);
         await AmmoClass.SetAmmo(choiceContext, amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);
+        if (player.Character is StS2Hoshino.StS2HoshinoCode.Character.StS2Hoshino hoshino)
+        {
+            
+            await CreatureCmd.TriggerAnim(player.Creature, "Reload", hoshino.ReloadAnimDelay);
+            
+        }
         
         SfxCmd.Play(ReloadSfxPath);
         await NotifyPowers(player, amount);

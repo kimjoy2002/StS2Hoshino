@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
+using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
@@ -46,8 +47,7 @@ public class WideShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommo
             item.UseBulletForMulti(choiceContext,this, enemies, base.Owner.Creature, 1);
         }
         
-        CardPile pile = PileType.Hand.GetPile(base.Owner);
-        CardModel? cardModel = base.Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards);
+        CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1), context: choiceContext, player: base.Owner, filter: null, source: this)).FirstOrDefault();
         if (cardModel != null)
         {
             await CardPileCmd.Add(cardModel, PileType.Draw, CardPilePosition.Top);

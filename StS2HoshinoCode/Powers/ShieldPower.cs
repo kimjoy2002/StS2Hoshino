@@ -1,4 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -23,8 +23,18 @@ public sealed class ShieldPower : StS2HoshinoPower
             }
         }
     }
-    
-    
+
+    public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
+    {
+        await base.AfterApplied(applier, cardSource);
+        await CreatureCmd.TriggerAnim(base.Owner, "ShieldUp", 0f);
+    }
+
+    public override async Task AfterRemoved(Creature oldOwner)
+    {
+        await base.AfterRemoved(oldOwner);
+        await CreatureCmd.TriggerAnim(oldOwner, "Idle", 0f);
+    }
     public override async Task AfterDamageReceived(
         PlayerChoiceContext choiceContext,
         Creature target,

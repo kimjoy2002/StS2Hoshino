@@ -18,11 +18,13 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 public class Revenge() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [
+        new CardsVar(1),
+        new DynamicVar("Replay", 1m)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
-    {		
-        await CommonActions.CardBlock(this, play);
+    {
+        await CardPileCmd.ShuffleIfNecessary(choiceContext, base.Owner);
         List<CardModel> cardsIn = (from c in PileType.Draw.GetPile(base.Owner).Cards
             orderby c.Rarity, c.Id
             select c).ToList();
@@ -32,22 +34,15 @@ public class Revenge() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, Tar
         {
             if (PileType.Draw.GetPile(base.Owner).Cards[0].GetType() == item.GetType())
             {
-                await CommonActions.CardBlock(this, play);
-                await CommonActions.CardBlock(this, play);
-                success_ = true;
+                item.BaseReplayCount +=  base.DynamicVars["Replay"].IntValue;
                 break;
             }
         }
-
-        if (!success_)
-        {
-            CardCmd.Preview(PileType.Draw.GetPile(base.Owner).Cards[0], 1.2f, CardPreviewStyle.HorizontalLayout);
-        }
-        await OnlyDeckShuffle(choiceContext, base.Owner);
+        await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
     }
     
     protected override void OnUpgrade()
     {
-        DynamicVars["Block"].UpgradeValueBy(2m);
+        DynamicVars["Replay"].UpgradeValueBy(1m);
     }
 }
