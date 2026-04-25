@@ -16,7 +16,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Powers;
 
 
 
-public sealed class BulletIncendiaryPower : StS2HoshinoPower, IOnReloaded, IBulletPowerInterface
+public sealed class BulletArmourPiercingPower : StS2HoshinoPower, IOnReloaded, IBulletPowerInterface
 {
     public override PowerType Type => PowerType.Buff;
 

@@ -76,9 +76,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.1" PrivateAssets="All" />
-        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.7" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.0.9" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <AdditionalFiles Include="StS2Hoshino/localization/**/*.json"/>
+        <PackageReference Update="GodotSharp" Version="4.7.0-dev.5" />
     </ItemGroup>
 
     <ItemGroup>

@@ -59,5 +59,11 @@
   "STS2HOSHINO-CANT_RELOAD_POWER.title": "장전 불가",
   "STS2HOSHINO-GOLD_WHALE_POWER.description": "전투 종료 시, 무작위 [gold]유물[/gold]을 얻고 33% 확률로 무작위 [red]저주[/red] 카드를 받습니다.",
   "STS2HOSHINO-GOLD_WHALE_POWER.smartDescription": "전투 종료 시, 무작위 [gold]유물[/gold]을 [blue]{Amount}[/blue]개 얻고 33% 확률로 무작위 [red]저주[/red] 카드를 [blue]{Amount}[/blue]장 받습니다.",
-  "STS2HOSHINO-GOLD_WHALE_POWER.title": "황금 고래"
+  "STS2HOSHINO-GOLD_WHALE_POWER.title": "황금 고래",
+  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.description": "철갑탄",
+  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.smartDescription": "철갑탄",
+  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.title": "철갑탄",
+  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.description": "",
+  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.smartDescription": "",
+  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.title": "제압 준비"
 }

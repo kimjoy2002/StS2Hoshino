@@ -13,13 +13,13 @@ public sealed class ShieldPower : StS2HoshinoPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterPowerAmountChanged(PowerModel power, decimal _, Creature? __, CardModel? cardSource)
+    public override async Task AfterPowerAmountChanged(PlayerChoiceContext choiceContext, PowerModel power, decimal _, Creature? __, CardModel? cardSource)
     {
         if (power == this)
         {
             if (base.Owner.Block < Amount)
             {
-                await PowerCmd.ModifyAmount(this, -(Amount - base.Owner.Block), null, null);
+                await PowerCmd.ModifyAmount(choiceContext,this, -(Amount - base.Owner.Block), null, null);
             }
         }
     }
@@ -47,7 +47,7 @@ public sealed class ShieldPower : StS2HoshinoPower
         {
             if (target.Block < Amount)
             {
-                await PowerCmd.ModifyAmount(this, -(Amount - target.Block), null, null);
+                await PowerCmd.ModifyAmount(choiceContext,this, -(Amount - target.Block), null, null);
             }
         }
     }
@@ -61,7 +61,7 @@ public sealed class ShieldPower : StS2HoshinoPower
         if (creature == base.Owner) {
             if (creature.Block < Amount)
             {
-                await PowerCmd.ModifyAmount(this, -(Amount - creature.Block), null, null);
+                await PowerCmd.ModifyAmount(new ThrowingPlayerChoiceContext(),this, -(Amount - creature.Block), null, null);
             }
         }
     }

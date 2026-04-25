@@ -38,7 +38,7 @@ public class MilitarySupplies() : StS2HoshinoCard(2, CardType.Skill, CardRarity.
         {
             await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue*(after_bulltet-before_bulltet), base.Owner);
         }
-        await PowerCmd.Apply<CantReloadPower>(base.Owner.Creature, 1, base.Owner.Creature, this);
+        await PowerCmd.Apply<CantReloadPower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
     }
     
     protected override void OnUpgrade()

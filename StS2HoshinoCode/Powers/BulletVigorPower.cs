@@ -35,7 +35,7 @@ public sealed class BulletVigorPower : StS2HoshinoPower, IOnReloaded
     {
         if (base.Owner == player.Creature)
         {
-            await PowerCmd.ModifyAmount(this, -Amount, null, null);
+            await PowerCmd.ModifyAmount(ctx, this, -Amount, null, null);
         }
     }
 

@@ -64,7 +64,11 @@ public class StS2Hoshino : PlaceholderCharacterModel
 
 	public override string CustomCharacterSelectBg  => "res://StS2Hoshino/scenes/char_select_bg_hoshino.tscn";
 	public override string CustomVisualPath   => "res://StS2Hoshino/scenes/char_hoshino.tscn";
-	public override string CustomIconTexturePath => "character_icon_hoshino.png".CharacterUiPath();
+	public override string CustomIconTexturePath => "character_icon_hoshino2.png".CharacterUiPath();
+	
+	
+	public override string CustomIconPath => "res://StS2Hoshino/scenes/icon_hoshino.tscn";
+	public override string CustomIconOutlineTexturePath => "character_icon_hoshino2_outline.png".CharacterUiPath();
 	public override string CustomCharacterSelectIconPath => "char_select_hoshino.png".CharacterUiPath();
 	public override string CustomCharacterSelectLockedIconPath => "char_select_hoshino_locked.png".CharacterUiPath();
 	public override string CustomMapMarkerPath => "map_marker_hoshino.png".CharacterUiPath();

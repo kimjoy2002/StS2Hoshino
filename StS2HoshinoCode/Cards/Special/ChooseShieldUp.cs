@@ -32,7 +32,7 @@ public class ChooseShieldUp() : StS2HoshinoCard(0, CardType.Skill, CardRarity.To
         => OnChoose(choiceContext, play);
     public override async Task OnChoose(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<ShieldPower>(base.Owner.Creature, 
+        await PowerCmd.Apply<ShieldPower>(choiceContext, base.Owner.Creature, 
             ((CalculatedVar)base.DynamicVars["CalculatedShield"]).Calculate(null), base.Owner.Creature, this);
     }
 }

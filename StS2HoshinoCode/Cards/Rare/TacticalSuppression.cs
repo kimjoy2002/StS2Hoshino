@@ -31,7 +31,7 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
         StS2HoshinoCard.BulletCard
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new CalculationBaseVar(5m),
+        new CalculationBaseVar(6m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => StS2Hoshino.StS2HoshinoCode.Utils.AmmoClass.GetInvadeCount(card.Owner)),
         new RepeatVar(4)

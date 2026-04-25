@@ -36,7 +36,7 @@ public class Responsibility() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Ra
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
         await PlayerCmd.GainEnergy(base.DynamicVars.Energy.BaseValue, base.Owner);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-        await PowerCmd.Apply<HopyungPower>(base.Owner.Creature, base.DynamicVars["HopyungPower"].IntValue, base.Owner.Creature, this);
+        await PowerCmd.Apply<HopyungPower>(choiceContext, base.Owner.Creature, base.DynamicVars["HopyungPower"].IntValue, base.Owner.Creature, this);
     }
     
     protected override void OnUpgrade()

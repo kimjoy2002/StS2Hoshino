@@ -22,7 +22,7 @@ public class ShieldRebound() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Com
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await PowerCmd.Apply<ReboundPower>(base.Owner.Creature, 1m, base.Owner.Creature, this);
+        await PowerCmd.Apply<ReboundPower>(choiceContext, base.Owner.Creature, 1m, base.Owner.Creature, this);
     }
     
     protected override void OnUpgrade()

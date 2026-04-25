@@ -41,7 +41,7 @@ public class HitAndRun() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common
         }
 
         // 다음 장전을 무료로 만드는 파워 부여
-        await PowerCmd.Apply<FreeReloadPower>(base.Owner.Creature, 1, base.Owner.Creature, this);
+        await PowerCmd.Apply<FreeReloadPower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
     }
     
     protected override void OnUpgrade()

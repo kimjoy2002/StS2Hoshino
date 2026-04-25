@@ -21,8 +21,8 @@ public sealed class MemorialPower : StS2HoshinoPower
         {
             return;
         }
-        await PowerCmd.Apply<StrengthPower>(base.Owner, Amount, base.Owner, null);
-        await PowerCmd.Apply<DexterityPower>(base.Owner, Amount, base.Owner, null);
+        await PowerCmd.Apply<StrengthPower>(choiceContext, base.Owner, Amount, base.Owner, null);
+        await PowerCmd.Apply<DexterityPower>(choiceContext, base.Owner, Amount, base.Owner, null);
         
     }
 }

@@ -19,7 +19,7 @@ public sealed class FreeReloadPower : StS2HoshinoPower, IOnReloaded
     {
         if (useButton)
         {
-            await PowerCmd.ModifyAmount(this, -1, null, null);
+            await PowerCmd.ModifyAmount(ctx, this, -1, null, null);
         }
     }
     

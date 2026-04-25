@@ -6,28 +6,36 @@ using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
+using MegaCrit.Sts2.Core.Factories;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Cards.Common;
+using StS2Hoshino.StS2HoshinoCode.Cards.Special;
 using StS2Hoshino.StS2HoshinoCode.Hook;
 
 namespace StS2Hoshino.StS2HoshinoCode.Powers;
 
 
 
-public sealed class RoundManualChamberingPower : StS2HoshinoPower
+public sealed class PrepareSuppressionPower : StS2HoshinoPower, IOnBulletChanged
 {
     public override PowerType Type => PowerType.Buff;
 
     public override PowerStackType StackType => PowerStackType.Counter;
     
-    public override async Task AfterPlayerTurnStart(PlayerChoiceContext choiceContext, Player player)
+    
+    public async Task OnBulletChanged(PlayerChoiceContext ctx, Player player, int before_bullet, int after_bullet)
     {
-        if (player != base.Owner.Player)
+        if (base.Owner == player.Creature)
         {
-            return;
+            if (after_bullet == 1 && before_bullet != 1)
+            {
+                Flash();
+                CardModel card = base.CombatState.CreateCard<FinishAttack>(base.Owner.Player);
+                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, player);
+            }
         }
-        await PowerCmd.Apply<FreeReloadPower>(choiceContext, base.Owner, base.Amount, base.Owner, null);
     }
 }

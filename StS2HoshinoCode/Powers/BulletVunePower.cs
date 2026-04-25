@@ -23,7 +23,7 @@ public sealed class BulletVunePower : StS2HoshinoPower, IOnReloaded, IBulletPowe
     {
         if (base.Owner == player.Creature)
         {
-            await PowerCmd.ModifyAmount(this, -Amount, null, null);
+            await PowerCmd.ModifyAmount(ctx, this, -Amount, null, null);
         }
     }
 
@@ -32,13 +32,13 @@ public sealed class BulletVunePower : StS2HoshinoPower, IOnReloaded, IBulletPowe
         if (target != null)
         {
             Flash();
-            await PowerCmd.Apply<VulnerablePower>(target, base.Amount, applier, card);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, target, base.Amount, applier, card);
         }
     }
     
     public async void UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
     {
         Flash();
-        await PowerCmd.Apply<VulnerablePower>(targets, base.Amount, applier, card);
+        await PowerCmd.Apply<VulnerablePower>(choiceContext, targets, base.Amount, applier, card);
     }
 }

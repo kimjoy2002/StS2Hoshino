@@ -53,7 +53,7 @@ public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Un
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
         int amount = base.DynamicVars["WeakPower"].IntValue;
-        await PowerCmd.Apply<WeakPower>(play.Target, amount, base.Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(choiceContext, play.Target, amount, base.Owner.Creature, this);
     }
     
     public Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)

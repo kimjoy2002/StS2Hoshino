@@ -9,32 +9,37 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Cards.Common;
+using StS2Hoshino.StS2HoshinoCode.Cards.Special;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
-namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
+namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class TacticalReload() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class PrepareSuppression() : StS2HoshinoCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.FromCard<FinishAttack>()
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<TacticalReloadPower>(4m)
+        new PowerVar<PrepareSuppressionPower>(12m)
     ];
 
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<TacticalReloadPower>(this);
+        await CommonActions.ApplySelf<PrepareSuppressionPower>(this);
+        
     }
     
     protected override void OnUpgrade()
     {
-        DynamicVars["TacticalReloadPower"].UpgradeValueBy(2m);
+        DynamicVars["PrepareSuppressionPower"].UpgradeValueBy(4m);
     }
 }
