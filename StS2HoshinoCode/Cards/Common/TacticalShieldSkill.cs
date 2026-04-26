@@ -32,7 +32,7 @@ public class TacticalShieldSkill() : StS2HoshinoCard(1, CardType.Skill, CardRari
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<ShieldPower>(this);
+        await CommonActions.ApplySelf<ShieldPower>(choiceContext, this);
     } 
     
     protected override void OnUpgrade()

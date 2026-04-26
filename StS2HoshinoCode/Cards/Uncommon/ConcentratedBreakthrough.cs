@@ -17,6 +17,7 @@ using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Hook;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
@@ -41,10 +42,10 @@ public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, Ca
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(base.CombatState, "base.CombatState");
-        IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
+        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-            .WithHitFx("vfx/vfx_starry_impact")
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+            .WithHitFx("vfx/vfx_starry_impact", sfx: "shotgunfireheavy.mp3".SfxPath())
             .SpawningHitVfxOnEachCreature()
             .Execute(choiceContext);
         

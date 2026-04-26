@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
@@ -32,10 +33,10 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         hasExhausted = false;
-        IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
+        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-            .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+            .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfireheavy.mp3".SfxPath())
             .Execute(choiceContext);
         
         //총알 사용

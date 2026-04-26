@@ -27,7 +27,7 @@ public class StS2Hoshino : PlaceholderCharacterModel
 	public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } =
 		new(ModId, MegaCrit.Sts2.Core.Logging.LogType.Generic);
 
-	public static readonly Color Color = new("ffffff");
+	public static readonly Color Color = new("ffd0dc");
 
 	public override Color NameColor => Color;
 	public override CharacterGender Gender => CharacterGender.Neutral;
@@ -63,6 +63,7 @@ public class StS2Hoshino : PlaceholderCharacterModel
 	public float ReloadAnimDelay => 1.00f;
 
 	public override string CustomCharacterSelectBg  => "res://StS2Hoshino/scenes/char_select_bg_hoshino.tscn";
+	//public override string CustomTrailPath => "res://StS2Hoshino/scenes/card_trail_hoshino.tscn";
 	public override string CustomVisualPath   => "res://StS2Hoshino/scenes/char_hoshino.tscn";
 	public override string CustomIconTexturePath => "character_icon_hoshino2.png".CharacterUiPath();
 	

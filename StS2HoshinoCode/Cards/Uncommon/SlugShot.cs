@@ -34,7 +34,7 @@ public class SlugShot() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner, 1);
-        await CommonActions.ApplySelf<BulletVigorPower>(this);
+        await CommonActions.ApplySelf<BulletVigorPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

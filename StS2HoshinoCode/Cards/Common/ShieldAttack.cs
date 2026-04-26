@@ -43,7 +43,7 @@ public class ShieldAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Com
     {
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<ShieldPower>(this);
+        await CommonActions.ApplySelf<ShieldPower>(choiceContext, this);
         await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target).Execute(choiceContext);
     }
     

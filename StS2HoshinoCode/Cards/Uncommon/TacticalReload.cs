@@ -30,7 +30,7 @@ public class TacticalReload() : StS2HoshinoCard(1, CardType.Power, CardRarity.Un
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<TacticalReloadPower>(this);
+        await CommonActions.ApplySelf<TacticalReloadPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

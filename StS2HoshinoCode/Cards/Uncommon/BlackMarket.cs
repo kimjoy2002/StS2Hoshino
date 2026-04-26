@@ -30,7 +30,7 @@ public class BlackMarket() : StS2HoshinoCard(2, CardType.Power, CardRarity.Uncom
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<BlackMarketPower>(this);
+        await CommonActions.ApplySelf<BlackMarketPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

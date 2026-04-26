@@ -36,8 +36,8 @@ public class Contract() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon
     protected override bool IsPlayable => base.IsPlayable && AmmoClass.GetMaxAmmo(Owner) > 0;
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<StrengthPower>(this);
-        await CommonActions.ApplySelf<ExpertPower>(this);
+        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this);
+        await CommonActions.ApplySelf<ExpertPower>(choiceContext, this);
         await ReloadCmd.RemoveMaxAmmo(choiceContext,base.Owner, DynamicVars["BulletLoss"].IntValue);
     }
     protected override void OnUpgrade()

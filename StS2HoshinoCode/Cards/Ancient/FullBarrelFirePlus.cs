@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
@@ -36,42 +37,67 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         
-        Creature singleTarget = play.Target;
+        Creature currentTarget = play.Target;
         
-        int prev = AmmoClass.GetCurrentAmmo(Owner);
-        await AmmoClass.LoseAmmo(choiceContext,99, ((CardModel)this).Owner);
-        int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
-        int amount = extraAmount + AmmoCost;
-        for (; amount > 0; amount--)
+        int prevAmmo = AmmoClass.GetCurrentAmmo(Owner);
+        await AmmoClass.LoseAmmo(choiceContext, 99, ((CardModel)this).Owner);
+        int consumedAmmo = prevAmmo - AmmoClass.GetCurrentAmmo(Owner);
+        int amount = consumedAmmo + AmmoCost;
+
+        while (true)
         {
-            if (!singleTarget.IsAlive) {
-                List<Creature> validTargets = base.CombatState.HittableEnemies.Where<Creature>((Func<Creature, bool>) (c => c.IsAlive)).ToList<Creature>();
-                if (validTargets.Count > 0)
-                {
-                    singleTarget = RunState.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) validTargets);
-                    if (singleTarget == null)
+            if (amount > 0)
+            {
+                int bulletsUsed = 0;
+                await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
+                    .FromCard(this)
+                    .Targeting(currentTarget)
+                    .WithHitCount(amount)
+                    .WithHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
+                    .BeforeDamage(() =>
                     {
-                        break;
+                        if (bulletsUsed > 0)
+                        {
+                            //총알 사용
+                            IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+                            foreach (IBulletPowerInterface item in enumerable)
+                            {
+                                item.UseBullet(choiceContext, this, currentTarget!, base.Owner.Creature, 1);
+                            }
+                        }
+                        bulletsUsed++;
+                        return Task.CompletedTask;
+                    })
+                    .Execute(choiceContext);
+
+                if (bulletsUsed > 0)
+                {
+                    IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+                    foreach (IBulletPowerInterface item in enumerable)
+                    {
+                        item.UseBullet(choiceContext, this, currentTarget!, base.Owner.Creature, 1);
                     }
                 }
             }
-            
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(singleTarget).Execute(choiceContext);
 
-            //총알 사용
-            IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
-            foreach (IBulletPowerInterface item in enumerable)
+            if (!currentTarget.IsAlive)
             {
-                item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+                List<Creature> validTargets = base.CombatState!.HittableEnemies.Where(c => c.IsAlive).ToList();
+                if (validTargets.Count > 0)
+                {
+                    currentTarget = RunState!.Rng.CombatTargets.NextItem(validTargets);
+                    if (currentTarget != null)
+                    {
+                        await ReloadCmd.Execute(choiceContext, base.Owner);
+                        
+                        int tempAmmo = AmmoClass.GetCurrentAmmo(Owner);
+                        await AmmoClass.LoseAmmo(choiceContext, 99, ((CardModel)this).Owner);
+                        amount = tempAmmo - AmmoClass.GetCurrentAmmo(Owner);
+                        continue;
+                    }
+                }
             }
-            
-            if(!singleTarget.IsAlive) {
-                await ReloadCmd.Execute(choiceContext, base.Owner);
-                
-                int temp = AmmoClass.GetCurrentAmmo(Owner);
-                await AmmoClass.LoseAmmo(choiceContext,99, ((CardModel)this).Owner);
-                amount = prev - AmmoClass.GetCurrentAmmo(Owner);
-            }
+            break;
         }
     }
 

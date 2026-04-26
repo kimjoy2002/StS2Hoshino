@@ -18,7 +18,7 @@ public sealed class GoldWhale() : StS2HoshinoCard(1, CardType.Power, CardRarity.
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<GoldWhalePower>(this);
+        await CommonActions.ApplySelf<GoldWhalePower>(choiceContext, this);
     }
 
     protected override void OnUpgrade()

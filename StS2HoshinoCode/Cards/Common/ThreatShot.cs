@@ -17,6 +17,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
@@ -39,15 +40,15 @@ public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Commo
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
+        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         // foreach (Creature item in enemies)
         // {
         //     NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(NSpikeSplashVfx.Create(item));
         // }
         
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-            .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+            .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
         await PowerCmd.Apply<WeakPower>(choiceContext, enemies,base.DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
         

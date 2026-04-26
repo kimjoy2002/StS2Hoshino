@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,11 +12,13 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
+using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
@@ -33,10 +36,10 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
+        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-            .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+            .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
         
         //총알 사용
@@ -47,45 +50,58 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
         }
     }
     
-    public override bool TryModifyCardRewardOptionsLate(Player player, List<CardCreationResult> cardRewards, CardCreationOptions options)
+    public override void AfterCreated()
     {
-        if (player != base.Owner)
+        base.AfterCreated();
+        if (this.Owner != null && this.Enchantment == null)
         {
-            return false;
-        }
-
-        bool change_ = false;
-
-        //아마 여기서는 호출이 안될거같은데... patch로 해야하나?
-        foreach (CardCreationResult cardReward in cardRewards)
-        {
-            if (cardReward.Card is EnchantShot)
+            var ableEnchantments = new List<EnchantmentModel>();
+            foreach (var enchantment in ModelDb.DebugEnchantments)
             {
-                List<EnchantmentModel> ableEnchantments = new List<EnchantmentModel>();
-                foreach (EnchantmentModel enchantment in ModelDb.DebugEnchantments)
+                if (!(enchantment is DeprecatedEnchantment) && enchantment.CanEnchant(this))
                 {
-                    if (!(enchantment is DeprecatedEnchantment))
-                    {
-                        if (enchantment.CanEnchant(cardReward.Card))
-                        {
-                            ableEnchantments.Add(enchantment);
-                        }
-                    }
+                    ableEnchantments.Add(enchantment);
                 }
-                if (ableEnchantments.Count == 0)
-                {
-                    break;
-                }
-                
-                CardModel card = base.Owner.RunState.CloneCard(cardReward.Card);
-                CardCmd.Enchant<Swift>(card, 1/*수치는 랜덤?*/);
-                cardReward.ModifyCard(card);
-                change_ = true;
+            }
 
+            if (ableEnchantments.Count > 0)
+            {
+                var rng = this.Owner.PlayerRng.Rewards;
+                var selected = rng.NextItem(ableEnchantments);
+                int amount = GetRandomEnchantmentAmount(selected, rng);
+                CardCmd.Enchant(selected.ToMutable(), this, amount);
             }
         }
-        
-        return change_;
+    }
+
+    private int GetRandomEnchantmentAmount(EnchantmentModel enchantment, Rng rng)
+    {
+        if (!enchantment.ShowAmount)
+        {
+            return 1;
+        }
+
+        if (enchantment is Swift)
+        {
+            return rng.NextInt(1, 2);
+        }
+
+        if (enchantment is Sharp)
+        {
+            return rng.NextInt(2, 5); // 2~4
+        }
+
+        if (enchantment is Nimble)
+        {
+            return rng.NextInt(2, 6); // 2~5
+        }
+
+        if (enchantment is Vigorous)
+        {
+            return rng.NextInt(4, 9); // 4~8
+        }
+
+        return rng.NextInt(2, 6); // 기본 2~5
     }
     
     protected override void OnUpgrade()

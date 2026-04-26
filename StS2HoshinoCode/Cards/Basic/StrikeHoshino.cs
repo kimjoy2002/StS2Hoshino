@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
@@ -34,13 +35,17 @@ public class StrikeHoshino() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Ba
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await CommonActions.CardAttack(this, play.Target).Execute(choiceContext);
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
+            .FromCard(this)
+            .Targeting(play.Target!)
+            .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+            .Execute(choiceContext);
         
         //총알 사용
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
         }
     }
 

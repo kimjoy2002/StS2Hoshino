@@ -30,7 +30,7 @@ public class SupressionVeteran() : StS2HoshinoCard(1, CardType.Power, CardRarity
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<SupressionVeteranPower>(this);
+        await CommonActions.ApplySelf<SupressionVeteranPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

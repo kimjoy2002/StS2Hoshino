@@ -37,16 +37,16 @@ public class TacticalBash() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Com
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
     }
     
     public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        IReadOnlyList<Creature> enemies = base.CombatState.HittableEnemies;
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
+        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
     }

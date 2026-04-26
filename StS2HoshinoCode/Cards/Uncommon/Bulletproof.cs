@@ -36,7 +36,7 @@ public class Bulletproof() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Uncom
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<ShieldPower>(this);
+        await CommonActions.ApplySelf<ShieldPower>(choiceContext, this);
     } 
     
     public Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)

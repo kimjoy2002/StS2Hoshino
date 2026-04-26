@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
@@ -26,13 +27,14 @@ public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncomm
         int count_ = base.DynamicVars.Repeat.IntValue;
         for (int i = 0 ; i < count_; i++)
         {
-            List<Creature> validTargets = base.CombatState.HittableEnemies.Where<Creature>((Func<Creature, bool>) (c => c.IsAlive)).ToList<Creature>();
+            List<Creature> validTargets = base.CombatState!.HittableEnemies.Where<Creature>((Func<Creature, bool>) (c => c.IsAlive)).ToList<Creature>();
             if (validTargets.Count > 0)
             {
-                Creature singleTarget = RunState.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) validTargets);
+                Creature singleTarget = RunState!.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) validTargets);
                 if (singleTarget != null)
                 {
                     await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(singleTarget)
+                        .WithHitFx(sfx: "shotgunfirelight.mp3".SfxPath())
                         .Execute(choiceContext);
             
                     //총알 사용

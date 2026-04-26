@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -12,6 +13,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
@@ -38,22 +40,42 @@ public class SnapShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncommo
         if (AmmoClass.GetMaxAmmo(Owner) <= 0)
             return;
         int amount = ResolveEnergyXValue();
-        for (; amount > 0; amount--)
+        if (amount > 0)
         {
-            if (play.Target.IsAlive)
-            {
-                if (Utils.AmmoClass.isEmptyAmmo(base.Owner))
+            int bulletsUsed = 0;
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
+                .FromCard(this)
+                .Targeting(play.Target!)
+                .WithHitCount(amount)
+                .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+                .BeforeDamage(async () =>
                 {
-                    await ReloadCmd.Execute(choiceContext, base.Owner);
-                }
-                Utils.AmmoClass.LoseAmmo(choiceContext,1, base.Owner);
-                await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+                    if (bulletsUsed > 0)
+                    {
+                        //총알 사용
+                        IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+                        foreach (IBulletPowerInterface item in enumerable)
+                        {
+                            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+                        }
+                    }
 
-                //총알 사용
+                    if (Utils.AmmoClass.isEmptyAmmo(base.Owner))
+                    {
+                        await ReloadCmd.Execute(choiceContext, base.Owner);
+                    }
+                    await Utils.AmmoClass.LoseAmmo(choiceContext, 1, base.Owner);
+
+                    bulletsUsed++;
+                })
+                .Execute(choiceContext);
+
+            if (bulletsUsed > 0)
+            {
                 IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                 foreach (IBulletPowerInterface item in enumerable)
                 {
-                    item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+                    item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
                 }
             }
         }

@@ -29,7 +29,7 @@ public class Sprint() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, 
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<SprintPower>(this);
+        await CommonActions.ApplySelf<SprintPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

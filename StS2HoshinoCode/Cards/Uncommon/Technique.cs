@@ -28,7 +28,7 @@ public class Technique() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommo
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<ExpertPower>(this);
+        await CommonActions.ApplySelf<ExpertPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

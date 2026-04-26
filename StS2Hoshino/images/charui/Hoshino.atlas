@@ -18,14 +18,21 @@ head_hurt
   orig: 109, 227
   offset: 0, 0
   index: -1
-head_swimsuit_hurt
+head_shoot
   rotate: false
-  xy: 457, 1
+  xy: 720, 203
+  size: 109, 227
+  orig: 109, 227
+  offset: 0, 0
+  index: -1
+head_swimsuit_uhe
+  rotate: false
+  xy: 305, 1
   size: 150, 300
   orig: 150, 300
   offset: 0, 0
   index: -1
-head_shoot
+head
   rotate: false
   xy: 831, 1
   size: 109, 227
@@ -34,61 +41,54 @@ head_shoot
   index: -1
 head_swimsuit_shoot
   rotate: false
-  xy: 153, 1
-  size: 150, 300
-  orig: 150, 300
-  offset: 0, 0
-  index: -1
-head
-  rotate: false
-  xy: 831, 230
-  size: 109, 227
-  orig: 109, 227
-  offset: 0, 0
-  index: -1
-head_swimsuit_uhe
-  rotate: false
-  xy: 1, 1
+  xy: 457, 1
   size: 150, 300
   orig: 150, 300
   offset: 0, 0
   index: -1
 head_swimsuit
   rotate: false
-  xy: 305, 1
+  xy: 153, 1
+  size: 150, 300
+  orig: 150, 300
+  offset: 0, 0
+  index: -1
+head_swimsuit_hurt
+  rotate: false
+  xy: 1, 1
   size: 150, 300
   orig: 150, 300
   offset: 0, 0
   index: -1
 head_uhe
   rotate: false
-  xy: 720, 203
+  xy: 831, 230
   size: 109, 227
   orig: 109, 227
   offset: 0, 0
   index: -1
 body_swimsuit
   rotate: false
-  xy: 526, 303
+  xy: 449, 303
   size: 75, 83
   orig: 75, 83
   offset: 0, 0
   index: -1
 body
   rotate: false
-  xy: 449, 303
+  xy: 526, 303
   size: 75, 83
   orig: 75, 83
   offset: 0, 0
   index: -1
-left_arm_swimsuit
+left_arm
   rotate: false
   xy: 500, 456
   size: 43, 41
   orig: 43, 41
   offset: 0, 0
   index: -1
-left_arm
+left_arm_swimsuit
   rotate: false
   xy: 259, 370
   size: 43, 41
@@ -109,14 +109,14 @@ right_arm
   orig: 49, 41
   offset: 0, 0
   index: -1
-left_leg_swimsuit
+left_leg
   rotate: false
   xy: 353, 303
   size: 41, 65
   orig: 41, 65
   offset: 0, 0
   index: -1
-left_leg
+left_leg_swimsuit
   rotate: false
   xy: 396, 303
   size: 41, 65
@@ -125,14 +125,14 @@ left_leg
   index: -1
 right_leg_swimsuit
   rotate: false
-  xy: 766, 1
+  xy: 766, 68
   size: 51, 65
   orig: 51, 65
   offset: 0, 0
   index: -1
 right_leg
   rotate: false
-  xy: 766, 68
+  xy: 766, 1
   size: 51, 65
   orig: 51, 65
   offset: 0, 0
@@ -151,14 +151,14 @@ skirt
   orig: 99, 99
   offset: 0, 0
   index: -1
-left_foot
+left_foot_swimsuit
   rotate: false
   xy: 695, 432
   size: 53, 77
   orig: 53, 77
   offset: 0, 0
   index: -1
-left_foot_swimsuit
+left_foot
   rotate: false
   xy: 750, 432
   size: 53, 77
@@ -186,13 +186,6 @@ left_hand_swimsuit
   orig: 73, 57
   offset: 0, 0
   index: -1
-right_foot
-  rotate: false
-  xy: 306, 303
-  size: 45, 65
-  orig: 45, 65
-  offset: 0, 0
-  index: -1
 right_foot_swimsuit
   rotate: false
   xy: 259, 303
@@ -200,16 +193,23 @@ right_foot_swimsuit
   orig: 45, 65
   offset: 0, 0
   index: -1
+right_foot
+  rotate: false
+  xy: 306, 303
+  size: 45, 65
+  orig: 45, 65
+  offset: 0, 0
+  index: -1
 right_hand_swimsuit
   rotate: false
-  xy: 766, 135
+  xy: 88, 456
   size: 59, 55
   orig: 59, 55
   offset: 0, 0
   index: -1
 right_hand
   rotate: false
-  xy: 88, 456
+  xy: 766, 135
   size: 59, 55
   orig: 59, 55
   offset: 0, 0

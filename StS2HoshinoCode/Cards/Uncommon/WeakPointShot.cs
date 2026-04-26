@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.Models.Powers;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
@@ -34,19 +35,21 @@ public class WeakPointShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Un
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target!)
+            .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+            .Execute(choiceContext);
 
         int amount = AmmoClass.GetCurrentAmmo(Owner);
         if (amount > 0)
         {
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target, amount, base.Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target!, amount, base.Owner.Creature, this);
         }
         
         //총알 사용
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
         }
     }
     protected override void OnUpgrade()

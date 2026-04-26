@@ -1,6 +1,7 @@
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
@@ -11,6 +12,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 using StS2Hoshino.StS2HoshinoCode.Character;
 
@@ -35,15 +37,37 @@ public class DoubleShotAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity
         int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
         int amount = extraAmount + AmmoCost;
 
-        for (int i = 0 ; i < amount; i++)
+        if (amount > 0)
         {
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
-            
-            //총알 사용
-            IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
-            foreach (IBulletPowerInterface item in enumerable)
+            int bulletsUsed = 0;
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
+                .FromCard(this)
+                .Targeting(play.Target!)
+                .WithHitCount(amount)
+                .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+                .BeforeDamage(() =>
+                {
+                    if (bulletsUsed > 0)
+                    {
+                        //총알 사용
+                        IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+                        foreach (IBulletPowerInterface item in enumerable)
+                        {
+                            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+                        }
+                    }
+                    bulletsUsed++;
+                    return Task.CompletedTask;
+                })
+                .Execute(choiceContext);
+
+            if (bulletsUsed > 0)
             {
-                item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+                IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
+                foreach (IBulletPowerInterface item in enumerable)
+                {
+                    item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+                }
             }
         }
     }

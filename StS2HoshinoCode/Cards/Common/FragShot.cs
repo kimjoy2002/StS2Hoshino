@@ -36,7 +36,7 @@ public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner);
-        await CommonActions.ApplySelf<BulletVunePower>(this);
+        await CommonActions.ApplySelf<BulletVunePower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

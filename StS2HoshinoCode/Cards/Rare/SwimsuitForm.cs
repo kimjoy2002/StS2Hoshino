@@ -28,7 +28,7 @@ public class SwimsuitForm() : StS2HoshinoCard(3, CardType.Power, CardRarity.Rare
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<SwimsuitFormPower>(this);
+        await CommonActions.ApplySelf<SwimsuitFormPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

@@ -14,6 +14,7 @@ using StS2Hoshino.StS2HoshinoCode.CardModels;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
@@ -41,12 +42,14 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
-        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target!)
+            .WithHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
+            .Execute(choiceContext);
         //총알 사용
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(choiceContext, this, play.Target,base.Owner.Creature, 1);
+            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
         }
     }
     
