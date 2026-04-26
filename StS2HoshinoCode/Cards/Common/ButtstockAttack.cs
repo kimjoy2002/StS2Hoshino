@@ -33,7 +33,7 @@ public class ButtstockAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity.
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target).Execute(choiceContext);
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).WithAttackerAnim("Swing", 0.15f).Targeting(play.Target).Execute(choiceContext);
     }
     
     public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)

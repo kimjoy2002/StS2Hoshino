@@ -103,10 +103,11 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		var casts   = new[] { MakeState("cast",   false, false), MakeState("cast",   false, true), MakeState("cast",   true, false), MakeState("cast",   true, true) };
 		var dies    = new[] { MakeState("die",    false, false), MakeState("die",    false, true), MakeState("die",    true, false), MakeState("die",    true, true) };
 		var reloads = new[] { MakeState("reload", false, false), MakeState("reload", false, true), MakeState("reload", true, false), MakeState("reload", true, true) };
+		var swings  = new[] { MakeState("swing",  false, false), MakeState("swing",  false, true), MakeState("swing",  true, false), MakeState("swing",  true, true) };
 
 		var idles = new[] { idleNone, idleShield, idleSwim, idleSwimShield };
 
-		var allActionStates = new[] { attacks, hurts, casts, reloads };
+		var allActionStates = new[] { attacks, hurts, casts, reloads, swings };
 		foreach (var actionArr in allActionStates)
 		{
 			for (int i = 0; i < actionArr.Length; i++)
@@ -142,6 +143,7 @@ public class StS2Hoshino : PlaceholderCharacterModel
 
 		AddBranches("Idle",   new[] { idleNone, idleShield, idleSwim, idleSwimShield });
 		AddBranches("Attack", attacks);
+		AddBranches("Swing",  swings);
 		AddBranches("Hit",    hurts);
 		AddBranches("Cast",   casts);
 		AddBranches("Dead",   dies);
