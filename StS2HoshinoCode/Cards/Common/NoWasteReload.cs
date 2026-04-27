@@ -30,10 +30,9 @@ public class NoWasteReload() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Com
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Exhaust
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new EnergyVar(2)
+        new EnergyVar(1)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -48,6 +47,6 @@ public class NoWasteReload() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Com
     
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
+        base.DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }

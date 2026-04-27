@@ -141,7 +141,7 @@
   "STS2HOSHINO-WEAK_POINT_SHOT.description": "[gold]탄약[/gold]을 소모합니다.\n피해를 {Damage:diff()} 줍니다.\n남은 [gold]탄약[/gold]만큼\n[gold]취약[/gold]을 부여합니다.",
   "STS2HOSHINO-WIDE_SHOT.title": "와이드샷",
   "STS2HOSHINO-WIDE_SHOT.description": "[gold]탄약[/gold]을 소모합니다.\n모든 적에게 피해를 {Damage:diff()} 줍니다.\n카드를 1장 [gold]뽑을 카드 더미[/gold]\n맨 위에 놓습니다.",
-  "STS2HOSHINO-WIDE_SHOT.SelectionScreenPrompt": "뽑을 카드 더미 맨 위로 올릴 카드를 선택하세요.",  
+  "STS2HOSHINO-WIDE_SHOT.selectionScreenPrompt": "뽑을 카드 더미 맨 위로 올릴 카드를 선택하세요.",  
   "STS2HOSHINO-RESPONSIBILITY.title": "학생회장의 책임감",
   "STS2HOSHINO-RESPONSIBILITY.description": "{Energy:energyIcons()}를 얻습니다.\n카드를 {Cards:diff()}장 뽑습니다.\n[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
   "STS2HOSHINO-FULL_BARREL_FIRE_PLUS.title": "연발 사격",

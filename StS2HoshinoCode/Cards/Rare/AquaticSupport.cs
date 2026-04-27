@@ -44,7 +44,20 @@ public class AquaticSupport() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Ra
             {
                 if (!StS2Hoshino.StS2HoshinoCode.Patchs.ShufflePatch.IsShuffling || oldPileType != PileType.Discard)
                 {
-                    base.EnergyCost.SetUntilPlayed(0);
+                    if (oldPileType == PileType.Play)
+                    {
+                        Action? onPlayed = null;
+                        onPlayed = () =>
+                        {
+                            this.Played -= onPlayed;
+                            this.EnergyCost.SetUntilPlayed(0);
+                        };
+                        this.Played += onPlayed;
+                    }
+                    else
+                    {
+                        base.EnergyCost.SetUntilPlayed(0);
+                    }
                 }
             }
         }
