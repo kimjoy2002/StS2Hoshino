@@ -1,6 +1,29 @@
 {
-  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-0r.char": "I am angry at the architect",
-  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-0r.next": "Continue",
-  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-1r.ancient": "You die",
-  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-attack": "Both"
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-0r.char": "...다신 그 실수를, 반복하지않겠어.",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-0r.next": "총을 겨눈다.",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-1r.ancient": "무슨 이야기를 하고 있는거지?",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.0-attack": "Both",
+  
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.1-0r.char": "거기 비켜.",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.1-0r.next": "총을 겨눈다",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.1-1r.ancient": "질리지도 않는 건가.",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.2-attack": "Both",
+  
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.2-0r.char": "비키지 않으면 쏜다.",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.2-0r.next": "총을 겨눈다",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.2-1r.ancient": "언제나 말을 듣질 않는군.",
+  "THE_ARCHITECT.talk.STS2HOSHINO-ST_S2_HOSHINO.2-attack": "Both",
+  
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.0-0r.char": "으헤~ 굉장해. 커다란 고래야!",
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.0-1r.ancient": "...고래를 처음보나?",
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.0-2r.char": "말도 하네!",
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.0-attack": "None",
+  
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.1-0r.ancient": "...상처를 치료해주지.",
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.1-1r.char": "아저씨도 나이를 먹어버린걸까~",
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.1-attack": "None",
+  
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.2-0r.ancient": "...또 왔군. 무엇을 그렇게 찾고있지?",
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.2-1r.char": "고래를 보러오는건 치유된다니까~",
+  "NEOW.talk.STS2HOSHINO-ST_S2_HOSHINO.2-attack": "None"
 }
