@@ -39,7 +39,7 @@ public static class AmmoClass
 	public static event Action<int>? OnAmmoUsed;
 
 	public static event Action? OnReload;
-	public static event Action<int, int>? OnChanged;
+	public static event Action<Player, int, int>? OnChanged;
 
 	private static PlayerAmmoState GetState(Player? player)
 	{
@@ -66,12 +66,17 @@ public static class AmmoClass
 		{
 			max_ammo = 10;
 		}
-		GetState(player).MaxAmmo = max_ammo;
-		if (GetState(player).CurrentAmmo > max_ammo)
+		PlayerAmmoState state = GetState(player);
+		state.MaxAmmo = max_ammo;
+		if (state.CurrentAmmo > max_ammo)
 		{
-			GetState(player).CurrentAmmo = max_ammo;
+			state.CurrentAmmo = max_ammo;
 		}
 
+		if (player != null)
+		{
+			AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
+		}
 		return GetMaxAmmo(player);
 	}
 	public static int GetMaxAmmo(Player? player)
@@ -167,13 +172,13 @@ public static class AmmoClass
 				AmmoClass.OnReload?.Invoke();
 			}
 
-			AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
+			AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
 		}
 
 		if (amount != prev_ammo)
 		{
 			await HoshinoHook.OnBulletChanged(choiceContext, player, prev_ammo, amount);
-			AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
+			AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
 		}
 
 		CurrentAmmoGainer = null;
@@ -197,7 +202,7 @@ public static class AmmoClass
 			{
 				AmmoClass.OnAmmoUsed?.Invoke(amount);
 				await HoshinoHook.OnBulletChanged(choiceContext, player, prev_ammo, state.CurrentAmmo);
-				AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);;
+				AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
 			}
 			CurrentAmmoGainer = null;
 		}
@@ -208,7 +213,7 @@ public static class AmmoClass
 		PlayerAmmoState state = GetState(player);
 		state.AmmoUsedThisTurn = 0;
 		state.MenualedReloadedThisTurn = 0;
-		AmmoClass.OnChanged?.Invoke(state.CurrentAmmo, state.MaxAmmo);
+		AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
 	}
 
 

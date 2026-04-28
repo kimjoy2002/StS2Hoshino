@@ -45,7 +45,7 @@ public class Revenge() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, Tar
                 {
                     for (int i = 0; i < count; i++)
                     {
-                        await CardCmd.AutoPlay(choiceContext, card, null);
+                        await CardCmd.AutoPlay(choiceContext, (i == 0) ? card : card.CreateDupe(), null);
                     }
                 }
             }

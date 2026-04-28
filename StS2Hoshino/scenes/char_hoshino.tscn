@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://c0m5nqe1f8v3d"]
 
-[ext_resource type="SpineAtlasResource" uid="uid://ck4bb6y05gs2a" path="res://StS2Hoshino/images/charui/Hoshino.atlas" id="1_3s33c"]
-[ext_resource type="SpineSkeletonFileResource" uid="uid://pdh57nkhflua" path="res://StS2Hoshino/images/charui/Hoshino.skel" id="2_k877r"]
+[ext_resource type="SpineAtlasResource" uid="uid://ck4bb6y05gs22" path="res://StS2Hoshino/images/charui/Hoshino.atlas" id="1_3s33c"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://pdh57nkhflu1" path="res://StS2Hoshino/images/charui/Hoshino.skel" id="2_k877r"]
 
 [sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_cm7q7"]
 atlas_res = ExtResource("1_3s33c")

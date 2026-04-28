@@ -1,4 +1,4 @@
-﻿using Godot;
+using Godot;
 using MegaCrit.Sts2.Core.Entities.Players;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
@@ -58,12 +58,12 @@ public partial class AmmoUINode : Control
     }
 
     
-    private void HandleAmmoChanged(int current, int max)
+    private void HandleAmmoChanged(Player player, int current, int max)
     {
-        StS2HoshinoMain.Logger.Info($"handle_ammo_changed {current}/{_max}");
-        if (_player != null && AmmoClass.CurrentAmmoGainer == _player)
+        StS2HoshinoMain.Logger.Info($"handle_ammo_changed {current}/{max}");
+        if (_player != null && player == _player)
         {
-            StS2HoshinoMain.Logger.Info($"handle_ammo_changed clear {current}/{_max}");
+            StS2HoshinoMain.Logger.Info($"handle_ammo_changed clear {current}/{max}");
             SetAmmo(current, max);
         }
     }

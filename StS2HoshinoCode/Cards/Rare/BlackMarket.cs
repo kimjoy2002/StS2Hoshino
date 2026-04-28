@@ -16,7 +16,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class BlackMarket() : StS2HoshinoCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class BlackMarket() : StS2HoshinoCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

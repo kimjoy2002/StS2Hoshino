@@ -51,12 +51,14 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         {
             await CardCmd.Exhaust(choiceContext, cardModel);
             hasExhausted = true;
+            StS2HoshinoMain.Logger.Info($"[SuppressionAttack] hasExhausted {hasExhausted}");
         }
         await Cmd.Wait(0.25f);
     }
 
     protected override PileType GetResultPileType()
     {
+        StS2HoshinoMain.Logger.Info($"[SuppressionAttack] hasExhausted? {hasExhausted}");
         if (hasExhausted)
         {
             PileType resultPileType = base.GetResultPileType();
@@ -64,8 +66,9 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
             {
                 return resultPileType;
             }
+            return PileType.Hand;
         }
-        return PileType.Hand;
+        return base.GetResultPileType();
     }
     
     protected override void OnUpgrade()
