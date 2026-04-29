@@ -32,7 +32,7 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(12, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(11, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

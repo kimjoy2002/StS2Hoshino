@@ -31,10 +31,6 @@ public sealed class HopyungPower : StS2HoshinoPower
             return;
         }
         ICombatState combatState = player.Creature.CombatState;
-        if (combatState.RoundNumber > 1)
-        {
-            return;
-        }
         Flash();
         bool flag;
         using (CardSelectCmd.PushSelector(new VakuuCardSelector()))

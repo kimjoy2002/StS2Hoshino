@@ -26,9 +26,6 @@ public partial class ReloadButtonHud : Control
 		Name = "ReloadButtonHUD";
 		MouseFilter = MouseFilterEnum.Ignore;
 		ProcessMode = Node.ProcessModeEnum.Inherit;
-		TopLevel = true;
-		ZAsRelative = false;
-		ZIndex = 100;
 		SetAnchorsPreset(LayoutPreset.TopLeft);
 
 		_reloadButton = CreateButton("ReloadButton");
@@ -85,7 +82,6 @@ public partial class ReloadButtonHud : Control
 		if (!Visible)
 			return;
 
-		MoveToFront();
 		Vector2 energyPosition = _combatUi.EndTurnButton.GetGlobalRect().Position;
 		Position = energyPosition + new Vector2(-4f, -Size.Y);
 		if (_reloadButton != null)

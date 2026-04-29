@@ -33,6 +33,10 @@ public class RaiseShield() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncom
         }
         return Task.CompletedTask;
     }
+    protected override void OnUpgrade()
+    {
+        DynamicVars["Block"].UpgradeValueBy(4m);
+    }
 }
 
 

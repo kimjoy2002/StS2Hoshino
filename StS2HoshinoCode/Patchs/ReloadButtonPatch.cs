@@ -1,4 +1,4 @@
-﻿using BaseLib;
+using BaseLib;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
@@ -17,7 +17,7 @@ public static class ReloadButtonPatch
     [HarmonyPostfix]
     public static void CombatUiReadyPostfix(NCombatUi __instance)
     {
-        Node hudParent = (Node?)NRun.Instance?.GlobalUi ?? __instance;
+        Node hudParent = __instance.EndTurnButton?.GetParent() ?? __instance;
         ReloadButtonHud? hud = hudParent.GetNodeOrNull<ReloadButtonHud>("ReloadButtonHUD") 
                                ?? __instance.GetNodeOrNull<ReloadButtonHud>("ReloadButtonHUD");
         if (hud == null)
@@ -34,7 +34,7 @@ public static class ReloadButtonPatch
     public static void CombatUiActivatePostfix(NCombatUi __instance, CombatState state)
     {
         StS2HoshinoMain.Logger.Info("[CombatManager] CombatUiActivatePostfix");
-        Node hudParent = (Node?)NRun.Instance?.GlobalUi ?? __instance;
+        Node hudParent = __instance.EndTurnButton?.GetParent() ?? __instance;
         ReloadButtonHud? hud = hudParent.GetNodeOrNull<ReloadButtonHud>("ReloadButtonHUD") 
                                ?? __instance.GetNodeOrNull<ReloadButtonHud>("ReloadButtonHUD");
         if (hud == null)
