@@ -25,7 +25,7 @@ public class DefensiveStances() : StS2HoshinoCard(2, CardType.Power, CardRarity.
         HoverTipFactory.FromKeyword(HoshinoKeywords.Shield)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<DefensiveStancesPower>(2m)
+        new PowerVar<DefensiveStancesPower>(3m)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

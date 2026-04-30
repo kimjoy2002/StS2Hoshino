@@ -75,8 +75,9 @@ public class StS2Hoshino : PlaceholderCharacterModel
 	public override string CustomMapMarkerPath => "map_marker_hoshino.png".CharacterUiPath();
 
 	public override string CustomRestSiteAnimPath => "res://StS2Hoshino/scenes/hoshino_rest_site.tscn";
+	public override string CustomMerchantAnimPath => "res://StS2Hoshino/scenes/hoshino_merchant.tscn";
 
-	
+
 	public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
 	{
 		Logger.Info("[Hoshino] SetupCustomAnimationStates called");
@@ -101,7 +102,7 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		var attacks = new[] { MakeState("attack", false, false), MakeState("attack", false, true), MakeState("attack", true, false), MakeState("attack", true, true) };
 		var hurts   = new[] { MakeState("hurt",   false, false), MakeState("hurt",   false, true), MakeState("hurt",   true, false), MakeState("hurt",   true, true) };
 		var casts   = new[] { MakeState("cast",   false, false), MakeState("cast",   false, true), MakeState("cast",   true, false), MakeState("cast",   true, true) };
-		var dies    = new[] { MakeState("die",    false, false), MakeState("die",    false, true), MakeState("die",    true, false), MakeState("die",    true, true) };
+		var dies    = new[] { MakeState("dead",    false, false), MakeState("dead",    false, true), MakeState("dead",    true, false), MakeState("dead",    true, true) };
 		var reloads = new[] { MakeState("reload", false, false), MakeState("reload", false, true), MakeState("reload", true, false), MakeState("reload", true, true) };
 		var swings  = new[] { MakeState("swing",  false, false), MakeState("swing",  false, true), MakeState("swing",  true, false), MakeState("swing",  true, true) };
 

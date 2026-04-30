@@ -3,7 +3,7 @@
   "name": "StS2Hoshino",
   "author": "joy1999",
   "description": "Slay the Spire 2 character mod created from a template for use with BaseLib",
-  "version": "v0.0.0",
+  "version": "v0.0.1",
   "has_pck": true,
   "has_dll": true,
   "dependencies": ["BaseLib"],
