@@ -30,7 +30,7 @@ public class SnapShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncommo
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4, ValueProp.Move)];
 
     protected override bool IsPlayable => base.IsPlayable && AmmoClass.GetMaxAmmo(Owner) > 0;
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -39,7 +39,7 @@ public class SnapShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncommo
 
         if (AmmoClass.GetMaxAmmo(Owner) <= 0)
             return;
-        int amount = ResolveEnergyXValue();
+        int amount = 2*ResolveEnergyXValue();
         if (amount > 0)
         {
             int bulletsUsed = 0;
@@ -83,6 +83,6 @@ public class SnapShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncommo
     
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(3m);
+        base.DynamicVars.Damage.UpgradeValueBy(1m);
     }
 }

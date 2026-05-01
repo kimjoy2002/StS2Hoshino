@@ -9,37 +9,36 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
-using StS2Hoshino.StS2HoshinoCode.Cards.Common;
-using StS2Hoshino.StS2HoshinoCode.Cards.Special;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
-using StS2Hoshino.StS2HoshinoCode.Utils;
 
-namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
+namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class PrepareSuppression() : StS2HoshinoCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class ArmourPiercingBullet() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [];
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
-        HoverTipFactory.FromCard<FinishAttack>()
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
     ];
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletBoxCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<PrepareSuppressionPower>(14m)
+        new PowerVar<BulletArmourPiercingPower>(6m)
     ];
-
-
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<PrepareSuppressionPower>(this);
-        
+        await ReloadCmd.Execute(choiceContext, base.Owner);
+        await CommonActions.ApplySelf<BulletArmourPiercingPower>(this);
     }
     
     protected override void OnUpgrade()
     {
-        DynamicVars["PrepareSuppressionPower"].UpgradeValueBy(4m);
+        DynamicVars["BulletArmourPiercingPower"].UpgradeValueBy(2m);
     }
 }

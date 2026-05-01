@@ -24,23 +24,17 @@ public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Com
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
     ];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(7, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        CardModel? selection = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1), context: choiceContext, player: base.Owner, filter: delegate(CardModel c)
+        IEnumerable<IInvade> enumerable = PileType.Hand.GetPile(base.Owner).Cards.OfType<IInvade>();
+        foreach (IInvade item in enumerable)
         {
-            return c is IInvade;
-        }, source: this)).FirstOrDefault();
-        if (selection != null)
-        {
-            if (selection is IInvade invade)
+            if (item is CardModel cardModel)
             {
-                if (selection is CardModel cardModel)
-                {
-                    await invade.OnInvade(choiceContext, base.Owner, cardModel);
-                }
+                await item.OnInvade(choiceContext, base.Owner, cardModel);
             }
         }
     }

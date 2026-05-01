@@ -28,10 +28,7 @@ public class Jackpot() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, Ta
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
             .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
             .Execute(choiceContext);
-        if (IsUpgraded)
-        {
-            await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-        }
+        await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
     }
 
     public Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)
@@ -42,5 +39,9 @@ public class Jackpot() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, Ta
         }
         base.EnergyCost.UpgradeBy(-base.DynamicVars["LossCost"].IntValue);
         return Task.CompletedTask;
+    }
+    protected override void OnUpgrade()
+    {
+        DynamicVars.Damage.UpgradeValueBy(11m);
     }
 }

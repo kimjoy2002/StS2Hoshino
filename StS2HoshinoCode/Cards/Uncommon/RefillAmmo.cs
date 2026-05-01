@@ -32,6 +32,7 @@ public class RefillAmmo() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncomm
         {
             if (item.Tags.Contains(StS2HoshinoCard.BulletBoxCard))
             {
+                item.SetToFreeThisCombat();
                 await CardPileCmd.Add(item, PileType.Draw);
                 amount++;
             }

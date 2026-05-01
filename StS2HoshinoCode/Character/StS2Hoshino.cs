@@ -30,7 +30,7 @@ public class StS2Hoshino : PlaceholderCharacterModel
 	public static readonly Color Color = new("ffd0dc");
 
 	public override Color NameColor => Color;
-	public override CharacterGender Gender => CharacterGender.Neutral;
+	public override CharacterGender Gender => CharacterGender.Feminine;
 	public override int StartingHp => 80;
 
 	public override IEnumerable<CardModel> StartingDeck =>

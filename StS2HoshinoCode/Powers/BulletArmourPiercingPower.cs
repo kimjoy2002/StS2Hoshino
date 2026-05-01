@@ -25,38 +25,24 @@ public sealed class BulletArmourPiercingPower : StS2HoshinoPower, IOnReloaded, I
 
     public async Task OnReload(PlayerChoiceContext ctx, Player player, bool useButton)
     {
-        if (base.Owner == player.Creature)
+        if (base.Owner == player.Creature && useButton)
         {
-            await PowerCmd.ModifyAmount(ctx, this, -Amount, null, null);
+            await PowerCmd.ModifyAmount(ctx, this, -2, null, null);
         }
     }
     
-    
-    private async void _internal_useBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? applier, int amount) {        
-        for(;amount > 0; amount--) {
-            Flash();
-
-            var ownerCombatState = base.Owner.CombatState;
-            if (ownerCombatState != null && ownerCombatState.CurrentSide != base.Owner.Side)
-            {
-                return;
-            }
-            foreach (Creature hittableEnemy in base.CombatState.HittableEnemies)
-            {
-                NFireBurstVfx? child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
-                NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
-            }
-            await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount, ValueProp.Unpowered, base.Owner, null);
-        }
-    }
-
     public async void UseBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? target, Creature? applier, int amount)
     {
-        _internal_useBullet(choiceContext, card, applier, amount);
+        if (target != null)
+        {
+            Flash();
+            await CreatureCmd.Damage(choiceContext, target, new DamageVar(base.Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move), applier);
+        }
     }
     
     public async void UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
     {
-        _internal_useBullet(choiceContext, card, applier, amount);
+        Flash();
+        await CreatureCmd.Damage(choiceContext, targets, new DamageVar(base.Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move), applier);
     }
 }

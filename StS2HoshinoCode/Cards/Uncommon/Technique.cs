@@ -33,6 +33,6 @@ public class Technique() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommo
     
     protected override void OnUpgrade()
     {
-        DynamicVars["ExpertPower"].UpgradeValueBy(1m);
+        DynamicVars["ExpertPower"].UpgradeValueBy(2m);
     }
 }

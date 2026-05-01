@@ -24,10 +24,11 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
     public override int AmmoCost => 1;
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.FromKeyword(CardKeyword.Exhaust)
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(6, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7, ValueProp.Move)];
 
     private bool hasExhausted = false;
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -51,15 +52,14 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         {
             await CardCmd.Exhaust(choiceContext, cardModel);
             hasExhausted = true;
-            StS2HoshinoMain.Logger.Info($"[SuppressionAttack] hasExhausted {hasExhausted}");
         }
         await Cmd.Wait(0.25f);
     }
 
     protected override PileType GetResultPileType()
     {
-        StS2HoshinoMain.Logger.Info($"[SuppressionAttack] hasExhausted? {hasExhausted}");
-        if (hasExhausted)
+        CardPile pile = PileType.Hand.GetPile(base.Owner);
+        if (pile.Cards.Count>0)
         {
             PileType resultPileType = base.GetResultPileType();
             if (resultPileType != PileType.Discard)

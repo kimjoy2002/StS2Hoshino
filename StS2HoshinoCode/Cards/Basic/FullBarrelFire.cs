@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using BaseLib.Abstracts;
 using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -19,7 +20,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Basic;
 
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy)
+public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Basic, TargetType.AnyEnemy), ITranscendenceCard
 {
     public override int AmmoCost { get; set; } = 1;
 
@@ -28,7 +29,7 @@ public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.B
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(4, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(5, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -77,5 +78,10 @@ public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.B
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(1m);
+    }
+    
+    public CardModel GetTranscendenceTransformedCard()
+    {
+        return ModelDb.Card<FullBarrelFirePlus>();
     }
 }

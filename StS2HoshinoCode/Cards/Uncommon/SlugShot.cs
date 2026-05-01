@@ -29,7 +29,7 @@ public class SlugShot() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletBoxCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<BulletVigorPower>(11m)
+        new PowerVar<BulletVigorPower>(12m)
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
