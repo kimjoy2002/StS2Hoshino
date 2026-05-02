@@ -90,6 +90,13 @@ public partial class AmmoUINode : Control
     }
     private float GetAmmoDrawY(float bulletHeight)
     {
+        var creature = GetParentOrNull<MegaCrit.Sts2.Core.Nodes.Combat.NCreature>();
+        if (creature != null && creature.Visuals != null && creature.Visuals.OrbPosition != null)
+        {
+            float scaledY = creature.Visuals.OrbPosition.Position.Y * creature.Visuals.Scale.Y;
+            return scaledY - bulletHeight - 20.0f;
+        }
+        
         return Size.Y - bulletHeight - 350.0f;
     }
 

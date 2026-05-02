@@ -44,6 +44,7 @@ public static class AmmoUIPatch
             ((Node)ammoUINode).UniqueNameInOwner = true;
             GodotTreeExtensions.AddChildSafely((Node)(object)__instance, (Node)(object)ammoUINode);
             ((Node)__instance).MoveChild((Node)(object)ammoUINode, 0);
+
         }
     }
 }

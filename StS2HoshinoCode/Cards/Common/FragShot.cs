@@ -31,16 +31,20 @@ public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, 
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletBoxCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<BulletVunePower>(1m)
+        new PowerVar<BulletVunePower>(1m),
+        new CardsVar(1)
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner);
+        if (IsUpgraded)
+        {
+            await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
+        }
         await CommonActions.ApplySelf<BulletVunePower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Retain);
     }
 }

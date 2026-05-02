@@ -36,7 +36,8 @@ public class Mystery() : StS2HoshinoCard(3, CardType.Skill, CardRarity.Rare, Tar
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<ShieldPower>(this);
+        await CommonActions.ApplySelf<ShieldPower>(choiceContext, this);
+        await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
     } 
     
     protected override void OnUpgrade()

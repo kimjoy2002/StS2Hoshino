@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
+using BaseLib.Patches.UI;
 using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
@@ -68,6 +69,12 @@ public class StS2Hoshino : PlaceholderCharacterModel
 	public override string CustomIconTexturePath => "character_icon_hoshino2.png".CharacterUiPath();
 	
 	
+	public override RelicIconData CustomYummyCookie => new(
+		"yummy_cookie_hoshino.png".BigRelicImagePath(),
+		"yummy_cookie_hoshino.png".RelicImagePath(),
+		"yummy_cookie_hoshino_outline.tres".RelicImagePath()
+	);
+	
 	public override string CustomIconPath => "res://StS2Hoshino/scenes/icon_hoshino.tscn";
 	public override string CustomIconOutlineTexturePath => "character_icon_hoshino2_outline.png".CharacterUiPath();
 	public override string CustomCharacterSelectIconPath => "char_select_hoshino.png".CharacterUiPath();
@@ -102,7 +109,7 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		var attacks = new[] { MakeState("attack", false, false), MakeState("attack", false, true), MakeState("attack", true, false), MakeState("attack", true, true) };
 		var hurts   = new[] { MakeState("hurt",   false, false), MakeState("hurt",   false, true), MakeState("hurt",   true, false), MakeState("hurt",   true, true) };
 		var casts   = new[] { MakeState("cast",   false, false), MakeState("cast",   false, true), MakeState("cast",   true, false), MakeState("cast",   true, true) };
-		var dies    = new[] { MakeState("dead",    false, false), MakeState("dead",    false, true), MakeState("dead",    true, false), MakeState("dead",    true, true) };
+		var dies    = new[] { MakeState("die",    false, false), MakeState("die",    false, true), MakeState("die",    true, false), MakeState("die",    true, true) };
 		var reloads = new[] { MakeState("reload", false, false), MakeState("reload", false, true), MakeState("reload", true, false), MakeState("reload", true, true) };
 		var swings  = new[] { MakeState("swing",  false, false), MakeState("swing",  false, true), MakeState("swing",  true, false), MakeState("swing",  true, true) };
 

@@ -16,7 +16,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class ArmourPiercingBullet() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Rare, TargetType.Self)
+public class ArmourPiercingBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -29,7 +29,7 @@ public class ArmourPiercingBullet() : StS2HoshinoCard(2, CardType.Skill, CardRar
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletBoxCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<BulletArmourPiercingPower>(6m)
+        new PowerVar<BulletArmourPiercingPower>(4m)
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

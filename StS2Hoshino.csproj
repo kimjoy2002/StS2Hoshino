@@ -105,6 +105,7 @@
 
     <ItemGroup>
         <Folder Include="StS2HoshinoCode\shaders\" />
+        <Folder Include="StS2Hoshino\atlases\" />
         <Folder Include="StS2Hoshino\etc\" />
         <Folder Include="StS2Hoshino\images\cards\" />
         <Folder Include="StS2Hoshino\images\powers\big\"/>
