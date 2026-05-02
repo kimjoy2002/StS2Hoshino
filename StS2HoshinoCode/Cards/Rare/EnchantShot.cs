@@ -12,6 +12,7 @@ using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
+using MegaCrit.Sts2.Core.Models.Enchantments.Mocks;
 using MegaCrit.Sts2.Core.Random;
 using MegaCrit.Sts2.Core.Runs;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -58,7 +59,7 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
             var ableEnchantments = new List<EnchantmentModel>();
             foreach (var enchantment in ModelDb.DebugEnchantments)
             {
-                if (!(enchantment is DeprecatedEnchantment) && enchantment.CanEnchant(this))
+                if (!(enchantment is DeprecatedEnchantment) && !(enchantment is MockFreeEnchantment) && enchantment.CanEnchant(this))
                 {
                     ableEnchantments.Add(enchantment);
                 }

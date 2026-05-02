@@ -59,7 +59,7 @@
   "STS2HOSHINO-LAST_RESORT.title": "비장의 무기",
   "STS2HOSHINO-LAST_RESORT.description": "피해를 {Damage:diff()} 줍니다.\n[gold]소진[/gold]: 카드를 {Cards:diff()}장 뽑습니다.\n[gold]장전[/gold]합니다.",
   "STS2HOSHINO-LOCK_AND_LOAD.title": "준비만전",
-  "STS2HOSHINO-LOCK_AND_LOAD.description": "빈 [gold]탄약[/gold] 슬롯을\n{AddBullet:diff()}개 얻습니다.",
+  "STS2HOSHINO-LOCK_AND_LOAD.description": "빈 [gold]탄약[/gold] 슬롯을\n{AddBullet:diff()}개 얻습니다. (최대 10개)",
   "STS2HOSHINO-LUBRICATING.title": "총기 손질",
   "STS2HOSHINO-LUBRICATING.description": "[gold]손[/gold]에 있는 카드를 1장\n선택해 무작위 {IfUpgraded:show:[gold]강화[/gold]된 |}탄약 상자 카드로 [gold]변화[/gold]시킵니다.",
   "STS2HOSHINO-MEMORIAL.title": "추억",

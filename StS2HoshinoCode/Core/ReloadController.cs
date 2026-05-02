@@ -134,6 +134,9 @@ public sealed partial class ReloadController
         if (me?.PlayerCombatState == null)
             return false;
 
+        if (me.Creature?.Powers.OfType<CantReloadPower>().Any() == true)
+            return false;
+
         if (AmmoClass.GetCurrentAmmo(me) >= AmmoClass.GetMaxAmmo(me))
             return false;
 

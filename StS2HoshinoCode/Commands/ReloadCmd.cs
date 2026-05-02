@@ -44,7 +44,7 @@ public static class ReloadCmd
                 player.PlayerCombatState!.LoseEnergy(reloadCost);
             }
         }
-        AmmoClass.DoingReload(player);
+        AmmoClass.DoingReload(player, isButton);
         await AmmoClass.SetAmmo(choiceContext, amount ==-1?AmmoClass.GetMaxAmmo(player):amount, true, player);
         if (player.Character is StS2Hoshino.StS2HoshinoCode.Character.StS2Hoshino hoshino)
         {

@@ -84,9 +84,12 @@ public static class AmmoClass
 		return GetState(player).MaxAmmo;
 	}
 	
-	public static void DoingReload(Player? player)
+	public static void DoingReload(Player? player, bool isButton)
 	{
-		GetState(player).MenualedReloadedThisTurn++;
+		if (isButton)
+		{
+			GetState(player).MenualedReloadedThisTurn++;
+		}
 		GetState(player).ReloadedThisCombat++;
 	}
 

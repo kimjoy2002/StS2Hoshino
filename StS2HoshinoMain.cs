@@ -7,6 +7,8 @@ using MegaCrit.Sts2.Core.Commands;
 using StS2Hoshino.StS2HoshinoCode.Core;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using MegaCrit.Sts2.Core.Combat;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino;
 
@@ -29,6 +31,19 @@ public partial class StS2HoshinoMain : Node
         var assembly = Assembly.GetExecutingAssembly();
         ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         harmony.PatchAll();
+        
+        CombatManager.Instance.TurnStarted += OnTurnStarted;
+    }
+
+    private static void OnTurnStarted(CombatState state)
+    {
+        if (state.CurrentSide == CombatSide.Player)
+        {
+            foreach (var player in state.Players)
+            {
+                AmmoClass.ResetForTurnStart(player);
+            }
+        }
     }
 
     public static void PlayCustomSfx(string path, float volume)

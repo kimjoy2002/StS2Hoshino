@@ -17,6 +17,19 @@ public partial class ClickableButton : Control
 	private bool _pressed;
 	private bool _enabled = true;
 	private float _glowTime;
+	private bool _isShiny;
+
+	public bool IsShiny
+	{
+		get => _isShiny;
+		set
+		{
+			if (_isShiny != value)
+			{
+				_isShiny = value;
+			}
+		}
+	}
 
 	private Texture2D _glowTexture;
 	private Texture2D _normalTexture;
@@ -93,7 +106,7 @@ public partial class ClickableButton : Control
 
 	public override void _Process(double delta)
 	{
-		if (_hovered && _enabled)
+		if ((_hovered && _enabled) || _isShiny)
 		{
 			_glowTime += (float)delta * 4.0f;
 			QueueRedraw();
@@ -163,6 +176,24 @@ public partial class ClickableButton : Control
 					: Colors.White;
 
 			DrawTextureRect(_normalTexture, imageRect, false, modulate);
+
+			if (_isShiny && _enabled && _glowTexture != null)
+			{
+				Color baseGlowColor = new Color(0.2f, 0.9f, 1.0f, 0.8f);
+				DrawTextureRect(_glowTexture, imageRect, false, baseGlowColor);
+
+				float progress = (_glowTime * 0.25f) % 1.0f;
+
+				float vfxScale = 1.0f + (progress * 0.4f);
+				float vfxAlpha = 0.5f * (1.0f - progress);
+				Color vfxColor = new Color(0.2f, 0.9f, 1.0f, vfxAlpha);
+
+				Vector2 center = imageRect.GetCenter();
+				Vector2 size = imageRect.Size * vfxScale;
+				Rect2 vfxRect = new Rect2(center - size / 2f, size);
+
+				DrawTextureRect(_glowTexture, vfxRect, false, vfxColor);
+			}
 		}
 		DrawButtonLabel(rect);
 	}

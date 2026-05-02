@@ -27,6 +27,14 @@ public static class ReloadButtonPatch
         }
 
         hud.Bind(__instance);
+
+        HorusGlowHud? horusHud = __instance.GetNodeOrNull<HorusGlowHud>("HorusGlowHUD");
+        if (horusHud == null)
+        {
+            horusHud = new HorusGlowHud { Name = "HorusGlowHUD" };
+            __instance.AddChildSafely(horusHud);
+        }
+        horusHud.Bind(__instance);
     }
 
     [HarmonyPatch(typeof(NCombatUi), nameof(NCombatUi.Activate))]
@@ -45,7 +53,14 @@ public static class ReloadButtonPatch
         StS2HoshinoMain.Logger.Info("[CombatManager] Activate");
 
         hud.Activate(state);
-       // StS2HoshinoMain.Controller.OnCombatUiActivated(__instance, state);
+
+        HorusGlowHud? horusHud = __instance.GetNodeOrNull<HorusGlowHud>("HorusGlowHUD");
+        if (horusHud == null)
+        {
+            horusHud = new HorusGlowHud { Name = "HorusGlowHUD" };
+            __instance.AddChildSafely(horusHud);
+        }
+        horusHud.Activate(state);
     }
     //
     // [HarmonyPatch(typeof(NCombatUi), nameof(NCombatUi.Deactivate))]

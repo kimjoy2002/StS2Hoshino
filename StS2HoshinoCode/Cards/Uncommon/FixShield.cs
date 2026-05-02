@@ -24,7 +24,7 @@ public class FixShield() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommo
         HoverTipFactory.FromKeyword(HoshinoKeywords.Shield)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<FixShieldPower>(7m)
+        new PowerVar<FixShieldPower>(6m)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
