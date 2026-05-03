@@ -7,8 +7,8 @@
 
 해당 모드는 슬레이 더 스파이어1의 호시노 모드 포팅 + 여러 카드 개선이 이루어져있습니다.
 
-## 호시노 시스템
-호시노: 탄약사용, 장전, 방패, 카운트다운, 덱되돌리기, 덱셔플이 기반이 됩니다.
+## 호시노 메커니즘
+호시노: 탄약사용, 장전, 방패, 진입, 뽑을 더미 되돌리기, 셔플이 기반이 됩니다.
 
 - 탄약: 타격을 포함한 대부분의 공격은 탄약을 1 소모합니다. 시작할때 4탄약으로 시작합니다.
 - 장전: 소모된 탄약은 1에너지를 소모해 프리액션으로 항상 장전을 할 수 있습니다. 이런 장전효과에 맞춰 방어도가 오르거나 시너지카드가 있습니다.
@@ -40,8 +40,8 @@ This is Blue Archive Takanashi Hoshino Character Mod for Slay the Spire 2
 
 This mod is a port of the Slay the Spire 1 Hoshino mod with various card improvements.
 
-## Hoshino System
-Hoshino is based on ammo usage, reload, shield, countdown, deck return, and deck shuffle.
+## Hoshino Mechanism
+Hoshino is based on ammo usage, reload, shield, Out of Ammo, draw pile return, and shuffle.
 
 - Ammo: Most attacks including basic attacks consume 1 ammo. Starts with 4 ammo.
 - Reload: Spent ammo can always be reloaded as a free action by spending 1 energy. There are cards that gain block or have synergy effects when reloading.
