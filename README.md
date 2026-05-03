@@ -1,5 +1,8 @@
 # Slay The Spire2 타카나시 호시노 모드
 
+<img width="934" height="527" alt="image" src="https://github.com/user-attachments/assets/57682785-9c1e-49fe-b138-8ddb0fe8b0bc" />
+
+
 슬레이 더 스파이어2의 블루아카이브 타카나시 호시노 캐릭터 모드입니다.
 
 해당 모드는 슬레이 더 스파이어1의 호시노 모드 포팅 + 여러 카드 개선이 이루어져있습니다.
