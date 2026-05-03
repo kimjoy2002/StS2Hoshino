@@ -30,8 +30,8 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
     protected override bool ShouldGlowGoldInternal => AmmoClass.GetCurrentAmmo(base.Owner) == 1;
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(8m, ValueProp.Move),
-        new CalculationBaseVar(8m),
+        new DamageVar(9m, ValueProp.Move),
+        new CalculationBaseVar(9m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
             (AmmoClass.GetCurrentAmmo(card.Owner) == 1 || IsLastShot)

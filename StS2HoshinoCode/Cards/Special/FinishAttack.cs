@@ -31,7 +31,7 @@ public class FinishAttack() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Tok
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(9, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(14, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

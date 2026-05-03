@@ -18,7 +18,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class Lubricating() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
+public class PlateReplacement() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -32,7 +32,7 @@ public class Lubricating() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncom
 
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new PowerVar<ShieldPower>(8m)
+        new PowerVar<ShieldPower>(10m)
     ];
 
 

@@ -60,10 +60,13 @@
   "STS2HOSHINO-GOLD_WHALE_POWER.description": "전투 종료 시, 무작위 [gold]유물[/gold]을 얻고 33% 확률로 무작위 [red]저주[/red] 카드를 받습니다.",
   "STS2HOSHINO-GOLD_WHALE_POWER.smartDescription": "전투 종료 시, 무작위 [gold]유물[/gold]을 [blue]{Amount}[/blue]개 얻고 33% 확률로 무작위 [red]저주[/red] 카드를 [blue]{Amount}[/blue]장 받습니다.",
   "STS2HOSHINO-GOLD_WHALE_POWER.title": "황금 고래",
-  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.description": "철갑탄",
-  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.smartDescription": "철갑탄",
-  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.title": "철갑탄",
-  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.description": "",
-  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.smartDescription": "",
-  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.title": "제압 준비"
+  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.description": "[gold]탄약[/gold]을 소모한 공격을 받은 적이 체력을 [blue]1[/blue] 잃습니다. 버튼으로 [gold]장전[/gold]할때마다 적용된 효과가 [blue]2[/blue] 감소합니다.",
+  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.smartDescription": "[gold]탄약[/gold]을 소모한 공격을 받은 적이 체력을 [blue]{Amount}[/blue] 잃습니다. 버튼으로 [gold]장전[/gold]할때마다 적용된 효과가 [blue]2[/blue] 감소합니다.",
+  "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.title": "방어관통탄",
+  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.description": "[gold]탄약[/gold]이 1개만 남을 때마다 피해를 [blue]1[/blue] 주는 [gold]마무리 사격[/gold]을 얻습니다.",
+  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.smartDescription": "[gold]탄약[/gold]이 1개만 남을 때마다 피해를 [blue]{Amount}[/blue] 주는 [gold]마무리 사격[/gold]을 얻습니다.",
+  "STS2HOSHINO-PREPARE_SUPPRESSION_POWER.title": "제압 준비",
+  "STS2HOSHINO-LUBRICATING_POWER.description": "전투 종료 시, [gold]덱[/gold]의 공격 카드 1장에 [purple]예리[/purple]를 [blue]1[/blue] [gold]인챈트[/gold]하거나, 이미 [gold]인챈트[/gold]된 [purple]예리[/purple]를 [blue]1[/blue] 증가시킵니다.",
+  "STS2HOSHINO-LUBRICATING_POWER.smartDescription": "전투 종료 시, [gold]덱[/gold]의 공격 카드 1장에 [purple]예리[/purple]를 [blue]{Amount}[/blue] [gold]인챈트[/gold]하거나, 이미 [gold]인챈트[/gold]된 [purple]예리[/purple]를 [blue]1[/blue] 증가시킵니다.",
+  "STS2HOSHINO-LUBRICATING_POWER.title": "총기 손질"
 }

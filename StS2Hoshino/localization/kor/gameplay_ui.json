@@ -1,3 +1,5 @@
-﻿{
-  "RELOAD_BUTTON": "장전"
+{
+  "RELOAD_BUTTON": "장전",
+  "COMBAT_REWARD_CARD_REMOVAL": "예리를 부여할 카드를 고르세요.",
+  "COMBAT_REWARD_CARD_ENCHANT": "카드 인챈트 (예리 {Amount})"
 }
