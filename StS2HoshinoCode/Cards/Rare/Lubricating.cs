@@ -19,6 +19,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 [Pool(typeof(StS2HoshinoCardPool))]
 public class Lubricating() : StS2HoshinoCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
+    public override bool CanBeGeneratedInCombat => false;
     protected override HashSet<CardTag> CanonicalTags => [];
     // protected override IEnumerable<IHoverTip> ExtraHoverTips
     // {
