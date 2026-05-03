@@ -33,8 +33,12 @@ public sealed class PrepareSuppressionPower : StS2HoshinoPower, IOnBulletChanged
             if (after_bullet == 1 && before_bullet != 1)
             {
                 Flash();
-                CardModel card = base.CombatState.CreateCard<FinishAttack>(base.Owner.Player);
-                await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, player);
+                var ownerPlayer = base.Owner.Player;
+                if (ownerPlayer != null)
+                {
+                    CardModel card = base.CombatState.CreateCard<FinishAttack>(ownerPlayer);
+                    await CardPileCmd.AddGeneratedCardToCombat(card, PileType.Hand, player);
+                }
             }
         }
     }

@@ -33,11 +33,11 @@ public class IronWallSkill() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Unc
     {
         if (base.Owner.Creature.HasPower<FrailPower>())
         {
-            await CommonActions.Apply<FrailPower>(base.Owner.Creature, this,
+            await CommonActions.Apply<FrailPower>(choiceContext, base.Owner.Creature, this,
                 -base.Owner.Creature.GetPowerAmount<FrailPower>());
         }
         await CommonActions.CardBlock(this, play);
-        await CommonActions.ApplySelf<ShieldPower>(this);
+        await CommonActions.ApplySelf<ShieldPower>(choiceContext, this);
     } 
     
     protected override void OnUpgrade()

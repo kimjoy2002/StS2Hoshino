@@ -30,10 +30,8 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(8, ValueProp.Move)];
 
-    private bool hasExhausted = false;
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        hasExhausted = false;
         IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
@@ -51,7 +49,6 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         if (cardModel != null)
         {
             await CardCmd.Exhaust(choiceContext, cardModel);
-            hasExhausted = true;
         }
         await Cmd.Wait(0.25f);
     }

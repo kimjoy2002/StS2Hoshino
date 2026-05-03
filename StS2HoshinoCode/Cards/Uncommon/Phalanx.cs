@@ -33,14 +33,17 @@ public class Phalanx() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon,
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        foreach (var player in base.CombatState.Players)
-        {
-            if (player.Creature.IsAlive)
+        var combatState = base.CombatState;
+        if (combatState != null)
+            foreach (var player in combatState.Players)
             {
-                await CreatureCmd.GainBlock(player.Creature, base.DynamicVars.Block, play);
-                await PowerCmd.Apply<ShieldPower>(choiceContext, player.Creature, DynamicVars["ShieldPower"].IntValue, base.Owner.Creature, this);
+                if (player.Creature.IsAlive)
+                {
+                    await CreatureCmd.GainBlock(player.Creature, base.DynamicVars.Block, play);
+                    await PowerCmd.Apply<ShieldPower>(choiceContext, player.Creature,
+                        DynamicVars["ShieldPower"].IntValue, base.Owner.Creature, this);
+                }
             }
-        }
     }
     
     protected override void OnUpgrade()

@@ -30,7 +30,7 @@ public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncomm
             List<Creature> validTargets = base.CombatState!.HittableEnemies.Where<Creature>((Func<Creature, bool>) (c => c.IsAlive)).ToList<Creature>();
             if (validTargets.Count > 0)
             {
-                Creature singleTarget = RunState!.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) validTargets);
+                Creature? singleTarget = RunState!.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) validTargets);
                 if (singleTarget != null)
                 {
                     await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(singleTarget)

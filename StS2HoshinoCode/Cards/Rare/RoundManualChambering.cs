@@ -37,10 +37,10 @@ public class RoundManualChambering() : StS2HoshinoCard(1, CardType.Power, CardRa
         {
             get_free_reload += base.Owner.Creature.GetPower<RoundManualChamberingPower>()!.Amount;
         }
-        await CommonActions.ApplySelf<RoundManualChamberingPower>(this);
+        await CommonActions.ApplySelf<RoundManualChamberingPower>(choiceContext, this);
         if (get_free_reload > 0)
         {
-            await CommonActions.ApplySelf<FreeReloadPower>(this);
+            await CommonActions.ApplySelf<FreeReloadPower>(choiceContext, this);
         }
         
     }

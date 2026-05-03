@@ -37,7 +37,7 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         
-        Creature currentTarget = play.Target;
+        Creature? currentTarget = play.Target;
         
         int prevAmmo = AmmoClass.GetCurrentAmmo(Owner);
         await AmmoClass.LoseAmmo(choiceContext, 99, ((CardModel)this).Owner);

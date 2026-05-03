@@ -159,15 +159,14 @@ public static class AmmoClass
 	{
 		PlayerAmmoState state = GetState(player);
 		CurrentAmmoGainer = player;
-		int prev_ammo = state.CurrentAmmo;
+		int prevAmmo = state.CurrentAmmo;
 		state.CurrentAmmo = amount;
-		int num = 0;
 		if (state.CurrentAmmo > state.MaxAmmo)
 		{
 			state.CurrentAmmo = state.MaxAmmo;
 		}
 
-		if (amount - prev_ammo > 0)
+		if (amount - prevAmmo > 0)
 		{
 			AmmoClass.OnAmmoGained?.Invoke(amount);
 			if (reload)
@@ -178,9 +177,9 @@ public static class AmmoClass
 			AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
 		}
 
-		if (amount != prev_ammo)
+		if (amount != prevAmmo)
 		{
-			await HoshinoHook.OnBulletChanged(choiceContext, player, prev_ammo, amount);
+			await HoshinoHook.OnBulletChanged(choiceContext, player, prevAmmo, amount);
 			AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
 		}
 

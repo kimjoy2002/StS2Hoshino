@@ -30,7 +30,7 @@ public sealed class HopyungPower : StS2HoshinoPower
         {
             return;
         }
-        ICombatState combatState = player.Creature.CombatState;
+        ICombatState? combatState = player.Creature.CombatState;
         Flash();
         bool flag;
         using (CardSelectCmd.PushSelector(new VakuuCardSelector()))
@@ -46,15 +46,24 @@ public sealed class HopyungPower : StS2HoshinoPower
                 {
                     break;
                 }
-                CardPile pile = PileType.Hand.GetPile(base.Owner.Player);
-                CardModel card = pile.Cards.FirstOrDefault((CardModel c) => c.CanPlay());
-                if (card == null)
+
+                var ownerPlayer = base.Owner.Player;
+                if (ownerPlayer != null)
                 {
-                    break;
+                    CardPile pile = PileType.Hand.GetPile(ownerPlayer);
+                    CardModel? card = pile.Cards.FirstOrDefault((CardModel c) => c.CanPlay());
+                    if (card == null)
+                    {
+                        break;
+                    }
+
+                    if (combatState != null)
+                    {
+                        Creature? target = GetTarget(card, combatState);
+                        await card.SpendResources();
+                        await CardCmd.AutoPlay(choiceContext, card, target, AutoPlayType.Default, skipXCapture: true);
+                    }
                 }
-                Creature? target = GetTarget(card, combatState);
-                await card.SpendResources();
-                await CardCmd.AutoPlay(choiceContext, card, target, AutoPlayType.Default, skipXCapture: true);
             }
             flag = cardsPlayed >= 13;
             if (cardsPlayed == 0)

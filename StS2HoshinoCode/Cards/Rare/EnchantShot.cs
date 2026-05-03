@@ -69,8 +69,11 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
             {
                 var rng = this.Owner.PlayerRng.Rewards;
                 var selected = rng.NextItem(ableEnchantments);
-                int amount = GetRandomEnchantmentAmount(selected, rng);
-                CardCmd.Enchant(selected.ToMutable(), this, amount);
+                if (selected != null)
+                {
+                    int amount = GetRandomEnchantmentAmount(selected, rng);
+                    CardCmd.Enchant(selected.ToMutable(), this, amount);
+                }
             }
         }
     }

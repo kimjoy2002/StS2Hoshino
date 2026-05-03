@@ -74,7 +74,7 @@ public class HorusOfEye() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Rare, 
             _grantedBonus = topDeckBonus;
             if (_grantedBonus)
             {
-                await CommonActions.ApplySelf<HorusOfEyePower>(this);
+                await CommonActions.ApplySelf<HorusOfEyePower>(new ThrowingPlayerChoiceContext(), this);
             }
             else
             {

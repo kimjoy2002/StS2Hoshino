@@ -34,7 +34,7 @@ public class PrepareSuppression() : StS2HoshinoCard(2, CardType.Power, CardRarit
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<PrepareSuppressionPower>(this);
+        await CommonActions.ApplySelf<PrepareSuppressionPower>(choiceContext, this);
         
     }
     

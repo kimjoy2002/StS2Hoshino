@@ -21,6 +21,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Character;
 
 
 public class StS2Hoshino : PlaceholderCharacterModel
+
 {
 	public const string ModId = "StS2Hoshino";
 	public const string CharacterId = "StS2Hoshino";

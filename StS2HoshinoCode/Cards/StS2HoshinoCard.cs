@@ -52,8 +52,8 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         get
         {
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}_p.png".CardImagePath();
-            return ResourceLoader.Exists(path) ? path : (type==CardType.Attack?"temp_attack_p.png":
-                (type==CardType.Power?"temp_power_p.png":"temp_skill_p.png")).CardImagePath();
+            return ResourceLoader.Exists(path) ? path : (Type==CardType.Attack?"temp_attack_p.png":
+                (Type==CardType.Power?"temp_power_p.png":"temp_skill_p.png")).CardImagePath();
         }
     }
     public override string PortraitPath
@@ -61,8 +61,8 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         get
         {
             var path = $"{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
-            return ResourceLoader.Exists(path) ? path : (type==CardType.Attack?"temp_attack.png":
-                (type==CardType.Power?"temp_power.png":"temp_skill.png")).CardImagePath();
+            return ResourceLoader.Exists(path) ? path : (Type==CardType.Attack?"temp_attack.png":
+                (Type==CardType.Power?"temp_power.png":"temp_skill.png")).CardImagePath();
         }
     }
 
@@ -156,16 +156,22 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         {
             drawPile.AddInternal(card, silent: true);
         }
-        MegaCrit.Sts2.Core.Hooks.Hook.ModifyShuffleOrder(player.Creature.CombatState, player, list, false);
-        if (CombatManager.Instance.DebugForcedTopCardOnNextShuffle != null)
+
+        if (player.Creature.CombatState != null)
         {
-            if (!list.Remove(CombatManager.Instance.DebugForcedTopCardOnNextShuffle))
-                    throw new InvalidOperationException($"Could not find card {CombatManager.Instance.DebugForcedTopCardOnNextShuffle.Id.Entry} in discard pile.");
-            list.Insert(0, CombatManager.Instance.DebugForcedTopCardOnNextShuffle);
-            CombatManager.Instance.DebugClearForcedTopCardOnNextShuffle();
+            MegaCrit.Sts2.Core.Hooks.Hook.ModifyShuffleOrder(player.Creature.CombatState, player, list, false);
+            if (CombatManager.Instance.DebugForcedTopCardOnNextShuffle != null)
+            {
+                if (!list.Remove(CombatManager.Instance.DebugForcedTopCardOnNextShuffle))
+                    throw new InvalidOperationException(
+                        $"Could not find card {CombatManager.Instance.DebugForcedTopCardOnNextShuffle.Id.Entry} in discard pile.");
+                list.Insert(0, CombatManager.Instance.DebugForcedTopCardOnNextShuffle);
+                CombatManager.Instance.DebugClearForcedTopCardOnNextShuffle();
+            }
+
+            await Cmd.CustomScaledWait(0.2f, 0.5f);
+            await MegaCrit.Sts2.Core.Hooks.Hook.AfterShuffle(player.Creature.CombatState, choiceContext, player);
         }
-        await Cmd.CustomScaledWait(0.2f, 0.5f);
-        await MegaCrit.Sts2.Core.Hooks.Hook.AfterShuffle(player.Creature.CombatState, choiceContext, player);
     }
     public override string BetaPortraitPath => $"beta/{Id.Entry.RemovePrefix().ToLowerInvariant()}.png".CardImagePath();
 }

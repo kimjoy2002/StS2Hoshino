@@ -37,7 +37,7 @@ public class Determination() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Unc
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<StrengthPower>(this);
+        await CommonActions.ApplySelf<StrengthPower>(choiceContext, this);
     }
     
     public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)

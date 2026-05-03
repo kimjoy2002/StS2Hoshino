@@ -36,13 +36,17 @@ public sealed class BulletArmourPiercingPower : StS2HoshinoPower, IOnReloaded, I
         if (target != null)
         {
             Flash();
-            await CreatureCmd.Damage(choiceContext, target, new DamageVar(base.Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move), applier);
+            if (applier != null)
+                await CreatureCmd.Damage(choiceContext, target,
+                    new DamageVar(base.Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move), applier);
         }
     }
     
     public async void UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
     {
         Flash();
-        await CreatureCmd.Damage(choiceContext, targets, new DamageVar(base.Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move), applier);
+        if (applier != null)
+            await CreatureCmd.Damage(choiceContext, targets,
+                new DamageVar(base.Amount, ValueProp.Unblockable | ValueProp.Unpowered | ValueProp.Move), applier);
     }
 }

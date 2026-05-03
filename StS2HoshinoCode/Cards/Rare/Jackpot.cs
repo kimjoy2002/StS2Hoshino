@@ -25,9 +25,12 @@ public class Jackpot() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, Ta
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState)
-            .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
-            .Execute(choiceContext);
+        var combatState = base.CombatState;
+        if (combatState != null)
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this)
+                .TargetingAllOpponents(combatState)
+                .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
+                .Execute(choiceContext);
         await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
     }
 

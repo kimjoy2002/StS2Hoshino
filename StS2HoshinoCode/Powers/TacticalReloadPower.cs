@@ -25,11 +25,15 @@ public sealed class TacticalReloadPower : StS2HoshinoPower, IOnReloaded
         {
             Flash();
             await Cmd.CustomScaledWait(0.1f, 0.2f);
-            Creature creature = base.Owner.Player.RunState.Rng.CombatTargets.NextItem(base.Owner.CombatState.HittableEnemies);
-            if (creature != null)
+            var combatStateHittableEnemies = base.Owner.CombatState?.HittableEnemies;
+            if (combatStateHittableEnemies != null)
             {
-                VfxCmd.PlayOnCreatureCenter(creature, "vfx/vfx_attack_blunt");
-                await CreatureCmd.Damage(ctx, creature, Amount, ValueProp.Unpowered, base.Owner);
+                Creature? creature = base.Owner.Player?.RunState.Rng.CombatTargets.NextItem(combatStateHittableEnemies);
+                if (creature != null)
+                {
+                    VfxCmd.PlayOnCreatureCenter(creature, "vfx/vfx_attack_blunt");
+                    await CreatureCmd.Damage(ctx, creature, Amount, ValueProp.Unpowered, base.Owner);
+                }
             }
         }
     }

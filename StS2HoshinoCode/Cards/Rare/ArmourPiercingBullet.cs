@@ -34,7 +34,7 @@ public class ArmourPiercingBullet() : StS2HoshinoCard(1, CardType.Skill, CardRar
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner);
-        await CommonActions.ApplySelf<BulletArmourPiercingPower>(this);
+        await CommonActions.ApplySelf<BulletArmourPiercingPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

@@ -37,7 +37,7 @@ public class Patience() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<DexterityPower>(this);
+        await CommonActions.ApplySelf<DexterityPower>(choiceContext, this);
     }
     
     public async Task OnInvade(PlayerChoiceContext choiceContext, Player player, CardModel card)

@@ -29,7 +29,7 @@ public class FixShield() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommo
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await CommonActions.ApplySelf<FixShieldPower>(this);
+        await CommonActions.ApplySelf<FixShieldPower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()

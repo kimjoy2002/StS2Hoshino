@@ -27,12 +27,16 @@ public sealed class BlackMarketPower : StS2HoshinoPower, IOnReloaded
         if (base.Owner == player.Creature)
         {
             Flash();
-            List<CardModel> list = CardFactory.GetForCombat(base.Owner.Player, from c in base.Owner.Player.Character.CardPool.GetUnlockedCards(base.Owner.Player.UnlockState, base.Owner.Player.RunState.CardMultiplayerConstraint)
-                where c.Tags.Contains(StS2HoshinoCard.BulletCard)
-                select c, base.Amount, base.Owner.Player.RunState.Rng.CombatCardGeneration).ToList();
-            foreach (CardModel item in list)
+            var ownerPlayer = base.Owner.Player;
+            if (ownerPlayer != null)
             {
-                await CardPileCmd.AddGeneratedCardToCombat(item, PileType.Hand, player);
+                List<CardModel> list = CardFactory.GetForCombat(ownerPlayer, from c in ownerPlayer.Character.CardPool.GetUnlockedCards(ownerPlayer.UnlockState, ownerPlayer.RunState.CardMultiplayerConstraint)
+                    where c.Tags.Contains(StS2HoshinoCard.BulletCard)
+                    select c, base.Amount, ownerPlayer.RunState.Rng.CombatCardGeneration).ToList();
+                foreach (CardModel item in list)
+                {
+                    await CardPileCmd.AddGeneratedCardToCombat(item, PileType.Hand, player);
+                }
             }
         }
     }

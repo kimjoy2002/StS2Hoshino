@@ -264,6 +264,6 @@ public partial class ClickableButton : Control
 		if (string.IsNullOrWhiteSpace(HoverTitle) && string.IsNullOrWhiteSpace(HoverDescription))
 			return;
 
-		NHoverTipSet.CreateAndShow(this, _hoverTip).GlobalPosition = GlobalPosition + _hoverTipOffset;
+		NHoverTipSet.CreateAndShow(this, _hoverTip)!.GlobalPosition = GlobalPosition + _hoverTipOffset;
 	}
 }

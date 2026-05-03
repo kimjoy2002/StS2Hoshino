@@ -25,7 +25,9 @@ public sealed class LubricatingPower : StS2HoshinoPower
     {
         if (base.Amount > 0)
         {
-            room.AddExtraReward(base.Owner.Player, new CardEnchantReward(base.Owner.Player, base.Amount));
+            var ownerPlayer = base.Owner.Player;
+            if (ownerPlayer != null)
+                room.AddExtraReward(ownerPlayer, new CardEnchantReward(ownerPlayer, base.Amount));
         }
         return Task.CompletedTask;
     }

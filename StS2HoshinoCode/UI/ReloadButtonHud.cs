@@ -67,7 +67,7 @@ public partial class ReloadButtonHud : Control
 		{
 			me = LocalContext.GetMe(_state);
 		}
-		catch (InvalidOperationException ignored)
+		catch (InvalidOperationException)
 		{
 		}
 
