@@ -1,16 +1,16 @@
 {
   "STS2HOSHINO-ST_S2_HOSHINO.aromaPrinciple": "Lore",
-  "STS2HOSHINO-ST_S2_HOSHINO.banter.alive.endTurnPing": "Co-op hurry up end turn ping message",
+  "STS2HOSHINO-ST_S2_HOSHINO.banter.alive.endTurnPing": "It's so hot, even though I haven't moved~",
   "STS2HOSHINO-ST_S2_HOSHINO.banter.dead.endTurnPing": "...",
-  "STS2HOSHINO-ST_S2_HOSHINO.cardsModifierDescription": "__ cards will now appear in rewards and shops.",
-  "STS2HOSHINO-ST_S2_HOSHINO.cardsModifierTitle": "__ Cards",
-  "STS2HOSHINO-ST_S2_HOSHINO.description": "Character Selection\nScreen Description",
-  "STS2HOSHINO-ST_S2_HOSHINO.eventDeathPrevention": "Co-op survival line",
-  "STS2HOSHINO-ST_S2_HOSHINO.goldMonologue": "Line spoken when obtaining a large amount of gold",
-  "STS2HOSHINO-ST_S2_HOSHINO.possessiveAdjective": "his/her/its",
-  "STS2HOSHINO-ST_S2_HOSHINO.pronounObject": "him/her/it",
-  "STS2HOSHINO-ST_S2_HOSHINO.pronounPossessive": "his/hers/its",
-  "STS2HOSHINO-ST_S2_HOSHINO.pronounSubject": "he/she/it",
-  "STS2HOSHINO-ST_S2_HOSHINO.title": "The StS2Hoshino",
-  "STS2HOSHINO-ST_S2_HOSHINO.titleObject": "The StS2Hoshino"
+  "STS2HOSHINO-ST_S2_HOSHINO.cardsModifierDescription": "Hoshino cards will now appear in rewards and shops.",
+  "STS2HOSHINO-ST_S2_HOSHINO.cardsModifierTitle": "Hoshino",
+  "STS2HOSHINO-ST_S2_HOSHINO.description": "uhe~",
+  "STS2HOSHINO-ST_S2_HOSHINO.eventDeathPrevention": "uhe~",
+  "STS2HOSHINO-ST_S2_HOSHINO.goldMonologue": "No money~",
+  "STS2HOSHINO-ST_S2_HOSHINO.possessiveAdjective": "Her",
+  "STS2HOSHINO-ST_S2_HOSHINO.pronounObject": "Hers",
+  "STS2HOSHINO-ST_S2_HOSHINO.pronounPossessive": "Her",
+  "STS2HOSHINO-ST_S2_HOSHINO.pronounSubject": "She",
+  "STS2HOSHINO-ST_S2_HOSHINO.title": "Takanashi Hoshino",
+  "STS2HOSHINO-ST_S2_HOSHINO.titleObject": "Takanashi Hoshino"
 }

@@ -1,3 +1,14 @@
-{
-  
+{ 
+    "STS2HOSHINO-BULLET.description": "Some cards require [gold]Ammo[/gold] to play. You can recover it by [gold]Reloading[/gold].",
+    "STS2HOSHINO-BULLET.title": "Ammo",
+    "STS2HOSHINO-RELOAD.description": "Fill your [gold]Ammo[/gold] to its maximum.",
+    "STS2HOSHINO-RELOAD.title": "Reload",
+    "STS2HOSHINO-SHIELD.description": "At the start of your turn, [gold]Block[/gold] equal to your [gold]Shield[/gold] is not removed. [gold]Shield[/gold] cannot exceed your current [gold]Block[/gold].",
+    "STS2HOSHINO-SHIELD.title": "Shield",
+    "STS2HOSHINO-ARRIVAL.description": "Triggers whenever this card is drawn or put into your [gold]Hand[/gold] from your [gold]Draw Pile[/gold].",
+    "STS2HOSHINO-ARRIVAL.title": "Entry",
+    "STS2HOSHINO-OUTOFAMMO.description": "Triggers when this card is played with 0 [gold]Ammo[/gold].",
+    "STS2HOSHINO-OUTOFAMMO.title": "Out of Ammo",
+    "STS2HOSHINO-EXPERT.description": "Whenever you [gold]Reload[/gold], gain [gold]Block[/gold] equal to this value.",
+    "STS2HOSHINO-EXPERT.title": "Expert"
 }

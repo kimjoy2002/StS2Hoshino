@@ -1,0 +1,14 @@
+{ 
+    "STS2HOSHINO-BULLET.description": "部分卡牌需要消耗 [gold]弹药[/gold] 才能使用。你可以通过 [gold]装填[/gold] 来恢复。",
+    "STS2HOSHINO-BULLET.title": "弹药",
+    "STS2HOSHINO-RELOAD.description": "将 [gold]弹药[/gold] 补满至上限。",
+    "STS2HOSHINO-RELOAD.title": "装填",
+    "STS2HOSHINO-SHIELD.description": "回合开始时，等同于 [gold]盾牌[/gold] 层数的 [gold]格挡[/gold] 不会消失。[gold]盾牌[/gold] 层数不能超过当前 [gold]格挡[/gold] 值。",
+    "STS2HOSHINO-SHIELD.title": "盾牌",
+    "STS2HOSHINO-ARRIVAL.description": "每当这张牌从 [gold]抽牌堆[/gold] 抽入或加入 [gold]手牌[/gold] 时触发。",
+    "STS2HOSHINO-ARRIVAL.title": "进入",
+    "STS2HOSHINO-OUTOFAMMO.description": "在 [gold]弹药[/gold] 为 0 时使用这张牌时触发。",
+    "STS2HOSHINO-OUTOFAMMO.title": "空仓",
+    "STS2HOSHINO-EXPERT.description": "每当你 [gold]装填[/gold] 时，获得等同于此数值的 [gold]格挡[/gold]。",
+    "STS2HOSHINO-EXPERT.title": "行家"
+}

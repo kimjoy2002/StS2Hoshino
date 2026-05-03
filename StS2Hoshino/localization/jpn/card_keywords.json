@@ -1,0 +1,14 @@
+{ 
+    "STS2HOSHINO-BULLET.description": "一部のカードをプレイするには [gold]弾薬[/gold] が必要です。[gold]リロード[/gold] することで補充できます。",
+    "STS2HOSHINO-BULLET.title": "弾薬",
+    "STS2HOSHINO-RELOAD.description": "[gold]弾薬[/gold] を最大まで補充します。",
+    "STS2HOSHINO-RELOAD.title": "リロード",
+    "STS2HOSHINO-SHIELD.description": "ターン開始時、[gold]シールド[/gold] の値と同じだけの [gold]ブロック[/gold] は失われません。[gold]シールド[/gold] は現在の [gold]ブロック[/gold] より高くはなれません。",
+    "STS2HOSHINO-SHIELD.title": "シールド",
+    "STS2HOSHINO-ARRIVAL.description": "このカードが [gold]山札[/gold] から引かれたとき、または [gold]手札[/gold] に加えられたときに発動します。",
+    "STS2HOSHINO-ARRIVAL.title": "進入",
+    "STS2HOSHINO-OUTOFAMMO.description": "[gold]弾薬[/gold] が 0 のときにこのカードをプレイすると発동します。",
+    "STS2HOSHINO-OUTOFAMMO.title": "弾切れ",
+    "STS2HOSHINO-EXPERT.description": "[gold]リロード[/gold] するたびに、この数値に等しい [gold]ブロック[/gold] を得ます。",
+    "STS2HOSHINO-EXPERT.title": "熟練"
+}
