@@ -4,6 +4,7 @@ using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Powers;
 
@@ -28,12 +29,22 @@ public sealed class ShieldPower : StS2HoshinoPower
     {
         await base.AfterApplied(applier, cardSource);
         await CreatureCmd.TriggerAnim(base.Owner, "ShieldUp", 0f);
+
+        if (base.Owner.IsPlayer && base.Owner.Player != null && !(base.Owner.Player.Character is Character.StS2Hoshino))
+        {
+            HoshinoVisualUtils.ApplyShieldVisualPersistent(base.Owner);
+        }
     }
 
     public override async Task AfterRemoved(Creature oldOwner)
     {
         await base.AfterRemoved(oldOwner);
         await CreatureCmd.TriggerAnim(oldOwner, "Idle", 0f);
+
+        if (oldOwner.IsPlayer && oldOwner.Player != null && !(oldOwner.Player.Character is Character.StS2Hoshino))
+        {
+            HoshinoVisualUtils.RemoveShieldVisualPersistent(oldOwner);
+        }
     }
     public override async Task AfterDamageReceived(
         PlayerChoiceContext choiceContext,
