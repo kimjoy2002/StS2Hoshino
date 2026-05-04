@@ -173,12 +173,18 @@
   "STS2HOSHINO-FINISH_ATTACK.description": "Consumes [gold]Ammo[/gold].\nDeals {Damage:diff()} damage.",
   "STS2HOSHINO-ARMOUR_PIERCING_BULLET.title": "Armor Piercing Ammo Box",
   "STS2HOSHINO-ARMOUR_PIERCING_BULLET.description": "[gold]Reload[/gold].\nEnemies hit by an Attack that consumes [gold]Ammo[/gold] lose {BulletArmourPiercingPower:diff()} HP.\nThis effect is reduced by 2 whenever you [gold]Reload[/gold] via the button.",
-  "STS2HOSHINO-TREASURE_HUNT.title": "Treasure Hunt",
-  "STS2HOSHINO-TREASURE_HUNT.description": "Whenever a card is added to your [gold]Draw Pile[/gold] by a card effect, gain {Block:diff()} [gold]Block[/gold].",
   "STS2HOSHINO-LUBRICATING.title": "Weapon Maintenance",
   "STS2HOSHINO-LUBRICATING.description": "At the end of combat, [gold]Enchant[/gold] 1 Attack card in your [gold]Deck[/gold] with {LubricatingPower:diff()} [purple]Sharp[/purple], or increase existing [purple]Sharp[/purple] by 1.",
   "STS2HOSHINO-SUPPRESSION_ATTACK.title": "Suppression Fire",
   "STS2HOSHINO-SUPPRESSION_ATTACK.description": "Consumes [gold]Ammo[/gold].\nDeals {Damage:diff()} damage to ALL enemies.\n[gold]Exhaust[/gold] a random card and return this card to your [gold]Hand[/gold].",
   "STS2HOSHINO-SENIORS_GUIDANCE.title": "Senior's Guidance",
-  "STS2HOSHINO-SENIORS_GUIDANCE.description": "Deals {Damage:diff()} damage.\n[gold]Exhaust[/gold]: Gain {Energy:energyIcons()}."
+  "STS2HOSHINO-SENIORS_GUIDANCE.description": "Deals {Damage:diff()} damage.\n[gold]Exhaust[/gold]: Gain {Energy:energyIcons()}.",
+  "STS2HOSHINO-JINX.title": "Jinx",
+  "STS2HOSHINO-JINX.description": "Consumes [gold]Ammo[/gold].\nDeals {CalculatedDamage:diff()} damage.\nIncrease damage by {ExtraDamage:diff()} for each 3rd [gold]Ammo[/gold] used this combat, and decrease damage by {ExtraDamage:diff()} for each 4th [gold]Ammo[/gold] used.",
+  "STS2HOSHINO-ILLEGAL_TRADE.title": "Illegal Trade",
+  "STS2HOSHINO-ILLEGAL_TRADE.description": "Deals {Damage:diff()} damage to ALL enemies.\nWhen this card is added to your [gold]Deck[/gold], obtain a [red]Debt[/red] curse.",
+  "STS2HOSHINO-QUICK_RESPONSE.title": "Quick Response",
+  "STS2HOSHINO-QUICK_RESPONSE.description": "Gain {Block:diff()} [gold]Block[/gold].\nWhenever this card enters your [gold]Draw Pile[/gold],\ngain {SecondBlock:diff()} [gold]Block[/gold].",
+  "STS2HOSHINO-HORUS_OF_DAWN.title": "Horus of Dawn",
+  "STS2HOSHINO-HORUS_OF_DAWN.description": "[gold]Innate[/gold].\nGain [gold]Strength[/gold], [gold]Dexterity[/gold], and [gold]Expert[/gold] equal to the number of Curse cards in your [gold]Deck[/gold]."
 }

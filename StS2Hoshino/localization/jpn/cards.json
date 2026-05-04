@@ -173,12 +173,18 @@
   "STS2HOSHINO-FINISH_ATTACK.description": "[gold]弾薬[/gold] を消費する。\n{Damage:diff()} ダメージを与える。",
   "STS2HOSHINO-ARMOUR_PIERCING_BULLET.title": "穿甲弾薬箱",
   "STS2HOSHINO-ARMOUR_PIERCING_BULLET.description": "[gold]リロード[/gold]。\n[gold]弾薬[/gold] を消費するアタックを受けた敵は HP を {BulletArmourPiercingPower:diff()} 失う。\nボタンで [gold]リロード[/gold] するたびに、この効果は 2 減少する。",
-  "STS2HOSHINO-TREASURE_HUNT.title": "トレジャーハント",
-  "STS2HOSHINO-TREASURE_HUNT.description": "カードの効果によってカードが [gold]山札[/gold] に追加されるたびに、{Block:diff()} [gold]ブロック[/gold] を得る。",
   "STS2HOSHINO-LUBRICATING.title": "銃の手入れ",
   "STS2HOSHINO-LUBRICATING.description": "戦闘終了時、[gold]デッキ[/gold] のアタックカード 1 枚に {LubricatingPower:diff()} [purple]鋭利[/purple] を [gold]エンチャント[/gold] するか、すでに付与されている [purple]鋭利[/purple] を 1 増加させる。",
   "STS2HOSHINO-SUPPRESSION_ATTACK.title": "鎮圧射撃",
   "STS2HOSHINO-SUPPRESSION_ATTACK.description": "[gold]弾薬[/gold] を消费する。\nすべての敵に {Damage:diff()} ダメージを与える。\nランダムなカードを 1 枚 [gold]廃棄[/gold] し、このカードを [gold]手札[/gold] に戻す。",
   "STS2HOSHINO-SENIORS_GUIDANCE.title": "先輩の導き",
-  "STS2HOSHINO-SENIORS_GUIDANCE.description": "{Damage:diff()} ダメージを与える。\n[gold]弾切れ[/gold]：{Energy:energyIcons()} を得る。"
+  "STS2HOSHINO-SENIORS_GUIDANCE.description": "{Damage:diff()} ダメージを与える。\n[gold]弾切れ[/gold]：{Energy:energyIcons()} を得る。",
+  "STS2HOSHINO-JINX.title": "ジンクス",
+  "STS2HOSHINO-JINX.description": "[gold]弾薬[/gold]を消費します。\n敵に {CalculatedDamage:diff()} ダメージを与えます。\nこの戦闘中に使用した3番目の[gold]弾薬[/gold]ごとにダメージが {ExtraDamage:diff()} 増加し、4番目の[gold]弾薬[/gold]ごとにダメージが {ExtraDamage:diff()} 減少します。",
+  "STS2HOSHINO-ILLEGAL_TRADE.title": "不法取引",
+  "STS2HOSHINO-ILLEGAL_TRADE.description": "すべての敵に {Damage:diff()} ダメージを与えます。\nこのカードを[gold]デッキ[/gold]に入れると、[red]負債[/red]カードを得ます。",
+  "STS2HOSHINO-QUICK_RESPONSE.title": "素早い対応",
+  "STS2HOSHINO-QUICK_RESPONSE.description": "{Block:diff()} [gold]ブロック[/gold]を得る。\nこのカードが[gold]山札[/gold]に入るたびに、\n{SecondBlock:diff()} [gold]ブロック[/gold]を得る。",
+  "STS2HOSHINO-HORUS_OF_DAWN.title": "夜明けのホルス",
+  "STS2HOSHINO-HORUS_OF_DAWN.description": "[gold]天賦[/gold]。\n[gold]デッキ[/gold]にある呪いカードの数だけ、[gold]筋力[/gold]、[gold]敏捷[/gold]、[gold]熟練[/gold]を得る。"
 }

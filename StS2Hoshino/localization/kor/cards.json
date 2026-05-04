@@ -173,12 +173,18 @@
   "STS2HOSHINO-FINISH_ATTACK.description": "[gold]탄약[/gold]을 소모합니다.\n적에게 피해를 {Damage:diff()} 줍니다.",
   "STS2HOSHINO-ARMOUR_PIERCING_BULLET.title": "방어관통 탄약 상자",
   "STS2HOSHINO-ARMOUR_PIERCING_BULLET.description": "[gold]장전[/gold]합니다.\n[gold]탄약[/gold]을 소모한 공격을 받은 적이\n체력을 {BulletArmourPiercingPower:diff()} 잃습니다.\n버튼으로 [gold]장전[/gold]할때마다 적용된 효과가 2 감소합니다.",
-  "STS2HOSHINO-TREASURE_HUNT.title": "보물찾기",
-  "STS2HOSHINO-TREASURE_HUNT.description": "카드 효과로 뽑을 카드 더미에 카드가 들어갈때마다 방어도를 {Block:diff()} 얻습니다.",
   "STS2HOSHINO-LUBRICATING.title": "총기 손질",
   "STS2HOSHINO-LUBRICATING.description": "전투 종료 시, [gold]덱[/gold]의 공격 카드 1장에 [purple]예리[/purple]를 {LubricatingPower:diff()} [gold]인챈트[/gold]하거나, 이미 [gold]인챈트[/gold]된 [purple]예리[/purple]를 1 증가시킵니다.",
   "STS2HOSHINO-SUPPRESSION_ATTACK.title": "제압사격",
   "STS2HOSHINO-SUPPRESSION_ATTACK.description": "[gold]탄약[/gold]을 소모합니다.\n모든 적에게 피해를 {Damage:diff()} 줍니다.\n무작위 카드를 [gold]소멸[/gold]한 후 이 카드를 손으로 다시 가져옵니다.",
   "STS2HOSHINO-SENIORS_GUIDANCE.title": "선배의 가르침",
-  "STS2HOSHINO-SENIORS_GUIDANCE.description": "피해를 {Damage:diff()} 줍니다.\n[gold]소진[/gold]: {Energy:energyIcons()}를 얻습니다."
+  "STS2HOSHINO-SENIORS_GUIDANCE.description": "피해를 {Damage:diff()} 줍니다.\n[gold]소진[/gold]: {Energy:energyIcons()}를 얻습니다.",
+  "STS2HOSHINO-JINX.title": "징크스",
+  "STS2HOSHINO-JINX.description": "[gold]탄약[/gold]을 소모합니다.\n적에게 피해를 {CalculatedDamage:diff()} 줍니다.\n이번 전투동안 사용한 3번째 [gold]탄약[/gold]당 피해량이 {ExtraDamage:diff()} 증가하고 4번째 [gold]탄약[/gold]당 피해량이 {ExtraDamage:diff()} 감소합니다.",
+  "STS2HOSHINO-ILLEGAL_TRADE.title": "불법 거래",
+  "STS2HOSHINO-ILLEGAL_TRADE.description": "모든 적에게 피해를 {Damage:diff()} 줍니다.\n이 카드를 [gold]덱[/gold]에 넣으면 [red]빚[/red] 카드를 얻습니다.",
+  "STS2HOSHINO-QUICK_RESPONSE.title": "발빠른 대응",
+  "STS2HOSHINO-QUICK_RESPONSE.description": "[gold]방어도[/gold]를 {Block:diff()} 얻습니다.\n이 카드가 [gold]뽑을 카드 더미[/gold]에 들어갈 때마다,\n[gold]방어도[/gold]를 {SecondBlock:diff()} 얻습니다.",
+  "STS2HOSHINO-HORUS_OF_DAWN.title": "새벽의 호루스",
+  "STS2HOSHINO-HORUS_OF_DAWN.description": "[gold]덱[/gold]에 있는 저주 카드의 수 만큼 [gold]힘[/gold]과 [gold]민첩[/gold]과 [gold]숙련[/gold]을 얻습니다."
 }

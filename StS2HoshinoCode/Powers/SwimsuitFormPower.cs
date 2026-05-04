@@ -27,6 +27,7 @@ public sealed class SwimsuitFormPower : StS2HoshinoPower
         {
             return;
         }
+        await CardPileCmd.ShuffleIfNecessary(choiceContext, player);
         CardSelectorPrefs prefs = new CardSelectorPrefs(base.SelectionScreenPrompt, base.Amount);
         List<CardModel> cardsIn = (from c in PileType.Draw.GetPile(player).Cards
             orderby c.Rarity, c.Id

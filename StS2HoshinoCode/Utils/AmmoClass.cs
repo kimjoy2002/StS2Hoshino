@@ -19,6 +19,8 @@ public static class AmmoClass
 		public int MenualedReloadedThisTurn;
 		public int InvadesThisCombat;
 		public int ReloadedThisCombat;
+		public int Slot3UsedThisCombat;
+		public int Slot4UsedThisCombat;
 
 		public CardModel? LastCardPlayed;
 	}
@@ -130,6 +132,16 @@ public static class AmmoClass
 		GetState(player).InvadesThisCombat++;
 	}
 
+	public static int GetSlot3UsedCount(Player? player)
+	{
+		return GetState(player).Slot3UsedThisCombat;
+	}
+
+	public static int GetSlot4UsedCount(Player? player)
+	{
+		return GetState(player).Slot4UsedThisCombat;
+	}
+
 	public static void QueueCountdownTrigger(Func<PlayerChoiceContext, Task> trigger)
 	{
 		_pendingTriggers.Add(trigger);
@@ -202,6 +214,11 @@ public static class AmmoClass
 			}
 			if (amount > 0)
 			{
+				for (int i = prev_ammo; i > state.CurrentAmmo; i--)
+				{
+					if (i == state.MaxAmmo - 2) state.Slot3UsedThisCombat++;
+					if (i == state.MaxAmmo - 3) state.Slot4UsedThisCombat++;
+				}
 				AmmoClass.OnAmmoUsed?.Invoke(amount);
 				await HoshinoHook.OnBulletChanged(choiceContext, player, prev_ammo, state.CurrentAmmo);
 				AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
@@ -228,6 +245,8 @@ public static class AmmoClass
 		state.MenualedReloadedThisTurn = 0;
 		state.InvadesThisCombat = 0;
 		state.ReloadedThisCombat = 0;
+		state.Slot3UsedThisCombat = 0;
+		state.Slot4UsedThisCombat = 0;
 		_pendingTriggers.Clear();
 	}
 }
