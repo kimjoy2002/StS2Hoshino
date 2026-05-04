@@ -26,8 +26,8 @@ public class Phalanx() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon,
         HoverTipFactory.FromKeyword(HoshinoKeywords.Shield)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(10, ValueProp.Move),
-        new PowerVar<ShieldPower>(10m)
+        new BlockVar(9, ValueProp.Move),
+        new PowerVar<ShieldPower>(9m)
     ];
 
     public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.MultiplayerOnly;

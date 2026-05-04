@@ -186,5 +186,13 @@
   "STS2HOSHINO-QUICK_RESPONSE.title": "素早い対応",
   "STS2HOSHINO-QUICK_RESPONSE.description": "{Block:diff()} [gold]ブロック[/gold]を得る。\nこのカードが[gold]山札[/gold]に入るたびに、\n{SecondBlock:diff()} [gold]ブロック[/gold]を得る。",
   "STS2HOSHINO-HORUS_OF_DAWN.title": "夜明けのホルス",
-  "STS2HOSHINO-HORUS_OF_DAWN.description": "[gold]天賦[/gold]。\n[gold]デッキ[/gold]にある呪いカードの数だけ、[gold]筋力[/gold]、[gold]敏捷[/gold]、[gold]熟練[/gold]を得る。"
+  "STS2HOSHINO-HORUS_OF_DAWN.description": "[gold]天賦[/gold]。\n[gold]デッキ[/gold]にある[red]呪い[/red]カードの数だけ、[gold]筋力[/gold]、[gold]敏捷[/gold]、[gold]熟練[/gold]を得る。",
+  "STS2HOSHINO-SHOCK_THE_WORLD.title": "ホシノの精神",
+  "STS2HOSHINO-SHOCK_THE_WORLD.description": "敵の攻撃によって[gold]シールド[/gold]を失うたび、次のターン開始時にその分だけ[gold]ブロック[/gold]を得る。",
+  "STS2HOSHINO-SHIELD_SWING.title": "盾振り回し",
+  "STS2HOSHINO-SHIELD_SWING.description": "{Damage:diff()} ダメージを与える。\n与えたダメージの半分だけ [gold]ブロック[/gold] と [gold]シールド[/gold] を得る。\n[gold]弾切れ[/gold]：半分の代わりにダメージと同じ量を得る。",
+  "STS2HOSHINO-DEEP_SLEEP.title": "熟睡",
+  "STS2HOSHINO-DEEP_SLEEP.description": "[gold]山札[/gold] から X 枚まで選択して [gold]廃棄[/gold] する。\n{Block:diff()} [gold]ブロック[/gold] を X 回得る。\nX が 3 以上なら、 [gold]手札[/gold] を [gold]保全[/gold] する。",
+  "STS2HOSHINO-RELOADING_SYNDROME.title": "習慣性リロード症候群",
+  "STS2HOSHINO-RELOADING_SYNDROME.description": "[gold]弾薬[/gold] を消費するコスト {energyPrefix:energyIcons(1)} 以上のカードを使用するたびに、[gold]リロード[/gold] する。"
 }

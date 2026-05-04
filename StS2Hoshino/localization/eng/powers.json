@@ -71,5 +71,11 @@
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_POWER.title": "Close Ranged Combat System",
   "STS2HOSHINO-DEFENSIVE_STANCES_POWER.description": "Allies take 0 damage from enemies this turn.",
   "STS2HOSHINO-DEFENSIVE_STANCES_POWER.smartDescription": "Allies take 0 damage from enemies for {Amount:choose(1):this turn|the next [blue]{}[/blue] turns}.",
-  "STS2HOSHINO-DEFENSIVE_STANCES_POWER.title": "Defensive Stances"
+  "STS2HOSHINO-DEFENSIVE_STANCES_POWER.title": "Defensive Stances",
+  "STS2HOSHINO-SHOCK_THE_WORLD_POWER.title": "Shock the World",
+  "STS2HOSHINO-SHOCK_THE_WORLD_POWER.description": "Whenever you lose [gold]Shield[/gold] from an enemy attack, gain [gold]Block[/gold] equal to the loss at the start of your next turn.",
+  "STS2HOSHINO-SHOCK_THE_WORLD_POWER.smartDescription": "Whenever you lose [gold]Shield[/gold] from an enemy attack, gain [gold]Block[/gold] equal to {Amount:choose(1):the loss|[blue]{}[/blue] times the loss} at the start of your next turn.",
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.title": "Compulsive Reload Syndrome",
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.description": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost 1 or more, [gold]Reload[/gold].",
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost 1 or more, [gold]Reload[/gold]."
 }

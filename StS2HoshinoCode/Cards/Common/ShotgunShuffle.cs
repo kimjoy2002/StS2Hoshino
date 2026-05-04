@@ -25,7 +25,7 @@ public class ShotgunShuffle() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Co
 
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(5, ValueProp.Move),
+        new BlockVar(4, ValueProp.Move),
         new CardsVar(1)
     ];
 

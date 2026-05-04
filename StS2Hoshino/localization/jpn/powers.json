@@ -71,5 +71,11 @@
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_POWER.title": "近接戦闘体系",
   "STS2HOSHINO-DEFENSIVE_STANCES_POWER.description": "このターン, 味方が敵から受けるダメージが 0 になる。",
   "STS2HOSHINO-DEFENSIVE_STANCES_POWER.smartDescription": "{Amount:choose(1):このターン| 次の [blue]{Amount}[/blue] ターン} の間、味方が敵から受けるダメージが 0 になる。",
-  "STS2HOSHINO-DEFENSIVE_STANCES_POWER.title": "防御態勢強化"
+  "STS2HOSHINO-DEFENSIVE_STANCES_POWER.title": "防御態勢強化",
+  "STS2HOSHINO-SHOCK_THE_WORLD_POWER.title": "ホシノの精神",
+  "STS2HOSHINO-SHOCK_THE_WORLD_POWER.description": "敵の攻撃によって[gold]シールド[/gold]を失うたび、次のターン開始時にその分だけ[gold]ブロック[/gold]を得る。",
+  "STS2HOSHINO-SHOCK_THE_WORLD_POWER.smartDescription": "敵の攻撃によって[gold]シールド[/gold]を失うたび、次のターン開始時に{Amount:choose(1):その分だけ|[blue]{}[/blue]倍の} [gold]ブロック[/gold]を得る。",
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.title": "習慣性リロード症候群",
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.description": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、[gold]リロード[/gold]する。",
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、[gold]リロード[/gold]する。"
 }

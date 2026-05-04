@@ -34,6 +34,7 @@ public class IllegalTrade() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rar
         if (combatState != null)
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
                 .FromCard(this)
+                .WithAttackerAnim("Swing", 0.15f)
                 .TargetingAllOpponents(combatState)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(choiceContext);

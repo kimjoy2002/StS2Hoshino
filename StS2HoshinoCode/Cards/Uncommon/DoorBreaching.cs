@@ -38,6 +38,7 @@ public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Un
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
+            .WithAttackerAnim("Swing", 0.15f)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);
     }

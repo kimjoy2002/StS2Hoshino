@@ -19,12 +19,6 @@ using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
-/// <summary>
-/// 징크스 - 특별(Uncommon) 공격 카드
-/// 탄약을 소모합니다. 적에게 피해를 5 줍니다.
-/// 이번 전투동안 사용한 3번째 위치의 탄약당 피해량이 7(10) 증가하고
-/// 4번째 위치의 탄약당 피해량이 7(10) 감소합니다.
-/// </summary>
 [Pool(typeof(StS2HoshinoCardPool))]
 public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy)
 {

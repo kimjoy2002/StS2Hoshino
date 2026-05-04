@@ -146,7 +146,7 @@
   "STS2HOSHINO-WEAK_POINT_SHOT.description": "Consumes [gold]Ammo[/gold].\nDeals {Damage:diff()} damage.\nApply [gold]Vulnerable[/gold] equal to remaining [gold]Ammo[/gold].",
   "STS2HOSHINO-WIDE_SHOT.title": "Wide Shot",
   "STS2HOSHINO-WIDE_SHOT.description": "Consumes [gold]Ammo[/gold].\nDeals {Damage:diff()} damage to ALL enemies.\nPut 1 card on top of your [gold]Draw Pile[/gold].",
-  "STS2HOSHINO-WIDE_SHOT.selectionScreenPrompt": "Choose a card to put on top of your Draw Pile",  
+  "STS2HOSHINO-WIDE_SHOT.selectionScreenPrompt": "Choose a card to put on top of your Draw Pile",
   "STS2HOSHINO-RESPONSIBILITY.title": "Student Council President's Responsibility",
   "STS2HOSHINO-RESPONSIBILITY.description": "Gain {Energy:energyIcons()}.\nDraw {Cards:diff()} cards.\n[gold]Hoshino[/gold] plays the next turn for you.",
   "STS2HOSHINO-FULL_BARREL_FIRE_PLUS.title": "Burst Fire",
@@ -184,7 +184,15 @@
   "STS2HOSHINO-ILLEGAL_TRADE.title": "Illegal Trade",
   "STS2HOSHINO-ILLEGAL_TRADE.description": "Deals {Damage:diff()} damage to ALL enemies.\nWhen this card is added to your [gold]Deck[/gold], obtain a [red]Debt[/red] curse.",
   "STS2HOSHINO-QUICK_RESPONSE.title": "Quick Response",
-  "STS2HOSHINO-QUICK_RESPONSE.description": "Gain {Block:diff()} [gold]Block[/gold].\nWhenever this card enters your [gold]Draw Pile[/gold],\ngain {SecondBlock:diff()} [gold]Block[/gold].",
+  "STS2HOSHINO-QUICK_RESPONSE.description": "Gain {Block:diff()} [gold]Block[/gold].\nWhenever this card is put into your [gold]Draw Pile[/gold],\ngain {SecondBlock:diff()} [gold]Block[/gold].",
   "STS2HOSHINO-HORUS_OF_DAWN.title": "Horus of Dawn",
-  "STS2HOSHINO-HORUS_OF_DAWN.description": "[gold]Innate[/gold].\nGain [gold]Strength[/gold], [gold]Dexterity[/gold], and [gold]Expert[/gold] equal to the number of Curse cards in your [gold]Deck[/gold]."
+  "STS2HOSHINO-HORUS_OF_DAWN.description": "[gold]Innate[/gold].\nGain [gold]Strength[/gold], [gold]Dexterity[/gold], and [gold]Expert[/gold] equal to the number of [red]Curse[/red] cards in your [gold]Deck[/gold].",
+  "STS2HOSHINO-SHOCK_THE_WORLD.title": "Shock the World",
+  "STS2HOSHINO-SHOCK_THE_WORLD.description": "Whenever you lose [gold]Shield[/gold] from an enemy attack, gain that much [gold]Block[/gold] at the start of your next turn.",
+  "STS2HOSHINO-SHIELD_SWING.title": "Shield Swing",
+  "STS2HOSHINO-SHIELD_SWING.description": "Deal {Damage:diff()} damage.\nGain [gold]Block[/gold] and [gold]Shield[/gold] equal to half of the damage dealt.\n[gold]Out of Ammo[/gold]: Gain the full amount instead of half.",
+  "STS2HOSHINO-DEEP_SLEEP.title": "Deep Sleep",
+  "STS2HOSHINO-DEEP_SLEEP.description": "Choose up to X cards from your [gold]Draw Pile[/gold] and [gold]Exhaust[/gold] them.\nGain {Block:diff()} [gold]Block[/gold] X times.\nIf X is 3 or more, [gold]Retain[/gold] your [gold]Hand[/gold].",
+  "STS2HOSHINO-RELOADING_SYNDROME.title": "Compulsive Reload Syndrome",
+  "STS2HOSHINO-RELOADING_SYNDROME.description": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost {energyPrefix:energyIcons(1)} or more, [gold]Reload[/gold]."
 }
