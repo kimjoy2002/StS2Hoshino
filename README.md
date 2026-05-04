@@ -17,7 +17,7 @@
 - 소진: 탄약이 0인 상태에서 해당 카드를 사용하면 발휘되는 추가 효과입니다.
 
 ## 카드 구성
-현재는 78장+멀티플레이카드2장으로 이루어졌습니다. 추가로 카드 8장을 더 구현해서 갯수를 맞출 예정입니다.
+현재는 86장+멀티플레이카드2장으로 이루어졌습니다.
 
 ## 언어 지원
 현재 한국어를 기반으로 해서 영어, 일본어, 중국어를 추가로 지원중입니다. 기존 모드 번역과 ai번역을 혼용해서 사용하고 있으므로 문제가 있다면 알려주세요.
@@ -50,7 +50,7 @@ Hoshino is based on ammo usage, reload, shield, Out of Ammo, draw pile return, a
 - Out of Ammo: When ammo is 0, using the card triggers an additional effect.
 
 ## Card Count
-Currently consists of 78 cards + 2 multiplayer cards. 8 more cards are planned to be added.
+Currently consists of 86 cards + 2 multiplayer cards.
 
 ## Localization
 Supports Korean as the base language, with additional support for English, Japanese, and Chinese. Translations are a mix of original mod translations and AI translations, so please report any issues.
