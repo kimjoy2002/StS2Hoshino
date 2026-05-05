@@ -69,7 +69,7 @@
   "STS2HOSHINO-MEMORIAL.title": "추억",
   "STS2HOSHINO-MEMORIAL.description": "[gold]뽑을 카드 더미[/gold]를\n 섞을 때마다,\n[gold]힘[/gold]과 [gold]민첩[/gold]을\n{MemorialPower:diff()} 얻습니다.{IfUpgraded:show:\n[gold]뽑을 카드 더미[/gold]를 섞습니다.|}",
   "STS2HOSHINO-MILITARY_SUPPLIES.title": "돌격 준비",
-  "STS2HOSHINO-MILITARY_SUPPLIES.description": "[gold]장전[/gold]합니다.\n회복한 [gold]탄약[/gold] 1개당 {Energy:energyIcons()}를 얻습니다.\n이번 턴에 [gold]장전[/gold]할 수 없습니다.",
+  "STS2HOSHINO-MILITARY_SUPPLIES.description": "[gold]탄약[/gold]을 전부 소모합니다.\n소모한 [gold]탄약[/gold]당 {Energy:energyIcons()}를 얻습니다.\n이번 턴에 [gold]장전[/gold]할 수 없습니다.",
   "STS2HOSHINO-MISS_SHOT.title": "빗나간 사격",
   "STS2HOSHINO-MISS_SHOT.description": "[gold]탄약[/gold]을 전부 소모합니다.\n피해를 {Damage:diff()} 줍니다.",
   "STS2HOSHINO-MYSTERY.title": "신비",

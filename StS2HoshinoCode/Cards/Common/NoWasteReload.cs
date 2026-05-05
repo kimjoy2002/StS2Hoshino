@@ -20,6 +20,10 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 public class NoWasteReload() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, TargetType.Self), IRunout
 {
     
+    public override IEnumerable<CardKeyword> CanonicalKeywords =>
+    [
+        CardKeyword.Exhaust
+    ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
@@ -28,11 +32,8 @@ public class NoWasteReload() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Com
     protected override HashSet<CardTag> CanonicalTags => [
     ];
 
-    public override IEnumerable<CardKeyword> CanonicalKeywords =>
-    [
-    ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new EnergyVar(1)
+        new EnergyVar(2)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

@@ -21,7 +21,7 @@ public partial class StS2HoshinoMain : Node
     public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } =
          new(ModId, MegaCrit.Sts2.Core.Logging.LogType.Generic);
 
-    public static float ShotgunVolumeMultiplier = 0.15f;
+    public static float ShotgunVolumeMultiplier = 0.10f;
     public static float ReloadVolumeMultiplier = 1.0f;
 
     public static void Initialize()

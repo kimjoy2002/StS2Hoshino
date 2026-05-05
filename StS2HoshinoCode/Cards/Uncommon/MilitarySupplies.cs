@@ -19,7 +19,8 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 [Pool(typeof(StS2HoshinoCardPool))]
 public class MilitarySupplies() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
-    protected override HashSet<CardTag> CanonicalTags => [];
+    public override int AmmoCost { get; set; } = 1;
+    protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload),
@@ -31,13 +32,18 @@ public class MilitarySupplies() : StS2HoshinoCard(2, CardType.Skill, CardRarity.
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        int before_bulltet = AmmoClass.GetCurrentAmmo(base.Owner);
-        await ReloadCmd.Execute(choiceContext, base.Owner);
-        int after_bulltet = AmmoClass.GetCurrentAmmo(base.Owner);
-        if (after_bulltet >  before_bulltet)
+        int extraAmmo = AmmoClass.GetCurrentAmmo(base.Owner);
+        if (extraAmmo > 0)
         {
-            await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue*(after_bulltet-before_bulltet), base.Owner);
+            await AmmoClass.LoseAmmo(choiceContext, extraAmmo, base.Owner);
         }
+        
+        int totalConsumed = extraAmmo + AmmoCost;
+        if (totalConsumed > 0)
+        {
+            await PlayerCmd.GainEnergy(base.DynamicVars.Energy.IntValue * totalConsumed, base.Owner);
+        }
+        
         await PowerCmd.Apply<CantReloadPower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
     }
     

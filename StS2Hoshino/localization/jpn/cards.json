@@ -69,7 +69,7 @@
   "STS2HOSHINO-MEMORIAL.title": "メモリアル",
   "STS2HOSHINO-MEMORIAL.description": "[gold]山札[/gold] をシャッフルするたびに、\n[gold]筋力[/gold]{MemorialPower:diff()} と [gold]敏捷[/gold]{MemorialPower:diff()} を得る。{IfUpgraded:show:\n[gold]山札[/gold] をシャッフルする。|}",
   "STS2HOSHINO-MILITARY_SUPPLIES.title": "突撃準備",
-  "STS2HOSHINO-MILITARY_SUPPLIES.description": "[gold]リロード[/gold]。\n回復した [gold]弾薬[/gold] 1発につき {Energy:energyIcons()} を得る。\nこのターン、[gold]リロード[/gold] できなくなる。",
+  "STS2HOSHINO-MILITARY_SUPPLIES.description": "[gold]弾薬[/gold] をすべて消費する。\n消費した [gold]弾薬[/gold] 1発につき {Energy:energyIcons()} を得る。\nこのターン、[gold]リロード[/gold] できなくなる。",
   "STS2HOSHINO-MISS_SHOT.title": "ミスショット",
   "STS2HOSHINO-MISS_SHOT.description": "すべての [gold]弾薬[/gold] を消費する。\n{Damage:diff()} ダメージを与える。",
   "STS2HOSHINO-MYSTERY.title": "神秘の力",

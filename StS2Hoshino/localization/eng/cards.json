@@ -69,7 +69,7 @@
   "STS2HOSHINO-MEMORIAL.title": "Memorial",
   "STS2HOSHINO-MEMORIAL.description": "Whenever you shuffle your [gold]Draw Pile[/gold],\ngain {MemorialPower:diff()} [gold]Strength[/gold] and [gold]Dexterity[/gold].{IfUpgraded:show:\nShuffle your [gold]Draw Pile[/gold].|}",
   "STS2HOSHINO-MILITARY_SUPPLIES.title": "Assault Prep",
-  "STS2HOSHINO-MILITARY_SUPPLIES.description": "[gold]Reload[/gold].\nGain {Energy:energyIcons()} for each [gold]Ammo[/gold] recovered.\nYou cannot [gold]Reload[/gold] this turn.",
+  "STS2HOSHINO-MILITARY_SUPPLIES.description": "Consumes all [gold]Ammo[/gold].\nGain {Energy:energyIcons()} for each [gold]Ammo[/gold] consumed.\nYou cannot [gold]Reload[/gold] this turn.",
   "STS2HOSHINO-MISS_SHOT.title": "Miss Shot",
   "STS2HOSHINO-MISS_SHOT.description": "Consumes all [gold]Ammo[/gold].\nDeals {Damage:diff()} damage.",
   "STS2HOSHINO-MYSTERY.title": "Mystery",

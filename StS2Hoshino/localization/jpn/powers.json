@@ -77,5 +77,5 @@
   "STS2HOSHINO-SHOCK_THE_WORLD_POWER.smartDescription": "敵の攻撃によって[gold]シールド[/gold]を失うたび、次のターン開始時に{Amount:choose(1):その分だけ|[blue]{}[/blue]倍の} [gold]ブロック[/gold]を得る。",
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.title": "習慣性リロード症候群",
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.description": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、[gold]リロード[/gold]する。",
-  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、[gold]リロード[/gold]する。"
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、{Amount:choose(1):[gold]リロード[/gold]する。|[blue]{}[/blue]回[gold]リロード[/gold]する。}"
 }
