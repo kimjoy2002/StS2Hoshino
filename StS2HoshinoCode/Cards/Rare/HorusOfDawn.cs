@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
@@ -23,9 +24,13 @@ public class HorusOfDawn() : StS2HoshinoCard(1, CardType.Power, CardRarity.Rare,
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
     ];
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromPower<StrengthPower>(),
+        HoverTipFactory.FromPower<DexterityPower>(),
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Expert),
+    ];
     protected override HashSet<CardTag> CanonicalTags => [];
-    protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [];
 
     private int GetCurseCountInDeck()

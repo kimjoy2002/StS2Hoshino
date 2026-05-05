@@ -32,7 +32,7 @@ public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, T
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
         new CalculationBaseVar(5m),
-        new ExtraDamageVar(7m),
+        new ExtraDamageVar(9m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => 
         {
             int s3 = AmmoClass.GetSlot3UsedCount(card.Owner);

@@ -18,7 +18,7 @@ public class Retry() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, T
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(5, ValueProp.Move),
+        new BlockVar(4, ValueProp.Move),
         new CardsVar(3)
     ];
 

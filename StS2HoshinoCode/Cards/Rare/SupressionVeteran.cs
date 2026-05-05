@@ -16,12 +16,13 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class SupressionVeteran() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class SupressionVeteran() : StS2HoshinoCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
+        HoverTipFactory.Static(StaticHoverTip.Block)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<SupressionVeteranPower>(2m)

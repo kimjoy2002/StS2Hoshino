@@ -19,7 +19,7 @@ using StS2Hoshino.StS2HoshinoCode.Utils;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class PrepareSuppression() : StS2HoshinoCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class PrepareSuppression() : StS2HoshinoCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

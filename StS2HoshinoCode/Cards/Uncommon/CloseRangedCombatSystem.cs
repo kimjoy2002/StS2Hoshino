@@ -22,7 +22,8 @@ public class CloseRangedCombatSystem() : StS2HoshinoCard(2, CardType.Power, Card
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival),
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Shield)
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Shield),
+        HoverTipFactory.Static(StaticHoverTip.Block)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<CloseRangedCombatPower>(3m)

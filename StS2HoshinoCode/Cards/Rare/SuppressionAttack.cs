@@ -45,7 +45,7 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
             item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
         }
         CardPile pile = PileType.Hand.GetPile(base.Owner);
-        CardModel? cardModel = base.Owner.RunState.Rng.CombatCardSelection.NextItem(pile.Cards);
+        CardModel? cardModel = pile.Cards.FirstOrDefault();
         if (cardModel != null)
         {
             await CardCmd.Exhaust(choiceContext, cardModel);
