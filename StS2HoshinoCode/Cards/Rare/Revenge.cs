@@ -26,7 +26,7 @@ public class Revenge() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, Tar
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DynamicVar("Replay", 2m)];
+        new DynamicVar("Replay", 3m)];
 
     
     public static async Task AutoPlayFromDrawPileWithReplay(
@@ -59,6 +59,6 @@ public class Revenge() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rare, Tar
     
     protected override void OnUpgrade()
     {
-        DynamicVars["Replay"].UpgradeValueBy(1m);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

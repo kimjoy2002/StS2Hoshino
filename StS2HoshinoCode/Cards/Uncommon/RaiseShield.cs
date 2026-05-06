@@ -18,7 +18,7 @@ public class RaiseShield() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncom
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(14, ValueProp.Move)];
+        new BlockVar(13, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

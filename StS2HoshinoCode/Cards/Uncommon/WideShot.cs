@@ -57,6 +57,6 @@ public class WideShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommo
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.Damage.UpgradeValueBy(4m);
+        base.DynamicVars.Damage.UpgradeValueBy(3m);
     }
 }

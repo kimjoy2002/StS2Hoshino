@@ -21,7 +21,6 @@ public class DefensiveStances() : StS2HoshinoCard(2, CardType.Skill, CardRarity.
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Retain,
         CardKeyword.Exhaust
     ];
     protected override HashSet<CardTag> CanonicalTags => [];

@@ -66,6 +66,6 @@ public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, T
 
     protected override void OnUpgrade()
     {
-        base.DynamicVars.ExtraDamage.UpgradeValueBy(3m);
+        base.DynamicVars.ExtraDamage.UpgradeValueBy(5m);
     }
 }

@@ -49,7 +49,6 @@ public class Patience() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon
     }
     protected override void OnUpgrade()
     {
-        DynamicVars["DexterityPower"].UpgradeValueBy(1m);
         base.DynamicVars.Energy.UpgradeValueBy(1m);
     }
 }
