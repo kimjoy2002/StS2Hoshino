@@ -113,10 +113,12 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		var dies    = new[] { MakeState("die",    false, false), MakeState("die",    false, true), MakeState("die",    true, false), MakeState("die",    true, true) };
 		var reloads = new[] { MakeState("reload", false, false), MakeState("reload", false, true), MakeState("reload", true, false), MakeState("reload", true, true) };
 		var swings  = new[] { MakeState("swing",  false, false), MakeState("swing",  false, true), MakeState("swing",  true, false), MakeState("swing",  true, true) };
+		var charges  = new[] { MakeState("charge",  false, false), MakeState("charge",  false, false), MakeState("charge",  true, false), MakeState("charge",  true, false) };
 
+		
 		var idles = new[] { idleNone, idleShield, idleSwim, idleSwimShield };
 
-		var allActionStates = new[] { attacks, hurts, casts, reloads, swings };
+		var allActionStates = new[] { attacks, hurts, casts, reloads, swings, charges };
 		foreach (var actionArr in allActionStates)
 		{
 			for (int i = 0; i < actionArr.Length; i++)
@@ -157,6 +159,7 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		AddBranches("Cast",   casts);
 		AddBranches("Dead",   dies);
 		AddBranches("Reload", reloads);
+		AddBranches("Charge", charges);
 
 		animator.AddAnyState("ShieldUp", shieldUpSwim, () => HasSwim());
 		animator.AddAnyState("ShieldUp", shieldUp);

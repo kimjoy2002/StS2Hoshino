@@ -19,7 +19,7 @@ public sealed class LubricatingPower : StS2HoshinoPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override bool IsInstanced => true;
+    public override PowerInstanceType InstanceType => PowerInstanceType.Instanced;
 
     public override Task AfterCombatEnd(CombatRoom room)
     {
