@@ -36,6 +36,10 @@ https://github.com/kimjoy2002/StS2Hoshino/releases
 
 # Slay The Spire2 Takanashi Hoshino Mod
 
+<img width="1336" height="891" alt="image" src="https://github.com/user-attachments/assets/bdc51746-1b77-4246-9ef2-f27013fa1e0e" />
+<img width="1218" height="896" alt="image" src="https://github.com/user-attachments/assets/23b5b6af-0e04-489a-90ad-f5737690ae71" />
+
+
 This is Blue Archive Takanashi Hoshino Character Mod for Slay the Spire 2
 
 This mod is a port of the Slay the Spire 1 Hoshino mod with various card improvements.
