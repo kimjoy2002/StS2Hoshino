@@ -22,7 +22,7 @@ using StS2Hoshino.StS2HoshinoCode.Character;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class OpeningRemarks() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
+public class OpeningRemarks() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -45,9 +45,8 @@ public class OpeningRemarks() : StS2HoshinoCard(1, CardType.Attack, CardRarity.R
             .FromCard(this)
             .Targeting(play.Target!)
             .WithAttackerAnim("Charge", 0.25f)
-            .WithWaitBeforeHit(0.5f, 1f)
+            .WithWaitBeforeHit(0.5f, 0.5f)
             .WithHitVfxNode((Creature _) => NSpikeSplashVfx.Create(play.Target, VfxColor.Gold))
-            .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
             .WithHitVfxNode((Creature _) => NBigSlashImpactVfx.Create(VfxCmd.GetSideCenter(CombatSide.Enemy, base.CombatState).Value, 180f, new Color("#80dbff")))
             .Execute(choiceContext);
     }
@@ -64,6 +63,6 @@ public class OpeningRemarks() : StS2HoshinoCard(1, CardType.Attack, CardRarity.R
 
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        DynamicVars.Damage.UpgradeValueBy(10m);
     }
 }

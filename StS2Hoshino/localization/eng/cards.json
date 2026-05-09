@@ -58,7 +58,7 @@
   "STS2HOSHINO-INCENDIARY_SHOT.description": "[gold]Reload[/gold].\nUntil you [gold]Reload[/gold] again,\nwhenever you consume [gold]Ammo[/gold],\ndeal {BulletIncendiaryPower:diff()} damage to ALL enemies.",
   "STS2HOSHINO-IRON_WALL_SKILL.title": "Iron Wall",
   "STS2HOSHINO-IRON_WALL_SKILL.description": "Remove [gold]Frail[/gold] from yourself.\nGain {Block:diff()} [gold]Block[/gold].\nGain {ShieldPower:diff()} [gold]Shield[/gold].",
-  "STS2HOSHINO-JACKPOT.title": "Jackpot",
+  "STS2HOSHINO-JACKPOT.title": "Cleanup",
   "STS2HOSHINO-JACKPOT.description": "Deals {Damage:diff()} damage to ALL enemies.\nDraw {Cards:diff()} cards.\n[gold]Entry[/gold]: Reduce this card's cost by {LossCost:energyIcons()} this combat.",
   "STS2HOSHINO-LAST_RESORT.title": "Secret Weapon",
   "STS2HOSHINO-LAST_RESORT.description": "Deals {Damage:diff()} damage.\n[gold]Out of Ammo[/gold]: Draw {Cards:diff()} cards.\n[gold]Reload[/gold].",
@@ -68,7 +68,7 @@
   "STS2HOSHINO-PLATE_REPLACEMENT.description": "[gold]Exhaust[/gold] 1 card.\nGain {ShieldPower:diff()} [gold]Shield[/gold].",
   "STS2HOSHINO-MEMORIAL.title": "Memorial",
   "STS2HOSHINO-MEMORIAL.description": "Whenever you shuffle your [gold]Draw Pile[/gold],\ngain {MemorialPower:diff()} [gold]Strength[/gold] and [gold]Dexterity[/gold].{IfUpgraded:show:\nShuffle your [gold]Draw Pile[/gold].|}",
-  "STS2HOSHINO-MILITARY_SUPPLIES.title": "Assault Prep",
+  "STS2HOSHINO-MILITARY_SUPPLIES.title": "Supplies",
   "STS2HOSHINO-MILITARY_SUPPLIES.description": "Consumes all [gold]Ammo[/gold].\nGain {Energy:energyIcons()} for each [gold]Ammo[/gold] consumed.\nYou cannot [gold]Reload[/gold] this turn.",
   "STS2HOSHINO-MISS_SHOT.title": "Miss Shot",
   "STS2HOSHINO-MISS_SHOT.description": "Consumes all [gold]Ammo[/gold].\nDeals {Damage:diff()} damage.",
@@ -178,11 +178,11 @@
   "STS2HOSHINO-LUBRICATING.description": "At the end of combat, [gold]Enchant[/gold] 1 Attack card in your [gold]Deck[/gold] with {LubricatingPower:diff()} [purple]Sharp[/purple], or increase existing [purple]Sharp[/purple] by 1.",
   "STS2HOSHINO-SUPPRESSION_ATTACK.title": "Suppression Fire",
   "STS2HOSHINO-SUPPRESSION_ATTACK.description": "Consumes [gold]Ammo[/gold].\nDeals {Damage:diff()} damage to ALL enemies.\n[gold]Exhaust[/gold] the leftmost card in your [gold]Hand[/gold] and return this card to your [gold]Hand[/gold].",
-  "STS2HOSHINO-SENIORS_GUIDANCE.title": "Senior's Guidance",
+  "STS2HOSHINO-SENIORS_GUIDANCE.title": "Guidance",
   "STS2HOSHINO-SENIORS_GUIDANCE.description": "Deals {Damage:diff()} damage.\n[gold]Exhaust[/gold]: Gain {Energy:energyIcons()}.",
   "STS2HOSHINO-JINX.title": "Jinx",
   "STS2HOSHINO-JINX.description": "Consumes [gold]Ammo[/gold].\nDeals {CalculatedDamage:diff()} damage.\nIncrease damage by {ExtraDamage:diff()} for each 3rd [gold]Ammo[/gold] used this combat, and decrease damage by {ExtraDamage:diff()} for each 4th [gold]Ammo[/gold] used.",
-  "STS2HOSHINO-OPENING_REMARKS.title": "Opening Remarks",
+  "STS2HOSHINO-OPENING_REMARKS.title": "Opening",
   "STS2HOSHINO-OPENING_REMARKS.description": "Deal {Damage:diff()} damage.{InCombat:|\nWhen this card is added to your [gold]Deck[/gold], obtain a [red]Debt[/red] curse.}",
   "STS2HOSHINO-QUICK_RESPONSE.title": "Quick Response",
   "STS2HOSHINO-QUICK_RESPONSE.description": "Gain {Block:diff()} [gold]Block[/gold].\nWhenever this card is put into your [gold]Draw Pile[/gold],\ngain {SecondBlock:diff()} [gold]Block[/gold].",
@@ -195,5 +195,5 @@
   "STS2HOSHINO-DEEP_SLEEP.title": "Deep Sleep",
   "STS2HOSHINO-DEEP_SLEEP.description": "Choose up to X cards from your [gold]Draw Pile[/gold] and [gold]Exhaust[/gold] them.\nGain {Block:diff()} [gold]Block[/gold] X times.\nIf X is 3 or more, [gold]Retain[/gold] your [gold]Hand[/gold].",
   "STS2HOSHINO-RELOADING_SYNDROME.title": "Compulsive Reload Syndrome",
-  "STS2HOSHINO-RELOADING_SYNDROME.description": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost {energyPrefix:energyIcons(1)} or more, [gold]Reload[/gold]."
+  "STS2HOSHINO-RELOADING_SYNDROME.description": "Whenever you play an [gold]Ammo[/gold] consuming card with a cost of {energyPrefix:energyIcons(1)} or more, [gold]Reload[/gold]."
 }
