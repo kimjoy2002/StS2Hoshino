@@ -31,7 +31,7 @@ public class EmergencyFieldAidSkill() : StS2HoshinoCard(-1, CardType.Skill, Card
     {
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
         if (side == base.Owner.Creature.Side && combatState.RoundNumber <= 1)
         {

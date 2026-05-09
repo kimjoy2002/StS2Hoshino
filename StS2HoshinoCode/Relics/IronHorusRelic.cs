@@ -28,6 +28,6 @@ public class IronHorusRelic : HoshinoBaseRelic
     {
             Flash();
             await CreatureCmd.GainBlock(base.Owner.Creature, base.DynamicVars.Block, null);
-            await PowerCmd.Apply<ShieldPower>(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars["ShieldPower"].IntValue, base.Owner.Creature, null);
+            await PowerCmd.Apply<ShieldPower>(base.Owner.Creature, base.DynamicVars["ShieldPower"].IntValue, base.Owner.Creature, null);
     }
 }

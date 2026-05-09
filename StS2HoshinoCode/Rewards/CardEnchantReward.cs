@@ -48,8 +48,9 @@ public class CardEnchantReward : Reward
         _amount = amount;
     }
 
-    public override void Populate()
+    public override Task Populate()
     {
+        return Task.CompletedTask;
     }
 
     protected override async Task<bool> OnSelect()

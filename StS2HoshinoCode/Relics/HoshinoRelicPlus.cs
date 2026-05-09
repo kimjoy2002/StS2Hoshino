@@ -33,7 +33,7 @@ public class HoshinoRelicPlus : HoshinoBaseRelic, IOnReloaded
         if (room is CombatRoom)
         {
             Flash();
-            await PowerCmd.Apply<ExpertPower>(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars["ExpertPower"].IntValue, base.Owner.Creature, null);
+            await PowerCmd.Apply<ExpertPower>(base.Owner.Creature, base.DynamicVars["ExpertPower"].IntValue, base.Owner.Creature, null);
         }
     }
     public async Task OnReload(PlayerChoiceContext ctx, Player player, bool useButton)

@@ -50,7 +50,7 @@ public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Commo
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
-        await PowerCmd.Apply<WeakPower>(choiceContext, enemies,base.DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
+        await PowerCmd.Apply<WeakPower>(enemies,base.DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
         
         //총알 사용
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();

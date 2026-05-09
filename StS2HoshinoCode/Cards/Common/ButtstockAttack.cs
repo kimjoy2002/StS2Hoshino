@@ -39,7 +39,7 @@ public class ButtstockAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity.
     public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)
     {
         if (play.Target != null)
-            await PowerCmd.Apply<WeakPower>(choiceContext, play.Target, base.DynamicVars.Weak.BaseValue,
+            await PowerCmd.Apply<WeakPower>(play.Target, base.DynamicVars.Weak.BaseValue,
                 base.Owner.Creature, this);
     }
     

@@ -89,7 +89,7 @@ public class TacticalSatchelBagRelic : HoshinoBaseRelic, IOnBulletChanged
         Flash();
         UpdateDisplay();
         
-        await PowerCmd.Apply<ExpertPower>(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars["ExpertPower"].IntValue, base.Owner.Creature, null);
+        await PowerCmd.Apply<ExpertPower>(base.Owner.Creature, base.DynamicVars["ExpertPower"].IntValue, base.Owner.Creature, null);
         
         await Cmd.Wait(0.5f);
         _isActivating = false;

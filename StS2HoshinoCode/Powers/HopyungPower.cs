@@ -24,25 +24,31 @@ public sealed class HopyungPower : StS2HoshinoPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override async Task AfterAutoPrePlayPhaseEnteredLate(PlayerChoiceContext choiceContext, Player player)
+    public override async Task BeforePlayPhaseStart(PlayerChoiceContext choiceContext, Player player)
     {
         if (player.Creature != base.Owner)
         {
             return;
         }
-        ICombatState? combatState = player.Creature.CombatState;
+        CombatState? combatState = player.Creature.CombatState;
         Flash();
         bool flag;
         using (CardSelectCmd.PushSelector(new VakuuCardSelector()))
         {
-            int cardsPlayed;
-            for (cardsPlayed = 0; cardsPlayed < 13; cardsPlayed++)
+            int cardsPlayed = 0;
+            List<CardModel> list = player.PlayerCombatState.AllCards.Where((CardModel c) => c.Enchantment is Imbued).ToList();
+            foreach (CardModel item in list)
             {
                 if (CombatManager.Instance.IsOverOrEnding)
                 {
                     break;
                 }
-                if (CombatManager.Instance.IsPlayerReadyToEndTurn(player))
+                await CardCmd.AutoPlay(choiceContext, item, null);
+                cardsPlayed++;
+            }
+            for (; cardsPlayed < 13; cardsPlayed++)
+            {
+                if (CombatManager.Instance.IsOverOrEnding)
                 {
                     break;
                 }
@@ -50,7 +56,8 @@ public sealed class HopyungPower : StS2HoshinoPower
                 var ownerPlayer = base.Owner.Player;
                 if (ownerPlayer != null)
                 {
-                    CardPile pile = PileType.Hand.GetPile(ownerPlayer);
+                
+                    CardPile pile = PileType.Hand.GetPile(player);
                     CardModel? card = pile.Cards.FirstOrDefault((CardModel c) => c.CanPlay());
                     if (card == null)
                     {
@@ -74,13 +81,13 @@ public sealed class HopyungPower : StS2HoshinoPower
         LocString line = (flag ? new LocString("powers", "STS2HOSHINO-HOPYUNG_POWER.warning") : new LocString("powers", "STS2HOSHINO-HOPYUNG_POWER.approval"));
         TalkCmd.Play(line, base.Owner, VfxColor.Purple);
         
-        await PowerCmd.Apply<HopyungPower>(choiceContext, player.Creature,
+        await PowerCmd.Apply<HopyungPower>(player.Creature,
             -base.Amount,
             player.Creature,
             null);
     }
 
-    private Creature? GetTarget(CardModel card, ICombatState combatState)
+    private Creature? GetTarget(CardModel card, CombatState combatState)
     {
         var ownerCombatState = base.Owner.CombatState;
         if (ownerCombatState != null)

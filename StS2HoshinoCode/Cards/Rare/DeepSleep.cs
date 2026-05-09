@@ -72,8 +72,7 @@ public class DeepSleep() : StS2HoshinoCard(-1, CardType.Skill, CardRarity.Rare, 
             
             if (x >= 3)
             {
-                await PowerCmd.Apply<RetainHandPower>(choiceContext, 
-                    base.Owner.Creature, 
+                await PowerCmd.Apply<RetainHandPower>(base.Owner.Creature, 
                     1, base.Owner.Creature, this);
             }
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);

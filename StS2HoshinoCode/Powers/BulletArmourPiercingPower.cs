@@ -27,7 +27,7 @@ public sealed class BulletArmourPiercingPower : StS2HoshinoPower, IOnReloaded, I
     {
         if (base.Owner == player.Creature && useButton)
         {
-            await PowerCmd.ModifyAmount(ctx, this, -2, null, null);
+            await PowerCmd.ModifyAmount(this, -2, null, null);
         }
     }
     

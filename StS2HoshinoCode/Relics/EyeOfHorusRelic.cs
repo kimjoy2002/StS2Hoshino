@@ -30,7 +30,7 @@ public class EyeOfHorusRelic : HoshinoBaseRelic
         if (room is CombatRoom)
         {
             Flash();
-            await PowerCmd.Apply<BulletVigorPower>(new ThrowingPlayerChoiceContext(), base.Owner.Creature, base.DynamicVars["BulletVigorPower"].IntValue, base.Owner.Creature, null);
+            await PowerCmd.Apply<BulletVigorPower>(base.Owner.Creature, base.DynamicVars["BulletVigorPower"].IntValue, base.Owner.Creature, null);
         }
     }
 }

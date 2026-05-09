@@ -28,6 +28,6 @@ public sealed class RoundManualChamberingPower : StS2HoshinoPower
         {
             return;
         }
-        await PowerCmd.Apply<FreeReloadPower>(choiceContext, base.Owner, base.Amount, base.Owner, null);
+        await PowerCmd.Apply<FreeReloadPower>(base.Owner, base.Amount, base.Owner, null);
     }
 }

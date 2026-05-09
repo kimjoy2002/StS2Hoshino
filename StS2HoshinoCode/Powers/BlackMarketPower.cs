@@ -35,7 +35,7 @@ public sealed class BlackMarketPower : StS2HoshinoPower, IOnReloaded
                     select c, base.Amount, ownerPlayer.RunState.Rng.CombatCardGeneration).ToList();
                 foreach (CardModel item in list)
                 {
-                    await CardPileCmd.AddGeneratedCardToCombat(item, PileType.Hand, player);
+                    await CardPileCmd.AddGeneratedCardToCombat(item, PileType.Hand, addedByPlayer: true);
                 }
             }
         }

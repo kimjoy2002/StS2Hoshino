@@ -26,7 +26,7 @@ public class ReloadingSyndrome() : StS2HoshinoCard(3, CardType.Power, CardRarity
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<ReloadingSyndromePower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
+        await PowerCmd.Apply<ReloadingSyndromePower>(base.Owner.Creature, 1, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()

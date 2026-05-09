@@ -42,7 +42,7 @@ public class WeakPointShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Un
         int amount = AmmoClass.GetCurrentAmmo(Owner);
         if (amount > 0)
         {
-            await PowerCmd.Apply<VulnerablePower>(choiceContext, play.Target!, amount, base.Owner.Creature, this);
+            await PowerCmd.Apply<VulnerablePower>(play.Target!, amount, base.Owner.Creature, this);
         }
         
         //총알 사용

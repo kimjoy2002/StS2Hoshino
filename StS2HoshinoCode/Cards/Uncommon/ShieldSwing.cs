@@ -41,29 +41,13 @@ public class ShieldSwing() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Unco
         bool isRunout = AmmoClass.isEmptyAmmo(Owner);
         
         var attackCommand = await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)
-            .WithAttackerAnim("Swing", 0.15f)
-            .Targeting(cardPlay.Target)
-            .Execute(choiceContext);
-
-        var blockAmount = attackCommand.Results
-            .SelectMany(results => results)
-            .Sum(r => (r.TotalDamage + r.OverkillDamage) / (isRunout ? 1 : 2));
-
-        await CreatureCmd.GainBlock(
-            base.Owner.Creature,
-            blockAmount,
-            ValueProp.Move,
-            cardPlay
-        );
-
-        await PowerCmd.Apply<ShieldPower>(
-            choiceContext,
-            base.Owner.Creature,
-            blockAmount,
-            base.Owner.Creature,
-            this
-        );
+            .FromCard(this).WithAttackerAnim("Swing", 0.15f).Targeting(cardPlay.Target).Execute(choiceContext);
+        await CreatureCmd.GainBlock(base.Owner.Creature,
+            attackCommand.Results.Sum((DamageResult r) => (r.TotalDamage + r.OverkillDamage)/(isRunout?1:2)), 
+            ValueProp.Move, cardPlay);
+        await PowerCmd.Apply<ShieldPower>(base.Owner.Creature,
+            attackCommand.Results.Sum((DamageResult r) => (r.TotalDamage + r.OverkillDamage)/(isRunout?1:2))
+            , base.Owner.Creature, this);
 
     }
     

@@ -53,19 +53,19 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         await Cmd.Wait(0.25f);
     }
 
-    protected override PileType GetResultPileTypeForCardPlay()
+    protected override PileType GetResultPileType()
     {
         CardPile pile = PileType.Hand.GetPile(base.Owner);
         if (pile.Cards.Count>0)
         {
-            PileType resultPileType = base.GetResultPileTypeForCardPlay();
+            PileType resultPileType = base.GetResultPileType();
             if (resultPileType != PileType.Discard)
             {
                 return resultPileType;
             }
             return PileType.Hand;
         }
-        return base.GetResultPileTypeForCardPlay();
+        return base.GetResultPileType();
     }
     
     protected override void OnUpgrade()

@@ -54,7 +54,7 @@ public class FirstShot() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Uncomm
         if (card == this)
         {
             CardModel copy_card = CreateClone();
-            await CardPileCmd.AddGeneratedCardToCombat(copy_card, PileType.Hand, player);
+            await CardPileCmd.AddGeneratedCardToCombat(copy_card, PileType.Hand, addedByPlayer: true);
         }
     }
 }

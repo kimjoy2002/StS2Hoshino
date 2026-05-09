@@ -23,7 +23,7 @@ public sealed class CloseRangedCombatPower : StS2HoshinoPower, IOnInvaded
         {
             Flash();
             await CreatureCmd.GainBlock(player.Creature,  base.Amount, ValueProp.Unpowered, null);
-            await PowerCmd.Apply<ShieldPower>(choiceContext, base.Owner, Amount, base.Owner, null);
+            await PowerCmd.Apply<ShieldPower>(base.Owner, Amount, base.Owner, null);
         }
     }
 }

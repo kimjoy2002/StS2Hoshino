@@ -27,7 +27,7 @@ public sealed class DefensiveStancesPower : StS2HoshinoPower
         return 1m;
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, CombatState combatState)
     {
         if (side == base.Owner.Side)
         {

@@ -1,6 +1,7 @@
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
 using StS2Hoshino.StS2HoshinoCode.Extensions;
 
 namespace StS2Hoshino.StS2HoshinoCode.Utils;
@@ -10,7 +11,7 @@ public static class HoshinoVisualUtils
     private static float _movingPos = 120f;
     public static void ApplyBarrierVisual(Creature creature)
     {
-        var node = creature.GetCreatureNode();
+        var node = NCombatRoom.Instance?.GetCreatureNode(creature);
         if (node == null) return;
 
         if (node.HasNode("HoshinoBarrierFloor")) return;
@@ -39,7 +40,7 @@ public static class HoshinoVisualUtils
 
     public static void RemoveBarrierVisual(Creature creature)
     {
-        var node = creature.GetCreatureNode();
+        var node = NCombatRoom.Instance?.GetCreatureNode(creature);
         if (node == null) return;
 
         if (node.HasNode("HoshinoBarrierFloor"))
@@ -55,7 +56,7 @@ public static class HoshinoVisualUtils
 
     public static void ApplyShieldVisualPersistent(Creature creature)
     {
-        var node = creature.GetCreatureNode();
+        var node = NCombatRoom.Instance?.GetCreatureNode(creature);
         if (node == null) return;
 
         if (node.HasNode("HoshinoShieldPersistent")) return;
@@ -70,7 +71,7 @@ public static class HoshinoVisualUtils
 
     public static void RemoveShieldVisualPersistent(Creature creature)
     {
-        var node = creature.GetCreatureNode();
+        var node = NCombatRoom.Instance?.GetCreatureNode(creature);
         node?.GetNodeOrNull("HoshinoShieldPersistent")?.QueueFree();
     }
 }

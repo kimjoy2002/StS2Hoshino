@@ -58,7 +58,7 @@ public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Un
             if (singleTarget != null)
             {
                 int amount = base.DynamicVars["WeakPower"].IntValue;
-                await PowerCmd.Apply<WeakPower>(choiceContext, singleTarget, amount, base.Owner.Creature, this);
+                await PowerCmd.Apply<WeakPower>(singleTarget, amount, base.Owner.Creature, this);
             }
         }
     }

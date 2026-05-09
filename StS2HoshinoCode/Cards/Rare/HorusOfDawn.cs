@@ -53,9 +53,9 @@ public class HorusOfDawn() : StS2HoshinoCard(1, CardType.Power, CardRarity.Rare,
         if (curseCount > 0)
         {
             await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
-            await PowerCmd.Apply<StrengthPower>(choiceContext, base.Owner.Creature, curseCount, base.Owner.Creature, null);
-            await PowerCmd.Apply<DexterityPower>(choiceContext, base.Owner.Creature, curseCount, base.Owner.Creature, null);
-            await PowerCmd.Apply<ExpertPower>(choiceContext, base.Owner.Creature, curseCount, base.Owner.Creature, null);
+            await PowerCmd.Apply<StrengthPower>(base.Owner.Creature, curseCount, base.Owner.Creature, null);
+            await PowerCmd.Apply<DexterityPower>(base.Owner.Creature, curseCount, base.Owner.Creature, null);
+            await PowerCmd.Apply<ExpertPower>(base.Owner.Creature, curseCount, base.Owner.Creature, null);
         }
     }
 

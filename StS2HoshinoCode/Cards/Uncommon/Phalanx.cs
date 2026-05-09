@@ -40,7 +40,7 @@ public class Phalanx() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon,
                 if (player.Creature.IsAlive)
                 {
                     await CreatureCmd.GainBlock(player.Creature, base.DynamicVars.Block, play);
-                    await PowerCmd.Apply<ShieldPower>(choiceContext, player.Creature,
+                    await PowerCmd.Apply<ShieldPower>(player.Creature,
                         DynamicVars["ShieldPower"].IntValue, base.Owner.Creature, this);
                 }
             }

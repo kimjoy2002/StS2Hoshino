@@ -35,7 +35,7 @@ public sealed class ShockTheWorldPower : StS2HoshinoPower
             if (shieldLoss > 0)
             {
                 Flash();
-                await PowerCmd.Apply<BlockNextTurnPower>(choiceContext, base.Owner, shieldLoss * Amount, base.Owner, null);
+                await PowerCmd.Apply<BlockNextTurnPower>(base.Owner, shieldLoss * Amount, base.Owner, null);
             }
         }
     }

@@ -27,7 +27,7 @@ public sealed class BulletIncendiaryPower : StS2HoshinoPower, IOnReloaded, IBull
     {
         if (base.Owner == player.Creature)
         {
-            await PowerCmd.ModifyAmount(ctx, this, -Amount, null, null);
+            await PowerCmd.ModifyAmount(this, -Amount, null, null);
         }
     }
     

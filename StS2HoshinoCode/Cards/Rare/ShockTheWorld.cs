@@ -27,7 +27,7 @@ public class ShockTheWorld() : StS2HoshinoCard(2, CardType.Power, CardRarity.Rar
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await PowerCmd.Apply<ShockTheWorldPower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
+        await PowerCmd.Apply<ShockTheWorldPower>(base.Owner.Creature, 1, base.Owner.Creature, this);
     }
 
     protected override void OnUpgrade()
