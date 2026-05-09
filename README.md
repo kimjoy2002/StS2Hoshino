@@ -50,7 +50,7 @@ Hoshino is based on ammo usage, reload, shield, Out of Ammo, draw pile return, a
 - Ammo: Most attacks including basic attacks consume 1 ammo. Starts with 4 ammo.
 - Reload: Spent ammo can always be reloaded as a free action by spending 1 energy. There are cards that gain block or have synergy effects when reloading.
 - Shield: Shield is a type of block that does not disappear. It can stack with normal block.
-- Entry: The countdown mechanic from the original mod has been changed to Entry, which always triggers. It activates immediately when the card is drawn from the deck or added to the hand.
+- Entry: The countdown mechanic from the original mod has been changed to Entry, which always triggers. It activates immediately when the card is drawn from the Draw Pile or added to the hand.
 - Out of Ammo: When ammo is 0, using the card triggers an additional effect.
 
 ## Card Count
