@@ -16,7 +16,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 [Pool(typeof(StS2HoshinoCardPool))]
 public class ShellStrike() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Rare, TargetType.AnyEnemy)
 {
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new CalculationBaseVar(0m),
         new ExtraDamageVar(7m),

@@ -6,7 +6,7 @@
     "STS2HOSHINO-SHIELD.description": "ターン開始時、[gold]シールド[/gold] の値と同じだけの [gold]ブロック[/gold] は失われません。[gold]シールド[/gold] は現在の [gold]ブロック[/gold] より高くはなれません。",
     "STS2HOSHINO-SHIELD.title": "シールド",
     "STS2HOSHINO-ARRIVAL.description": "このカードが [gold]山札[/gold] から引かれたとき、または [gold]手札[/gold] に加えられたときに発動します。",
-    "STS2HOSHINO-ARRIVAL.title": "進入",
+    "STS2HOSHINO-ARRIVAL.title": "登場",
     "STS2HOSHINO-OUTOFAMMO.description": "[gold]弾薬[/gold] が 0 のときにこのカードをプレイすると発動します。",
     "STS2HOSHINO-OUTOFAMMO.title": "弾切れ",
     "STS2HOSHINO-EXPERT.description": "[gold]リロード[/gold] するたびに、この数値に等しい [gold]ブロック[/gold] を得ます。",

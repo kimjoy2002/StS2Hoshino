@@ -1,24 +1,19 @@
 {
   "STS2HOSHINO-HOSHINO_RELIC.description": "[gold]リロード[/gold]するたびに、[gold]ブロック[/gold]を [blue]{Block}[/blue] 得る。",
   "STS2HOSHINO-HOSHINO_RELIC.flavor": "対策委員会副部長としての責任感です。",
-  "STS2HOSHINO-HOSHINO_RELIC.title": "対策委員会の部長",
-
+  "STS2HOSHINO-HOSHINO_RELIC.title": "対策委員会の委員長",
   "STS2HOSHINO-HOSHINO_RELIC_PLUS.description": "[gold]リロード[/gold]するたびに、[gold]ブロック[/gold]を [blue]{Block}[/blue] 得る。",
   "STS2HOSHINO-HOSHINO_RELIC_PLUS.flavor": "対策委員会副部長としての責任感です。",
-  "STS2HOSHINO-HOSHINO_RELIC_PLUS.title": "対策委員会の部長+",
-
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.title": "対策委員会の委員長+",
   "STS2HOSHINO-EYE_OF_HORUS_RELIC.description": "各戦闘の開始時、次に[gold]リロード[/gold]するまで、[gold]弾薬[/gold]を消費する攻撃のダメージが [blue]{BulletVigorPower}[/blue] 増加する。",
   "STS2HOSHINO-EYE_OF_HORUS_RELIC.flavor": "ホシノが愛用するシンプルなデザインの散弾銃。",
   "STS2HOSHINO-EYE_OF_HORUS_RELIC.title": "ホルスの目",
-
   "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.description": "[gold]弾薬[/gold]を [blue]{AmmoAmount:diff()}[/blue] 個消費するたびに、[gold]熟練[/gold]を [blue]{ExpertPower}[/blue] 得る。",
   "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.flavor": "高価なバッグです。",
   "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.title": "タクティカルサッチェル",
-
   "STS2HOSHINO-WHALE_TUBE_RELIC.description": "カードがカードの効果で[gold]山札[/gold]に戻るたびに、[gold]ブロック[/gold]を [blue]{Block}[/blue] 得る。",
   "STS2HOSHINO-WHALE_TUBE_RELIC.flavor": "じっとしていても暑くなります。",
   "STS2HOSHINO-WHALE_TUBE_RELIC.title": "クジラ浮き輪",
-
   "STS2HOSHINO-IRON_HORUS_RELIC.description": "各戦闘の開始時、[gold]ブロック[/gold]と[gold]シールド[/gold]を [blue]{ShieldPower}[/blue] 得る。",
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "ホシノが愛用する盾です。折りたたんで保管できます。",
   "STS2HOSHINO-IRON_HORUS_RELIC.title": "アイアンホルス"

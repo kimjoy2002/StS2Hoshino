@@ -22,6 +22,7 @@ public class AquaticSupport() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Ra
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
+        HoverTipFactory.FromPower<StrengthPower>()
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<StrengthPower>(2m),

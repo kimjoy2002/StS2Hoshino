@@ -28,7 +28,8 @@ public class Patience() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon
     ];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival),
+        HoverTipFactory.FromPower<DexterityPower>()
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new EnergyVar(1),

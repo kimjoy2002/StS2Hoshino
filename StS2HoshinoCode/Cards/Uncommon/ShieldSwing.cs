@@ -22,7 +22,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 [Pool(typeof(StS2HoshinoCardPool))]
 public class ShieldSwing() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IRunout
 {
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

@@ -19,7 +19,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 [Pool(typeof(StS2HoshinoCardPool))]
 public class ButtstockAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IRunout
 {
-    protected override HashSet<CardTag> CanonicalTags => [];
+    protected override HashSet<CardTag> CanonicalTags => [CardTag.Strike];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
