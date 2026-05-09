@@ -1,5 +1,25 @@
 {
-  "STS2HOSHINO-HOSHINO_RELIC.description": "每当你 [gold]装填[/gold] 时，获得 {Block} 点 [gold]格挡[/gold]。",
-  "STS2HOSHINO-HOSHINO_RELIC.flavor": "作为阿拜多斯对策委员会副部长的责任感。",
-  "STS2HOSHINO-HOSHINO_RELIC.title": "对策委员会副部长"
+  "STS2HOSHINO-HOSHINO_RELIC.description": "每当你[gold]装填[/gold]时，获得 [blue]{Block}[/blue] 点[gold]格挡[/gold]。",
+  "STS2HOSHINO-HOSHINO_RELIC.flavor": "作为对策委员会副部长的责任感。",
+  "STS2HOSHINO-HOSHINO_RELIC.title": "对策委员会的部长",
+
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.description": "每当你[gold]装填[/gold]时，获得 [blue]{Block}[/blue] 点[gold]格挡[/gold]。",
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.flavor": "作为对策委员会副部长的责任感。",
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.title": "对策委员会的部长+",
+
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.description": "每场战斗开始时，在下次[gold]装填[/gold]前，消耗[gold]弹药[/gold]的攻击伤害增加 [blue]{BulletVigorPower}[/blue] 点。",
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.flavor": "星野钟爱的设计简洁的散弹枪。",
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.title": "荷鲁斯之眼",
+
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.description": "每当你消耗 [blue]{AmmoAmount:diff()}[/blue] 个[gold]弹药[/gold]时，获得 [blue]{ExpertPower}[/blue] 点[gold]熟练[/gold]。",
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.flavor": "昂贵的包。",
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.title": "战术双肩包",
+
+  "STS2HOSHINO-WHALE_TUBE_RELIC.description": "每当有一张卡牌通过卡牌效果回到[gold]抽牌堆[/gold]时，获得 [blue]{Block}[/blue] 点[gold]格挡[/gold]。",
+  "STS2HOSHINO-WHALE_TUBE_RELIC.flavor": "即便静止不动也会觉得热。",
+  "STS2HOSHINO-WHALE_TUBE_RELIC.title": "鲸鱼泳圈",
+
+  "STS2HOSHINO-IRON_HORUS_RELIC.description": "每场战斗开始时，获得[gold]格挡[/gold]和 [blue]{ShieldPower}[/blue] 点[gold]盾牌[/gold]。",
+  "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "星野钟爱的盾牌。可以折叠收纳。",
+  "STS2HOSHINO-IRON_HORUS_RELIC.title": "铁荷鲁斯"
 }

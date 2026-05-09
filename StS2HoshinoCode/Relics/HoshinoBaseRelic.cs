@@ -1,4 +1,4 @@
-﻿using BaseLib.Abstracts;
+using BaseLib.Abstracts;
 using BaseLib.Extensions;
 using BaseLib.Utils;
 using StS2Hoshino.StS2HoshinoCode.Character;

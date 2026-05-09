@@ -1,4 +1,4 @@
-﻿
+
 
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
@@ -33,6 +33,9 @@ public class HoshinoHook
     
     public static Task OnInvaded(PlayerChoiceContext ctx, Player player, CardModel card)
         => Dispatch<IOnInvaded>(ctx, player, m => m.OnInvaded(ctx,player,card));
+
+    public static Task OnCardReturnedToDrawPile(PlayerChoiceContext ctx, Player player, CardModel card)
+        => Dispatch<IOnCardReturnedToDrawPile>(ctx, player, m => m.OnCardReturnedToDrawPile(ctx, player, card));
 
     
 }

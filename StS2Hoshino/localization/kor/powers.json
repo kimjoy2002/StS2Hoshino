@@ -11,6 +11,8 @@
   "STS2HOSHINO-HOPYUNG_POWER.description": "[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
   "STS2HOSHINO-HOPYUNG_POWER.smartDescription": "[gold]호시노[/gold]가 다음 턴을 대신 플레이합니다.",
   "STS2HOSHINO-HOPYUNG_POWER.title": "책임감",
+  "STS2HOSHINO-HOPYUNG_POWER.approval": "[pink][shake]응, 나쁘지 않았어.[/shake][/pink]",
+  "STS2HOSHINO-HOPYUNG_POWER.warning": "[pink][shake]이건 아저씨에겐 너무 어려울지도...[/shake][/pink]",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.description": "[gold]탄약[/gold]을 사용할때마다 적 전체에 피해를 [blue]1[/blue] 줍니다. [gold]장전[/gold]시 사라집니다.",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.smartDescription": "[gold]탄약[/gold]을 사용할때마다 적 전체에 피해를 [blue]{Amount}[/blue] 줍니다. [gold]장전[/gold]시 사라집니다.",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.title": "소이탄 탄약",

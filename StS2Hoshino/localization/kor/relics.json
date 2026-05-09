@@ -1,5 +1,25 @@
 {
-  "STS2HOSHINO-HOSHINO_RELIC.description": "[gold]장전[/gold]을 할 때마다, 방어도를 [blue]{Block}[/blue] 얻습니다",
+  "STS2HOSHINO-HOSHINO_RELIC.description": "[gold]장전[/gold]을 할 때마다, [gold]방어도[/gold]를 [blue]{Block}[/blue] 얻습니다",
   "STS2HOSHINO-HOSHINO_RELIC.flavor": "아비도스 대책위원회 부장으로서의 책임감입니다.",
-  "STS2HOSHINO-HOSHINO_RELIC.title": "대책위원회의 부장"
+  "STS2HOSHINO-HOSHINO_RELIC.title": "대책위원회의 부장",
+
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.description": "[gold]장전[/gold]을 할 때마다, [gold]방어도[/gold]를 [blue]{Block}[/blue] 얻습니다",
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.flavor": "아비도스 대책위원회 부장으로서의 책임감입니다.",
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.title": "대책위원회의 부장+",
+
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.description": "매 전투 시작 시, 다시 [gold]장전[/gold]할 때까지 [gold]탄약[/gold]을 소모한 공격의 피해가 [blue]{BulletVigorPower}[/blue] 증가합니다.",
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.flavor": "호시노가 애용하는 심플한 디자인의 산탄총.",
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.title": "호루스의 눈",
+
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.description": "[gold]탄약[/gold]을 [blue]{AmmoAmount:diff()}[/blue]개 소모할 때마다 [gold]숙련[/gold]을 [blue]{ExpertPower}[/blue] 얻습니다.",
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.flavor": "고가의 가방입니다.",
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.title": "전술 란도셀",
+
+  "STS2HOSHINO-WHALE_TUBE_RELIC.description": "카드가 카드 효과로 [gold]뽑을 카드 더미[/gold]에 되돌아갈 때마다 [gold]방어도[/gold]를 [blue]{Block}[/blue] 얻습니다.",
+  "STS2HOSHINO-WHALE_TUBE_RELIC.flavor": "가만히 있어도 더워집니다.",
+  "STS2HOSHINO-WHALE_TUBE_RELIC.title": "고래 튜브",
+
+  "STS2HOSHINO-IRON_HORUS_RELIC.description": "매 전투 시작 시, [gold]방어도[/gold]와 [gold]방패[/gold]를 [blue]{ShieldPower}[/blue] 얻습니다.",
+  "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "호시노가 애용하는 방패입니다. 접어서 보관이 가능합니다.",
+  "STS2HOSHINO-IRON_HORUS_RELIC.title": "아이언 호루스"
 }

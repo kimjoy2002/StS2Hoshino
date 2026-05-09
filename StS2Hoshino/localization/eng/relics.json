@@ -1,5 +1,20 @@
 {
-  "STS2HOSHINO-HOSHINO_RELIC.description": "Whenever you [gold]Reload[/gold], gain {Block} [gold]Block[/gold].",
-  "STS2HOSHINO-HOSHINO_RELIC.flavor": "Responsibility as the Vice President of the Abydos Foreclosure Task Force.",
-  "STS2HOSHINO-HOSHINO_RELIC.title": "Foreclosure Task Force Vice President"
+  "STS2HOSHINO-HOSHINO_RELIC.description": "Whenever you [gold]Reload[/gold], gain [blue]{Block}[/blue] [gold]Block[/gold].",
+  "STS2HOSHINO-HOSHINO_RELIC.flavor": "The responsibility of being the Foreclosure Task Force President.",
+  "STS2HOSHINO-HOSHINO_RELIC.title": "Foreclosure Task Force President",
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.description": "Whenever you [gold]Reload[/gold], gain [blue]{Block}[/blue] [gold]Block[/gold].",
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.flavor": "The responsibility of being the Foreclosure Task Force President.",
+  "STS2HOSHINO-HOSHINO_RELIC_PLUS.title": "Foreclosure Task Force President+",
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.description": "At the start of each combat, until you [gold]Reload[/gold], attacks that consume [gold]Ammo[/gold] deal [blue]{BulletVigorPower}[/blue] additional damage.",
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.flavor": "Hoshino's favorite shotgun with a simple design.",
+  "STS2HOSHINO-EYE_OF_HORUS_RELIC.title": "Eye of Horus",
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.description": "Every time you consume [blue]{AmmoAmount:diff()}[/blue] [gold]Ammo[/gold], gain [blue]{ExpertPower}[/blue] [gold]Proficiency[/gold].",
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.flavor": "An expensive bag.",
+  "STS2HOSHINO-TACTICAL_SATCHEL_BAG_RELIC.title": "Tactical Satchel",
+  "STS2HOSHINO-WHALE_TUBE_RELIC.description": "Whenever a card is returned to the [gold]Draw Pile[/gold] by a card effect, gain [blue]{Block}[/blue] [gold]Block[/gold].",
+  "STS2HOSHINO-WHALE_TUBE_RELIC.flavor": "It gets hot even if you stay still.",
+  "STS2HOSHINO-WHALE_TUBE_RELIC.title": "Whale Tube",
+  "STS2HOSHINO-IRON_HORUS_RELIC.description": "At the start of each combat, gain [gold]Block[/gold] and [blue]{ShieldPower}[/blue] [gold]Shield[/gold].",
+  "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "Hoshino's favorite shield. It can be folded for storage.",
+  "STS2HOSHINO-IRON_HORUS_RELIC.title": "Iron Horus"
 }

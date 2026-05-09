@@ -11,6 +11,8 @@
   "STS2HOSHINO-HOPYUNG_POWER.description": "星野会代你进行下个回合。",
   "STS2HOSHINO-HOPYUNG_POWER.smartDescription": "星野会代你进行下个回合。",
   "STS2HOSHINO-HOPYUNG_POWER.title": "责任感",
+  "STS2HOSHINO-HOPYUNG_POWER.approval": "[pink][shake]嗯，还不赖。[/shake][/pink]",
+  "STS2HOSHINO-HOPYUNG_POWER.warning": "[pink][shake]这对大叔我来说可能有点难呢……[/shake][/pink]",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.description": "每当你消耗 [gold]弹药[/gold] 时，对所有敌人造成 [blue]1[/blue] 点伤害。[gold]装填[/gold] 时移除。",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.smartDescription": "每当你消耗 [gold]弹药[/gold] 时，对所有敌人造成 [blue]{Amount}[/blue] 点伤害。[gold]装填[/gold] 时移除。",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.title": "火焰弹药",

@@ -11,6 +11,8 @@
   "STS2HOSHINO-HOPYUNG_POWER.description": "[gold]Hoshino[/gold] plays the next turn for you.",
   "STS2HOSHINO-HOPYUNG_POWER.smartDescription": "[gold]Hoshino[/gold] plays the next turn for you.",
   "STS2HOSHINO-HOPYUNG_POWER.title": "Responsibility",
+  "STS2HOSHINO-HOPYUNG_POWER.approval": "[pink][shake]Nn, that wasn't bad.[/shake][/pink]",
+  "STS2HOSHINO-HOPYUNG_POWER.warning": "[pink][shake]This might be a bit too much for an old man like me...[/shake][/pink]",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.description": "Whenever you consume [gold]Ammo[/gold], deal [blue]1[/blue] damage to ALL enemies. Removed on [gold]Reload[/gold].",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.smartDescription": "Whenever you consume [gold]Ammo[/gold], deal [blue]{Amount}[/blue] damage to ALL enemies. Removed on [gold]Reload[/gold].",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.title": "Incendiary Ammo",

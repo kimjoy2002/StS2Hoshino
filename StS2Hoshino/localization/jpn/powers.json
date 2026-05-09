@@ -11,6 +11,8 @@
   "STS2HOSHINO-HOPYUNG_POWER.description": "ホシノがあなたの代わりに次のターンをプレイする。",
   "STS2HOSHINO-HOPYUNG_POWER.smartDescription": "ホシノがあなたの代わりに次のターンをプレイする。",
   "STS2HOSHINO-HOPYUNG_POWER.title": "責任感",
+  "STS2HOSHINO-HOPYUNG_POWER.approval": "[pink][shake]ん、悪くなかったよ。[/shake][/pink]",
+  "STS2HOSHINO-HOPYUNG_POWER.warning": "[pink][shake]これはおじさんにはちょっと難しいかも……。[/shake][/pink]",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.description": "[gold]弾薬[/gold] を消費するたびに、すべての敵に [blue]1[/blue] ダメージを与える。[gold]リロード[/gold] 時に消失する。",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.smartDescription": "[gold]弾薬[/gold] を消費するたびに、すべての敵に [blue]{Amount}[/blue] ダメージを与える。[gold]リロード[/gold] 時に消失する。",
   "STS2HOSHINO-BULLET_INCENDIARY_POWER.title": "焼夷弾薬",

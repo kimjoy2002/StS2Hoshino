@@ -71,7 +71,7 @@ public sealed class HopyungPower : StS2HoshinoPower
                 return;
             }
         }
-        LocString line = (flag ? new LocString("relics", "WHISPERING_EARRING.warning") : new LocString("relics", "WHISPERING_EARRING.approval"));
+        LocString line = (flag ? new LocString("powers", "STS2HOSHINO-HOPYUNG_POWER.warning") : new LocString("powers", "STS2HOSHINO-HOPYUNG_POWER.approval"));
         TalkCmd.Play(line, base.Owner, VfxColor.Purple);
         
         await PowerCmd.Apply<HopyungPower>(choiceContext, player.Creature,

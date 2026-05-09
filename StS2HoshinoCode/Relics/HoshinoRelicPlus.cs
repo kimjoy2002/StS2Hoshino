@@ -1,9 +1,3 @@
-﻿using BaseLib.Abstracts;
-using BaseLib.Extensions;
-using BaseLib.Utils;
-using StS2Hoshino.StS2HoshinoCode.Character;
-using StS2Hoshino.StS2HoshinoCode.Extensions;
-using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Players;
@@ -11,29 +5,28 @@ using MegaCrit.Sts2.Core.Entities.Relics;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
-using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Rooms;
 using MegaCrit.Sts2.Core.ValueProps;
-using StS2Hoshino.StS2HoshinoCode.CardModels;
 using StS2Hoshino.StS2HoshinoCode.Hook;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.Relics;
 
-public class HoshinoRelic : HoshinoBaseRelic, IOnReloaded
+public class HoshinoRelicPlus : HoshinoBaseRelic, IOnReloaded
 {
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(3, ValueProp.Unpowered),
-        new PowerVar<ExpertPower>(3m)];
+        new BlockVar(6, ValueProp.Unpowered),
+        new PowerVar<ExpertPower>(6m)];
     
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.Static(StaticHoverTip.Block),
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
+
     public override RelicRarity Rarity => RelicRarity.Starter;
-    
+
 
     public override async Task AfterRoomEntered(AbstractRoom room)
     {
@@ -49,10 +42,5 @@ public class HoshinoRelic : HoshinoBaseRelic, IOnReloaded
         {
             Flash();
         }
-    }
-    
-    public override RelicModel? GetUpgradeReplacement()
-    {
-        return ModelDb.Relic<HoshinoRelicPlus>();
     }
 }
