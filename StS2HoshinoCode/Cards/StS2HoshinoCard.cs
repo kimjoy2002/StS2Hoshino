@@ -33,6 +33,8 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
     public static CardTag BulletCard;
     [CustomEnum]
     public static CardTag BulletBoxCard;
+    [CustomEnum]
+    public static CardTag CamouflageTag;
     
     protected override bool ShouldGlowGoldInternal 
     {
@@ -130,14 +132,23 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         PileType oldPileType,
         AbstractModel? source)
     {
-        if (card == this && oldPileType == PileType.Draw && this is IInvade invade)
+        if (card == this && oldPileType == PileType.Draw && (this is IInvade || card.Tags.Contains(CamouflageTag)))
         {
             CardPile? pile = base.Pile;
             if (pile != null && pile.Type == PileType.Hand)
             {
-                AmmoClass.AddInvadeCount(base.Owner);
-                await invade.OnInvade(new ThrowingPlayerChoiceContext(), base.Owner, card);
-                await HoshinoHook.OnInvaded(new ThrowingPlayerChoiceContext(), Owner, card);
+                if (this is IInvade invade)
+                {
+                    AmmoClass.AddInvadeCount(base.Owner);
+                    await invade.OnInvade(new ThrowingPlayerChoiceContext(), base.Owner, card);
+                    await HoshinoHook.OnInvaded(new ThrowingPlayerChoiceContext(), Owner, card);
+                }
+                else if (card.Tags.Contains(CamouflageTag))
+                {
+                    AmmoClass.AddInvadeCount(base.Owner);
+                    await CamouflageLogic.Transform(new ThrowingPlayerChoiceContext(), base.Owner, card);
+                    await HoshinoHook.OnInvaded(new ThrowingPlayerChoiceContext(), Owner, card);
+                }
             }
         }
     }

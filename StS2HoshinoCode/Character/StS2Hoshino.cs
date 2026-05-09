@@ -85,6 +85,18 @@ public class StS2Hoshino : PlaceholderCharacterModel
 	public override string CustomRestSiteAnimPath => "res://StS2Hoshino/scenes/hoshino_rest_site.tscn";
 	public override string CustomMerchantAnimPath => "res://StS2Hoshino/scenes/hoshino_merchant.tscn";
 
+	
+	public override string CustomArmPointingTexturePath =>
+		"multiplayer_hand_hoshino_point.png".CharacterUiPath();
+
+	public override string CustomArmRockTexturePath =>
+		"multiplayer_hand_hoshino_rock.png".CharacterUiPath();
+
+	public override string CustomArmPaperTexturePath =>
+		"multiplayer_hand_hoshino_paper.png".CharacterUiPath();
+
+	public override string CustomArmScissorsTexturePath =>
+		"multiplayer_hand_hoshino_scissor.png".CharacterUiPath();
 
 	public override CreatureAnimator SetupCustomAnimationStates(MegaSprite controller)
 	{

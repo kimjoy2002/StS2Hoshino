@@ -6,12 +6,14 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
+using MegaCrit.Sts2.Core.HoverTips;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Extensions;
+using StS2Hoshino.StS2HoshinoCode.Keywords;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
@@ -21,7 +23,10 @@ public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncomm
     public override int AmmoCost => 1;
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [new DamageVar(7, ValueProp.Move), new RepeatVar(3)];
-
+    protected override IEnumerable<IHoverTip> ExtraHoverTips =>
+    [
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+    ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         int count_ = base.DynamicVars.Repeat.IntValue;

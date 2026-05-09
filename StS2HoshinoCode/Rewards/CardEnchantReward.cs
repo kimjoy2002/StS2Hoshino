@@ -9,6 +9,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Enchantments;
 using MegaCrit.Sts2.Core.Rewards;
 using MegaCrit.Sts2.Core.Saves.Runs;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 
 namespace StS2Hoshino.StS2HoshinoCode.Rewards;
 
@@ -20,7 +21,7 @@ public class CardEnchantReward : Reward
 
     private readonly int _amount;
 
-    private static string RewardIcon => ImageHelper.GetImagePath("ui/reward_screen/reward_icon_card_removal.png");
+    private static string RewardIcon => "reward_icon_sharpcard.png".CharacterUiPath();
 
     protected override RewardType RewardType => EnchantRewardType;
 
@@ -58,7 +59,6 @@ public class CardEnchantReward : Reward
         CardSelectorPrefs prefs = new CardSelectorPrefs(CardSelectorPrefs.EnchantSelectionPrompt, 1);
         Sharp canonicalEnchantment = ModelDb.Enchantment<Sharp>();
         
-        // FromDeckForEnchantment는 이미 인챈트된 카드를 제외하므로 FromDeckGeneric을 사용하여 필터링을 직접 수행
         var selectedCards = (await CardSelectCmd.FromDeckGeneric(base.Player, prefs, (CardModel c) => 
             c.Type == CardType.Attack && (c.Enchantment == null || c.Enchantment is Sharp)
         )).ToList();
@@ -70,7 +70,6 @@ public class CardEnchantReward : Reward
             if (cardModel.Enchantment is Sharp)
             {
                 Log.Info($"Card already has Sharp, manually increasing by 1 to bypass CanEnchant check");
-                // CardCmd.Enchant는 내부적으로 CanEnchant를 체크하여 예외를 던지므로 직접 수정
                 cardModel.Enchantment.Amount += 1;
                 cardModel.FinalizeUpgradeInternal();
             }
@@ -98,7 +97,7 @@ public class CardEnchantReward : Reward
         return save;
     }
 
-    public static CardEnchantReward FromSerializable(SerializableReward save, Player player)
+    public static new CardEnchantReward FromSerializable(SerializableReward save, Player player)
     {
         return new CardEnchantReward(player, save.GoldAmount);
     }

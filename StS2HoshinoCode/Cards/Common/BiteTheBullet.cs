@@ -12,7 +12,9 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.CardModels;
 using StS2Hoshino.StS2HoshinoCode.Character;
+using StS2Hoshino.StS2HoshinoCode.Hook;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
@@ -29,17 +31,22 @@ public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Com
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.CardBlock(this, play);
-        IEnumerable<IInvade> enumerable = PileType.Hand.GetPile(base.Owner).Cards.OfType<IInvade>();
-        List<IInvade> onInvadeCards = new List<IInvade>();
-        foreach (IInvade item in enumerable)
+        IEnumerable<CardModel> handCards = PileType.Hand.GetPile(base.Owner).Cards;
+        List<CardModel> cardsToTrigger = new List<CardModel>(handCards);
+        
+        foreach (CardModel card in cardsToTrigger)
         {
-            onInvadeCards.Add(item);
-        }
-        foreach (IInvade item in onInvadeCards)
-        {
-            if (item is CardModel cardModel)
+            if (card is IInvade invade)
             {
-                await item.OnInvade(choiceContext, base.Owner, cardModel);
+                AmmoClass.AddInvadeCount(base.Owner);
+                await invade.OnInvade(choiceContext, base.Owner, card);
+                await HoshinoHook.OnInvaded(choiceContext, Owner, card);
+            }
+            else if (card.Tags.Contains(CamouflageTag))
+            {
+                AmmoClass.AddInvadeCount(base.Owner);
+                await CamouflageLogic.Transform(choiceContext, base.Owner, card);
+                await HoshinoHook.OnInvaded(choiceContext, Owner, card);
             }
         }
     }

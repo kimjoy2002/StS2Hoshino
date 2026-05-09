@@ -16,6 +16,7 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 [Pool(typeof(StS2HoshinoCardPool))]
 public class EmergencyFieldAidSkill() : StS2HoshinoCard(-1, CardType.Skill, CardRarity.Rare, TargetType.Self)
 {
+    public override bool CanBeGeneratedInCombat => false;
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Innate,

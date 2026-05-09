@@ -21,6 +21,7 @@ public class ReloadingSyndrome() : StS2HoshinoCard(3, CardType.Power, CardRarity
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         base.EnergyHoverTip,
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet),
         HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
