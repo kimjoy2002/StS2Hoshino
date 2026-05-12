@@ -127,7 +127,7 @@
   "STS2HOSHINO-SHOTGUN_SHUFFLE.selectionScreenPrompt": "选择要放到抽牌堆顶部的卡牌",
   "STS2HOSHINO-SHOTGUN_SHUFFLE.description": "获得 {Block:diff()} 点 [gold]格挡[/gold]。\n将 [gold]弃牌堆[/gold] 中的 1 张牌\n放入 [gold]抽牌堆[/gold] 并洗牌。\n抽 {Cards:diff()} 张牌。",
   "STS2HOSHINO-SWIMSUIT_FORM.title": "泳装形态",
-  "STS2HOSHINO-SWIMSUIT_FORM.description": "回合开始时，\n从 [gold]抽牌堆[/gold] 选择 1 张牌。\n其打出前耗能变为 0。",
+  "STS2HOSHINO-SWIMSUIT_FORM.description": "回合开始时，\n从 [gold]抽牌堆[/gold] 选择 1 张牌加入 [gold]手牌[/gold]。\n在本回合内，该牌的费用变为 0。",
   "STS2HOSHINO-TACTICAL_RELOAD.title": "战术装填",
   "STS2HOSHINO-TACTICAL_RELOAD.description": "每当你 [gold]装填[/gold] 时，\n对随机敌人造成 {TacticalReloadPower:diff()} 点伤害。",
   "STS2HOSHINO-TACTICAL_SHIELD_SKILL.title": "战术盾牌",

@@ -28,6 +28,13 @@ public sealed class ShieldPower : StS2HoshinoPower
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
         await base.AfterApplied(applier, cardSource);
+        this.Removed += () =>
+        {
+            if (base.Owner != null)
+            {
+                HoshinoVisualUtils.RemoveShieldVisualPersistent(base.Owner);
+            }
+        };
         await CreatureCmd.TriggerAnim(base.Owner, "ShieldUp", 0f);
 
         if (base.Owner.IsPlayer && base.Owner.Player != null && !(base.Owner.Player.Character is Character.StS2Hoshino))

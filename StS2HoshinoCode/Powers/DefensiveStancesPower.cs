@@ -38,6 +38,13 @@ public sealed class DefensiveStancesPower : StS2HoshinoPower
     public override async Task AfterApplied(Creature? applier, CardModel? cardSource)
     {
         await base.AfterApplied(applier, cardSource);
+        this.Removed += () =>
+        {
+            if (base.Owner != null)
+            {
+                HoshinoVisualUtils.RemoveBarrierVisual(base.Owner);
+            }
+        };
         if (base.Owner.IsPlayer && base.Owner.Player != null)
         {
             HoshinoVisualUtils.ApplyBarrierVisual(base.Owner);

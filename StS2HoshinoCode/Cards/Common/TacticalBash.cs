@@ -18,6 +18,7 @@ using StS2Hoshino.StS2HoshinoCode.CardModels;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
@@ -37,7 +38,8 @@ public class TacticalBash() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Com
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
+        if (AmmoClass.isEmptyAmmo(base.Owner)) return;
+
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).WithAttackerAnim("Swing", 0.15f).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
@@ -45,8 +47,7 @@ public class TacticalBash() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Com
     
     public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).WithAttackerAnim("Swing", 0.15f).TargetingAllOpponents(base.CombatState!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this).WithAttackerAnim("Swing", 0.15f).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
     }

@@ -31,18 +31,29 @@ public sealed partial class ReloadController
 
     public bool ShouldShowHud(NCombatUi combatUi)
     {
-        return GodotObject.IsInstanceValid(combatUi)
-               && combatUi.IsVisibleInTree()
-               && IsSinglePlayerCombat()
-               && CombatManager.Instance.IsInProgress
-               && !IsHudHiddenByNonChoiceUi(combatUi);
-    }
+        if (!GodotObject.IsInstanceValid(combatUi) || !combatUi.IsVisibleInTree() || !CombatManager.Instance.IsInProgress)
+            return false;
 
-    private static bool IsSinglePlayerCombat()
-    {
-        return RunManager.Instance.IsSinglePlayerOrFakeMultiplayer
-               && CombatManager.Instance.IsInProgress
-               && NGame.Instance?.CurrentRunNode != null;
+        if (IsHudHiddenByNonChoiceUi(combatUi))
+            return false;
+
+        if (NGame.Instance?.CurrentRunNode == null)
+            return false;
+
+        // 싱글플레이인 경우 기존처럼 표시
+        if (RunManager.Instance.IsSinglePlayerOrFakeMultiplayer)
+            return true;
+
+        // 멀티플레이인 경우 호시노 캐릭터인 경우에만 표시
+        try
+        {
+            Player? me = LocalContext.GetMe(_activeCombatState);
+            return me?.Character is StS2Hoshino.StS2HoshinoCode.Character.StS2Hoshino;
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
     }
 
     public bool TryHandleHotkey(NCombatUi combatUi, InputEvent inputEvent)
