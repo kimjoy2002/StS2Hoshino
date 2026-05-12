@@ -36,6 +36,10 @@ https://github.com/kimjoy2002/StS2Hoshino/releases
 
 # Slay The Spire2 Takanashi Hoshino Mod
 
+<img width="1336" height="891" alt="image" src="https://github.com/user-attachments/assets/bdc51746-1b77-4246-9ef2-f27013fa1e0e" />
+<img width="1218" height="896" alt="image" src="https://github.com/user-attachments/assets/23b5b6af-0e04-489a-90ad-f5737690ae71" />
+
+
 This is Blue Archive Takanashi Hoshino Character Mod for Slay the Spire 2
 
 This mod is a port of the Slay the Spire 1 Hoshino mod with various card improvements.
@@ -46,7 +50,7 @@ Hoshino is based on ammo usage, reload, shield, Out of Ammo, draw pile return, a
 - Ammo: Most attacks including basic attacks consume 1 ammo. Starts with 4 ammo.
 - Reload: Spent ammo can always be reloaded as a free action by spending 1 energy. There are cards that gain block or have synergy effects when reloading.
 - Shield: Shield is a type of block that does not disappear. It can stack with normal block.
-- Entry: The countdown mechanic from the original mod has been changed to Entry, which always triggers. It activates immediately when the card is drawn from the deck or added to the hand.
+- Entry: The countdown mechanic from the original mod has been changed to Entry, which always triggers. It activates immediately when the card is drawn from the Draw Pile or added to the hand.
 - Out of Ammo: When ammo is 0, using the card triggers an additional effect.
 
 ## Card Count
