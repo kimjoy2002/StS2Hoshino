@@ -127,7 +127,7 @@
   "STS2HOSHINO-SHOTGUN_SHUFFLE.selectionScreenPrompt": "山札の一番上に置くカードを選んでください",
   "STS2HOSHINO-SHOTGUN_SHUFFLE.description": "{Block:diff()} [gold]ブロック[/gold] を得る。\n[gold]捨て札[/gold] からカードを 1 枚\n[gold]山札[/gold] に戻してシャッフルする。\nカードを {Cards:diff()} 枚引く。",
   "STS2HOSHINO-SWIMSUIT_FORM.title": "水着形態",
-  "STS2HOSHINO-SWIMSUIT_FORM.description": "ターン開始時、\n[gold]山札[/gold] からカードを 1 枚選ぶ。\nそのカードのコストは、プレイするまで 0 になる。",
+  "STS2HOSHINO-SWIMSUIT_FORM.description": "ターン開始時、\n[gold]山札[/gold]からカードを1枚選んで[gold]手札[/gold]に加える。\n今ターン中、そのカードを\nコスト0で使用できる。",
   "STS2HOSHINO-TACTICAL_RELOAD.title": "タクティカル・リロード",
   "STS2HOSHINO-TACTICAL_RELOAD.description": "[gold]リロード[/gold] するたびに、\nランダムな敵に {TacticalReloadPower:diff()} ダメージを与える。",
   "STS2HOSHINO-TACTICAL_SHIELD_SKILL.title": "タクティカル・シールド",

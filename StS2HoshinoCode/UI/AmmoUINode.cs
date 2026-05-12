@@ -39,18 +39,15 @@ public partial class AmmoUINode : Control
     {
         UpdateLayoutSize();
         QueueRedraw();
-        StS2HoshinoMain.Logger.Info("[AmmoUINode] _Ready");
         AmmoClass.OnChanged += HandleAmmoChanged;
     }
 
     public override void _ExitTree()
     {
-        StS2HoshinoMain.Logger.Info("[AmmoUINode] _ExitTree");
         AmmoClass.OnChanged -= HandleAmmoChanged;
     }
     public void SetAmmo(int current, int max)
     {
-        StS2HoshinoMain.Logger.Info("[AmmoUINode] SetAmmo");
         _current = Mathf.Clamp(current, 0, max);
         _max = Mathf.Max(0, max);
         UpdateLayoutSize();
@@ -60,10 +57,8 @@ public partial class AmmoUINode : Control
     
     private void HandleAmmoChanged(Player player, int current, int max)
     {
-        StS2HoshinoMain.Logger.Info($"handle_ammo_changed {current}/{max}");
         if (_player != null && player == _player)
         {
-            StS2HoshinoMain.Logger.Info($"handle_ammo_changed clear {current}/{max}");
             SetAmmo(current, max);
         }
     }

@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://fc5x7hciyofl"]
+[gd_scene load_steps=5 format=3]
 
 [ext_resource type="Script" uid="uid://ctb5y3m1dhw0m" path="res://StS2HoshinoCode/UI/HoshinoNMerchantCharacter.cs" id="1_oiiaq"]
-[ext_resource type="Texture2D" uid="uid://cx6vpumhv0lx6" path="res://StS2Hoshino/images/charui/hoshino_merchant.png" id="2_4pre1"]
+[ext_resource type="SpineAtlasResource" uid="uid://ck4bb6y05gs22" path="res://StS2Hoshino/images/charui/Hoshino.atlas" id="2_atlas"]
+[ext_resource type="SpineSkeletonFileResource" uid="uid://pdh57nkhflu1" path="res://StS2Hoshino/images/charui/Hoshino.skel" id="3_skel"]
+
+[sub_resource type="SpineSkeletonDataResource" id="SpineSkeletonDataResource_merchant"]
+atlas_res = ExtResource("2_atlas")
+skeleton_file_res = ExtResource("3_skel")
 
 [node name="HoshinoMechant" type="Node2D"]
 script = ExtResource("1_oiiaq")
 
-[node name="SpineSprite" type="Sprite2D" parent="."]
-position = Vector2(0, -170)
+[node name="SpineSprite" type="SpineSprite" parent="."]
+position = Vector2(0, -4)
 scale = Vector2(1.5974998, 1.5974998)
-texture = ExtResource("2_4pre1")
+skeleton_data_res = SubResource("SpineSkeletonDataResource_merchant")
+preview_animation = "relaxed_loop"
+preview_skin = "Default"
