@@ -45,7 +45,7 @@ public class WideShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommo
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBulletForMulti(choiceContext,this, enemies, base.Owner.Creature, 1);
+            await item.UseBulletForMulti(choiceContext,this, enemies, base.Owner.Creature, 1);
         }
         
         CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(base.SelectionScreenPrompt, 1), context: choiceContext, player: base.Owner, filter: null, source: this)).FirstOrDefault();

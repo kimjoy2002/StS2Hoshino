@@ -52,7 +52,7 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
                     .TargetingAllOpponents(combatState)
                     .WithHitCount(amount)
                     .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfireheavy.mp3".SfxPath())
-                    .BeforeDamage(() =>
+                    .BeforeDamage(async () =>
                     {
                         if (bulletsUsed > 0)
                         {
@@ -62,12 +62,11 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
                             foreach (IBulletPowerInterface item in enumerable)
                             {
                                 if (enemies != null)
-                                    item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
+                                    await item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
                             }
                         }
 
                         bulletsUsed++;
-                        return Task.CompletedTask;
                     })
                     .Execute(choiceContext);
 
@@ -76,7 +75,7 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
                 IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                 foreach (IBulletPowerInterface item in enumerable)
                 {
-                    if (enemies != null) item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
+                    if (enemies != null) await item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
                 }
             }
         }

@@ -57,7 +57,7 @@ public class TriggerHappy() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Com
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+            await item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
         }
         
         await CommonActions.ApplySelf<TriggerHappyPower>(choiceContext, this);

@@ -42,7 +42,7 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
+            await item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
         }
         CardPile pile = PileType.Hand.GetPile(base.Owner);
         CardModel? cardModel = pile.Cards.FirstOrDefault();

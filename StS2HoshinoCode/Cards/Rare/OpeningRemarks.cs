@@ -46,8 +46,11 @@ public class OpeningRemarks() : StS2HoshinoCard(0, CardType.Attack, CardRarity.R
             .Targeting(play.Target!)
             .WithAttackerAnim("Charge", 0.25f)
             .WithWaitBeforeHit(0.5f, 0.5f)
-            .WithHitVfxNode((Creature _) => NSpikeSplashVfx.Create(play.Target, VfxColor.Gold))
-            .WithHitVfxNode((Creature _) => NBigSlashImpactVfx.Create(VfxCmd.GetSideCenter(CombatSide.Enemy, base.CombatState).Value, 180f, new Color("#80dbff")))
+            .WithHitVfxNode((Creature _) =>
+            {
+                Vector2 center = VfxCmd.GetSideCenter(CombatSide.Enemy, base.CombatState!) ?? Vector2.Zero;
+                return NBigSlashImpactVfx.Create(center, 180f, new Color("#80dbff"));
+            })
             .Execute(choiceContext);
     }
 

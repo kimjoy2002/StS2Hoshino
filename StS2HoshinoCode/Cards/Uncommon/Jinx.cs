@@ -60,7 +60,7 @@ public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, T
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+            await item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
         }
     }
 

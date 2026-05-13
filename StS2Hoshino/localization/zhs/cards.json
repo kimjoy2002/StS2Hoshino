@@ -51,7 +51,7 @@
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.title": "近距离战斗体系",
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.description": "每当触发 [gold]进场[/gold] 效果时，获得 {CloseRangedCombatPower:diff()} 点 [gold]格挡[/gold] 和 [gold]盾牌[/gold]。",
   "STS2HOSHINO-DEFENSIVE_STANCES.title": "防御姿态强化",
-  "STS2HOSHINO-DEFENSIVE_STANCES.description": "本回合内队友受到的敌人伤害变为 0。",
+  "STS2HOSHINO-DEFENSIVE_STANCES.description": "本回合内，其他队友受到的敌人伤害变为 0。",
   "STS2HOSHINO-PHALANX.title": "方阵",
   "STS2HOSHINO-PHALANX.description": "所有玩家获得 {ShieldPower:diff()} 点 [gold]格挡[/gold] 和 [gold]盾牌[/gold]。",
   "STS2HOSHINO-INCENDIARY_SHOT.title": "火焰弹药箱",

@@ -51,7 +51,7 @@
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.title": "근거리 전투 체계",
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.description": "[gold]진입[/gold] 효과가 발동할때마다 [gold]방어도[/gold]와 [gold]방패[/gold]를 {CloseRangedCombatPower:diff()} 얻습니다.",
   "STS2HOSHINO-DEFENSIVE_STANCES.title": "방어태세 강화",
-  "STS2HOSHINO-DEFENSIVE_STANCES.description": "이번 턴 동안 아군이 적에게 받는 피해가 0이 됩니다.",
+  "STS2HOSHINO-DEFENSIVE_STANCES.description": "이번 턴 동안 다른 아군들이 적에게 받는 피해가 0이 됩니다.",
   "STS2HOSHINO-PHALANX.title": "팔랑크스",
   "STS2HOSHINO-PHALANX.description": "모든 플레이어에게 [gold]방어도[/gold]와 [gold]방패[/gold]를 {ShieldPower:diff()} 부여합니다.",
   "STS2HOSHINO-INCENDIARY_SHOT.title": "소이탄 탄약 상자",

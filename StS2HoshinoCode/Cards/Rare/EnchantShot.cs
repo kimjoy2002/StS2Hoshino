@@ -47,7 +47,7 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
+            await item.UseBulletForMulti(choiceContext, this, enemies, base.Owner.Creature, 1);
         }
     }
     

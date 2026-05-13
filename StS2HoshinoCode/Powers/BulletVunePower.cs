@@ -1,4 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -27,7 +27,7 @@ public sealed class BulletVunePower : StS2HoshinoPower, IOnReloaded, IBulletPowe
         }
     }
 
-    public async void UseBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? target, Creature? applier, int amount)
+    public async Task UseBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? target, Creature? applier, int amount)
     {
         if (target != null)
         {
@@ -36,7 +36,7 @@ public sealed class BulletVunePower : StS2HoshinoPower, IOnReloaded, IBulletPowe
         }
     }
     
-    public async void UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
+    public async Task UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
     {
         Flash();
         await PowerCmd.Apply<VulnerablePower>(choiceContext, targets, base.Amount, applier, card);

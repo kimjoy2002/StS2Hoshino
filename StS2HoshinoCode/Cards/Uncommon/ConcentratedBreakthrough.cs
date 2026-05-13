@@ -53,7 +53,7 @@ public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, Ca
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBulletForMulti(choiceContext,this, enemies, base.Owner.Creature, 1);
+            await item.UseBulletForMulti(choiceContext,this, enemies, base.Owner.Creature, 1);
         }
     }
 

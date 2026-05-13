@@ -21,20 +21,20 @@ public sealed class SupressionVeteranPower : StS2HoshinoPower, IBulletPowerInter
     
     
     
-    private async void _internal_useBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? applier, int amount) {        
+    private async Task _internal_useBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? applier, int amount) {        
         for(;amount > 0; amount--) {
             Flash();
             await CreatureCmd.GainBlock(base.Owner,  base.Amount, ValueProp.Unpowered, null);
         }
     }
 
-    public async void UseBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? target, Creature? applier, int amount)
+    public async Task UseBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? target, Creature? applier, int amount)
     {
-        _internal_useBullet(choiceContext, card, applier, amount);
+        await _internal_useBullet(choiceContext, card, applier, amount);
     }
     
-    public async void UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
+    public async Task UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
     {
-        _internal_useBullet(choiceContext, card, applier, amount);
+        await _internal_useBullet(choiceContext, card, applier, amount);
     }
 }
