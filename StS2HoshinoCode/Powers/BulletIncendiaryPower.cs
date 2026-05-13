@@ -1,4 +1,4 @@
-﻿using MegaCrit.Sts2.Core.Commands;
+using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -32,7 +32,7 @@ public sealed class BulletIncendiaryPower : StS2HoshinoPower, IOnReloaded, IBull
     }
     
     
-    private async void _internal_useBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? applier, int amount) {        
+    private async Task _internal_useBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? applier, int amount) {        
         for(;amount > 0; amount--) {
             Flash();
 
@@ -50,13 +50,13 @@ public sealed class BulletIncendiaryPower : StS2HoshinoPower, IOnReloaded, IBull
         }
     }
 
-    public async void UseBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? target, Creature? applier, int amount)
+    public async Task UseBullet(PlayerChoiceContext choiceContext, CardModel card, Creature? target, Creature? applier, int amount)
     {
-        _internal_useBullet(choiceContext, card, applier, amount);
+        await _internal_useBullet(choiceContext, card, applier, amount);
     }
     
-    public async void UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
+    public async Task UseBulletForMulti(PlayerChoiceContext choiceContext, CardModel card, IEnumerable<Creature> targets, Creature? applier, int amount)
     {
-        _internal_useBullet(choiceContext, card, applier, amount);
+        await _internal_useBullet(choiceContext, card, applier, amount);
     }
 }

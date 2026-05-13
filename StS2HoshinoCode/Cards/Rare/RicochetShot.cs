@@ -45,7 +45,7 @@ public class RicochetShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rar
                 .Targeting(play.Target!)
                 .WithHitCount(amount)
                 .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
-                .BeforeDamage(() =>
+                .BeforeDamage(async () =>
                 {
                     if (bulletsUsed > 0)
                     {
@@ -53,11 +53,10 @@ public class RicochetShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rar
                         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                         foreach (IBulletPowerInterface item in enumerable)
                         {
-                            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+                            await item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
                         }
                     }
                     bulletsUsed++;
-                    return Task.CompletedTask;
                 })
                 .Execute(choiceContext);
 
@@ -66,7 +65,7 @@ public class RicochetShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rar
                 IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                 foreach (IBulletPowerInterface item in enumerable)
                 {
-                    item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+                    await item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
                 }
             }
         }

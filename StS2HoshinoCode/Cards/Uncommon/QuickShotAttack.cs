@@ -40,7 +40,7 @@ public class QuickShotAttack() : StS2HoshinoCard(0, CardType.Attack, CardRarity.
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
-            item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
+            await item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
         }
     }
     public override async Task AfterShuffle(PlayerChoiceContext choiceContext, Player shuffler)

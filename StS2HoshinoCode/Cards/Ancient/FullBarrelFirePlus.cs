@@ -54,7 +54,7 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
                     .Targeting(currentTarget)
                     .WithHitCount(amount)
                     .WithHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
-                    .BeforeDamage(() =>
+                    .BeforeDamage(async () =>
                     {
                         if (bulletsUsed > 0)
                         {
@@ -62,11 +62,10 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
                             IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                             foreach (IBulletPowerInterface item in enumerable)
                             {
-                                item.UseBullet(choiceContext, this, currentTarget!, base.Owner.Creature, 1);
+                                await item.UseBullet(choiceContext, this, currentTarget!, base.Owner.Creature, 1);
                             }
                         }
                         bulletsUsed++;
-                        return Task.CompletedTask;
                     })
                     .Execute(choiceContext);
 
@@ -75,7 +74,7 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
                     IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                     foreach (IBulletPowerInterface item in enumerable)
                     {
-                        item.UseBullet(choiceContext, this, currentTarget!, base.Owner.Creature, 1);
+                        await item.UseBullet(choiceContext, this, currentTarget!, base.Owner.Creature, 1);
                     }
                 }
             }

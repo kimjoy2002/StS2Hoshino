@@ -51,7 +51,7 @@
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.title": "近距離戦闘システム",
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.description": "[gold]登場[/gold] 効果が発動するたびに、{CloseRangedCombatPower:diff()} [gold]ブロック[/gold] と [gold]シールド[/gold] を得る。",
   "STS2HOSHINO-DEFENSIVE_STANCES.title": "防御姿勢強化",
-  "STS2HOSHINO-DEFENSIVE_STANCES.description": "このターン、味方は敵からダメージを受けない。",
+  "STS2HOSHINO-DEFENSIVE_STANCES.description": "このターン中、他の味方が敵から受けるダメージは0になる。",
   "STS2HOSHINO-PHALANX.title": "ファランクス",
   "STS2HOSHINO-PHALANX.description": "すべてのプレイヤーに {ShieldPower:diff()} [gold]ブロック[/gold] と [gold]シールド[/gold] を与える。",
   "STS2HOSHINO-INCENDIARY_SHOT.title": "焼夷弾薬箱",

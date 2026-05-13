@@ -35,7 +35,7 @@ public class RecoveryShell() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Unc
         IEnumerable<IBulletPowerInterface> enumerable2 = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable2)
         {
-            item.UseBullet(choiceContext, this, null, base.Owner.Creature, 3);
+            await item.UseBullet(choiceContext, this, null, base.Owner.Creature, base.DynamicVars["Ammo"].IntValue);
         }
     }
     protected override void OnUpgrade()
