@@ -26,7 +26,6 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
 {
     public virtual int AmmoCost { get; set; } = 0;
     public virtual int AmmoCostMax { get; set; } = 0;
-    public static bool IsLastShot { get; set; } = false;
 
 
     [CustomEnum]
@@ -81,13 +80,13 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
     
     protected sealed override async Task OnPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        IsLastShot = false;
+        AmmoClass.SetIsLastShot(Owner, false);
         int ammoNeeded = AmmoCost;
 
         int beforeAmmo = AmmoClass.GetCurrentAmmo(Owner);
         if (beforeAmmo == 1)
         {
-            IsLastShot = true;
+            AmmoClass.SetIsLastShot(Owner, true);
         }
         if (!AmmoClass.hasAmmo(ammoNeeded, Owner))
         {
@@ -115,7 +114,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         {
             await runout.OnRunout(choiceContext, play);
         }
-        IsLastShot = false;
+        AmmoClass.SetIsLastShot(Owner, false);
     }
     
     // public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)
