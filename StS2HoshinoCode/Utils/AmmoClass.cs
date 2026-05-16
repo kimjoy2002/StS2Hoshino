@@ -23,6 +23,10 @@ public static class AmmoClass
 		public int Slot4UsedThisCombat;
 
 		public CardModel? LastCardPlayed;
+
+		public bool IsLastShot;
+
+		public readonly List<Func<PlayerChoiceContext, Task>> PendingTriggers = new();
 	}
 
 	private static int _defaultMaxAmmo = 4;
@@ -30,8 +34,6 @@ public static class AmmoClass
 	private static readonly Dictionary<Player, PlayerAmmoState> _states = new Dictionary<Player, PlayerAmmoState>();
 
 	private static readonly PlayerAmmoState _defaultState = new PlayerAmmoState();
-
-	private static readonly List<Func<PlayerChoiceContext, Task>> _pendingTriggers = new List<Func<PlayerChoiceContext, Task>>();
 
 	public static Player? CurrentAmmoGainer { get; private set; }
 
@@ -142,9 +144,19 @@ public static class AmmoClass
 		return GetState(player).Slot4UsedThisCombat;
 	}
 
-	public static void QueueCountdownTrigger(Func<PlayerChoiceContext, Task> trigger)
+	public static bool GetIsLastShot(Player? player)
 	{
-		_pendingTriggers.Add(trigger);
+		return GetState(player).IsLastShot;
+	}
+
+	public static void SetIsLastShot(Player? player, bool value)
+	{
+		GetState(player).IsLastShot = value;
+	}
+
+	public static void QueueCountdownTrigger(Player player, Func<PlayerChoiceContext, Task> trigger)
+	{
+		GetState(player).PendingTriggers.Add(trigger);
 	}
 
 
@@ -247,6 +259,7 @@ public static class AmmoClass
 		state.ReloadedThisCombat = 0;
 		state.Slot3UsedThisCombat = 0;
 		state.Slot4UsedThisCombat = 0;
-		_pendingTriggers.Clear();
+		state.IsLastShot = false;
+		state.PendingTriggers.Clear();
 	}
 }
