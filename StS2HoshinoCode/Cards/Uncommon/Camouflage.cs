@@ -20,6 +20,9 @@ namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 [Pool(typeof(StS2HoshinoCardPool))]
 public class Camouflage() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Uncommon, TargetType.Self), IInvade
 {
+
+    public override CardMultiplayerConstraint MultiplayerConstraint => CardMultiplayerConstraint.SingleplayerOnly;
+
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
