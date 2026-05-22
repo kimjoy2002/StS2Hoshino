@@ -6,6 +6,7 @@ using BaseLib.Utils;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
+using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.ValueProps;
@@ -31,9 +32,9 @@ public class EmergencyFieldAidSkill() : StS2HoshinoCard(-1, CardType.Skill, Card
     {
     }
 
-    public override async Task AfterSideTurnStart(CombatSide side, ICombatState combatState)
+    public override async Task AfterSideTurnStart(CombatSide side, IReadOnlyList<Creature> participants, ICombatState combatState)
     {
-        if (side == base.Owner.Creature.Side && combatState.RoundNumber <= 1)
+        if (participants.Contains(base.Owner.Creature) && combatState.RoundNumber <= 1)
         {
             await CreatureCmd.Heal(base.Owner.Creature, base.DynamicVars.Heal.BaseValue);
         }
