@@ -1,6 +1,10 @@
 {
-  "STS2HOSHINO.mod_title": "Hoshino Mod",
-  "STS2HOSHINO-TEST_CONFIG.title": "Reload Button Settings",
-  "STS2HOSHINO-TEST_CONFIG.hover.title": "Reload Button Hover",
-  "STS2HOSHINO-TEST_CONFIG.hover.desc": "Settings for the Reload button."
+  "STS2HOSHINO.mod_title": "Hoshino Mod Settings",
+  "STS2HOSHINO-RELOAD_SETTINGS.title": "Reload Settings",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.title": "Show Reload Button",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.title": "Show Reload Button",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.desc": "Choose whether to display the reload button.\nWhen hidden, it can only be used via shortcut key (r).",
+  "STS2HOSHINO-BUTTON_POSITION.title": "Reload Button Position",
+  "STS2HOSHINO-BUTTON_POSITION.hover.title": "Reload Button Position",
+  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "Set the relative position of the button from the End Turn button."
 }
