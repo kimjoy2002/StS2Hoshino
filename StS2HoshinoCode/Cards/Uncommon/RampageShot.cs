@@ -29,8 +29,8 @@ public class RampageShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Unco
     public override int AmmoCost { get; set; } = 1;
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(3, ValueProp.Move),
-        new DynamicVar("Increase", 6m)];
+        new DamageVar(5, ValueProp.Move),
+        new DynamicVar("Increase", 5m)];
 
     private decimal _extraDamageFromPlays;
 
@@ -78,6 +78,7 @@ public class RampageShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Unco
     }
     protected override void OnUpgrade()
     {
-        base.DynamicVars["Increase"].UpgradeValueBy(3m);
+        DynamicVars.Damage.UpgradeValueBy(2m);
+        base.DynamicVars["Increase"].UpgradeValueBy(2m);
     }
 }

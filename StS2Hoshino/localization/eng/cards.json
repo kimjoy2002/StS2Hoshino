@@ -67,7 +67,7 @@
   "STS2HOSHINO-PLATE_REPLACEMENT.title": "Plate Replacement",
   "STS2HOSHINO-PLATE_REPLACEMENT.description": "[gold]Exhaust[/gold] 1 card.\nGain {ShieldPower:diff()} [gold]Shield[/gold].",
   "STS2HOSHINO-MEMORIAL.title": "Memorial",
-  "STS2HOSHINO-MEMORIAL.description": "Whenever you shuffle your [gold]Draw Pile[/gold],\ngain {MemorialPower:diff()} [gold]Strength[/gold] and [gold]Dexterity[/gold].{IfUpgraded:show:\nShuffle your [gold]Draw Pile[/gold].|}",
+  "STS2HOSHINO-MEMORIAL.description": "Whenever you shuffle your [gold]Draw Pile[/gold],\ngain {MemorialPower:diff()} [gold]Strength[/gold] and [gold]Dexterity[/gold].\nShuffle your [gold]Draw Pile[/gold].",
   "STS2HOSHINO-MILITARY_SUPPLIES.title": "Supplies",
   "STS2HOSHINO-MILITARY_SUPPLIES.description": "Consume all [gold]Ammo[/gold].\nGain {Energy:energyIcons()} for each [gold]Ammo[/gold] consumed.\nYou cannot [gold]Reload[/gold] this turn.",
   "STS2HOSHINO-MISS_SHOT.title": "Miss Shot",

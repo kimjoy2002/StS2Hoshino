@@ -16,7 +16,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class ShockTheWorld() : StS2HoshinoCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class ShockTheWorld() : StS2HoshinoCard(1, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>

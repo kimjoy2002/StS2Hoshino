@@ -16,7 +16,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class Memorial() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class Memorial() : StS2HoshinoCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -32,9 +32,11 @@ public class Memorial() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await CommonActions.ApplySelf<MemorialPower>(choiceContext, this);
-        if (IsUpgraded)
-        {
-            await OnlyDeckShuffle(choiceContext, base.Owner);
-        }
+        await OnlyDeckShuffle(choiceContext, base.Owner);
+    }
+    
+    protected override void OnUpgrade()
+    {
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

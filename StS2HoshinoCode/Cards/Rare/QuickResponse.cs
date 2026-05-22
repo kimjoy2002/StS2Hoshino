@@ -21,7 +21,7 @@ public class QuickResponse() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Rar
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new BlockVar(9m, ValueProp.Move),
+        new BlockVar(10m, ValueProp.Move),
         new BlockVar("SecondBlock", 6m, ValueProp.Move)
     ];
 

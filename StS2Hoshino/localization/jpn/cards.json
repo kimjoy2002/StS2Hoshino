@@ -67,7 +67,7 @@
   "STS2HOSHINO-PLATE_REPLACEMENT.title": "プレート交換",
   "STS2HOSHINO-PLATE_REPLACEMENT.description": "カードを 1 枚 [gold]廃棄[/gold] する。\n{ShieldPower:diff()} [gold]シールド[/gold] を得る。",
   "STS2HOSHINO-MEMORIAL.title": "メモリアル",
-  "STS2HOSHINO-MEMORIAL.description": "[gold]山札[/gold] をシャッフルするたびに、\n[gold]筋力[/gold]{MemorialPower:diff()} と [gold]敏捷[/gold]{MemorialPower:diff()} を得る。{IfUpgraded:show:\n[gold]山札[/gold] をシャッフルする。|}",
+  "STS2HOSHINO-MEMORIAL.description": "[gold]山札[/gold] をシャッフルするたびに、\n[gold]筋力[/gold]{MemorialPower:diff()} と [gold]敏捷[/gold]{MemorialPower:diff()} を得る。\n[gold]山札[/gold] をシャッフルする。",
   "STS2HOSHINO-MILITARY_SUPPLIES.title": "補給",
   "STS2HOSHINO-MILITARY_SUPPLIES.description": "[gold]弾薬[/gold] をすべて消費する。\n消費した [gold]弾薬[/gold] 1発につき {Energy:energyIcons()} を得る。\nこのターン、[gold]リロード[/gold] できなくなる。",
   "STS2HOSHINO-MISS_SHOT.title": "ミスショット",
