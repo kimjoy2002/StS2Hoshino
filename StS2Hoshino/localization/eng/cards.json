@@ -116,7 +116,7 @@
   "STS2HOSHINO-SHIELD_REBOUND.description": "Gain {Block:diff()} [gold]Block[/gold].\nPut a card from your\n[gold]Discard Pile[/gold] on top of\nyour [gold]Draw Pile[/gold].",
   "STS2HOSHINO-SHIELD_REBOUND.selectionScreenPrompt": "Select a card to place on top of your Draw Pile",
   "STS2HOSHINO-SLUG_SHOT.title": "Slug Ammo Box",
-  "STS2HOSHINO-SLUG_SHOT.description": "[gold]Reload[/gold] only 1 [gold]Ammo[gold].\nUntil you [gold]Reload[/gold],\nAttacks that consume [gold]Ammo[/gold]\ndeal {BulletVigorPower:diff()} additional damage.",
+  "STS2HOSHINO-SLUG_SHOT.description": "[gold]Reload[/gold] only 1 [gold]Ammo[/gold].\nUntil you [gold]Reload[/gold],\nAttacks that consume [gold]Ammo[/gold]\ndeal {BulletVigorPower:diff()} additional damage.",
   "STS2HOSHINO-SNAP_SHOT.title": "Autofire",
   "STS2HOSHINO-SNAP_SHOT.description": "Consume 2X [gold]Ammo[/gold].\nDeal {Damage:diff()} damage for each [gold]Ammo[/gold] consumed.\nAutomatically [gold]Reload[/gold]\nwhenever [gold]Ammo[/gold] is empty.",
   "STS2HOSHINO-SPRINT.title": "Sprint",
