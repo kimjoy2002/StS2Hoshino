@@ -29,7 +29,7 @@ public class ArmourPiercingBullet() : StS2HoshinoCard(1, CardType.Skill, CardRar
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletBoxCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<BulletArmourPiercingPower>(4m)
+        new PowerVar<BulletArmourPiercingPower>(6m)
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
@@ -39,6 +39,6 @@ public class ArmourPiercingBullet() : StS2HoshinoCard(1, CardType.Skill, CardRar
     
     protected override void OnUpgrade()
     {
-        DynamicVars["BulletArmourPiercingPower"].UpgradeValueBy(2m);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

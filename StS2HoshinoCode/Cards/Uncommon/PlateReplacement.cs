@@ -50,6 +50,6 @@ public class PlateReplacement() : StS2HoshinoCard(1, CardType.Skill, CardRarity.
     
     protected override void OnUpgrade()
     {
-        DynamicVars["ShieldPower"].UpgradeValueBy(4m);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }
