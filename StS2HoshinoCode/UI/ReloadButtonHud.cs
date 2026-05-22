@@ -11,6 +11,7 @@ using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using StS2Hoshino.StS2HoshinoCode.Core;
 using System.Linq;
+using StS2Hoshino.StS2HoshinoCode.Config;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.UI;
@@ -81,11 +82,26 @@ public partial class ReloadButtonHud : Control
 
 		ReloadController controller = StS2HoshinoMain.Controller;
 		Visible = controller.ShouldShowHud(_combatUi);
-		if (!Visible)
+		if (!Visible || !HoshinoModConfig.IsVewingReloadButton)
 			return;
 
 		Vector2 energyPosition = _combatUi.EndTurnButton.GetGlobalRect().Position;
-		Position = energyPosition + new Vector2(-4f, -Size.Y);
+		switch (HoshinoModConfig.ButtonPosition)
+		{
+			case HoshinoModConfig.ReloadButtonPosition.Up:
+				Position = energyPosition + new Vector2(-4f, -Size.Y);
+				break;
+			case HoshinoModConfig.ReloadButtonPosition.Down:
+				Position = energyPosition + new Vector2(-4f, +Size.Y);
+				break;
+			case HoshinoModConfig.ReloadButtonPosition.Left:
+				Position = energyPosition + new Vector2(4f-Size.X, 0);
+				break;
+			case HoshinoModConfig.ReloadButtonPosition.Right:
+				Position = energyPosition + new Vector2(-12f+Size.X, 0);
+				break;
+		}
+		
 		if (_reloadButton != null)
 		{
 			_reloadButton.IsEnabled = controller.CanReload(_combatUi);

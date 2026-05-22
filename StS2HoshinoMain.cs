@@ -7,7 +7,9 @@ using MegaCrit.Sts2.Core.Commands;
 using StS2Hoshino.StS2HoshinoCode.Core;
 using System.Collections.Concurrent;
 using System.Collections.Generic;
+using BaseLib.Config;
 using MegaCrit.Sts2.Core.Combat;
+using StS2Hoshino.StS2HoshinoCode.Config;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino;
@@ -28,6 +30,7 @@ public partial class StS2HoshinoMain : Node
     {
         Harmony harmony = new(ModId);
 
+        ModConfigRegistry.Register(ModId, new HoshinoModConfig());
         var assembly = Assembly.GetExecutingAssembly();
         ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         harmony.PatchAll();

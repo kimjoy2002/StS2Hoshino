@@ -1,6 +1,10 @@
 {
-  "STS2HOSHINO.mod_title": "星野模组",
-  "STS2HOSHINO-TEST_CONFIG.title": "装填按钮设置",
-  "STS2HOSHINO-TEST_CONFIG.hover.title": "装填按钮悬停",
-  "STS2HOSHINO-TEST_CONFIG.hover.desc": "设置装填按钮。"
+  "STS2HOSHINO.mod_title": "星野模组设置",
+  "STS2HOSHINO-RELOAD_SETTINGS.title": "重载设置",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.title": "显示重载按钮",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.title": "显示重载按钮",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.desc": "选择是否显示重载按钮。\n隐藏时只能通过快捷键(r)使用。",
+  "STS2HOSHINO-BUTTON_POSITION.title": "重载按钮位置",
+  "STS2HOSHINO-BUTTON_POSITION.hover.title": "重载按钮位置",
+  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "指定相对于回合结束按钮的按钮位置。"
 }

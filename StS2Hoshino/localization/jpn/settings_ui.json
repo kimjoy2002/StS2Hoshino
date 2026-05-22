@@ -1,6 +1,10 @@
 {
-  "STS2HOSHINO.mod_title": "ホシノ Mod",
-  "STS2HOSHINO-TEST_CONFIG.title": "リロードボタン設定",
-  "STS2HOSHINO-TEST_CONFIG.hover.title": "リロードボタンホバー",
-  "STS2HOSHINO-TEST_CONFIG.hover.desc": "リロードボタンを設定します。"
+  "STS2HOSHINO.mod_title": "ホシノ Mod 設定",
+  "STS2HOSHINO-RELOAD_SETTINGS.title": "リロード設定",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.title": "リロードボタンを表示",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.title": "リロードボタンを表示",
+  "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.desc": "リロードボタンを表示するかどうかを選択します。\n非表示時はショートカットキー(r)のみ使用できます。",
+  "STS2HOSHINO-BUTTON_POSITION.title": "リロードボタンの位置",
+  "STS2HOSHINO-BUTTON_POSITION.hover.title": "リロードボタンの位置",
+  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "ターン終了ボタンからの相対的なボタン位置を指定します。"
 }
