@@ -49,7 +49,7 @@
   "STS2HOSHINO-HIT_AND_RUN.title": "Hit and Run",
   "STS2HOSHINO-HIT_AND_RUN.description": "Consume [gold]Ammo[/gold].\nDeal {Damage:diff()} damage.\nYour Next [gold]Reload[/gold] this turn costs 0.",
   "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.title": "Close-Range Combat System",
-  "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.description": "Whenever an [gold]Entry[/gold] effect triggers, gain {CloseRangedCombatPower:diff()} [gold]Block[/gold] and [gold]Shield[/gold].",
+  "STS2HOSHINO-CLOSE_RANGED_COMBAT_SYSTEM.description": "Whenever an [gold]Entry[/gold] effect triggers, gain {CloseRangedCombatPower:diff()} [gold]Block[/gold] and {CloseRangedCombatPower:diff()} [gold]Shield[/gold].",
   "STS2HOSHINO-DEFENSIVE_STANCES.title": "Defensive Stances",
   "STS2HOSHINO-DEFENSIVE_STANCES.description": "Other allies take 0 damage from enemies this turn.",
   "STS2HOSHINO-PHALANX.title": "Phalanx",

@@ -1,4 +1,4 @@
-﻿<Project Sdk="Godot.NET.Sdk/4.5.1" InitialTargets="CheckDependencyPaths">
+<Project Sdk="Godot.NET.Sdk/4.5.1" InitialTargets="CheckDependencyPaths">
     <PropertyGroup>
         <TargetFramework>net9.0</TargetFramework>
         <ImplicitUsings>true</ImplicitUsings>
@@ -76,10 +76,10 @@
     </ItemGroup>
 
     <ItemGroup>
-        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.4" PrivateAssets="All" />
+        <PackageReference Include="Alchyr.Sts2.BaseLib" Version="3.1.8" PrivateAssets="All" />
         <PackageReference Include="Alchyr.Sts2.ModAnalyzers" Version="0.1.9" />
         <AdditionalFiles Include="StS2Hoshino/localization/**/*.json"/>
-        <PackageReference Update="GodotSharp" Version="4.7.0-dev.5" />
+
     </ItemGroup>
 
     <ItemGroup>
