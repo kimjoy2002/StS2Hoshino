@@ -41,7 +41,7 @@ public sealed partial class ReloadController
             return false;
 
         // 싱글플레이인 경우 기존처럼 표시
-        if (RunManager.Instance.IsSinglePlayerOrFakeMultiplayer)
+        if (RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
             return true;
 
         // 멀티플레이인 경우 호시노 캐릭터인 경우에만 표시

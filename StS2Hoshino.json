@@ -3,8 +3,8 @@
   "name": "StS2Hoshino",
   "author": "joy1999",
   "description": "Slay the Spire 2 BlueArchive Hoshino character mod",
-  "version": "v0.0.12",
-  "min_game_version": "0.106.0",
+  "version": "v0.0.13",
+  "min_game_version": "0.107.0",
   "has_pck": true,
   "has_dll": true,
   "dependencies": [
