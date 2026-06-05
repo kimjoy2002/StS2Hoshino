@@ -8,6 +8,6 @@ public class StS2HoshinoRelicPool : CustomRelicPoolModel
 {
     public override Color LabOutlineColor => StS2Hoshino.Color;
 
-    public override string BigEnergyIconPath => "charui/big_energy.png".ImagePath();
-    public override string TextEnergyIconPath => "charui/text_energy.png".ImagePath();
+    public override string BigEnergyIconPath => "charui/hoshino_energy.png".ImagePath();
+    public override string TextEnergyIconPath => "charui/hoshino_text_energy.png".ImagePath();
 }
