@@ -16,5 +16,7 @@
   "STS2HOSHINO-WHALE_TUBE_RELIC.title": "Whale Tube",
   "STS2HOSHINO-IRON_HORUS_RELIC.description": "At the start of each combat, gain [gold]Block[/gold] and [blue]{ShieldPower}[/blue] [gold]Shield[/gold].",
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "Hoshino's favorite shield. It can be folded for storage.",
-  "STS2HOSHINO-IRON_HORUS_RELIC.title": "Iron Horus"
+  "STS2HOSHINO-IRON_HORUS_RELIC.title": "Iron Horus",
+
+  "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "Horus Glass"
 }

@@ -41,7 +41,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
         {
             if (this is IRunout)
             {
-                return AmmoClass.isEmptyAmmo(base.Owner);
+                return !AmmoClass.IsActive(base.Owner) || AmmoClass.isEmptyAmmo(base.Owner);
             }
             return false;
         }
@@ -82,6 +82,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
     {
         AmmoClass.SetIsLastShot(Owner, false);
         int ammoNeeded = AmmoCost;
+        bool wasAmmoInactive = !AmmoClass.IsActive(Owner);
 
         int beforeAmmo = AmmoClass.GetCurrentAmmo(Owner);
         if (beforeAmmo == 1)
@@ -104,7 +105,7 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
             await AmmoClass.LoseAmmo(choiceContext, ammoNeeded, Owner);
         }
 
-        if (AmmoClass.isEmptyAmmo(Owner))
+        if (wasAmmoInactive || AmmoClass.isEmptyAmmo(Owner))
         {
             onRunout = true;
         }

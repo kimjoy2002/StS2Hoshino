@@ -30,6 +30,7 @@ public partial class AmmoUINode : Control
         obj._ammoEmptyTexture = GD.Load<Texture2D>(BulletEmptyPath);
         obj._ammoFullTexture = GD.Load<Texture2D>(BulletFullPath);
 
+        obj.Visible = AmmoClass.IsActive(player);
         obj.UpdateLayoutSize();
         obj.QueueRedraw();
         return obj;
@@ -37,6 +38,13 @@ public partial class AmmoUINode : Control
 
     public override void _Ready()
     {
+        if (_player != null)
+        {
+            _current = AmmoClass.GetCurrentAmmo(_player);
+            _max = AmmoClass.GetMaxAmmo(_player);
+            Visible = AmmoClass.IsActive(_player);
+        }
+
         UpdateLayoutSize();
         QueueRedraw();
         AmmoClass.OnChanged += HandleAmmoChanged;
@@ -59,6 +67,7 @@ public partial class AmmoUINode : Control
     {
         if (_player != null && player == _player)
         {
+            Visible = AmmoClass.IsActive(player);
             SetAmmo(current, max);
         }
     }
@@ -97,7 +106,7 @@ public partial class AmmoUINode : Control
 
     public override void _Draw()
     {
-        if (_player == null || _ammoEmptyTexture == null || _ammoFullTexture == null || _max <= 0)
+        if (_player == null || !AmmoClass.IsActive(_player) || _ammoEmptyTexture == null || _ammoFullTexture == null || _max <= 0)
             return;
 
         Vector2 bulletSize = _ammoFullTexture.GetSize() * DrawScale;

@@ -16,5 +16,7 @@
   "STS2HOSHINO-WHALE_TUBE_RELIC.title": "クジラ浮き輪",
   "STS2HOSHINO-IRON_HORUS_RELIC.description": "各戦闘の開始時、[gold]ブロック[/gold]と[gold]シールド[/gold]を [blue]{ShieldPower}[/blue] 得る。",
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "ホシノが愛用する盾です。折りたたんで保管できます。",
-  "STS2HOSHINO-IRON_HORUS_RELIC.title": "アイアンホルス"
+  "STS2HOSHINO-IRON_HORUS_RELIC.title": "アイアンホルス",
+
+  "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "ホルスグラス"
 }

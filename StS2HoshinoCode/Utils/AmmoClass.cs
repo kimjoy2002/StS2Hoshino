@@ -14,6 +14,7 @@ public static class AmmoClass
 	{
 		public int CurrentAmmo = 4;
 		public int MaxAmmo = 4;
+		public bool IsActive;
 
 		public int AmmoUsedThisTurn;
 		public int MenualedReloadedThisTurn;
@@ -62,6 +63,31 @@ public static class AmmoClass
 	public static int GetCurrentAmmo(Player? player)
 	{
 		return GetState(player).CurrentAmmo;
+	}
+
+	public static bool IsActive(Player? player)
+	{
+		return GetState(player).IsActive;
+	}
+
+	public static void SetActive(Player? player, bool active)
+	{
+		PlayerAmmoState state = GetState(player);
+		if (state.IsActive == active)
+		{
+			return;
+		}
+
+		state.IsActive = active;
+		if (player != null)
+		{
+			OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
+		}
+	}
+
+	private static void EnsureActive(Player player)
+	{
+		SetActive(player, true);
 	}
 
 	public static int SetMaxAmmo(Player? player, int max_ammo)
@@ -162,12 +188,21 @@ public static class AmmoClass
 
 	public static bool isEmptyAmmo(Player player)
 	{
+		if (!IsActive(player))
+		{
+			return true;
+		}
+
 		return !hasAmmo(1, player);
 	}
 
 	public static bool hasAmmo(int amount, Player player)
 	{
 		if (amount <= 0)
+		{
+			return true;
+		}
+		if (!IsActive(player))
 		{
 			return true;
 		}
@@ -182,6 +217,7 @@ public static class AmmoClass
 	public static async Task SetAmmo(PlayerChoiceContext choiceContext, int amount, bool reload, Player player)
 	{
 		PlayerAmmoState state = GetState(player);
+		EnsureActive(player);
 		CurrentAmmoGainer = player;
 		int prevAmmo = state.CurrentAmmo;
 		state.CurrentAmmo = amount;
@@ -215,6 +251,7 @@ public static class AmmoClass
 		if (amount > 0)
 		{
 			PlayerAmmoState state = GetState(player);
+			EnsureActive(player);
 			StS2HoshinoMain.Logger.Info($"Lost ammo {amount} - {state.CurrentAmmo}/{state.MaxAmmo}");
 			CurrentAmmoGainer = player;
 			int prev_ammo = state.CurrentAmmo;
@@ -253,6 +290,7 @@ public static class AmmoClass
 		PlayerAmmoState state = GetState(player);
 		state.CurrentAmmo = _defaultMaxAmmo;
 		state.MaxAmmo = _defaultMaxAmmo;
+		state.IsActive = player.Character is StS2Hoshino.StS2HoshinoCode.Character.StS2Hoshino;
 		state.AmmoUsedThisTurn = 0;
 		state.MenualedReloadedThisTurn = 0;
 		state.InvadesThisCombat = 0;

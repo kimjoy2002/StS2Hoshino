@@ -21,5 +21,9 @@
 
   "STS2HOSHINO-IRON_HORUS_RELIC.description": "每场战斗开始时，获得[gold]格挡[/gold]和 [blue]{ShieldPower}[/blue] 点[gold]盾牌[/gold]。",
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "星野钟爱的盾牌。可以折叠收纳。",
-  "STS2HOSHINO-IRON_HORUS_RELIC.title": "铁荷鲁斯"
+  "STS2HOSHINO-IRON_HORUS_RELIC.title": "铁荷鲁斯",
+
+  "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "荷鲁斯玻璃"
+
+  
 }

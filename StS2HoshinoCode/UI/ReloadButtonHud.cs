@@ -73,8 +73,7 @@ public partial class ReloadButtonHud : Control
 		}
 
 		
-		if (me == null ||  !IsInstanceValid(_combatUi) || _combatUi == null || !IsInstanceValid(_combatUi)
-			|| !(me.Character is Character.StS2Hoshino))
+		if (me == null ||  !IsInstanceValid(_combatUi) || _combatUi == null || !IsInstanceValid(_combatUi))
 		{
 			Visible = false;
 			return;

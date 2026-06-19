@@ -21,5 +21,7 @@
 
   "STS2HOSHINO-IRON_HORUS_RELIC.description": "매 전투 시작 시, [gold]방어도[/gold]와 [gold]방패[/gold]를 [blue]{ShieldPower}[/blue] 얻습니다.",
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "호시노가 애용하는 방패입니다. 접어서 보관이 가능합니다.",
-  "STS2HOSHINO-IRON_HORUS_RELIC.title": "아이언 호루스"
+  "STS2HOSHINO-IRON_HORUS_RELIC.title": "아이언 호루스",
+
+  "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "호루스 유리"
 }

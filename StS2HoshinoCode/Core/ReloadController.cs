@@ -3,6 +3,7 @@ using System.Linq;
 using Godot;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
+using MegaCrit.Sts2.Core.Entities.Actions;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.GameActions;
 using MegaCrit.Sts2.Core.Nodes;
@@ -13,12 +14,10 @@ using MegaCrit.Sts2.Core.Nodes.Screens.CardSelection;
 using MegaCrit.Sts2.Core.Nodes.Screens.Overlays;
 using MegaCrit.Sts2.Core.Nodes.Screens.ScreenContext;
 using MegaCrit.Sts2.Core.Runs;
-using MegaCrit.Sts2.Core.Entities.Actions;
 using StS2Hoshino.StS2HoshinoCode.Powers;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Core;
-
 
 public sealed partial class ReloadController
 {
@@ -40,20 +39,27 @@ public sealed partial class ReloadController
         if (NGame.Instance?.CurrentRunNode == null)
             return false;
 
-        // 싱글플레이인 경우 기존처럼 표시
-        if (RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
-            return true;
-
-        // 멀티플레이인 경우 호시노 캐릭터인 경우에만 표시
+        Player? me;
         try
         {
-            Player? me = LocalContext.GetMe(_activeCombatState);
-            return me?.Character is StS2Hoshino.StS2HoshinoCode.Character.StS2Hoshino;
+            me = LocalContext.GetMe(_activeCombatState);
         }
         catch (InvalidOperationException)
         {
             return false;
         }
+
+        if (me == null)
+            return false;
+
+        bool shouldShowForPlayer = me.Character is Character.StS2Hoshino || AmmoClass.IsActive(me);
+        if (!shouldShowForPlayer)
+            return false;
+
+        if (RunManager.Instance.IsSingleplayerOrFakeMultiplayer)
+            return true;
+
+        return LocalContext.IsMe(me);
     }
 
     public bool TryHandleHotkey(NCombatUi combatUi, InputEvent inputEvent)
@@ -138,9 +144,15 @@ public sealed partial class ReloadController
         if (!ShouldShowHud(combatUi) || !CanRestoreState() || IsUiBlocking(combatUi))
             return false;
 
-        Player? me = null;
-        try { me = LocalContext.GetMe(_activeCombatState); }
-        catch (InvalidOperationException) { return false; }
+        Player? me;
+        try
+        {
+            me = LocalContext.GetMe(_activeCombatState);
+        }
+        catch (InvalidOperationException)
+        {
+            return false;
+        }
 
         if (me?.PlayerCombatState == null)
             return false;
@@ -163,7 +175,7 @@ public sealed partial class ReloadController
         if (!CanReload(combatUi))
             return;
 
-        Player? me = null;
+        Player? me;
         try
         {
             me = LocalContext.GetMe(_activeCombatState);
@@ -179,6 +191,7 @@ public sealed partial class ReloadController
             StS2HoshinoMain.Logger.Error("[ReloadController] Local player is null, cannot reload");
             return;
         }
+
         ReloadAction action = new ReloadAction(me, true);
         RunManager.Instance.ActionQueueSynchronizer.RequestEnqueue(action);
     }

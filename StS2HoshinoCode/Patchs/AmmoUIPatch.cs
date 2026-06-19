@@ -37,7 +37,7 @@ public static class AmmoUIPatch
     [HarmonyPostfix]
     private static void AddAmmoUI(NCreature __instance)
     {
-        if (__instance.Entity.IsPlayer && __instance.Entity.Player != null && LocalContext.IsMe(__instance.Entity) && __instance.Entity.Player.Character is Character.StS2Hoshino)
+        if (__instance.Entity.IsPlayer && __instance.Entity.Player != null && LocalContext.IsMe(__instance.Entity))
         {
             AmmoUINode ammoUINode = AmmoUINode.Create(__instance.Entity.Player);
             ((Node)ammoUINode).Name = "ammoUI";
