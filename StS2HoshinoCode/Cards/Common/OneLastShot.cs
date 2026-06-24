@@ -34,10 +34,20 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
         new CalculationBaseVar(9m),
         new ExtraDamageVar(1m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) =>
-            (AmmoClass.GetCurrentAmmo(card.Owner) == 1 || AmmoClass.GetIsLastShot(card.Owner))
+            ShouldDealDoubleDamage(card)
                 ? card.DynamicVars.Damage.BaseValue
                 : 0m)
     ];
+
+    private static bool ShouldDealDoubleDamage(CardModel card)
+    {
+        if (AmmoClass.GetIsLastShot(card.Owner))
+        {
+            return true;
+        }
+
+        return !AmmoClass.GetIsResolvingCardPlay(card.Owner) && AmmoClass.GetCurrentAmmo(card.Owner) == 1;
+    }
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

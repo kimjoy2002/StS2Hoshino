@@ -110,12 +110,20 @@ public abstract class StS2HoshinoCard(int cost, CardType type, CardRarity rarity
             onRunout = true;
         }
 
-        await OnHoshinoPlay(choiceContext, play);
-        if (onRunout && this is IRunout runout)
+        AmmoClass.SetIsResolvingCardPlay(Owner, true);
+        try
         {
-            await runout.OnRunout(choiceContext, play);
+            await OnHoshinoPlay(choiceContext, play);
+            if (onRunout && this is IRunout runout)
+            {
+                await runout.OnRunout(choiceContext, play);
+            }
         }
-        AmmoClass.SetIsLastShot(Owner, false);
+        finally
+        {
+            AmmoClass.SetIsResolvingCardPlay(Owner, false);
+            AmmoClass.SetIsLastShot(Owner, false);
+        }
     }
     
     // public override Task AfterCardDrawn(PlayerChoiceContext choiceContext, CardModel card, bool fromHandDraw)

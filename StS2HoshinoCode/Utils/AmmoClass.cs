@@ -26,6 +26,7 @@ public static class AmmoClass
 		public CardModel? LastCardPlayed;
 
 		public bool IsLastShot;
+		public int ResolvingCardPlayDepth;
 
 		public readonly List<Func<PlayerChoiceContext, Task>> PendingTriggers = new();
 	}
@@ -180,6 +181,24 @@ public static class AmmoClass
 		GetState(player).IsLastShot = value;
 	}
 
+	public static bool GetIsResolvingCardPlay(Player? player)
+	{
+		return GetState(player).ResolvingCardPlayDepth > 0;
+	}
+
+	public static void SetIsResolvingCardPlay(Player? player, bool value)
+	{
+		PlayerAmmoState state = GetState(player);
+		if (value)
+		{
+			state.ResolvingCardPlayDepth++;
+		}
+		else if (state.ResolvingCardPlayDepth > 0)
+		{
+			state.ResolvingCardPlayDepth--;
+		}
+	}
+
 	public static void QueueCountdownTrigger(Player player, Func<PlayerChoiceContext, Task> trigger)
 	{
 		GetState(player).PendingTriggers.Add(trigger);
@@ -298,6 +317,7 @@ public static class AmmoClass
 		state.Slot3UsedThisCombat = 0;
 		state.Slot4UsedThisCombat = 0;
 		state.IsLastShot = false;
+		state.ResolvingCardPlayDepth = 0;
 		state.PendingTriggers.Clear();
 	}
 }

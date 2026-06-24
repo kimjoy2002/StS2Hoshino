@@ -1,3 +1,4 @@
+using Godot;
 using MegaCrit.Sts2.Core.CardSelection;
 using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Entities.Cards;
@@ -46,6 +47,17 @@ public class CardEnchantReward : Reward
     public CardEnchantReward(Player player, int amount) : base(player)
     {
         _amount = amount;
+    }
+
+    public override Control? CreateIcon()
+    {
+        TextureRect textureRect = new TextureRect
+        {
+            Texture = ResourceLoader.Load<Texture2D>(RewardIcon, null, ResourceLoader.CacheMode.Reuse),
+            ExpandMode = TextureRect.ExpandModeEnum.IgnoreSize
+        };
+        textureRect.SetAnchorsPreset(Control.LayoutPreset.FullRect);
+        return textureRect;
     }
 
     public override void Populate()
