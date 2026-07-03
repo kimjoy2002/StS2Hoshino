@@ -34,11 +34,11 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
     {
         IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfireheavy.mp3".SfxPath())
             .Execute(choiceContext);
         
-        //Ï¥ùÏïå ÏÇ¨Ïö©
+        //√—æÀ ªÁøÎ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
@@ -53,19 +53,27 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         await Cmd.Wait(0.25f);
     }
 
-    protected override PileType GetResultPileTypeForCardPlay()
+    public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
+        CardModel card,
+        bool isAutoPlay,
+        ResourceInfo resources,
+        PileType pileType,
+        CardPilePosition position)
     {
-        CardPile pile = PileType.Hand.GetPile(base.Owner);
-        if (pile.Cards.Count>0)
+        (PileType resultPileType, CardPilePosition resultPilePosition) =
+            base.ModifyCardPlayResultPileTypeAndPosition(card, isAutoPlay, resources, pileType, position);
+        if (card != this)
         {
-            PileType resultPileType = base.GetResultPileTypeForCardPlay();
-            if (resultPileType != PileType.Discard)
-            {
-                return resultPileType;
-            }
-            return PileType.Hand;
+            return (resultPileType, resultPilePosition);
         }
-        return base.GetResultPileTypeForCardPlay();
+
+        CardPile pile = PileType.Hand.GetPile(base.Owner);
+        if (pile.Cards.Count > 0 && resultPileType == PileType.Discard)
+        {
+            return (PileType.Hand, resultPilePosition);
+        }
+
+        return (resultPileType, resultPilePosition);
     }
     
     protected override void OnUpgrade()

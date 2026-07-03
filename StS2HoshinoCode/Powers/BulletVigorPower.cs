@@ -67,7 +67,7 @@ public sealed class BulletVigorPower : StS2HoshinoPower, IOnReloaded
         return Task.CompletedTask;
     }
 
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public decimal ModifyDamageAdditiveCompat(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (base.Owner != dealer)
         {

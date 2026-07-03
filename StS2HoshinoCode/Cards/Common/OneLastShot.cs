@@ -52,10 +52,10 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
-        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target!)
+        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCardCompat(this, play).Targeting(play.Target!)
             .WithHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
             .Execute(choiceContext);
-        //Ï¥ùÏïå ÏÇ¨Ïö©
+        //√—æÀ ªÁøÎ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {

@@ -27,7 +27,7 @@ public class ShellStrike() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Rare
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this)
+        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCardCompat(this, play)
             .WithAttackerAnim("Swing", 0.15f)
             .Targeting(play.Target).Execute(choiceContext);
     }

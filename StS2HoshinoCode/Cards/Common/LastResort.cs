@@ -33,7 +33,7 @@ public class LastResort() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Commo
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).WithAttackerAnim("Swing", 0.15f).Targeting(play.Target).Execute(choiceContext);
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).WithAttackerAnim("Swing", 0.15f).Targeting(play.Target).Execute(choiceContext);
     }
     
     

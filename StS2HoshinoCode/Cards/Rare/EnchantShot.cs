@@ -39,11 +39,11 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
     {
         IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
         
-        //Ï¥ùÏïå ÏÇ¨Ïö©
+        //√—æÀ ªÁøÎ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
@@ -105,7 +105,7 @@ public class EnchantShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Rare
             return rng.NextInt(4, 9); // 4~8
         }
 
-        return rng.NextInt(2, 6); // Í∏∞Î≥∏ 2~5
+        return rng.NextInt(2, 6); // ±‚∫ª 2~5
     }
     
     protected override void OnUpgrade()

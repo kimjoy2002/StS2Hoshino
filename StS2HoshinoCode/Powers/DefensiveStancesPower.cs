@@ -18,7 +18,7 @@ public sealed class DefensiveStancesPower : StS2HoshinoPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override decimal ModifyDamageMultiplicative(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
+    public decimal ModifyDamageMultiplicativeCompat(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? cardSource)
     {
         if (target != null && base.Owner != target && target.Side == base.Owner.Side)
         {

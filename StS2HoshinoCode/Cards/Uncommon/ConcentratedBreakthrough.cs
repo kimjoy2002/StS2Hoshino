@@ -44,12 +44,12 @@ public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, Ca
         ArgumentNullException.ThrowIfNull(base.CombatState, "base.CombatState");
         IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_starry_impact", sfx: "shotgunfireheavy.mp3".SfxPath())
             .SpawningHitVfxOnEachCreature()
             .Execute(choiceContext);
         
-        //Ï¥ùÏïå ÏÇ¨Ïö©
+        //√—æÀ ªÁøÎ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {

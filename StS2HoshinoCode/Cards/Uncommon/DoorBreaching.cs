@@ -37,7 +37,7 @@ public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Un
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target)
             .WithAttackerAnim("Swing", 0.15f)
             .WithHitFx("vfx/vfx_attack_slash")
             .Execute(choiceContext);

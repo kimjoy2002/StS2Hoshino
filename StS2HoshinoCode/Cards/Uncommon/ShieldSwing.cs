@@ -41,7 +41,7 @@ public class ShieldSwing() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Unco
         bool isRunout = AmmoClass.isEmptyAmmo(Owner);
         
         var attackCommand = await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCardCompat(this, cardPlay)
             .WithAttackerAnim("Swing", 0.15f)
             .Targeting(cardPlay.Target)
             .Execute(choiceContext);

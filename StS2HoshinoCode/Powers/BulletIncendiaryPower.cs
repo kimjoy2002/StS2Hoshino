@@ -46,7 +46,7 @@ public sealed class BulletIncendiaryPower : StS2HoshinoPower, IOnReloaded, IBull
                 NFireBurstVfx? child = NFireBurstVfx.Create(hittableEnemy, 0.75f);
                 NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(child);
             }
-            await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount, ValueProp.Unpowered, base.Owner, null);
+            await CreatureCmd.Damage(choiceContext, base.CombatState.HittableEnemies, base.Amount, ValueProp.Unpowered, base.Owner);
         }
     }
 

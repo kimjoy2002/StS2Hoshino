@@ -48,7 +48,7 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
             IReadOnlyList<Creature>? enemies = base.CombatState?.HittableEnemies;
             var combatState = base.CombatState;
             if (combatState != null)
-                await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this)
+                await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCardCompat(this, play)
                     .TargetingAllOpponents(combatState)
                     .WithHitCount(amount)
                     .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfireheavy.mp3".SfxPath())
@@ -56,7 +56,7 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
                     {
                         if (bulletsUsed > 0)
                         {
-                            //ì´ì•Œ ì‚¬ìš©
+                            //ÃÑ¾Ë »ç¿ë
                             IEnumerable<IBulletPowerInterface> enumerable =
                                 base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                             foreach (IBulletPowerInterface item in enumerable)

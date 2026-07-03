@@ -40,7 +40,7 @@ public class CoverLoad() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common,
             for (;empty>0;empty--) {
                 await CommonActions.CardBlock(this, play);
             }
-            //await BlockCmd.Block((int)(base.DynamicVars.Block.BaseValue * empty)).FromCard(this).Targeting(base.Owner.Creature).Execute(choiceContext);
+            //await BlockCmd.Block((int)(base.DynamicVars.Block.BaseValue * empty)).FromCardCompat(this, play).Targeting(base.Owner.Creature).Execute(choiceContext);
         }
         await ReloadCmd.Execute(choiceContext, base.Owner);
     }

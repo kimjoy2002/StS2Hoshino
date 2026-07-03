@@ -44,7 +44,7 @@ public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.B
         {
             int bulletsUsed = 0;
             await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-                .FromCard(this)
+                .FromCardCompat(this, play)
                 .Targeting(play.Target!)
                 .WithHitCount(amount)
                 .WithHitFx(sfx: "shotgunfirelight.mp3".SfxPath())
@@ -52,7 +52,7 @@ public class FullBarrelFire() : StS2HoshinoCard(2, CardType.Attack, CardRarity.B
                 {
                     if (bulletsUsed > 0)
                     {
-                        //ì´ì•Œ ì‚¬ìš©
+                        //ÃÑ¾Ë »ç¿ë
                         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                         foreach (IBulletPowerInterface item in enumerable)
                         {

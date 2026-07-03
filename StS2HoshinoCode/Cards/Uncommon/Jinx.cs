@@ -52,11 +52,11 @@ public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, T
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
 
-        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCard(this).Targeting(play.Target!)
+        await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCardCompat(this, play).Targeting(play.Target!)
             .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
 
-        // Ï¥ùÏïå Ìö®Í≥º Ï≤òÎ¶¨
+        // √—æÀ »ø∞˙ √≥∏Æ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {

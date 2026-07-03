@@ -15,7 +15,7 @@ using StS2Hoshino.StS2HoshinoCode.Character;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class Jackpot() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies), IInvade
+public class Jackpot2() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, TargetType.AllEnemies), IInvade
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
@@ -27,7 +27,7 @@ public class Jackpot() : StS2HoshinoCard(7, CardType.Attack, CardRarity.Rare, Ta
     {
         var combatState = base.CombatState;
         if (combatState != null)
-            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this)
+            await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play)
                 .TargetingAllOpponents(combatState)
                 .WithHitFx("vfx/vfx_attack_slash", null, "blunt_attack.mp3")
                 .Execute(choiceContext);

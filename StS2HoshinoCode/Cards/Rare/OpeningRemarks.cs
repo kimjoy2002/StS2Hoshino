@@ -42,7 +42,7 @@ public class OpeningRemarks() : StS2HoshinoCard(0, CardType.Attack, CardRarity.R
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCardCompat(this, play)
             .Targeting(play.Target!)
             .WithAttackerAnim("Charge", 0.25f)
             .WithWaitBeforeHit(0.5f, 0.5f)

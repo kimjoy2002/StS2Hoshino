@@ -38,11 +38,11 @@ public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncomm
                 Creature? singleTarget = RunState!.Rng.CombatTargets.NextItem<Creature>((IEnumerable<Creature>) validTargets);
                 if (singleTarget != null)
                 {
-                    await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(singleTarget)
+                    await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(singleTarget)
                         .WithHitFx(sfx: "shotgunfirelight.mp3".SfxPath())
                         .Execute(choiceContext);
             
-                    //Ï¥ùÏïå ÏÇ¨Ïö©
+                    //√—æÀ ªÁøÎ
                     IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
                     foreach (IBulletPowerInterface item in enumerable)
                     {

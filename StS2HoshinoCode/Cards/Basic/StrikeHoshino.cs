@@ -36,12 +36,12 @@ public class StrikeHoshino() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Ba
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue)
-            .FromCard(this)
+            .FromCardCompat(this, play)
             .Targeting(play.Target!)
             .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
         
-        //Ï¥ùÏïå ÏÇ¨Ïö©
+        //√—æÀ ªÁøÎ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {

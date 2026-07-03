@@ -40,14 +40,14 @@ public class TacticalBash() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Com
     {
         if (AmmoClass.isEmptyAmmo(base.Owner)) return;
 
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).WithAttackerAnim("Swing", 0.15f).TargetingAllOpponents(base.CombatState!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).WithAttackerAnim("Swing", 0.15f).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
     }
     
     public async Task OnRunout(PlayerChoiceContext choiceContext, CardPlay play)
     {
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCard(this).WithAttackerAnim("Swing", 0.15f).TargetingAllOpponents(base.CombatState!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).WithHitCount(2).FromCardCompat(this, play).WithAttackerAnim("Swing", 0.15f).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", null, "blunt_attack.mp3")
             .Execute(choiceContext);
     }

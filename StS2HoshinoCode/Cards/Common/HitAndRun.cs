@@ -32,18 +32,18 @@ public class HitAndRun() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target!)
             .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
 
-        //ì´ì•Œ ì‚¬ìš©
+        //ÃÑ¾Ë »ç¿ë
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
             await item.UseBullet(choiceContext, this, play.Target!, base.Owner.Creature, 1);
         }
 
-        // ë‹¤ìŒ ì¥ì „ì„ ë¬´ë£Œë¡œ ë§Œë“œëŠ” íŒŒì›Œ ë¶€ì—¬
+        // ´ÙÀ½ ÀåÀüÀ» ¹«·á·Î ¸¸µå´Â ÆÄ¿ö ºÎ¿©
         await PowerCmd.Apply<FreeReloadPower>(choiceContext, base.Owner.Creature, 1, base.Owner.Creature, this);
     }
     

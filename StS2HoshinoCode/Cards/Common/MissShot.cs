@@ -36,11 +36,11 @@ public class MissShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common,
         await AmmoClass.LoseAmmo(choiceContext,99, ((CardModel)this).Owner);
         int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).Targeting(play.Target!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target!)
             .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
         
-        //Ï¥ùÏïå ÏÇ¨Ïö©
+        //√—æÀ ªÁøÎ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {

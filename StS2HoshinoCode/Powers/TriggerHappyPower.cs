@@ -21,7 +21,7 @@ public sealed class TriggerHappyPower : StS2HoshinoPower
 
     public override PowerStackType StackType => PowerStackType.Counter;
 
-    public override decimal ModifyDamageAdditive(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? card)
+    public decimal ModifyDamageAdditiveCompat(Creature? target, decimal amount, ValueProp props, Creature? dealer, CardModel? card)
     {
         if (base.Owner != dealer)
         {

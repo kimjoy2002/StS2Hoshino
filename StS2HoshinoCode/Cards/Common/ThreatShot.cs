@@ -47,12 +47,12 @@ public class ThreatShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Commo
         // }
         
         
-        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCard(this).TargetingAllOpponents(base.CombatState!)
+        await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).TargetingAllOpponents(base.CombatState!)
             .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
         await PowerCmd.Apply<WeakPower>(choiceContext, enemies,base.DynamicVars.Weak.BaseValue, base.Owner.Creature, this);
         
-        //Ï¥ùÏïå ÏÇ¨Ïö©
+        //√—æÀ ªÁøÎ
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {
