@@ -37,7 +37,7 @@ public class WideShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommo
         IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).TargetingAllOpponents(base.CombatState!)
-            .WithHitFx("vfx/vfx_starry_impact", sfx: "shotgunfire.mp3".SfxPath())
+            .WithHoshinoHitFx("vfx/vfx_starry_impact", sfx: "shotgunfire.mp3".SfxPath())
             .SpawningHitVfxOnEachCreature()
             .Execute(choiceContext);
         

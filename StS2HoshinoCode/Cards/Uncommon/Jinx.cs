@@ -53,7 +53,7 @@ public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, T
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
 
         await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCardCompat(this, play).Targeting(play.Target!)
-            .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+            .WithHoshinoHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
 
         // 총알 효과 처리

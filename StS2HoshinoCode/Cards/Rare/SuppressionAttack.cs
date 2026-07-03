@@ -35,7 +35,7 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).TargetingAllOpponents(base.CombatState!)
-            .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfireheavy.mp3".SfxPath())
+            .WithHoshinoHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfireheavy.mp3".SfxPath())
             .Execute(choiceContext);
         
         //ÃÑ¾Ë »ç¿ë

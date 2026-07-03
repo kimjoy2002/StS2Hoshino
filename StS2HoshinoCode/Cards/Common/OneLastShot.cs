@@ -53,7 +53,7 @@ public class OneLastShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Comm
     {
         ArgumentNullException.ThrowIfNull(play.Target, "cardPlay.Target");
         await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCardCompat(this, play).Targeting(play.Target!)
-            .WithHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
+            .WithHoshinoHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
             .Execute(choiceContext);
         //ÃÑ¾Ë »ç¿ë
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();

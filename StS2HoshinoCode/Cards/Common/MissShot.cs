@@ -37,7 +37,7 @@ public class MissShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common,
         int extraAmount = prev - AmmoClass.GetCurrentAmmo(Owner);
         
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target!)
-            .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+            .WithHoshinoHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
         
         //ÃÑ¾Ë »ç¿ë

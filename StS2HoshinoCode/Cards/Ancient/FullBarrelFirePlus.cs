@@ -53,9 +53,10 @@ public class FullBarrelFirePlus() : StS2HoshinoCard(1, CardType.Attack, CardRari
                     .FromCardCompat(this, play)
                     .Targeting(currentTarget)
                     .WithHitCount(amount)
-                    .WithHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
+                    .WithHitFx()
                     .BeforeDamage(async () =>
                     {
+                        StS2Hoshino.StS2HoshinoMain.PlaySfx("shotgunfireheavy.mp3".SfxPath());
                         if (bulletsUsed > 0)
                         {
                             //ÃÑ¾Ë »ç¿ë

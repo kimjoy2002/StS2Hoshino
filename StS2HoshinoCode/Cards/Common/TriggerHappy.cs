@@ -50,7 +50,7 @@ public class TriggerHappy() : StS2HoshinoCard(0, CardType.Attack, CardRarity.Com
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target!)
-            .WithHitFx(sfx: "shotgunfirelight.mp3".SfxPath())
+            .WithHoshinoHitFx(sfx: "shotgunfirelight.mp3".SfxPath())
             .Execute(choiceContext);
         
         //ÃÑ¾Ë »ç¿ë

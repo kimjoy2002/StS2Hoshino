@@ -51,9 +51,10 @@ public class TacticalSuppression() : StS2HoshinoCard(3, CardType.Attack, CardRar
                 await DamageCmd.Attack(base.DynamicVars.CalculatedDamage).FromCardCompat(this, play)
                     .TargetingAllOpponents(combatState)
                     .WithHitCount(amount)
-                    .WithHitFx("vfx/vfx_heavy_blunt", sfx: "shotgunfireheavy.mp3".SfxPath())
+                    .WithHitFx("vfx/vfx_heavy_blunt")
                     .BeforeDamage(async () =>
                     {
+                        StS2Hoshino.StS2HoshinoMain.PlaySfx("shotgunfireheavy.mp3".SfxPath());
                         if (bulletsUsed > 0)
                         {
                             //ÃÑ¾Ë »ç¿ë

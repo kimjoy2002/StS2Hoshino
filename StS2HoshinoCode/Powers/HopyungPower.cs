@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.Random;
 using StS2Hoshino.StS2HoshinoCode.Hook;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Powers;
 
@@ -33,7 +34,7 @@ public sealed class HopyungPower : StS2HoshinoPower
         ICombatState? combatState = player.Creature.CombatState;
         Flash();
         bool flag;
-        using (CardSelectCmd.PushSelector(new VakuuCardSelector()))
+        using (CardSelectCmdCompat.PushSelector(new VakuuCardSelector()))
         {
             int cardsPlayed;
             for (cardsPlayed = 0; cardsPlayed < 13; cardsPlayed++)

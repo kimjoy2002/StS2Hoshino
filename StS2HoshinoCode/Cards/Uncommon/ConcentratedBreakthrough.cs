@@ -45,7 +45,7 @@ public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, Ca
         IReadOnlyList<Creature> enemies = base.CombatState!.HittableEnemies;
         
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).TargetingAllOpponents(base.CombatState!)
-            .WithHitFx("vfx/vfx_starry_impact", sfx: "shotgunfireheavy.mp3".SfxPath())
+            .WithHoshinoHitFx("vfx/vfx_starry_impact", sfx: "shotgunfireheavy.mp3".SfxPath())
             .SpawningHitVfxOnEachCreature()
             .Execute(choiceContext);
         

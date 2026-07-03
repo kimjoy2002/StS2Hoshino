@@ -33,7 +33,7 @@ public class HitAndRun() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Common
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target!)
-            .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+            .WithHoshinoHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
 
         //ÃÑ¾Ë »ç¿ë

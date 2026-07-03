@@ -39,7 +39,7 @@ public class BlindShot() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncomm
                 if (singleTarget != null)
                 {
                     await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(singleTarget)
-                        .WithHitFx(sfx: "shotgunfirelight.mp3".SfxPath())
+                        .WithHoshinoHitFx(sfx: "shotgunfirelight.mp3".SfxPath())
                         .Execute(choiceContext);
             
                     //ÃÑ¾Ë »ç¿ë

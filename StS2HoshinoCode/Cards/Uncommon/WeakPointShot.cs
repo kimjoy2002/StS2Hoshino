@@ -36,7 +36,7 @@ public class WeakPointShot() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Un
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target!)
-            .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+            .WithHoshinoHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
 
         int amount = AmmoClass.GetCurrentAmmo(Owner);

@@ -34,7 +34,7 @@ public class ChargingShot() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Com
     {
         ArgumentNullException.ThrowIfNull(play.Target, "play.Target");
         await DamageCmd.Attack(base.DynamicVars.Damage.BaseValue).FromCardCompat(this, play).Targeting(play.Target!)
-            .WithHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
+            .WithHoshinoHitFx(sfx: "shotgunfireheavy.mp3".SfxPath())
             .Execute(choiceContext);
 
         //ÃÑ¾Ë »ç¿ë

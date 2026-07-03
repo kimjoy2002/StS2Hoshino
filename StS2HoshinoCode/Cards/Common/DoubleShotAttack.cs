@@ -44,9 +44,10 @@ public class DoubleShotAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarity
                 .FromCardCompat(this, play)
                 .Targeting(play.Target!)
                 .WithHitCount(amount)
-                .WithHitFx(sfx: "shotgunfire.mp3".SfxPath())
+                .WithHitFx()
                 .BeforeDamage(async () =>
                 {
+                    StS2Hoshino.StS2HoshinoMain.PlaySfx("shotgunfire.mp3".SfxPath());
                     if (bulletsUsed > 0)
                     {
                         //ÃÑ¾Ë »ç¿ë
