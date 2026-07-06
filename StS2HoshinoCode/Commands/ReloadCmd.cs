@@ -39,6 +39,11 @@ public static class ReloadCmd
         if (isButton)
         {
             int reloadCost = GetReloadCost(player);
+            if (AmmoClass.GetMaxAmmo(player) == AmmoClass.GetCurrentAmmo(player) ||
+                (player.PlayerCombatState != null && reloadCost > player.PlayerCombatState.Energy))
+            {
+                return;
+            }
             if (reloadCost > 0)
             {
                 player.PlayerCombatState!.LoseEnergy(reloadCost);
