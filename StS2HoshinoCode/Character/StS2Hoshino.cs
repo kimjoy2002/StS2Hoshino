@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using BaseLib.Abstracts;
 using BaseLib.Patches.UI;
+using BaseLib.Utils.NodeFactories;
 using Godot;
 using MegaCrit.Sts2.Core.Animation;
 using MegaCrit.Sts2.Core.Bindings.MegaSpine;
@@ -58,6 +59,11 @@ public class StS2Hoshino : PlaceholderCharacterModel
 	public override CardPoolModel CardPool => ModelDb.CardPool<StS2HoshinoCardPool>();
 	public override RelicPoolModel RelicPool => ModelDb.RelicPool<StS2HoshinoRelicPool>();
 	public override PotionPoolModel PotionPool => ModelDb.PotionPool<StS2HoshinoPotionPool>();
+	protected override IEnumerable<string> ExtraAssetPaths =>
+	[
+		"reload_turn_button.png".CharacterUiPath(),
+		"reload_turn_button_glow.png".CharacterUiPath()
+	];
 
 	public override float AttackAnimDelay => 0.15f;
 
@@ -85,6 +91,11 @@ public class StS2Hoshino : PlaceholderCharacterModel
 
 	public override string CustomRestSiteAnimPath => "res://StS2Hoshino/scenes/hoshino_rest_site.tscn";
 	public override string CustomMerchantAnimPath => "res://StS2Hoshino/scenes/hoshino_merchant.tscn";
+
+	public override NCreatureVisuals CreateCustomVisuals()
+	{
+		return NodeFactory<NCreatureVisuals>.CreateFromScene(CustomVisualPath);
+	}
 
 	
 	public override string CustomArmPointingTexturePath =>
