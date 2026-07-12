@@ -6,5 +6,14 @@
   "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.desc": "리로드 버튼을 표시할지 선택합니다.\n숨김시 단축키(r)로만 사용이 가능합니다.",
   "STS2HOSHINO-BUTTON_POSITION.title": "리로드 버튼 위치",
   "STS2HOSHINO-BUTTON_POSITION.hover.title": "리로드 버튼 위치",
-  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "턴 종료 버튼으로부터의 상대적인 버튼 위치를 지정합니다."
+  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "턴 종료 버튼으로부터의 상대적인 버튼 위치를 지정합니다.",
+  "STS2HOSHINO-AUDIO_SETTINGS.title": "오디오 설정",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.title": "총알 공격 음량",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.hover.title": "총알 공격 음량",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.hover.desc": "총알 공격 효과음의 음량을 조절합니다.",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.sliderFormat": "{0:0}%",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.title": "리로드 음량",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.hover.title": "리로드 음량",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.hover.desc": "리로드 효과음의 음량을 조절합니다.",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.sliderFormat": "{0:0}%"
 }

@@ -6,5 +6,14 @@
   "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.desc": "选择是否显示重载按钮。\n隐藏时只能通过快捷键(r)使用。",
   "STS2HOSHINO-BUTTON_POSITION.title": "重载按钮位置",
   "STS2HOSHINO-BUTTON_POSITION.hover.title": "重载按钮位置",
-  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "指定相对于回合结束按钮的按钮位置。"
+  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "指定相对于回合结束按钮的按钮位置。",
+  "STS2HOSHINO-AUDIO_SETTINGS.title": "音频设置",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.title": "子弹攻击音量",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.hover.title": "子弹攻击音量",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.hover.desc": "调整子弹攻击音效的音量。",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.sliderFormat": "{0:0}%",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.title": "重载音量",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.hover.title": "重载音量",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.hover.desc": "调整重载音效的音量。",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.sliderFormat": "{0:0}%"
 }

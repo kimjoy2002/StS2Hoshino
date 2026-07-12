@@ -22,8 +22,9 @@ public partial class StS2HoshinoMain : Node
     public static MegaCrit.Sts2.Core.Logging.Logger Logger { get; } =
          new(ModId, MegaCrit.Sts2.Core.Logging.LogType.Generic);
 
-    public static float ShotgunVolumeMultiplier = 0.10f;
-    public static float ReloadVolumeMultiplier = 1.0f;
+    public const float ShotgunVolumeMultiplier = 0.20f;
+    public const float ReloadVolumeMultiplier = 1.0f;
+    private const float DefaultVolumePercent = 100.0f;
 
     public static void Initialize()
     {
@@ -50,10 +51,14 @@ public partial class StS2HoshinoMain : Node
 
     public static void PlaySfx(string path, float volumeMult = 1f)
     {
-        float multiplier = path.Contains("shotgunfire")
-            ? StS2HoshinoMain.ShotgunVolumeMultiplier
-            : StS2HoshinoMain.ReloadVolumeMultiplier;
+        bool isShotgun = path.Contains("shotgunfire");
+        float baseMultiplier = isShotgun
+            ? ShotgunVolumeMultiplier
+            : ReloadVolumeMultiplier;
+        float configuredMultiplier = isShotgun
+            ? HoshinoModConfig.BulletAttackVolumePercent / DefaultVolumePercent
+            : HoshinoModConfig.ReloadVolumePercent / DefaultVolumePercent;
 
-        Audio.PlaySfx(path, volumeMult: volumeMult * multiplier);
+        Audio.PlaySfx(path, volumeMult: volumeMult * baseMultiplier * configuredMultiplier);
     }
 }

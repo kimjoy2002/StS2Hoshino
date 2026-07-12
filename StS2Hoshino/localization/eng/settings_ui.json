@@ -6,5 +6,14 @@
   "STS2HOSHINO-IS_VEWING_RELOAD_BUTTON.hover.desc": "Choose whether to display the reload button.\nWhen hidden, it can only be used via shortcut key (r).",
   "STS2HOSHINO-BUTTON_POSITION.title": "Reload Button Position",
   "STS2HOSHINO-BUTTON_POSITION.hover.title": "Reload Button Position",
-  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "Set the relative position of the button from the End Turn button."
+  "STS2HOSHINO-BUTTON_POSITION.hover.desc": "Set the relative position of the button from the End Turn button.",
+  "STS2HOSHINO-AUDIO_SETTINGS.title": "Audio Settings",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.title": "Bullet Attack Volume",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.hover.title": "Bullet Attack Volume",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.hover.desc": "Adjusts the volume of bullet attack sound effects.",
+  "STS2HOSHINO-BULLET_ATTACK_VOLUME_PERCENT.sliderFormat": "{0:0}%",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.title": "Reload Volume",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.hover.title": "Reload Volume",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.hover.desc": "Adjusts the volume of reload sound effects.",
+  "STS2HOSHINO-RELOAD_VOLUME_PERCENT.sliderFormat": "{0:0}%"
 }

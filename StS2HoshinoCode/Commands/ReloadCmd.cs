@@ -58,7 +58,7 @@ public static class ReloadCmd
             
         }
         
-        SfxCmd.Play(ReloadSfxPath);
+        global::StS2Hoshino.StS2HoshinoMain.PlaySfx(ReloadSfxPath);
         await NotifyPowers(player, amount);
         await NotifyCards(player, amount);
         await HoshinoHook.OnReload(choiceContext, player, isButton);
