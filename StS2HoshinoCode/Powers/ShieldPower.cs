@@ -104,7 +104,7 @@ public sealed class ShieldPower : StS2HoshinoPower
         {
             if (block > Amount)
             {
-                await CreatureCmd.LoseBlock(creature, block - Amount);
+                await CreatureCmdCompat.LoseBlock(creature, block - Amount);
             }
             Flash();
         }

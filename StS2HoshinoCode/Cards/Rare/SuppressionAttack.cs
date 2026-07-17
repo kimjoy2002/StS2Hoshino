@@ -53,29 +53,6 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         await Cmd.Wait(0.25f);
     }
 
-    public override (PileType, CardPilePosition) ModifyCardPlayResultPileTypeAndPosition(
-        CardModel card,
-        bool isAutoPlay,
-        ResourceInfo resources,
-        PileType pileType,
-        CardPilePosition position)
-    {
-        (PileType resultPileType, CardPilePosition resultPilePosition) =
-            base.ModifyCardPlayResultPileTypeAndPosition(card, isAutoPlay, resources, pileType, position);
-        if (card != this)
-        {
-            return (resultPileType, resultPilePosition);
-        }
-
-        CardPile pile = PileType.Hand.GetPile(base.Owner);
-        if (pile.Cards.Count > 0 && resultPileType == PileType.Discard)
-        {
-            return (PileType.Hand, resultPilePosition);
-        }
-
-        return (resultPileType, resultPilePosition);
-    }
-    
     protected override void OnUpgrade()
     {
         DynamicVars.Damage.UpgradeValueBy(2m);
