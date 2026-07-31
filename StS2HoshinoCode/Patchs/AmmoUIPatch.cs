@@ -2,7 +2,6 @@ using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
 using MegaCrit.Sts2.Core.Context;
-using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Nodes.Combat;
 using StS2Hoshino.StS2HoshinoCode.UI;
@@ -14,18 +13,19 @@ namespace StS2Hoshino.StS2HoshinoCode.Patchs;
 public static class AmmoUIPatch
 {
     
-    [HarmonyPatch(typeof(CombatManager), nameof(CombatManager.StartCombatInternal))]
+    [HarmonyPatch(typeof(CombatManager), "StartCombatInternal")]
     [HarmonyPrefix]
-    public static void CombatUiReadyPostfix(CombatManager __instance, CombatState? ____state)
+    public static void ResetAmmoAtCombatStart(CombatManager __instance)
     {
         StS2HoshinoMain.Logger.Info("[CombatManager] CombatUiReadyPostfix");
-        if (____state == null)
+        var state = __instance.DebugOnlyGetState();
+        if (state == null)
         {
-            StS2HoshinoMain.Logger.Info("[CombatManager] _state is null");
+            StS2HoshinoMain.Logger.Info("[CombatManager] combat state is null");
             return;
         }
-        StS2HoshinoMain.Logger.Info($"[CombatManager] playersStartingTurn {____state.Players.Count}");
-        foreach (var player in ____state.Players)
+        StS2HoshinoMain.Logger.Info($"[CombatManager] playersStartingTurn {state.Players.Count}");
+        foreach (var player in state.Players)
         {
             StS2HoshinoMain.Logger.Info($"[CombatManager] ResetFull {player.ToString()}");
             AmmoClass.ResetFull(player);
