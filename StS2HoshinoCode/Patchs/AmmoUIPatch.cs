@@ -1,3 +1,4 @@
+using System.Reflection;
 using Godot;
 using HarmonyLib;
 using MegaCrit.Sts2.Core.Combat;
@@ -9,31 +10,50 @@ using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Patchs;
 
-[HarmonyPatch(typeof(NCreature))]
-public static class AmmoUIPatch
+[HarmonyPatch]
+public static class AmmoCombatStartPatch
 {
-    
-    [HarmonyPatch(typeof(CombatManager), "StartCombatInternal")]
-    [HarmonyPrefix]
-    public static void ResetAmmoAtCombatStart(CombatManager __instance)
+    private const string MethodName = "StartCombatInternal";
+    private const string CombatTurnStateTypeName = "MegaCrit.Sts2.Core.Combat.CombatTurnState";
+    private static readonly Type? CombatTurnStateType = AccessTools.TypeByName(CombatTurnStateTypeName);
+    private static readonly PropertyInfo? CombatTurnStateStateProperty =
+        CombatTurnStateType == null ? null : AccessTools.Property(CombatTurnStateType, "State");
+
+    public static MethodBase? TargetMethod()
     {
-        StS2HoshinoMain.Logger.Info("[CombatManager] CombatUiReadyPostfix");
-        var state = __instance.DebugOnlyGetState();
+        var methods = AccessTools.GetDeclaredMethods(typeof(CombatManager))
+            .Where(method => method.Name == MethodName)
+            .ToList();
+
+        return methods.FirstOrDefault(method =>
+                   method.GetParameters() is [{ ParameterType.FullName: CombatTurnStateTypeName }])
+               ?? methods.FirstOrDefault(method => method.GetParameters().Length == 0);
+    }
+
+    public static bool Prepare() => TargetMethod() != null;
+
+    [HarmonyPrefix]
+    public static void ResetAmmoAtCombatStart(CombatManager __instance, object[] __args)
+    {
+        CombatState? state = __args.Length == 1
+            ? CombatTurnStateStateProperty?.GetValue(__args[0]) as CombatState
+            : null;
+        state ??= __instance.DebugOnlyGetState();
         if (state == null)
         {
-            StS2HoshinoMain.Logger.Info("[CombatManager] combat state is null");
             return;
         }
-        StS2HoshinoMain.Logger.Info($"[CombatManager] playersStartingTurn {state.Players.Count}");
+
         foreach (var player in state.Players)
         {
-            StS2HoshinoMain.Logger.Info($"[CombatManager] ResetFull {player.ToString()}");
             AmmoClass.ResetFull(player);
         }
     }
-    
-    //[HarmonyPatch(typeof(NCreature), nameof(NCreature._Ready))]
-    [HarmonyPatch("_Ready")]
+}
+
+[HarmonyPatch(typeof(NCreature), nameof(NCreature._Ready))]
+public static class AmmoUiPatch
+{
     [HarmonyPostfix]
     private static void AddAmmoUI(NCreature __instance)
     {

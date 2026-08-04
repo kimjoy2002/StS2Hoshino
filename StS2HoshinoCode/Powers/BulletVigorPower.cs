@@ -1,5 +1,6 @@
 ﻿using MegaCrit.Sts2.Core.Commands;
 using MegaCrit.Sts2.Core.Commands.Builders;
+using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
@@ -8,6 +9,7 @@ using MegaCrit.Sts2.Core.Localization.DynamicVars;
 using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
+using StS2Hoshino.StS2HoshinoCode.Cards;
 using StS2Hoshino.StS2HoshinoCode.Hook;
 
 namespace StS2Hoshino.StS2HoshinoCode.Powers;
@@ -50,11 +52,11 @@ public sealed class BulletVigorPower : StS2HoshinoPower, IOnReloaded
             return Task.CompletedTask;
         }
         Data internalData = GetInternalData<Data>();
-        if (internalData.commandToModify != null)
-        {
-            return Task.CompletedTask;
-        }
-        if (command.ModelSource != null && !(command.ModelSource is CardModel))
+        // if (internalData.commandToModify != null)
+        // {
+        //     return Task.CompletedTask;
+        // }
+        if (command.ModelSource != null && !IsAmmoConsumingAttack(command.ModelSource as CardModel))
         {
             return Task.CompletedTask;
         }
@@ -77,15 +79,26 @@ public sealed class BulletVigorPower : StS2HoshinoPower, IOnReloaded
         {
             return 0m;
         }
+        if (!IsAmmoConsumingAttack(cardSource))
+        {
+            return 0m;
+        }
         Data internalData = GetInternalData<Data>();
-        if (internalData.commandToModify != null && cardSource != null && cardSource != internalData.commandToModify.ModelSource)
-        {
-            return 0m;
-        }
-        if (internalData.commandToModify != null && internalData.commandToModify.Attacker != dealer)
-        {
-            return 0m;
-        }
+        // if (internalData.commandToModify != null && cardSource != null && cardSource != internalData.commandToModify.ModelSource)
+        // {
+        //     return 0m;
+        // }
+        // if (internalData.commandToModify != null && internalData.commandToModify.Attacker != dealer)
+        // {
+        //     return 0m;
+        // }
         return base.Amount;
+    }
+
+    private static bool IsAmmoConsumingAttack(CardModel? card)
+    {
+        return card is StS2HoshinoCard hoshinoCard
+               && hoshinoCard.Type == CardType.Attack
+               && (hoshinoCard.AmmoCost > 0 || hoshinoCard.Tags.Contains(StS2HoshinoCard.BulletCard));
     }
 }

@@ -3,6 +3,7 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
+using MegaCrit.Sts2.Core.Models.Relics;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
@@ -104,7 +105,14 @@ public sealed class ShieldPower : StS2HoshinoPower
         {
             if (block > Amount)
             {
-                await CreatureCmdCompat.LoseBlock(creature, block - Amount);
+                if (Owner.Player?.Relics.Any(static relic => relic is SturdyClamp) == true)
+                {
+                    await CreatureCmdCompat.LoseBlock(creature, block - Math.Max(Amount, 10)); 
+                }
+                else
+                {
+                    await CreatureCmdCompat.LoseBlock(creature, block - Amount); 
+                }
             }
             Flash();
         }
