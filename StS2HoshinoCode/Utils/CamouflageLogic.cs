@@ -6,6 +6,7 @@ using MegaCrit.Sts2.Core.GameActions.Multiplayer;
 using MegaCrit.Sts2.Core.Models;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Cards;
+using StS2Hoshino.StS2HoshinoCode.Extensions;
 using MegaCrit.Sts2.Core.Entities.Cards;
 using MegaCrit.Sts2.Core.Random;
 using System.Collections.Generic;
@@ -41,10 +42,7 @@ public static class CamouflageLogic
             CardCmd.Upgrade(newCard);
         }
 
-        if (newCard.Tags is HashSet<CardTag> tagSet)
-        {
-            tagSet.Add(StS2HoshinoCard.CamouflageTag);
-        }
+        newCard.AddTagSafely(StS2HoshinoCard.CamouflageTag);
 
         await CardCmd.Afflict<CamouflagedAffliction>(newCard, 1);
 
