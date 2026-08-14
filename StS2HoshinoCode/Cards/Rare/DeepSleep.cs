@@ -13,6 +13,7 @@ using MegaCrit.Sts2.Core.Models;
 using MegaCrit.Sts2.Core.Models.Powers;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
@@ -61,7 +62,7 @@ public class DeepSleep() : StS2HoshinoCard(-1, CardType.Skill, CardRarity.Rare, 
                 0, x))).ToList();
             foreach (CardModel item in list)
             {
-                await CardCmd.Exhaust(choiceContext, item);
+                await CardCmdCompat.Exhaust(choiceContext, item);
             }
             
             

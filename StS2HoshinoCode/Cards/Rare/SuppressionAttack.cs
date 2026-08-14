@@ -48,7 +48,7 @@ public class SuppressionAttack() : StS2HoshinoCard(1, CardType.Attack, CardRarit
         CardModel? cardModel = pile.Cards.FirstOrDefault();
         if (cardModel != null)
         {
-            await CardCmd.Exhaust(choiceContext, cardModel);
+            await CardCmdCompat.Exhaust(choiceContext, cardModel);
         }
         await Cmd.Wait(0.25f);
     }

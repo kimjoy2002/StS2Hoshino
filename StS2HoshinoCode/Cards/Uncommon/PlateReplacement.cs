@@ -14,6 +14,7 @@ using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Character;
 using StS2Hoshino.StS2HoshinoCode.Keywords;
 using StS2Hoshino.StS2HoshinoCode.Powers;
+using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
@@ -41,7 +42,7 @@ public class PlateReplacement() : StS2HoshinoCard(1, CardType.Skill, CardRarity.
         CardModel? cardModel = (await CardSelectCmd.FromHand(prefs: new CardSelectorPrefs(CardSelectorPrefs.ExhaustSelectionPrompt, 1), context: choiceContext, player: base.Owner, filter: null, source: this)).FirstOrDefault();
         if (cardModel != null)
         {
-            await CardCmd.Exhaust(choiceContext, cardModel);
+            await CardCmdCompat.Exhaust(choiceContext, cardModel);
         }
         await CommonActions.ApplySelf<ShieldPower>(choiceContext, this);
         await CreatureCmd.TriggerAnim(base.Owner.Creature, "Cast", base.Owner.Character.CastAnimDelay);
