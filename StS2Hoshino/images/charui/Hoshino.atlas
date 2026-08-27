@@ -6,40 +6,19 @@ filter: Linear,Linear
 repeat: none
 halo
   rotate: false
-  xy: 637, 934
+  xy: 457, 963
   size: 85, 53
   orig: 85, 53
   offset: 0, 0
   index: -1
-head_shoot
-  rotate: false
-  xy: 305, 230
-  size: 109, 227
-  orig: 109, 227
-  offset: 0, 0
-  index: -1
 head_swimsuit_uhe
   rotate: false
-  xy: 153, 705
+  xy: 305, 705
   size: 150, 300
   orig: 150, 300
-  offset: 0, 0
-  index: -1
-head
-  rotate: false
-  xy: 203, 1
-  size: 109, 227
-  orig: 109, 227
   offset: 0, 0
   index: -1
 head_swimsuit_shoot
-  rotate: false
-  xy: 1, 403
-  size: 150, 300
-  orig: 150, 300
-  offset: 0, 0
-  index: -1
-head_swimsuit
   rotate: false
   xy: 1, 705
   size: 150, 300
@@ -53,16 +32,65 @@ head_swimsuit_hurt
   orig: 150, 300
   offset: 0, 0
   index: -1
+head_low
+  rotate: false
+  xy: 679, 1
+  size: 109, 227
+  orig: 109, 227
+  offset: 0, 0
+  index: -1
+head_low2
+  rotate: false
+  xy: 457, 734
+  size: 109, 227
+  orig: 109, 227
+  offset: 0, 0
+  index: -1
+head_swimsuit_low2
+  rotate: false
+  xy: 153, 705
+  size: 150, 300
+  orig: 150, 300
+  offset: 0, 0
+  index: -1
+head
+  rotate: false
+  xy: 568, 1
+  size: 109, 227
+  orig: 109, 227
+  offset: 0, 0
+  index: -1
+head_swimsuit_low
+  rotate: false
+  xy: 1, 403
+  size: 150, 300
+  orig: 150, 300
+  offset: 0, 0
+  index: -1
+head_swimsuit
+  rotate: false
+  xy: 203, 1
+  size: 150, 300
+  orig: 150, 300
+  offset: 0, 0
+  index: -1
 head_uhe
   rotate: false
-  xy: 573, 705
+  xy: 462, 230
   size: 109, 227
   orig: 109, 227
   offset: 0, 0
   index: -1
 head_hurt
   rotate: false
-  xy: 462, 705
+  xy: 355, 1
+  size: 109, 227
+  orig: 109, 227
+  offset: 0, 0
+  index: -1
+head_shoot
+  rotate: false
+  xy: 457, 505
   size: 109, 227
   orig: 109, 227
   offset: 0, 0
@@ -76,183 +104,190 @@ hoshino_merchant
   index: -1
 body
   rotate: false
-  xy: 406, 934
+  xy: 947, 1
   size: 75, 83
   orig: 75, 83
   offset: 0, 0
   index: -1
 body_swimsuit
   rotate: false
-  xy: 560, 934
+  xy: 305, 581
   size: 75, 83
   orig: 75, 83
   offset: 0, 0
   index: -1
-left_arm
+left_arm_swimsuit
   rotate: false
-  xy: 919, 249
+  xy: 573, 230
   size: 43, 41
   orig: 43, 41
   offset: 0, 0
   index: -1
-left_arm_swimsuit
+left_arm
   rotate: false
-  xy: 874, 214
+  xy: 564, 459
   size: 43, 41
   orig: 43, 41
   offset: 0, 0
   index: -1
 right_arm_swimsuit
   rotate: false
-  xy: 964, 182
+  xy: 513, 459
   size: 49, 41
   orig: 49, 41
   offset: 0, 0
   index: -1
 right_arm
   rotate: false
-  xy: 964, 225
+  xy: 462, 459
   size: 49, 41
   orig: 49, 41
   offset: 0, 0
   index: -1
-left_leg_swimsuit
-  rotate: false
-  xy: 982, 1
-  size: 41, 65
-  orig: 41, 65
-  offset: 0, 0
-  index: -1
 left_leg
   rotate: false
-  xy: 921, 182
+  xy: 713, 230
   size: 41, 65
   orig: 41, 65
   offset: 0, 0
   index: -1
-right_leg
+left_leg_swimsuit
   rotate: false
-  xy: 471, 80
-  size: 51, 65
-  orig: 51, 65
+  xy: 713, 297
+  size: 41, 65
+  orig: 41, 65
   offset: 0, 0
   index: -1
 right_leg_swimsuit
   rotate: false
-  xy: 929, 1
+  xy: 900, 171
+  size: 51, 65
+  orig: 51, 65
+  offset: 0, 0
+  index: -1
+right_leg
+  rotate: false
+  xy: 396, 505
   size: 51, 65
   orig: 51, 65
   offset: 0, 0
   index: -1
 skirt_swimsuit
   rotate: false
-  xy: 305, 907
+  xy: 466, 102
   size: 99, 99
   orig: 99, 99
   offset: 0, 0
   index: -1
 skirt
   rotate: false
-  xy: 203, 230
+  xy: 466, 1
   size: 99, 99
   orig: 99, 99
   offset: 0, 0
   index: -1
 left_foot_swimsuit
   rotate: false
-  xy: 471, 1
+  xy: 845, 154
   size: 53, 77
   orig: 53, 77
   offset: 0, 0
   index: -1
 left_foot
   rotate: false
-  xy: 874, 1
+  xy: 790, 154
   size: 53, 77
   orig: 53, 77
   offset: 0, 0
   index: -1
 shotgun
   rotate: false
-  xy: 314, 1
+  xy: 790, 1
   size: 155, 151
   orig: 155, 151
   offset: 0, 0
   index: -1
 left_hand_swimsuit
   rotate: false
-  xy: 724, 934
+  xy: 382, 581
   size: 73, 57
   orig: 73, 57
   offset: 0, 0
   index: -1
 left_hand
   rotate: false
-  xy: 799, 934
+  xy: 382, 640
   size: 73, 57
   orig: 73, 57
   offset: 0, 0
   index: -1
 right_foot_swimsuit
   rotate: false
-  xy: 874, 80
+  xy: 953, 171
   size: 45, 65
   orig: 45, 65
   offset: 0, 0
   index: -1
 right_foot
   rotate: false
-  xy: 874, 147
+  xy: 666, 230
   size: 45, 65
   orig: 45, 65
   offset: 0, 0
   index: -1
-right_hand
+right_hand_swimsuit
   rotate: false
-  xy: 929, 68
+  xy: 544, 963
   size: 59, 55
   orig: 59, 55
   offset: 0, 0
   index: -1
-right_hand_swimsuit
+right_hand
   rotate: false
-  xy: 929, 125
+  xy: 605, 963
   size: 59, 55
   orig: 59, 55
   offset: 0, 0
   index: -1
 shield
   rotate: false
-  xy: 305, 705
+  xy: 305, 303
   size: 155, 200
   orig: 155, 200
   offset: 0, 0
   index: -1
 shield1
   rotate: false
-  xy: 413, 154
+  xy: 305, 505
   size: 89, 74
   orig: 89, 74
   offset: 0, 0
   index: -1
 shield2
   rotate: false
-  xy: 203, 331
+  xy: 355, 230
   size: 94, 66
   orig: 94, 66
   offset: 0, 0
   index: -1
 shield3
   rotate: false
-  xy: 314, 154
+  xy: 203, 303
   size: 97, 73
   orig: 97, 73
   offset: 0, 0
   index: -1
 ladder
   rotate: false
-  xy: 483, 934
+  xy: 947, 86
   size: 75, 83
   orig: 75, 83
+  offset: 0, 0
+  index: -1
+breath
+  rotate: false
+  xy: 305, 666
+  size: 32, 32
+  orig: 32, 32
   offset: 0, 0
   index: -1

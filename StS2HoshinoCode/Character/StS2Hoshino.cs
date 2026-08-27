@@ -118,11 +118,17 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		var idleShield    = new AnimState("idle_loop_shield", true);
 		var idleSwim      = new AnimState("idle_loop_swim", true);
 		var idleSwimShield = new AnimState("idle_loop_swim_shield", true);
+		var lowHealthNone = new AnimState("low_health_loop", true);
+		var lowHealthShield = new AnimState("low_health_loop_shield", true);
+		var lowHealthSwim = new AnimState("low_health_loop_swim", true);
+		var lowHealthSwimShield = new AnimState("low_health_loop_swim_shield", true);
+		var enterLowHealthNone = new AnimState("enter_low_health_loop");
+		var enterLowHealthShield = new AnimState("enter_low_health_loop_shield");
+		var enterLowHealthSwim = new AnimState("enter_low_health_loop_swim");
+		var enterLowHealthSwimShield = new AnimState("enter_low_health_loop_swim_shield");
 
 		var shieldUp     = new AnimState("shield_up");
-		shieldUp.NextState = idleShield;
 		var shieldUpSwim = new AnimState("shield_up_swim");
-		shieldUpSwim.NextState = idleSwimShield;
 
 		static AnimState MakeState(string name, bool swim, bool shield)
 		{
@@ -139,18 +145,6 @@ public class StS2Hoshino : PlaceholderCharacterModel
 		var swings  = new[] { MakeState("swing",  false, false), MakeState("swing",  false, true), MakeState("swing",  true, false), MakeState("swing",  true, true) };
 		var charges  = new[] { MakeState("charge",  false, false), MakeState("charge",  false, false), MakeState("charge",  true, false), MakeState("charge",  true, false) };
 
-		
-		var idles = new[] { idleNone, idleShield, idleSwim, idleSwimShield };
-
-		var allActionStates = new[] { attacks, hurts, casts, reloads, swings, charges };
-		foreach (var actionArr in allActionStates)
-		{
-			for (int i = 0; i < actionArr.Length; i++)
-			{
-				actionArr[i].NextState = idles[i];
-			}
-		}
-
 		MegaCrit.Sts2.Core.Entities.Creatures.Creature? GetCreature()
 		{
 			var current = controller.BoundObject as Godot.Node;
@@ -165,8 +159,56 @@ public class StS2Hoshino : PlaceholderCharacterModel
 
 		bool HasShield() => GetCreature()?.HasPower<ShieldPower>() == true;
 		bool HasSwim()   => GetCreature()?.HasPower<SwimsuitFormPower>() == true;
+		bool IsLowHealth() => GetCreature()?.GetHpPercentRemaining() <= 0.25f;
 
-		var animator = new CreatureAnimator(idleNone, controller);
+		var conditionalNextStateMethod = typeof(AnimState)
+			.GetMethods()
+			.FirstOrDefault(method =>
+			{
+				if (method.Name != "AddNextState")
+					return false;
+
+				var parameters = method.GetParameters();
+				return parameters.Length == 2
+				       && parameters[0].ParameterType == typeof(AnimState)
+				       && parameters[1].ParameterType == typeof(System.Func<bool>);
+			});
+
+		void SetIdleAfterAction(AnimState actionState, AnimState normalIdle, AnimState enterLowHealth)
+		{
+			// Conditional next states were added in the beta API. Main keeps the normal idle fallback.
+			conditionalNextStateMethod?.Invoke(
+				actionState,
+				new object[] { enterLowHealth, (System.Func<bool>)IsLowHealth });
+			actionState.NextState = normalIdle;
+		}
+
+		var idles = new[] { idleNone, idleShield, idleSwim, idleSwimShield };
+		var lowHealthIdles = new[] { lowHealthNone, lowHealthShield, lowHealthSwim, lowHealthSwimShield };
+		var enterLowHealthStates = new[]
+		{
+			enterLowHealthNone,
+			enterLowHealthShield,
+			enterLowHealthSwim,
+			enterLowHealthSwimShield
+		};
+		for (int i = 0; i < enterLowHealthStates.Length; i++)
+			enterLowHealthStates[i].NextState = lowHealthIdles[i];
+
+		var allActionStates = new[] { attacks, hurts, casts, reloads, swings, charges };
+		foreach (var actionArr in allActionStates)
+		{
+			for (int i = 0; i < actionArr.Length; i++)
+				SetIdleAfterAction(actionArr[i], idles[i], enterLowHealthStates[i]);
+		}
+
+		SetIdleAfterAction(shieldUp, idleShield, enterLowHealthShield);
+		SetIdleAfterAction(shieldUpSwim, idleSwimShield, enterLowHealthSwimShield);
+
+		int GetIdleIndex() => HasSwim() ? (HasShield() ? 3 : 2) : (HasShield() ? 1 : 0);
+		var animator = new CreatureAnimator(
+			IsLowHealth() ? lowHealthIdles[GetIdleIndex()] : idles[GetIdleIndex()],
+			controller);
 
 		void AddBranches(string trigger, AnimState[] states)
 		{
@@ -176,6 +218,10 @@ public class StS2Hoshino : PlaceholderCharacterModel
 			animator.AddAnyState(trigger, states[0]);
 		}
 
+		animator.AddAnyState("Idle", enterLowHealthSwimShield, () => IsLowHealth() && HasSwim() && HasShield());
+		animator.AddAnyState("Idle", enterLowHealthSwim, () => IsLowHealth() && HasSwim());
+		animator.AddAnyState("Idle", enterLowHealthShield, () => IsLowHealth() && HasShield());
+		animator.AddAnyState("Idle", enterLowHealthNone, IsLowHealth);
 		AddBranches("Idle",   new[] { idleNone, idleShield, idleSwim, idleSwimShield });
 		AddBranches("Attack", attacks);
 		AddBranches("Swing",  swings);
