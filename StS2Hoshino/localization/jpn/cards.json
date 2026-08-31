@@ -6,7 +6,7 @@
   "STS2HOSHINO-FULL_BARREL_FIRE.title": "全弾発射",
   "STS2HOSHINO-FULL_BARREL_FIRE.description": "すべての [gold]弾薬[/gold] を消費する。\n消費した [gold]弾薬[/gold] 1発につき、{Damage:diff()} ダメージを与える。",
   "STS2HOSHINO-GOLD_WHALE.title": "黄金クジラ",
-  "STS2HOSHINO-GOLD_WHALE.description": "戦闘終了時、\nランダムな [gold]遺物[/gold] を1つ得て、\n33%の確率でランダムな [red]呪い[/red] カードを受け取る。",
+  "STS2HOSHINO-GOLD_WHALE.description": "戦闘終了時、ランダムな[gold]レリック[/gold]を1つ得て、[gold]デッキ[/gold]に[red]カルマ[/red]を加える。",
   "STS2HOSHINO-AQUATIC_SUPPORT.title": "水上支援",
   "STS2HOSHINO-AQUATIC_SUPPORT.description": "[gold]筋力[/gold]{StrengthPower:diff()} を得る。\nカードを {Cards:diff()} 枚引く。\nこのカードがカード効果で [gold]山札[/gold] に戻された場合、\n次にプレイするまでコストが 0 {energyPrefix:energyIcons(1)} になる。",
   "STS2HOSHINO-BD_NOTE.title": "BDノート",
@@ -195,5 +195,14 @@
   "STS2HOSHINO-DEEP_SLEEP.title": "熟睡",
   "STS2HOSHINO-DEEP_SLEEP.description": "[gold]山札[/gold] から X 枚まで選択して [gold]廃棄[/gold] する。\n{Block:diff()} [gold]ブロック[/gold] を X 回得る。\nX が 3 以上なら、 [gold]手札[/gold] を [gold]保全[/gold] する。",
   "STS2HOSHINO-RELOADING_SYNDROME.title": "習慣性リロード症候群",
-  "STS2HOSHINO-RELOADING_SYNDROME.description": "コストが {energyPrefix:energyIcons(1)} 以上の [gold]弾薬[/gold]消費カードを使用するたびに、[gold]リロード[/gold] する。"
+  "STS2HOSHINO-RELOADING_SYNDROME.description": "コストが {energyPrefix:energyIcons(1)} 以上の [gold]弾薬[/gold]消費カードを使用するたびに、[gold]リロード[/gold] する。",
+  "STS2HOSHINO-COVER_ME.title": "援護して！",
+  "STS2HOSHINO-COVER_ME.description": "このターン中、[gold]リロード[/gold]するたびに、\n他の全プレイヤーはカードを{CoverMePower:diff()}枚引き、ターン終了時まで[gold]筋力[/gold]{StrengthPower:diff()}を得る。",
+  "STS2HOSHINO-WRONG_TUTOR.title": "誤った教示",
+  "STS2HOSHINO-WRONG_TUTOR.description": "すべてのプレイヤーは、自分の[gold]捨て札[/gold]からカードを1枚選び、自身の[gold]山札[/gold]の一番上に置く。",
+  "STS2HOSHINO-WRONG_TUTOR.selectionScreenPrompt": "山札の一番上に置くカードを1枚選択。",
+  "STS2HOSHINO-AMMUNITION.title": "弾薬運搬",
+  "STS2HOSHINO-AMMUNITION.description": "[gold]弾薬[/gold]スロットを持たないすべてのプレイヤーは[gold]熟練[/gold]{ExpertPower:diff()}を得る。\nすべてのプレイヤーは空の[gold]弾薬[/gold]スロットを{AmmoSlots:diff()}個得る。\nカードを{Cards:diff()}枚引く。",
+  "STS2HOSHINO-KARMA.title": "カルマ",
+  "STS2HOSHINO-KARMA.description": "このカードが[gold]デッキ[/gold]に{RequiredCopies:diff()}枚揃うと、ランダムな[red]呪い[/red]1枚に合成される。\n[gold]登場[/gold]：カードを{Cards:diff()}枚引く。"
 }

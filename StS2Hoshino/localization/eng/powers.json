@@ -56,8 +56,8 @@
   "STS2HOSHINO-CANT_RELOAD_POWER.description": "You cannot [gold]Reload[/gold] this turn.",
   "STS2HOSHINO-CANT_RELOAD_POWER.smartDescription": "You cannot [gold]Reload[/gold] this turn.",
   "STS2HOSHINO-CANT_RELOAD_POWER.title": "Cannot Reload",
-  "STS2HOSHINO-GOLD_WHALE_POWER.description": "At the end of combat, gain a random [gold]Relic[/gold] and have a 33% chance to gain a random [red]Curse[/red].",
-  "STS2HOSHINO-GOLD_WHALE_POWER.smartDescription": "At the end of combat, gain [blue]{Amount}[/blue] random [gold]Relic[/gold] and have a 33% chance to gain [blue]{Amount}[/blue] random [red]Curse[/red].",
+  "STS2HOSHINO-GOLD_WHALE_POWER.description": "At the end of combat, gain a random [gold]Relic[/gold] and add [red]Karma[/red] to your [gold]Deck[/gold].",
+  "STS2HOSHINO-GOLD_WHALE_POWER.smartDescription": "At the end of combat, gain [blue]{Amount}[/blue] random [gold]Relics[/gold] and add [blue]{Amount}[/blue] [red]Karma[/red] to your [gold]Deck[/gold].",
   "STS2HOSHINO-GOLD_WHALE_POWER.title": "Golden Whale",
   "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.description": "Enemies hit by an Attack that consumes [gold]Ammo[/gold] lose [blue]1[/blue] HP. This effect is reduced by [blue]2[/blue] whenever you [gold]Reload[/gold] via the button.",
   "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.smartDescription": "Enemies hit by an Attack that consumes [gold]Ammo[/gold] lose [blue]{Amount}[/blue] HP. This effect is reduced by [blue]2[/blue] whenever you [gold]Reload[/gold] via the button.",
@@ -79,5 +79,8 @@
   "STS2HOSHINO-SHOCK_THE_WORLD_POWER.smartDescription": "Whenever you lose [gold]Shield[/gold] from an enemy attack, gain [gold]Block[/gold] equal to {Amount:choose(1):the loss|[blue]{}[/blue] times the loss} at the start of your next turn.",
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.title": "Compulsive Reload Syndrome",
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.description": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost 1 or more, [gold]Reload[/gold].",
-  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost 1 or more, [gold]Reload[/gold] {Amount:choose(1):once|[blue]{}[/blue] times}."
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost 1 or more, [gold]Reload[/gold] {Amount:choose(1):once|[blue]{}[/blue] times}.",
+  "STS2HOSHINO-COVER_ME_POWER.title": "Cover Me!",
+  "STS2HOSHINO-COVER_ME_POWER.description": "Whenever you [gold]Reload[/gold] this turn, other players draw [blue]1[/blue] card and gain [blue]1[/blue] [gold]Strength[/gold] this turn.",
+  "STS2HOSHINO-COVER_ME_POWER.smartDescription": "Whenever you [gold]Reload[/gold] this turn, other players draw [blue]{Amount}[/blue] cards and gain [blue]{Amount}[/blue] [gold]Strength[/gold] this turn."
 }

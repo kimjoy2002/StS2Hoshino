@@ -56,8 +56,8 @@
   "STS2HOSHINO-CANT_RELOAD_POWER.description": "このターン、[gold]リロード[/gold] できなくなる。",
   "STS2HOSHINO-CANT_RELOAD_POWER.smartDescription": "このターン、[gold]リロード[/gold] できなくなる。",
   "STS2HOSHINO-CANT_RELOAD_POWER.title": "リロード不可",
-  "STS2HOSHINO-GOLD_WHALE_POWER.description": "戦闘終了時、ランダムな [gold]遺物[/gold] を得て、33%の確率でランダムな [red]呪い[/red] カードを受け取る。",
-  "STS2HOSHINO-GOLD_WHALE_POWER.smartDescription": "戦闘終了時、ランダムな [gold]遺物[/gold] を [blue]{Amount}[/blue] 個得て、33%の確率でランダムな [red]呪い[/red] カードを [blue]{Amount}[/blue] 枚受け取る。",
+  "STS2HOSHINO-GOLD_WHALE_POWER.description": "戦闘終了時、ランダムな[gold]レリック[/gold]を得て、[gold]デッキ[/gold]に[red]カルマ[/red]を加える。",
+  "STS2HOSHINO-GOLD_WHALE_POWER.smartDescription": "戦闘終了時、ランダムな[gold]レリック[/gold]を[blue]{Amount}[/blue]個得て、[gold]デッキ[/gold]に[red]カルマ[/red]を[blue]{Amount}[/blue]枚加える。",
   "STS2HOSHINO-GOLD_WHALE_POWER.title": "黄金クジラ",
   "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.description": "[gold]弾薬[/gold] を消費するアタックを受けた敵が HP を [blue]1[/blue] 失う。ボタンで [gold]リロード[/gold] するたびに、この効果は [blue]2[/blue] 減少する。",
   "STS2HOSHINO-BULLET_ARMOUR_PIERCING_POWER.smartDescription": "[gold]弾薬[/gold] を消費するアタックを受けた敵が HP を [blue]{Amount}[/blue] 失う。ボタンで [gold]リロード[/gold] するたびに、この効果は [blue]2[/blue] 減少する。",
@@ -79,5 +79,8 @@
   "STS2HOSHINO-SHOCK_THE_WORLD_POWER.smartDescription": "敵の攻撃によって[gold]シールド[/gold]を失うたび、次のターン開始時に{Amount:choose(1):その分だけ|[blue]{}[/blue]倍の} [gold]ブロック[/gold]を得る。",
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.title": "習慣性リロード症候群",
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.description": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、[gold]リロード[/gold]する。",
-  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、{Amount:choose(1):[gold]リロード[/gold]する。|[blue]{}[/blue]回[gold]リロード[/gold]する。}"
+  "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、{Amount:choose(1):[gold]リロード[/gold]する。|[blue]{}[/blue]回[gold]リロード[/gold]する。}",
+  "STS2HOSHINO-COVER_ME_POWER.title": "援護して！",
+  "STS2HOSHINO-COVER_ME_POWER.description": "このターン中、[gold]リロード[/gold]するたびに、他の全プレイヤーはカードを[blue]1[/blue]枚引き、ターン終了時まで[gold]筋力[/gold][blue]1[/blue]を得る。",
+  "STS2HOSHINO-COVER_ME_POWER.smartDescription": "このターン中、[gold]リロード[/gold]するたびに、他の全プレイヤーはカードを[blue]{Amount}[/blue]枚引き、ターン終了時まで[gold]筋力[/gold][blue]{Amount}[/blue]を得る。"
 }

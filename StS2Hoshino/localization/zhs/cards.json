@@ -6,7 +6,7 @@
   "STS2HOSHINO-FULL_BARREL_FIRE.title": "全弹发射",
   "STS2HOSHINO-FULL_BARREL_FIRE.description": "消耗所有 [gold]弹药[/gold]。\n每消耗一发 [gold]弹药[/gold]，造成 {Damage:diff()} 点伤害。",
   "STS2HOSHINO-GOLD_WHALE.title": "黄金鲸鱼",
-  "STS2HOSHINO-GOLD_WHALE.description": "战斗结束时，\n获得一件随机 [gold]遗物[/gold]，\n并有 33% 几率获得一张随机 [red]诅咒[/red] 牌。",
+  "STS2HOSHINO-GOLD_WHALE.description": "战斗结束时，获得一件随机 [gold]遗物[/gold]，并将一张 [red]业障[/red] 加入 [gold]牌组[/gold]。",
   "STS2HOSHINO-AQUATIC_SUPPORT.title": "水边支援",
   "STS2HOSHINO-AQUATIC_SUPPORT.description": "[gold]力量[/gold]{StrengthPower:diff()}。 \n抽 {Cards:diff()} 张牌。\n当这张牌通过卡牌效果回到 [gold]抽牌堆[/gold] 时，\n其耗能在打出前变为 0 {energyPrefix:energyIcons(1)}。",
   "STS2HOSHINO-BD_NOTE.title": "BD笔记",
@@ -195,5 +195,14 @@
   "STS2HOSHINO-DEEP_SLEEP.title": "熟睡",
   "STS2HOSHINO-DEEP_SLEEP.description": "从 [gold]抽牌堆[/gold] 中选择 X 张牌并 [gold]消耗[/gold]。\n获得 {Block:diff()} 点 [gold]格挡[/gold] X 次。\n如果 X 大于或等于 3， [gold]保留[/gold] 手牌。",
   "STS2HOSHINO-RELOADING_SYNDROME.title": "习惯性装填综合征",
-  "STS2HOSHINO-RELOADING_SYNDROME.description": "每当你打出耗能为 {energyPrefix:energyIcons(1)} 或更多的 [gold]弹药[/gold] 消耗牌时，进行 [gold]装填[/gold]。"
+  "STS2HOSHINO-RELOADING_SYNDROME.description": "每当你打出耗能为 {energyPrefix:energyIcons(1)} 或更多的 [gold]弹药[/gold] 消耗牌时，进行 [gold]装填[/gold]。",
+  "STS2HOSHINO-COVER_ME.title": "掩护我！",
+  "STS2HOSHINO-COVER_ME.description": "本回合中，每当你 [gold]装填[/gold] 时，\n其他玩家抽 {CoverMePower:diff()} 张牌，并在本回合获得 {StrengthPower:diff()} 点 [gold]力量[/gold]。",
+  "STS2HOSHINO-WRONG_TUTOR.title": "错误的指导",
+  "STS2HOSHINO-WRONG_TUTOR.description": "所有玩家各选择其[gold]弃牌堆[/gold]中的一张牌放入其[gold]抽牌堆[/gold]顶。",
+  "STS2HOSHINO-WRONG_TUTOR.selectionScreenPrompt": "选择一张牌放入你的抽牌堆顶。",
+  "STS2HOSHINO-AMMUNITION.title": "弹药运输",
+  "STS2HOSHINO-AMMUNITION.description": "所有没有 [gold]弹药[/gold] 槽的玩家获得 {ExpertPower:diff()} 点 [gold]行家[/gold]。\n所有玩家获得 {AmmoSlots:diff()} 个空 [gold]弹药[/gold] 槽。\n抽 {Cards:diff()} 张牌。",
+  "STS2HOSHINO-KARMA.title": "业障",
+  "STS2HOSHINO-KARMA.description": "当 [gold]牌组[/gold] 中集齐 {RequiredCopies:diff()} 张此牌时，将其合成为1张随机 [red]诅咒[/red]。\n[gold]进场[/gold]：抽 {Cards:diff()} 张牌。"
 }
