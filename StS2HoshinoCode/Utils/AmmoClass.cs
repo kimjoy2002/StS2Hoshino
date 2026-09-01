@@ -10,6 +10,32 @@ namespace StS2Hoshino.StS2HoshinoCode.Utils;
 
 public static class AmmoClass
 {
+	internal sealed class CombatSnapshot
+	{
+		internal readonly Dictionary<Player, PlayerSnapshot> Players;
+
+		internal CombatSnapshot(Dictionary<Player, PlayerSnapshot> players)
+		{
+			Players = players;
+		}
+	}
+
+	internal sealed class PlayerSnapshot
+	{
+		internal int CurrentAmmo;
+		internal int MaxAmmo;
+		internal bool IsActive;
+		internal int AmmoUsedThisTurn;
+		internal int MenualedReloadedThisTurn;
+		internal int InvadesThisCombat;
+		internal int ReloadedThisCombat;
+		internal int Slot3UsedThisCombat;
+		internal int Slot4UsedThisCombat;
+		internal CardModel? LastCardPlayed;
+		internal bool IsLastShot;
+		internal int ResolvingCardPlayDepth;
+	}
+
 	private class PlayerAmmoState
 	{
 		public int CurrentAmmo = 4;
@@ -59,6 +85,67 @@ public static class AmmoClass
 			_states[player] = value;
 		}
 		return value;
+	}
+
+	internal static CombatSnapshot CaptureCombatSnapshot(IEnumerable<Player> players)
+	{
+		Dictionary<Player, PlayerSnapshot> snapshots = new();
+		foreach (Player player in players.Distinct())
+		{
+			PlayerAmmoState state = GetState(player);
+			snapshots[player] = new PlayerSnapshot
+			{
+				CurrentAmmo = state.CurrentAmmo,
+				MaxAmmo = state.MaxAmmo,
+				IsActive = state.IsActive,
+				AmmoUsedThisTurn = state.AmmoUsedThisTurn,
+				MenualedReloadedThisTurn = state.MenualedReloadedThisTurn,
+				InvadesThisCombat = state.InvadesThisCombat,
+				ReloadedThisCombat = state.ReloadedThisCombat,
+				Slot3UsedThisCombat = state.Slot3UsedThisCombat,
+				Slot4UsedThisCombat = state.Slot4UsedThisCombat,
+				LastCardPlayed = state.LastCardPlayed,
+				IsLastShot = state.IsLastShot,
+				ResolvingCardPlayDepth = state.ResolvingCardPlayDepth
+			};
+		}
+
+		return new CombatSnapshot(snapshots);
+	}
+
+	internal static void RestoreCombatSnapshot(CombatSnapshot snapshot)
+	{
+		CurrentAmmoGainer = null;
+		foreach ((Player player, PlayerSnapshot saved) in snapshot.Players)
+		{
+			PlayerAmmoState state = GetState(player);
+			state.CurrentAmmo = saved.CurrentAmmo;
+			state.MaxAmmo = saved.MaxAmmo;
+			state.IsActive = saved.IsActive;
+			state.AmmoUsedThisTurn = saved.AmmoUsedThisTurn;
+			state.MenualedReloadedThisTurn = saved.MenualedReloadedThisTurn;
+			state.InvadesThisCombat = saved.InvadesThisCombat;
+			state.ReloadedThisCombat = saved.ReloadedThisCombat;
+			state.Slot3UsedThisCombat = saved.Slot3UsedThisCombat;
+			state.Slot4UsedThisCombat = saved.Slot4UsedThisCombat;
+			state.LastCardPlayed = saved.LastCardPlayed;
+			state.IsLastShot = saved.IsLastShot;
+			state.ResolvingCardPlayDepth = saved.ResolvingCardPlayDepth;
+
+			// These delegates belong to the abandoned action timeline, not the snapshot.
+			state.PendingTriggers.Clear();
+			OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
+
+			if (player.PlayerCombatState?.AllPiles == null)
+			{
+				continue;
+			}
+
+			foreach (CardModel card in player.PlayerCombatState.AllPiles.SelectMany(pile => pile.Cards).Distinct())
+			{
+				card.InvokeEnergyCostChanged();
+			}
+		}
 	}
 
 	public static int GetCurrentAmmo(Player? player)

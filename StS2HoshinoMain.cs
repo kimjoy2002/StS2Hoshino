@@ -8,6 +8,7 @@ using StS2Hoshino.StS2HoshinoCode.Core;
 using BaseLib.Config;
 using MegaCrit.Sts2.Core.Combat;
 using StS2Hoshino.StS2HoshinoCode.Config;
+using StS2Hoshino.StS2HoshinoCode.Compatibility;
 using StS2Hoshino.StS2HoshinoCode.Utils;
 
 namespace StS2Hoshino;
@@ -34,6 +35,7 @@ public partial class StS2HoshinoMain : Node
         var assembly = Assembly.GetExecutingAssembly();
         ScriptManagerBridge.LookupScriptsInAssembly(assembly);
         harmony.PatchAll();
+        UndoAndRestartCompatibility.Initialize(harmony);
         
         CombatManager.Instance.TurnStarted += OnTurnStarted;
     }
