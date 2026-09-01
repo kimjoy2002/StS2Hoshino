@@ -21,7 +21,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Uncommon, TargetType.AnyEnemy), IInvade
+public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Common, TargetType.AnyEnemy), IInvade
 {
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [

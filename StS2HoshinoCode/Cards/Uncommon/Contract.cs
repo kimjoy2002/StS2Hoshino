@@ -29,7 +29,7 @@ public class Contract() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
         new PowerVar<StrengthPower>(1m),
-        new PowerVar<ExpertPower>(1m),
+        new PowerVar<ExpertPower>(2m),
         new DynamicVar("BulletLoss", 1m)
     ];
 

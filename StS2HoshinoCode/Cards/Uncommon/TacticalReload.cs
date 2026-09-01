@@ -21,10 +21,10 @@ public class TacticalReload() : StS2HoshinoCard(1, CardType.Power, CardRarity.Un
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
-        HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
+        HoverTipFactory.FromKeyword(HoshinoKeywords.Reload)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<TacticalReloadPower>(5m)
+        new PowerVar<TacticalReloadPower>(4m)
     ];
 
 

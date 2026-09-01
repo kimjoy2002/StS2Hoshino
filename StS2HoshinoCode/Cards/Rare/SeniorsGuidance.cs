@@ -26,7 +26,7 @@ public class SeniorsGuidance() : StS2HoshinoCard(3, CardType.Attack, CardRarity.
         HoverTipFactory.FromKeyword(HoshinoKeywords.Outofammo)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(28, ValueProp.Move),
+        new DamageVar(26, ValueProp.Move),
         new EnergyVar(4)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -42,7 +42,6 @@ public class SeniorsGuidance() : StS2HoshinoCard(3, CardType.Attack, CardRarity.
     
     protected override void OnUpgrade()
     {
-        DynamicVars.Damage.UpgradeValueBy(4m);
-        base.DynamicVars.Energy.UpgradeValueBy(1m);
+        DynamicVars.Damage.UpgradeValueBy(6m);
     }
 }

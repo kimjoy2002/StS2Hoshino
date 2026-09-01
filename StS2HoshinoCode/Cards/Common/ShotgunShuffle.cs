@@ -25,11 +25,10 @@ public class ShotgunShuffle() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Co
 
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
-        CardKeyword.Exhaust
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(7, ValueProp.Move),
+        new BlockVar(5, ValueProp.Move),
         new CardsVar(1)
     ];
 
@@ -54,7 +53,7 @@ public class ShotgunShuffle() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Co
     
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        DynamicVars["Block"].UpgradeValueBy(3m);
     }
 
 }

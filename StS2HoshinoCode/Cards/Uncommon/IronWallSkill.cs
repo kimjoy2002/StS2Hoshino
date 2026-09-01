@@ -25,8 +25,8 @@ public class IronWallSkill() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Unc
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(12, ValueProp.Move),
-        new PowerVar<ShieldPower>(12m)
+        new BlockVar(11, ValueProp.Move),
+        new PowerVar<ShieldPower>(11m)
     
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)

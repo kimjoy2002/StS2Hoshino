@@ -4,7 +4,10 @@ using MegaCrit.Sts2.Core.Entities.Creatures;
 using MegaCrit.Sts2.Core.Entities.Players;
 using MegaCrit.Sts2.Core.Entities.Powers;
 using MegaCrit.Sts2.Core.GameActions.Multiplayer;
+using MegaCrit.Sts2.Core.Helpers;
 using MegaCrit.Sts2.Core.Models.Powers;
+using MegaCrit.Sts2.Core.Nodes.Rooms;
+using MegaCrit.Sts2.Core.Nodes.Vfx;
 using MegaCrit.Sts2.Core.ValueProps;
 using StS2Hoshino.StS2HoshinoCode.Hook;
 
@@ -25,16 +28,23 @@ public sealed class TacticalReloadPower : StS2HoshinoPower, IOnReloaded
         {
             Flash();
             await Cmd.CustomScaledWait(0.1f, 0.2f);
-            var combatStateHittableEnemies = base.Owner.CombatState?.HittableEnemies;
-            if (combatStateHittableEnemies != null)
+
+            var combatState = base.Owner.CombatState;
+            if (combatState == null)
             {
-                Creature? creature = base.Owner.Player?.RunState.Rng.CombatTargets.NextItem(combatStateHittableEnemies);
-                if (creature != null)
+                return;
+            }
+
+            foreach (Creature enemy in combatState.HittableEnemies)
+            {
+                NFireBurstVfx? fireVfx = NFireBurstVfx.Create(enemy, 0.75f);
+                if (fireVfx != null)
                 {
-                    VfxCmd.PlayOnCreatureCenter(creature, "vfx/vfx_attack_blunt");
-                    await CreatureCmd.Damage(ctx, creature, Amount, ValueProp.Unpowered, base.Owner);
+                    NCombatRoom.Instance?.CombatVfxContainer.AddChildSafely(fireVfx);
                 }
             }
+
+            await CreatureCmd.Damage(ctx, combatState.HittableEnemies, Amount, ValueProp.Unpowered, base.Owner);
         }
     }
 }

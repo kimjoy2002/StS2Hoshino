@@ -40,7 +40,7 @@ public class DeepSleep() : StS2HoshinoCard(-1, CardType.Skill, CardRarity.Rare, 
     protected override HashSet<CardTag> CanonicalTags => [];
     
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new BlockVar(7, ValueProp.Move),
+        new BlockVar(8, ValueProp.Move),
         new EnergyVar(3)
     ];
 

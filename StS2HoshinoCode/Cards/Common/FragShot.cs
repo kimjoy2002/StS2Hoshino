@@ -17,7 +17,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class FragShot() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
 {
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
@@ -31,20 +31,16 @@ public class FragShot() : StS2HoshinoCard(0, CardType.Skill, CardRarity.Common, 
     ];
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletBoxCard];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<BulletVunePower>(1m),
-        new CardsVar(1)
+        new PowerVar<BulletVunePower>(1m)
     ];
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {
         await ReloadCmd.Execute(choiceContext, base.Owner);
-        if (IsUpgraded)
-        {
-            await CardPileCmd.Draw(choiceContext, base.DynamicVars.Cards.BaseValue, base.Owner);
-        }
         await CommonActions.ApplySelf<BulletVunePower>(choiceContext, this);
     }
     
     protected override void OnUpgrade()
     {
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

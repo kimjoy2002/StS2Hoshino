@@ -37,6 +37,6 @@ public class Retry() : StS2HoshinoCard(2, CardType.Skill, CardRarity.Uncommon, T
     
     protected override void OnUpgrade()
     {
-        DynamicVars["Block"].UpgradeValueBy(2m);
+        DynamicVars["Block"].UpgradeValueBy(1m);
     }
 }

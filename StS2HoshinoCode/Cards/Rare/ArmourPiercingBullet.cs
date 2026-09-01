@@ -39,6 +39,6 @@ public class ArmourPiercingBullet() : StS2HoshinoCard(1, CardType.Skill, CardRar
     
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        DynamicVars["BulletArmourPiercingPower"].UpgradeValueBy(2m);
     }
 }

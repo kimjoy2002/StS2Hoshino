@@ -31,7 +31,7 @@ public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, T
     protected override HashSet<CardTag> CanonicalTags => [StS2HoshinoCard.BulletCard];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
-        new CalculationBaseVar(5m),
+        new CalculationBaseVar(6m),
         new ExtraDamageVar(9m),
         new CalculatedDamageVar(ValueProp.Move).WithMultiplier((CardModel card, Creature? _) => 
         {
@@ -56,7 +56,7 @@ public class Jinx() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Uncommon, T
             .WithHoshinoHitFx(sfx: "shotgunfire.mp3".SfxPath())
             .Execute(choiceContext);
 
-        // √—æÀ »ø∞˙ √≥∏Æ
+        // Ï¥ùÏïå Ìö®Í≥º Ï≤òÎ¶¨
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {

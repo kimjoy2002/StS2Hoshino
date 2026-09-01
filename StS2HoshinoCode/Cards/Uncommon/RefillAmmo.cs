@@ -47,6 +47,6 @@ public class RefillAmmo() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncomm
     
     protected override void OnUpgrade()
     {
-        RemoveKeyword(CardKeyword.Exhaust);
+        base.EnergyCost.UpgradeBy(-1);
     }
 }

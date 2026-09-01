@@ -49,7 +49,7 @@ public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, Ca
             .SpawningHitVfxOnEachCreature()
             .Execute(choiceContext);
         
-        //ÃÑ¾Ë »ç¿ë
+        //ì´ì•Œ ì‚¬ìš©
         IEnumerable<IBulletPowerInterface> enumerable = base.Owner.Creature.Powers.OfType<IBulletPowerInterface>();
         foreach (IBulletPowerInterface item in enumerable)
         {

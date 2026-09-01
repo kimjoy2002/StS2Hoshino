@@ -21,6 +21,7 @@ public class EmergencyFieldAidSkill() : StS2HoshinoCard(-1, CardType.Skill, Card
     public override IEnumerable<CardKeyword> CanonicalKeywords =>
     [
         CardKeyword.Innate,
+        CardKeyword.Ethereal,
         CardKeyword.Unplayable
     ];
     protected override bool IsPlayable => false;
@@ -42,6 +43,6 @@ public class EmergencyFieldAidSkill() : StS2HoshinoCard(-1, CardType.Skill, Card
 
     protected override void OnUpgrade()
     {
-        AddKeyword(CardKeyword.Ethereal);
+        base.DynamicVars.Heal.UpgradeValueBy(2m);
     }
 }

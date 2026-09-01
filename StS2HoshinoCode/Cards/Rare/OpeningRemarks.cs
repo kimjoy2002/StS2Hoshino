@@ -31,7 +31,7 @@ public class OpeningRemarks() : StS2HoshinoCard(0, CardType.Attack, CardRarity.R
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips => [
-        HoverTipFactory.FromCard<Debt>()
+        HoverTipFactory.FromCard<Injury>()
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars =>
     [
@@ -60,7 +60,7 @@ public class OpeningRemarks() : StS2HoshinoCard(0, CardType.Attack, CardRarity.R
 
         if (card == this && oldPileType == PileType.None && card.Pile?.Type == PileType.Deck)
         {
-            await CardPileCmd.AddCurseToDeck<Debt>(base.Owner);
+            await CardPileCmd.AddCurseToDeck<Injury>(base.Owner);
         }
     }
 

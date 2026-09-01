@@ -19,14 +19,14 @@ using StS2Hoshino.StS2HoshinoCode.Utils;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Common;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Common, TargetType.Self)
+public class BiteTheBullet() : StS2HoshinoCard(1, CardType.Skill, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Arrival)
     ];
-    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(7, ValueProp.Move)];
+    protected override IEnumerable<DynamicVar> CanonicalVars => [new BlockVar(8, ValueProp.Move)];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
     {

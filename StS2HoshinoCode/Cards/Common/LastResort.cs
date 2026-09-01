@@ -25,7 +25,7 @@ public class LastResort() : StS2HoshinoCard(1, CardType.Attack, CardRarity.Commo
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(9, ValueProp.Move),
+        new DamageVar(10, ValueProp.Move),
         new CardsVar(2),
     
     ];
