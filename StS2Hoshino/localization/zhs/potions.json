@@ -1,0 +1,8 @@
+{
+  "STS2HOSHINO-RELOAD_POTION.title": "装填药水",
+  "STS2HOSHINO-RELOAD_POTION.description": "获得[blue]{ExpertPower}[/blue]点[gold]行家[/gold]。",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.title": "枪械润滑油",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.description": "接下来[blue]{GunLubricantPower}[/blue]次[gold]装填[/gold]的耗能为0。",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.title": "深呼吸氧气瓶",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.description": "将[gold]弃牌堆[/gold]洗入[gold]抽牌堆[/gold]。抽[blue]{Cards}[/blue]张牌。"
+}

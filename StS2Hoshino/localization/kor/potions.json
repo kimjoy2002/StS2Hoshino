@@ -1,0 +1,8 @@
+{
+  "STS2HOSHINO-RELOAD_POTION.title": "장전 포션",
+  "STS2HOSHINO-RELOAD_POTION.description": "[gold]숙련[/gold]을 [blue]{ExpertPower}[/blue] 얻습니다.",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.title": "총기용 윤활유",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.description": "다음 [blue]{GunLubricantPower}[/blue]번의 [gold]장전[/gold] 비용이 0이 됩니다.",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.title": "심호흡 산소통",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.description": "[gold]버린 카드 더미[/gold]를 [gold]뽑을 카드 더미[/gold]에 넣고 섞습니다. 카드를 [blue]{Cards}[/blue]장 뽑습니다."
+}

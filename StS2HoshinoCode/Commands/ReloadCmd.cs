@@ -23,12 +23,17 @@ public static class ReloadCmd
     private static string ReloadSfxPath => "reload.mp3".SfxPath();
     
     
-    private static int GetReloadCost(Player me)
+    private static PowerModel? GetFreeReloadPower(Player player)
     {
-        if (me.Creature?.Powers.OfType<FreeReloadPower>().Any() == true)
-            return 0;
-        return 1;
+        // Turn-limited free reloads must be consumed before persistent ones.
+        PowerModel? temporary = player.Creature?.Powers.OfType<FreeReloadPower>().FirstOrDefault();
+        return temporary ?? player.Creature?.Powers.OfType<GunLubricantPower>().FirstOrDefault();
     }
+
+    public static bool IsReloadFree(Player player) => GetFreeReloadPower(player) != null;
+
+    public static int GetReloadCost(Player player) => IsReloadFree(player) ? 0 : 1;
+
     public static async Task Execute(PlayerChoiceContext choiceContext, Player player, int amount = -1, bool isButton = false)
     {
         if (player.Creature.HasPower<CantReloadPower>())
@@ -38,6 +43,7 @@ public static class ReloadCmd
 
         if (isButton)
         {
+            PowerModel? freeReloadPower = GetFreeReloadPower(player);
             int reloadCost = GetReloadCost(player);
             if (AmmoClass.GetMaxAmmo(player) == AmmoClass.GetCurrentAmmo(player) ||
                 (player.PlayerCombatState != null && reloadCost > player.PlayerCombatState.Energy))
@@ -47,6 +53,10 @@ public static class ReloadCmd
             if (reloadCost > 0)
             {
                 player.PlayerCombatState!.LoseEnergy(reloadCost);
+            }
+            else if (freeReloadPower != null)
+            {
+                await PowerCmd.ModifyAmount(choiceContext, freeReloadPower, -1, null, null);
             }
         }
         AmmoClass.DoingReload(player, isButton);

@@ -18,5 +18,17 @@
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "Hoshino's favorite shield. It can be folded for storage.",
   "STS2HOSHINO-IRON_HORUS_RELIC.title": "Iron Horus",
 
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.description": "While you have 0 [gold]Ammo[/gold], you have [blue]{DexterityPower}[/blue] additional [gold]Dexterity[/gold].",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.flavor": "Hoshino claims that this pillow will take you to dreamland no matter where you are.",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.title": "Universal Admission Ticket",
+
+  "STS2HOSHINO-SHELL_BELT_RELIC.description": "The first time you [gold]Reload[/gold] each turn, gain [blue]{StrengthPower}[/blue] [gold]Strength[/gold] this turn.",
+  "STS2HOSHINO-SHELL_BELT_RELIC.flavor": "A belt that holds extra ammo.",
+  "STS2HOSHINO-SHELL_BELT_RELIC.title": "Shell Belt",
+
+  "STS2HOSHINO-AMMO_BOX_RELIC.description": "At the start of each combat, add [blue]{Cards}[/blue] random Ammo Box {Cards:plural:card|cards} into your [gold]Hand[/gold].",
+  "STS2HOSHINO-AMMO_BOX_RELIC.flavor": "It's a school essential.",
+  "STS2HOSHINO-AMMO_BOX_RELIC.title": "Ammo Box",
+
   "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "Horus Glass"
 }

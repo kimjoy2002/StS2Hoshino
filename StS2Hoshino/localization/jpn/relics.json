@@ -18,5 +18,17 @@
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "ホシノが愛用する盾です。折りたたんで保管できます。",
   "STS2HOSHINO-IRON_HORUS_RELIC.title": "アイアンホルス",
 
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.description": "[gold]弾薬[/gold]が0の間、追加で[gold]敏捷[/gold][blue]{DexterityPower}[/blue]を得る。",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.flavor": "ホシノが「どこにいても夢の国に入れる」のだと主張する枕。",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.title": "どこでも入場券",
+
+  "STS2HOSHINO-SHELL_BELT_RELIC.description": "毎ターン、初めて[gold]リロード[/gold]した時、ターン終了時まで[gold]筋力[/gold][blue]{StrengthPower}[/blue]を得る。",
+  "STS2HOSHINO-SHELL_BELT_RELIC.flavor": "予備の弾薬を収納するためのベルト。",
+  "STS2HOSHINO-SHELL_BELT_RELIC.title": "シェルベルト",
+
+  "STS2HOSHINO-AMMO_BOX_RELIC.description": "戦闘開始時、ランダムな弾薬箱カードを[blue]{Cards}[/blue]枚[gold]手札[/gold]に加える。",
+  "STS2HOSHINO-AMMO_BOX_RELIC.flavor": "学校の必需品。",
+  "STS2HOSHINO-AMMO_BOX_RELIC.title": "弾薬箱",
+
   "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "ホルスグラス"
 }

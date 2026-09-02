@@ -10,9 +10,7 @@ using MegaCrit.Sts2.Core.Nodes.Combat;
 using MegaCrit.Sts2.Core.Nodes.Rooms;
 using MegaCrit.Sts2.Core.Runs;
 using StS2Hoshino.StS2HoshinoCode.Core;
-using System.Linq;
 using StS2Hoshino.StS2HoshinoCode.Config;
-using StS2Hoshino.StS2HoshinoCode.Powers;
 
 namespace StS2Hoshino.StS2HoshinoCode.UI;
 
@@ -107,7 +105,7 @@ public partial class ReloadButtonHud : Control
 			_reloadButton.HoverTitleSource = new LocString("static_hover_tips", "RELOAD_BUTTON.title");
 			_reloadButton.HoverDescriptionSource = new LocString("static_hover_tips", "RELOAD_BUTTON.description");
 			
-			if (me.Creature?.Powers.OfType<FreeReloadPower>().Any() == true)
+			if (ReloadCmd.IsReloadFree(me))
 			{
 				_reloadButton.IsShiny = true;
 			}

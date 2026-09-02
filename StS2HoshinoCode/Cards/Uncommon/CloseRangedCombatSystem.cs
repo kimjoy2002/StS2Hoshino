@@ -16,7 +16,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class CloseRangedCombatSystem() : StS2HoshinoCard(2, CardType.Power, CardRarity.Uncommon, TargetType.Self)
+public class CloseRangedCombatSystem() : StS2HoshinoCard(1, CardType.Power, CardRarity.Uncommon, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
@@ -26,7 +26,7 @@ public class CloseRangedCombatSystem() : StS2HoshinoCard(2, CardType.Power, Card
         HoverTipFactory.Static(StaticHoverTip.Block)
     ];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new PowerVar<CloseRangedCombatPower>(3m)
+        new PowerVar<CloseRangedCombatPower>(2m)
     ];
 
     protected override async Task OnHoshinoPlay(PlayerChoiceContext choiceContext, CardPlay play)
@@ -36,6 +36,6 @@ public class CloseRangedCombatSystem() : StS2HoshinoCard(2, CardType.Power, Card
     
     protected override void OnUpgrade()
     {
-        base.EnergyCost.UpgradeBy(-1);
+        DynamicVars["CloseRangedCombatPower"].UpgradeValueBy(1m);
     }
 }

@@ -23,6 +23,18 @@
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "星野钟爱的盾牌。可以折叠收纳。",
   "STS2HOSHINO-IRON_HORUS_RELIC.title": "铁荷鲁斯",
 
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.description": "当你的[gold]弹药[/gold]为0时，你额外拥有[blue]{DexterityPower}[/blue]点[gold]敏捷[/gold]。",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.flavor": "星野声称这是一个“无论在哪里都能进入梦乡”的枕头。",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.title": "畅通无阻入场券",
+
+  "STS2HOSHINO-SHELL_BELT_RELIC.description": "每回合你第一次[gold]装填[/gold]时，本回合获得[blue]{StrengthPower}[/blue]点[gold]力量[/gold]。",
+  "STS2HOSHINO-SHELL_BELT_RELIC.flavor": "一条可以装填额外弹药的腰带。",
+  "STS2HOSHINO-SHELL_BELT_RELIC.title": "弹药带",
+
+  "STS2HOSHINO-AMMO_BOX_RELIC.description": "在每场战斗开始时，将[blue]{Cards}[/blue]张随机弹药箱牌加入你的[gold]手牌[/gold]。",
+  "STS2HOSHINO-AMMO_BOX_RELIC.flavor": "上学必备品。",
+  "STS2HOSHINO-AMMO_BOX_RELIC.title": "弹药箱",
+
   "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "荷鲁斯玻璃"
 
   

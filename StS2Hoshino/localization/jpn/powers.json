@@ -82,5 +82,8 @@
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "[gold]弾薬[/gold]を使用するコスト1以上のカードを使用するたびに、{Amount:choose(1):[gold]リロード[/gold]する。|[blue]{}[/blue]回[gold]リロード[/gold]する。}",
   "STS2HOSHINO-COVER_ME_POWER.title": "援護して！",
   "STS2HOSHINO-COVER_ME_POWER.description": "このターン中、[gold]リロード[/gold]するたびに、他の全プレイヤーはカードを[blue]1[/blue]枚引き、ターン終了時まで[gold]筋力[/gold][blue]1[/blue]を得る。",
-  "STS2HOSHINO-COVER_ME_POWER.smartDescription": "このターン中、[gold]リロード[/gold]するたびに、他の全プレイヤーはカードを[blue]{Amount}[/blue]枚引き、ターン終了時まで[gold]筋力[/gold][blue]{Amount}[/blue]を得る。"
+  "STS2HOSHINO-COVER_ME_POWER.smartDescription": "このターン中、[gold]リロード[/gold]するたびに、他の全プレイヤーはカードを[blue]{Amount}[/blue]枚引き、ターン終了時まで[gold]筋力[/gold][blue]{Amount}[/blue]を得る。",
+  "STS2HOSHINO-GUN_LUBRICANT_POWER.title": "銃器用潤滑油",
+  "STS2HOSHINO-GUN_LUBRICANT_POWER.description": "次の[gold]リロード[/gold]1回のコストが0になる。",
+  "STS2HOSHINO-GUN_LUBRICANT_POWER.smartDescription": "次の[gold]リロード[/gold][blue]{Amount}[/blue]回のコストが0になる。"
 }

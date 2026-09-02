@@ -132,13 +132,6 @@ public sealed partial class ReloadController
         return true;
     }
 
-    private static int GetReloadCost(Player me)
-    {
-        if (me.Creature?.Powers.OfType<FreeReloadPower>().Any() == true)
-            return 0;
-        return 1;
-    }
-
     public bool CanReload(NCombatUi combatUi)
     {
         if (!ShouldShowHud(combatUi) || !CanRestoreState() || IsUiBlocking(combatUi))
@@ -163,7 +156,7 @@ public sealed partial class ReloadController
         if (AmmoClass.GetCurrentAmmo(me) >= AmmoClass.GetMaxAmmo(me))
             return false;
 
-        int cost = GetReloadCost(me);
+        int cost = ReloadCmd.GetReloadCost(me);
         if (me.PlayerCombatState.Energy < cost)
             return false;
 

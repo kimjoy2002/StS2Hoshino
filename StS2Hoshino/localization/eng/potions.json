@@ -1,0 +1,8 @@
+{
+  "STS2HOSHINO-RELOAD_POTION.title": "Reload Potion",
+  "STS2HOSHINO-RELOAD_POTION.description": "Gain [blue]{ExpertPower}[/blue] [gold]Expert[/gold].",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.title": "Gun Lubricant",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.description": "Your next [blue]{GunLubricantPower}[/blue] [gold]Reloads[/gold] cost 0.",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.title": "Deep Breath Oxygen Tank",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.description": "Shuffle your [gold]Discard Pile[/gold] into your [gold]Draw Pile[/gold]. Draw [blue]{Cards}[/blue] {Cards:plural:card|cards}."
+}

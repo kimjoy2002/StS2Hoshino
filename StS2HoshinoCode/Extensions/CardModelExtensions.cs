@@ -28,6 +28,16 @@ public static class CardModelExtensions
             method.GetParameters() is { Length: 1 } parameters &&
             parameters[0].ParameterType == typeof(Player));
 
+    private static readonly MethodInfo? CreateCloneForPlayerMethod = typeof(CardModel)
+        .GetMethods()
+        .FirstOrDefault(method =>
+            method.Name == "CreateCloneForPlayer" &&
+            method.GetParameters() is { Length: 1 } parameters &&
+            parameters[0].ParameterType == typeof(Player));
+
+    private static readonly FieldInfo? OwnerField = typeof(CardModel)
+        .GetField("_owner", BindingFlags.NonPublic | BindingFlags.Instance);
+
     public static CardModel CreateDupeCompat(this CardModel card)
     {
         if (CreateDupeMainMethod != null)
@@ -41,5 +51,18 @@ public static class CardModelExtensions
         }
 
         throw new MissingMethodException(typeof(CardModel).FullName, nameof(CardModel.CreateDupe));
+    }
+
+    public static CardModel CreateCloneForPlayerCompat(this CardModel card, Player player)
+    {
+        if (CreateCloneForPlayerMethod != null)
+            return (CardModel)CreateCloneForPlayerMethod.Invoke(card, [player])!;
+
+        CardModel clone = card.CreateClone();
+        if (OwnerField == null)
+            throw new MissingFieldException(typeof(CardModel).FullName, "_owner");
+
+        OwnerField.SetValue(clone, player);
+        return clone;
     }
 }

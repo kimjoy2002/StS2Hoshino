@@ -14,7 +14,7 @@ using StS2Hoshino.StS2HoshinoCode.Powers;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Rare;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class ReloadingSyndrome() : StS2HoshinoCard(3, CardType.Power, CardRarity.Rare, TargetType.Self)
+public class ReloadingSyndrome() : StS2HoshinoCard(2, CardType.Power, CardRarity.Rare, TargetType.Self)
 {
     protected override HashSet<CardTag> CanonicalTags => [];
 

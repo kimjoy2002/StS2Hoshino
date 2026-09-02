@@ -1,0 +1,8 @@
+{
+  "STS2HOSHINO-RELOAD_POTION.title": "リロードポーション",
+  "STS2HOSHINO-RELOAD_POTION.description": "[gold]熟練[/gold][blue]{ExpertPower}[/blue]を得る。",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.title": "銃器用潤滑油",
+  "STS2HOSHINO-GUN_LUBRICANT_POTION.description": "次の[gold]リロード[/gold][blue]{GunLubricantPower}[/blue]回のコストが0になる。",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.title": "深呼吸用酸素ボンベ",
+  "STS2HOSHINO-DEEP_BREATH_TANK_POTION.description": "[gold]捨て札[/gold]を[gold]山札[/gold]に戻してシャッフルする。カードを[blue]{Cards}[/blue]枚引く。"
+}

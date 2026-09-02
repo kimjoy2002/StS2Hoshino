@@ -82,5 +82,8 @@
   "STS2HOSHINO-RELOADING_SYNDROME_POWER.smartDescription": "Whenever you play a card that consumes [gold]Ammo[/gold] and has cost 1 or more, [gold]Reload[/gold] {Amount:choose(1):once|[blue]{}[/blue] times}.",
   "STS2HOSHINO-COVER_ME_POWER.title": "Cover Me!",
   "STS2HOSHINO-COVER_ME_POWER.description": "Whenever you [gold]Reload[/gold] this turn, other players draw [blue]1[/blue] card and gain [blue]1[/blue] [gold]Strength[/gold] this turn.",
-  "STS2HOSHINO-COVER_ME_POWER.smartDescription": "Whenever you [gold]Reload[/gold] this turn, other players draw [blue]{Amount}[/blue] cards and gain [blue]{Amount}[/blue] [gold]Strength[/gold] this turn."
+  "STS2HOSHINO-COVER_ME_POWER.smartDescription": "Whenever you [gold]Reload[/gold] this turn, other players draw [blue]{Amount}[/blue] cards and gain [blue]{Amount}[/blue] [gold]Strength[/gold] this turn.",
+  "STS2HOSHINO-GUN_LUBRICANT_POWER.title": "Gun Lubricant",
+  "STS2HOSHINO-GUN_LUBRICANT_POWER.description": "Your next [gold]Reload[/gold] costs 0.",
+  "STS2HOSHINO-GUN_LUBRICANT_POWER.smartDescription": "Your next {Amount:plural:[gold]Reload[/gold]|[blue]{}[/blue] [gold]Reloads[/gold]} cost 0."
 }

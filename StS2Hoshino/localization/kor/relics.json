@@ -23,5 +23,17 @@
   "STS2HOSHINO-IRON_HORUS_RELIC.flavor": "호시노가 애용하는 방패입니다. 접어서 보관이 가능합니다.",
   "STS2HOSHINO-IRON_HORUS_RELIC.title": "아이언 호루스",
 
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.description": "보유한 [gold]탄약[/gold]이 0인 동안, 추가 [gold]민첩[/gold]을 [blue]{DexterityPower}[/blue] 지닙니다.",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.flavor": "호시노가 '어디서든 꿈나라로 입장할 수 있다'라고 주장하는 베개.",
+  "STS2HOSHINO-ANYWHERE_TICKET_RELIC.title": "어디서든 입장권",
+
+  "STS2HOSHINO-SHELL_BELT_RELIC.description": "매 턴마다 처음으로 [gold]장전[/gold] 시, 이번 턴 동안 [gold]힘[/gold]을 [blue]{StrengthPower}[/blue] 얻습니다.",
+  "STS2HOSHINO-SHELL_BELT_RELIC.flavor": "탄약을 추가로 보관하는 벨트입니다.",
+  "STS2HOSHINO-SHELL_BELT_RELIC.title": "쉘 벨트",
+
+  "STS2HOSHINO-AMMO_BOX_RELIC.description": "매 전투 시작 시, 무작위 탄약 상자 카드를 [blue]{Cards}[/blue]장 [gold]손[/gold]으로 가져옵니다.",
+  "STS2HOSHINO-AMMO_BOX_RELIC.flavor": "학교 필수 기물입니다.",
+  "STS2HOSHINO-AMMO_BOX_RELIC.title": "탄약 상자",
+
   "SEA_GLASS.STS2HOSHINO-ST_S2_HOSHINO.title": "호루스 유리"
 }

@@ -30,7 +30,7 @@ public class DoorBreaching() : StS2HoshinoCard(2, CardType.Attack, CardRarity.Co
     ];
     protected override HashSet<CardTag> CanonicalTags => [];
     protected override IEnumerable<DynamicVar> CanonicalVars => [
-        new DamageVar(12, ValueProp.Move),
+        new DamageVar(13, ValueProp.Move),
         new PowerVar<WeakPower>(1m)
     ];
 
