@@ -23,11 +23,10 @@ using StS2Hoshino.StS2HoshinoCode.Utils;
 namespace StS2Hoshino.StS2HoshinoCode.Cards.Uncommon;
 
 [Pool(typeof(StS2HoshinoCardPool))]
-public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies), IOnBulletChanged
+public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, CardRarity.Uncommon, TargetType.AllEnemies)
 {
     public override int AmmoCost => 1;
 
-    private int current_empty_ammo = 0;
     protected override IEnumerable<IHoverTip> ExtraHoverTips =>
     [
         HoverTipFactory.FromKeyword(HoshinoKeywords.Bullet)
@@ -61,39 +60,17 @@ public class ConcentratedBreakthrough() : StS2HoshinoCard(3, CardType.Attack, Ca
     {
         base.DynamicVars.Damage.UpgradeValueBy(3m);
     }
-    
-    
-    public override Task AfterCardEnteredCombat(CardModel card)
+
+    public override bool TryModifyEnergyCostInCombat(CardModel card, decimal originalCost, out decimal modifiedCost)
     {
         if (card != this)
         {
-            return Task.CompletedTask;
-        }
-        if (base.IsClone)
-        {
-            return Task.CompletedTask;
+            modifiedCost = originalCost;
+            return false;
         }
 
-        SetRealCost();
-        return Task.CompletedTask;
-    }
-
-    
-    public async Task OnBulletChanged(PlayerChoiceContext ctx, Player player, int before_bullet, int after_bullet)
-    {
-        if (base.Owner == player)
-        {
-            SetRealCost();
-        }
-    }
-
-    private void SetRealCost()
-    {
-        int new_current_empty_ammo = AmmoClass.GetMaxAmmo(Owner) - AmmoClass.GetCurrentAmmo(Owner);
-        if (new_current_empty_ammo != current_empty_ammo)
-        {
-            base.EnergyCost.AddThisCombat(-(new_current_empty_ammo-current_empty_ammo));
-            current_empty_ammo = new_current_empty_ammo;
-        }
+        int emptyAmmoSlots = AmmoClass.GetMaxAmmo(Owner) - AmmoClass.GetCurrentAmmo(Owner);
+        modifiedCost = originalCost - emptyAmmoSlots;
+        return emptyAmmoSlots > 0;
     }
 }

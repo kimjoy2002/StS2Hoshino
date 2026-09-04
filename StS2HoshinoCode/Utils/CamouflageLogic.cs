@@ -43,9 +43,11 @@ public static class CamouflageLogic
         }
 
         newCard.AddTagSafely(StS2HoshinoCard.CamouflageTag);
-
-        await CardCmd.Afflict<CamouflagedAffliction>(newCard, 1);
-
         await CardCmd.Transform(card, newCard);
+
+        if (newCard.Affliction == null)
+        {
+            await CardCmd.Afflict<CamouflagedAffliction>(newCard, 1);
+        }
     }
 }

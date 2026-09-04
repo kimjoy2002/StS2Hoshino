@@ -141,10 +141,20 @@ public static class AmmoClass
 				continue;
 			}
 
-			foreach (CardModel card in player.PlayerCombatState.AllPiles.SelectMany(pile => pile.Cards).Distinct())
-			{
-				card.InvokeEnergyCostChanged();
-			}
+			NotifyEnergyCostsChanged(player);
+		}
+	}
+
+	private static void NotifyEnergyCostsChanged(Player player)
+	{
+		if (player.PlayerCombatState?.AllPiles == null)
+		{
+			return;
+		}
+
+		foreach (CardModel card in player.PlayerCombatState.AllPiles.SelectMany(pile => pile.Cards).Distinct())
+		{
+			card.InvokeEnergyCostChanged();
 		}
 	}
 
@@ -170,6 +180,7 @@ public static class AmmoClass
 		if (player != null)
 		{
 			OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
+			NotifyEnergyCostsChanged(player);
 		}
 	}
 
@@ -194,6 +205,7 @@ public static class AmmoClass
 		if (player != null)
 		{
 			AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
+			NotifyEnergyCostsChanged(player);
 		}
 		return GetMaxAmmo(player);
 	}
@@ -347,6 +359,7 @@ public static class AmmoClass
 		{
 			await HoshinoHook.OnBulletChanged(choiceContext, player, prevAmmo, amount);
 			AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
+			NotifyEnergyCostsChanged(player);
 		}
 
 		CurrentAmmoGainer = null;
@@ -377,6 +390,7 @@ public static class AmmoClass
 				AmmoClass.OnAmmoUsed?.Invoke(amount);
 				await HoshinoHook.OnBulletChanged(choiceContext, player, prev_ammo, state.CurrentAmmo);
 				AmmoClass.OnChanged?.Invoke(player, state.CurrentAmmo, state.MaxAmmo);
+				NotifyEnergyCostsChanged(player);
 			}
 			CurrentAmmoGainer = null;
 		}
